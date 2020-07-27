@@ -1,0 +1,81 @@
+@media (max-width: 991.98px) {
+	.offcanvas-collapse {
+		position: fixed;
+		top: 74px;
+		bottom: 0;
+		left: 100%;
+		width: 90%;
+		padding-right: 1rem;
+		padding-left: 1rem;
+		overflow-y: auto;
+		visibility: hidden;
+		background-color: #fff;
+		transition-timing-function: ease-in-out;
+		transition-duration: 0.3s;
+		transition-property: left, visibility;
+	}
+
+	.offcanvas-collapse.open {
+		left: 17px;
+		visibility: visible;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+@media (min-width: 1440px) and (max-width: 1199px) {
+	.wave-m {
+		top: 55%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.wave-m {
+		top: 56%;
+	}
+	.main-banner__text {
+		width: 88%;
+	}
+	.hj {
+		box-shadow: none;
+		width: auto;
+	}
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+	.main-footer_grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 10px;
+		color: #fff;
+	}
+	.masonry-with-columns .main-service__card {
+		margin-bottom: 50px;
+	}
+	.hj {
+		background: white;
+		margin-left: 0;
+		box-shadow: 0 0 14px #00000033;
+		height: auto;
+		width: auto;
+		border-radius: 10px;
+		padding: 25px;
+	}
+	.main-tareas_grid {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+	.navbar {
+		top: 1rem;
+		right: 1rem;
+		left: 1rem;
+		border-radius: 10px;
+	}
+	.main-brand {
+		display: inherit;
+	}
+	.navbar-brand img {
+		width: 50%;
+	}
+}
