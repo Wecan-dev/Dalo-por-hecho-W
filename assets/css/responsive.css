@@ -291,6 +291,23 @@
 	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
+	.main-tareas-2 .main-tareas_grid {
+		padding-left: 0;
+		padding-right: 0px;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.main-tareas-2 .main-tareas_item {
+		margin-bottom: 0;
+		width: 25%;
+	}
+
+	.navbar-nav .nav-link {
+		align-items: flex-start;
+	}
 	.content-tetimonios img {
 		width: 38px;
 		height: 38px;
