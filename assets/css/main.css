@@ -47,7 +47,7 @@ section {
 	top: 0rem;
 }
 #iso {
-	width: 250px;
+	width: 185px;
 	margin-top: 15px;
 }
 
@@ -169,6 +169,7 @@ section {
 	padding-right: 50px !important;
 	text-decoration: none !important;
 	transition: 0.5s;
+	border: 2px solid #fff;
 }
 .btn-custom:hover {
 	background: #ec8603;
@@ -551,7 +552,7 @@ footer a {
 	display: none;
 }
 .rrss:hover {
-	color: #353535;
+	color: #353535 !important;
 }
 footer .logo-f {
 	width: 150px;
