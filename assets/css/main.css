@@ -288,7 +288,7 @@ section {
 	transition: 0.6s;
 }
 .main-tareas-2 .main-tareas_grid {
-	grid-gap: 15px;
+	grid-gap: 25px;
 }
 .main-tareas-2 .main-tareas_item {
 	margin-bottom: 0;
@@ -564,4 +564,7 @@ a:hover {
 }
 a {
 	text-decoration: none !important;
+}
+.cta-bg_blue .btn-custom:hover {
+	background: #47c0d3;
 }

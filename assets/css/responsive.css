@@ -5,6 +5,20 @@
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
+	.main-tareas-2 .main-tareas_grid {
+		padding: 0 !important;
+	}
+	.main-tareas-2 .main-tareas_item {
+		margin-bottom: 0;
+		width: 100% !important;
+	}
+	.main-tareas_item-content p {
+		font-size: 12px;
+	}
+	.main-tareas_grid {
+		display: grid !important;
+		grid-template-columns: 1fr 1fr !important;
+	}
 	.offcanvas-collapse {
 		position: fixed;
 		top: 58px;
@@ -105,7 +119,7 @@
 		margin-bottom: 1rem;
 	}
 	.main-banner__text {
-		margin-top: 40px;
+		padding: 15px;
 	}
 	#iso {
 		display: none;
@@ -147,9 +161,7 @@
 	.arrow {
 		bottom: 32%;
 	}
-	.mask {
-		display: block;
-	}
+
 	.cta-bg span {
 		padding: 0;
 	}
@@ -276,5 +288,28 @@
 	}
 	.arrow {
 		bottom: 20%;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.content-tetimonios img {
+		width: 38px;
+		height: 38px;
+	}
+	.main-tareas-2 .main-tareas_grid {
+		padding-left: 0;
+		padding-right: 0px;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.main-tareas-2 .main-tareas_item {
+		margin-bottom: 0;
+		width: 25%;
+	}
+
+	.navbar-nav .nav-link {
+		align-items: flex-start;
 	}
 }
