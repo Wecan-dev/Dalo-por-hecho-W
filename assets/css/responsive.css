@@ -328,4 +328,11 @@
 	.navbar-nav .nav-link {
 		align-items: flex-start;
 	}
+	.navbar-nav .nav-link {
+		color: #ffffff;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: self-start;
+	}
 }
