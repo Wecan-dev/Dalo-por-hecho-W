@@ -23,7 +23,7 @@ html {
 
 body {
 	font-family: "Poppins", sans-serif !important;
-
+	scroll-behavior: smooth !important;
 	color: #3e3e3e;
 	overflow-x: hidden;
 }
@@ -45,6 +45,10 @@ section {
 }
 .top {
 	top: 0rem;
+}
+#iso {
+	width: 250px;
+	margin-top: 15px;
 }
 
 .navbar-nav .nav-link {
@@ -127,18 +131,33 @@ section {
 	border-radius: 50px;
 	color: #ec8603 !important;
 	text-align: center;
+	border: 2px solid white;
 	font-size: 14px;
 	padding: 6px;
 	padding-left: 25px !important;
 	padding-right: 25px !important;
+	transition: 0.5s;
 }
+.btn-custom-nav:hover {
+	background: transparent;
+	transition: 0.5s;
+	color: #fff !important;
+	text-align: center;
+	border: 2px solid #ec8603;
+}
+
 .btn-custom-transparent-nav {
 	border: 2px solid #ec8603;
 	border-radius: 50px;
 	color: #ec8603 !important;
 	background: transparent !important;
 }
-
+.btn-custom-transparent-nav:hover {
+	border: 2px solid #ec8603;
+	border-radius: 50px;
+	color: #ffffff !important;
+	background: #ec8603 !important;
+}
 .btn-custom {
 	background: #ffffff;
 	border-radius: 50px;
@@ -148,14 +167,39 @@ section {
 	padding: 14px !important;
 	padding-left: 50px !important;
 	padding-right: 50px !important;
+	text-decoration: none !important;
+	transition: 0.5s;
+}
+.btn-custom:hover {
+	background: #ec8603;
+	transition: 0.5s;
+	color: #fff !important;
+	text-align: center;
 }
 .btn-custom-transparent {
 	border: 2px solid #ec8603;
 	border-radius: 50px;
 	color: #ec8603 !important;
 	background: transparent !important;
+	transition: 0.5s;
 }
-
+.btn-custom-transparent-white:hover {
+	border: 2px solid #fff;
+	color: #ec8603 !important;
+	background: #ffff !important;
+}
+.cta-color {
+	transition: 0.5s;
+}
+.cta-color:hover {
+	border: 2px solid white;
+}
+.navbar-nav {
+	transition: 0.5s;
+}
+.navbar-nav .nav-link:hover {
+	color: #ec8603;
+}
 .btn-custom-transparent-white {
 	border: 2px solid #fff;
 
@@ -240,6 +284,7 @@ section {
 	justify-content: center;
 	align-items: center;
 	border-radius: 50px;
+	transition: 0.6s;
 }
 .main-tareas-2 .main-tareas_grid {
 	grid-gap: 15px;
@@ -255,7 +300,7 @@ section {
 	margin-top: 60px;
 }
 .main-tareas-2 .main-tareas_item-content:hover {
-	background: #41b1b0;
+	background: #47c0d3;
 	transition: 0.5s;
 }
 .main-tareas-2 .main-tareas_item-content:hover p {
@@ -263,7 +308,7 @@ section {
 	transition: 0.5s;
 }
 .bg-testimonios {
-	padding: 50px;
+	padding: 100px;
 	padding-bottom: 0;
 	padding-top: 0;
 }
@@ -294,7 +339,7 @@ section {
 	justify-content: space-between;
 }
 .user {
-	width: 30%;
+	width: 30px;
 	height: 100%;
 	margin-left: 12px;
 	margin-top: -6px;
@@ -335,6 +380,7 @@ section {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	transition: 0.6s;
 }
 .main-tareas_item-content p {
 	margin: 0;
@@ -435,7 +481,7 @@ section {
 .slick-dots {
 	display: flex;
 	text-align: start;
-	padding-left: 4rem;
+
 	bottom: -40px;
 	justify-content: center;
 }
@@ -486,8 +532,24 @@ footer a {
 }
 .rrss {
 	background: #ec8603;
-	padding: 7px 18px;
+	padding: 6px 12px;
 	border-radius: 50%;
 
-	margin: 10px;
+	margin: 6px;
+}
+
+.main-tareas_item-content:hover {
+	box-shadow: 0px 3px 10px #00000014;
+	transition: 0.6s;
+	transform: translate(0px, -15px);
+	background: #47c0d3;
+}
+.main-tareas_item-content:hover p {
+	color: #ffffff;
+}
+.iso-desk {
+	display: none;
+}
+.rrss:hover {
+	color: #353535;
 }
