@@ -1,4 +1,10 @@
 @media (max-width: 991.98px) {
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
 	.offcanvas-collapse {
 		position: fixed;
 		top: 58px;
@@ -23,12 +29,6 @@
 		justify-content: center;
 		align-items: center;
 	}
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-}
-
-@media (min-width: 0px) and (max-width: 767px) {
 	.btn-custom-nav {
 		border: 2px solid #ec8603;
 		border-radius: 50px;
@@ -190,4 +190,79 @@
 	}
 }
 @media (min-width: 320px) and (max-width: 500px) {
+}
+
+@media (max-width: 991px) {
+	.cards.mt-5 .col-md-6 {
+		display: flex;
+	}
+	.slick-dots {
+		padding: 0;
+	}
+	.cta .cta-ilutracion {
+		object-fit: contain;
+	}
+	.main-tareas_grid {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.main-tareas_item-content {
+		margin: 10px;
+	}
+
+	.navbar {
+		height: 60px;
+	}
+	.navbar-expand-md {
+		-ms-flex-flow: row nowrap;
+		flex-flow: row nowrap;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+	.main-banner__text h1 {
+		font-size: 50px;
+	}
+	.main-banner__text p {
+		font-size: 25px;
+	}
+	.cta-bg {
+		background: #ec8603;
+		border-radius: 10px;
+		width: 90%;
+	}
+	.main-tareas-2 .main-tareas_item {
+		margin-bottom: 0;
+		width: 30%;
+	}
+	.main-tareas-2 .main-tareas_grid {
+		padding-left: 120px;
+		padding-right: 120px;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.card-contenido span {
+		font-size: 13px;
+	}
+	.footer:nth-child(1) li:before {
+		color: #353535;
+	}
+	.navbar-brand img {
+		width: 60%;
+		margin-top: 15px;
+	}
+
+	#iso {
+		width: 150px;
+		margin-top: 15px;
+	}
+	.navbar-expand-md .navbar-nav .nav-link {
+		font-size: 12px;
+	}
+	.btn-custom-nav {
+		padding-left: 5px !important;
+		padding-right: 5px !important;
+	}
 }

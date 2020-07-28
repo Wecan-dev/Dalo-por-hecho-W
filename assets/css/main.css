@@ -553,3 +553,14 @@ footer a {
 .rrss:hover {
 	color: #353535;
 }
+footer .logo-f {
+	width: 150px;
+	margin-top: 0;
+}
+a:hover {
+	color: #ec8603 !important;
+	text-decoration: none !important;
+}
+a {
+	text-decoration: none !important;
+}
