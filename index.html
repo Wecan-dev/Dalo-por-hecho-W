@@ -44,7 +44,8 @@
 							<a class="nav-link btn-custom-nav mr-3" href="#">Buscar tarea</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" href="about.html">Publicar
+							<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" href="" data-toggle="modal"
+								data-target="#step">Publicar
 								tarea</a>
 						</li>
 
@@ -723,13 +724,77 @@
 
 
 	</footer>
+	<!-- Modal step -->
+	<div class="modal fade" id="step" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
 
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<div class="row">
+						<div class="col-md-12">
+							<div id="msform">
+								<!-- progressbar -->
+								<p>¿Que necesitas hacer?</p>
+								<ul id="progressbar">
+									<li class="active"></li>
+									<li></li>
+									<li></li>
+								</ul>
+								<!-- fieldsets -->
+								<fieldset>
+									<div class="start">
+										<label for="">Colocale titulo a tu tarea</label>
+										<input type="text" name="fname" placeholder="Ej, cargar maletas en edificio" />
+									</div>
+									<div class="form-group start">
+										<label for="exampleFormControlSelect1">Categorias</label>
+										<select class="form-control" id="exampleFormControlSelect1">
+											<option>Seleccionar</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+									<div class="form-group start">
+										<label for="exampleFormControlTextarea1">Cuales son los detalles de la
+											tarea</label>
+										<textarea class="form-control" id="exampleFormControlTextarea1"
+											rows="3"></textarea>
+									</div>
+
+									<input type="button" name="next" class="next action-button" value="Siguiente" />
+								</fieldset>
+								<fieldset>
+									<p>Donde y cuando</p>
+
+
+								</fieldset>
+								<fieldset>
+									<p>¿Que necesitas hacer?</p>
+									<input type="submit" name="submit" class="submit action-button" value="Siguiente" />
+								</fieldset>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/slick.min.js"></script>
 	<script src="assets/js/setting-slick.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="assets/js/main.js"></script>
 
 
