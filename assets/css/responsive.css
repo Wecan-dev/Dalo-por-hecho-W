@@ -98,13 +98,14 @@
 	}
 	.navbar-brand img {
 		width: 70%;
+		margin-top: 10px;
 	}
 	.navbar-toggler:not(:disabled):not(.disabled) {
-		cursor: pointer;
-		color: white;
+		color: #fff;
 		position: absolute;
-		right: 30px;
-		top: 16px;
+		width: 100%;
+		left: 40%;
+		top: 16%;
 	}
 	.titulo-general p {
 		font-size: 25px;
@@ -297,10 +298,6 @@
 	}
 	.footer:nth-child(1) li:before {
 		color: #353535;
-	}
-	.navbar-brand img {
-		width: 60%;
-		margin-top: 15px;
 	}
 
 	#iso {

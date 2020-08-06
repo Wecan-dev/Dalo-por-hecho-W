@@ -1349,3 +1349,103 @@ input {
 	border: 1px solid #ec8603 !important;
 	color: #ec8603 !important;
 }
+
+#accordion .card {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+}
+#accordion .card .card-header {
+	background: none;
+	border: none;
+	padding: 25px 0;
+}
+#accordion .card .card-header.top-headline {
+	padding: 0 0 25px;
+}
+#accordion .card .card-body {
+	padding: 0 0 25px;
+}
+
+.vertical-tabs .nav-link {
+	color: #565656;
+	font-size: 14px;
+
+	font-weight: 500;
+	border-radius: 0;
+	padding: 15px;
+}
+@media (min-width: 768px) {
+	.vertical-tabs .nav-link {
+		/* border-bottom: 1px solid #d1d3d4; */
+	}
+}
+.vertical-tabs .nav-link.active {
+	background: #ec8603;
+	color: #fff;
+	border-bottom: none;
+}
+.vertical-tabs .tab-content {
+	margin-top: 30px;
+}
+@media (min-width: 768px) {
+	.vertical-tabs .tab-content {
+		margin-top: 22px;
+	}
+}
+
+.m-110 {
+	margin-top: 110px;
+}
+.perfil-content img {
+	width: 50%;
+	border: 2px solid #ec8603;
+	border-radius: 50%;
+}
+.perfil-content {
+	text-align: center;
+}
+
+.card a {
+	color: #000;
+}
+.card h5 {
+	border-bottom: 1px solid #0000001a;
+	padding-bottom: 20px;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+	background-color: #47c0d3;
+}
+.check-line {
+	display: flex;
+	font-weight: 500;
+}
+.check-line .custom-control {
+	margin-right: 30px;
+}
+.btn-custom-bg {
+	background: #ec8603;
+	border-radius: 50px;
+	color: #fff !important;
+	text-align: center;
+	font-size: 14px;
+	padding: 14px !important;
+	padding-left: 50px !important;
+	padding-right: 50px !important;
+	text-decoration: none !important;
+	transition: 0.5s;
+	border: 2px solid #fff;
+	border: none;
+}
+.card-header {
+	padding: 0.75rem 1.25rem;
+	margin-bottom: 0;
+	background-color: transparent;
+	border-bottom: 1px solid rgb(0 0 0 / 0%);
+	border: 0;
+}
+.card {
+	border: 0;
+}
