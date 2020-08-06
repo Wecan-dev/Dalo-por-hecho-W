@@ -204,6 +204,39 @@
 	.iso-desk {
 		display: block;
 	}
+	.datos_name ul {
+		margin-top: 10px;
+		text-align: center;
+		display: block;
+	}
+	.contenido {
+		text-align: center;
+	}
+	.contenido .name {
+		text-align: center;
+	}
+	.datos_name li {
+		margin-left: 0;
+	}
+	.admin-card .datos {
+		display: block;
+		text-align: center;
+	}
+	.admin-card .name {
+		text-align: center;
+	}
+	.content-tetimonios {
+		text-align: center;
+	}
+	.text-justify {
+		text-align: center !important;
+	}
+	.nav_bottom {
+		display: none;
+	}
+	.buscar_tareas {
+		margin-top: 150px;
+	}
 }
 @media (min-width: 320px) and (max-width: 500px) {
 }
