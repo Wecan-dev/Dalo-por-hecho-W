@@ -102,10 +102,8 @@
 	}
 	.navbar-toggler:not(:disabled):not(.disabled) {
 		color: #fff;
-		position: absolute;
-		width: 100%;
-		left: 40%;
-		top: 16%;
+		width: 20%;
+		margin-top: 6px;
 	}
 	.titulo-general p {
 		font-size: 25px;
@@ -222,6 +220,30 @@
 	.admin-card .datos {
 		display: block;
 		text-align: center;
+		width: 100%;
+	}
+	.admin-card ul {
+		padding: 0;
+	}
+	.ofertas_titulos {
+		display: block;
+	}
+	.cube {
+		width: 100%;
+	}
+	.respnse {
+		display: flex;
+		flex-direction: column;
+	}
+	.respnse .ml-auto,
+	.mx-auto {
+		margin-left: 0 !important;
+	}
+	.preguntas textarea {
+		width: 80%;
+	}
+	.datos_presupuesto ul {
+		justify-content: center;
 	}
 	.admin-card .name {
 		text-align: center;
@@ -236,13 +258,60 @@
 		display: none;
 	}
 	.buscar_tareas {
-		margin-top: 150px;
+		margin-top: 100px;
+	}
+	.order-last-xs {
+		order: 13;
+	}
+	.navbar .mr-auto {
+		margin-right: 0 !important;
+	}
+	nav .nav-link {
+		font-size: 15px !important;
+	}
+	.btn-custom-transparent-nav {
+		width: 150px;
+	}
+	.chat {
+		width: 20%;
+	}
+	.fixed-top {
+		position: fixed;
+	}
+	.presupuesto_minicard {
+		margin-bottom: 50px;
 	}
 }
 @media (min-width: 320px) and (max-width: 500px) {
 }
 
-@media (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 991px) {
+	.buscador {
+		width: 220px !important;
+	}
+	.nav_bottom ul a {
+		margin-left: 26px;
+	}
+	.nav_bottom {
+		margin-top: 60px;
+	}
+	.datos_presupuesto ul {
+		justify-content: center;
+	}
+	.presupuesto_minicard {
+		margin-bottom: 50px;
+	}
+	.buscar_tareas h3 {
+		text-align: center;
+	}
+	.datos_name {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.order-last-xs {
+		order: 13;
+	}
 	.cards.mt-5 .col-md-6 {
 		display: flex;
 	}

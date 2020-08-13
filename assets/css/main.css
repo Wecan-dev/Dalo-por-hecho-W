@@ -1326,6 +1326,7 @@ input {
 	padding: 4px;
 	font-size: 15px;
 	border-radius: 15px;
+	margin-right: 9px;
 }
 .presupuesto_minicard {
 	display: flex;
@@ -1451,4 +1452,46 @@ input {
 }
 .color-blue {
 	color: #47c0d3;
+}
+.ofertas_titulos {
+	display: flex;
+}
+.ofertas_titulos p {
+	margin-bottom: 0;
+}
+.cube {
+	width: 150px;
+	height: 100px;
+	background: #00000059;
+	border-radius: 10px;
+}
+.respnse {
+	display: flex;
+}
+.respnse a {
+	color: #47c9e6;
+}
+.preguntas p {
+	font-weight: 500;
+}
+.preguntas textarea {
+	border-radius: 10px;
+	border: 1px solid #0000004d;
+	font-weight: 300;
+	padding-left: 14px;
+}
+.datos_card .icons {
+	width: 15px;
+	height: 18px;
+}
+.chat {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	width: 6%;
+}
+.form-inline .fa-search {
+	position: absolute;
+	right: 15px;
+	color: #00000078;
 }
