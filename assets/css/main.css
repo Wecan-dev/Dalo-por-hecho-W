@@ -616,8 +616,11 @@ a {
 	font-family: montserrat;
 	color: #2c3e50;
 	font-size: 13px;
+	resize: none;
 }
-
+textarea {
+	resize: none;
+}
 #msform input:focus,
 #msform textarea:focus {
 	-moz-box-shadow: none !important;

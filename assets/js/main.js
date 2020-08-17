@@ -6,6 +6,14 @@ $(function () {
 	});
 });
 
+// $(document).ready(function () {
+// 	$('.navbar .dropdown').hover(function () {
+// 			$(this).find('.dropdown-menu').first().stop(true, true).slideDown(150);
+// 		}, function () {
+// 			$(this).find('.dropdown-menu').first().stop(true, true).slideUp(105)
+// 		});
+// 	});
+
 // Menú fixed
 $(window).scroll(function () {
 	if ($(document).scrollTop() > 70 && $(window).width() >= 768) {
