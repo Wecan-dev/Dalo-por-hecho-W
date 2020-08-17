@@ -286,6 +286,62 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+	.fixed-top {
+		position: fixed;
+	}
+	.mr-auto,
+	.mx-auto {
+		margin-right: 0 !important;
+	}
+	.navbar-nav .nav-link {
+		color: #ffa300;
+	}
+
+	.navbar-nav {
+		display: block;
+	}
+	.navbar-toggler .fa {
+		color: #fff;
+	}
+	.main-brand {
+		display: flex;
+		width: 100%;
+	}
+	.navbar-brand img {
+		width: 90%;
+	}
+	.iso-desk {
+		display: block;
+	}
+	.navbar-expand-md .navbar-toggler {
+		display: block;
+		text-align: end;
+		margin-top: 14px;
+	}
+	.offcanvas-collapse {
+		position: fixed;
+		top: 58px;
+		bottom: 0;
+		left: 100%;
+		width: 100%;
+		padding-right: 0rem;
+		padding-left: 0rem;
+		overflow-y: auto;
+		visibility: hidden;
+		background-color: #fff;
+		transition-timing-function: ease-in-out;
+		transition-duration: 0.3s;
+		transition-property: left, visibility;
+	}
+
+	.offcanvas-collapse.open {
+		left: 0px;
+		visibility: visible;
+		flex-direction: column-reverse;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 	.buscador {
 		width: 220px !important;
 	}
@@ -370,11 +426,11 @@
 	}
 
 	#iso {
-		width: 150px;
-		margin-top: 15px;
+		display: none;
 	}
 	.navbar-expand-md .navbar-nav .nav-link {
-		font-size: 12px;
+		font-size: 15px;
+		margin-bottom: 11px;
 	}
 	.btn-custom-nav {
 		padding-left: 5px !important;
@@ -388,6 +444,26 @@
 	}
 	.arrow {
 		bottom: 20%;
+	}
+	.content-inf-emblemas-cont-box {
+		display: block;
+	}
+	a.box-boton-emblemas_a {
+		display: inline-block;
+
+		margin-bottom: 20px;
+	}
+	.vertical-tabs .nav-link {
+		font-size: 14px;
+		padding: 5px;
+		margin-bottom: 5px;
+	}
+	.vertical-tabs {
+		margin: 0;
+		padding: 0;
+	}
+	.custom-control {
+		padding-left: 0;
 	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
