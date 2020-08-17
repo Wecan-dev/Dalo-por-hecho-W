@@ -1504,9 +1504,9 @@ input {
 }
 .chat {
 	position: fixed;
-	right: 0;
-	bottom: 0;
-	width: 6%;
+    right: 1rem;
+    bottom: 1rem;
+    width: 4%;
 }
 .form-inline .fa-search {
 	position: absolute;
