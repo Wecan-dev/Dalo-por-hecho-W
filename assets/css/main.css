@@ -1326,11 +1326,15 @@ input {
 .datos_presupuesto a {
 	color: #ec8603;
 	background: #ededed;
-	padding: 4px;
+	padding: 8px;
 	font-size: 15px;
 	border-radius: 15px;
 	margin-right: 9px;
 }
+.datos_presupuesto a:last-child{
+	margin-right: 2px;
+}
+
 .presupuesto_minicard {
 	display: flex;
 	flex-direction: column;
@@ -1441,6 +1445,17 @@ input {
 	text-decoration: none !important;
 	transition: 0.5s;
 	border: 2px solid #fff;
+	border: none;
+}
+.btn-custom-bg:hover {
+	background: #fff;
+	border-radius: 50px;
+	color: #ec8603 !important;
+	text-align: center;
+	font-size: 14px;
+	text-decoration: none !important;
+	transition: 0.5s;
+	border: 2px solid #ec8603 !important;
 	border: none;
 }
 .card-header {
@@ -1659,7 +1674,16 @@ a.emblemas-perfil-cont_a {
     padding: 10px 20px;
     border-radius: 50px;
     font-weight: 500;
-    color: #ec8603;
+	color: #ec8603;
+	transition: 0.3s ease-in-out;
+}
+a.emblemas-perfil-cont_a:hover {
+    background: #ec8603;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 500;
+	color:#fff !important;
+	transition: 0.3s ease-in-out;
 }
 .comentario-comunidad-perfil-usuario_img {
     width: 80px;
@@ -1705,12 +1729,12 @@ img.img-cont-perfil {
 .cont-perfil-inf {
 
 }
-.direccion-perfil_img {
+/* .direccion-perfil_img {
     width: 35px;
     height: 35px;
     background: #e9e9e9;
     border-radius: 50px;
-}
+} */
 .cont-perfil-inf p {
     font-size: 15px;
     padding-left: 15px;
@@ -1775,7 +1799,7 @@ textarea.textarea-comentar {
     text-align: end;
 }
 h6.p-az {
-    color: #3461e3;
+    color: #47c0d3;
     font-size: 14px;
 }
 .valoracion-inf-general-perfil-2 h6 {
