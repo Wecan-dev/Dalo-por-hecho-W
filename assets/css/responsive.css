@@ -2,9 +2,57 @@
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+	th, td.tabla-pagos_table_td p {
+		font-size: 12px;
+		text-align: left;
+	}
+	.cont-pago-estado-form-ganado h5, .cont-pago-estado-form-ganado p{
+		font-size:14px;
+	}
+	.content-recomendar-amigo-creditos-inf {
+		width: 100%;
+	}
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
+	.check-line {
+		flex-direction: column;
+	}
+	.form-conf-cuenta input{
+		margin-bottom: 1rem;
+	}
+	.subir-foto{
+		width: 100%;
+	}
+	.compartir-en-rs {
+		flex-direction: column;
+	}
+	.recomendar-link-copiar {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+	.s-personalizada_h3 {
+		padding-top: 30px;
+	}
+	.content-recomendar-amigo-creditos-inf {
+		width: 100%;
+	}
+	.recomendar-link{
+		flex-direction: column;
+	}
+	th, td.tabla-pagos_table_td p {
+		font-size: 12px;
+		text-align: left;
+	}
+	.tab-pane .container{
+		padding: 0;
+	}
+	.col-md-3.content-barra-lateral{
+		padding-left: 0;
+	}
+	.cont-pago-estado-form {
+		flex-direction: column;
+	}
 	.main-banner__text h2 {
 		font-size: 20px;
 		margin-bottom: 10px;
@@ -286,6 +334,45 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+	.s-personalizada_h3 {
+		padding-top: 30px;
+	}
+
+	.main-content__tabs{
+		margin-left: 2rem;
+	}
+	.recomendar-link-copiar{
+		margin-bottom: 1rem;
+	}
+	.recomendar-link {
+		flex-direction: column;
+	}
+	.content-recomendar-amigo-creditos-inf {
+		width: 100%;
+	}
+	.cont-pago-estado-form-ganado {
+		display: flex;
+		flex-direction: column;
+		margin-left: 20px;
+		text-align: end;
+		width: 100%;
+		align-items: flex-end;
+		padding-right: 1rem;
+		margin-top: 2rem;
+	}
+	th, td.tabla-pagos_table_td p {
+		font-size: 12px;
+		text-align: left;
+	}
+	.tab-pane .container{
+		padding: 0;
+	}
+	.col-md-3.content-barra-lateral{
+		padding-left: 0;
+	}
+	.cont-pago-estado-form {
+		flex-direction: column;
+	}
 	.fixed-top {
 		position: fixed;
 	}
