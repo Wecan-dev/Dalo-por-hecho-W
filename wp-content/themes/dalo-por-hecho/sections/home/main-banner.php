@@ -4,19 +4,21 @@
 			<div class="main-banner__item">
 				<div class="mask">
 					<div class="main-banner__text ">
-						<p class="animated fadeInDown wow">Completa tus tareas diarias sin mover un sólo dedo</p>
-						<h1>publica lo que necesitas</h1>
-						<h2>y dalo por hecho</h2>
+						<p class="animated fadeInDown wow"><?php echo get_theme_mod('banner1_description'); ?></p>
+						<h1><?php echo get_theme_mod('banner1_title'); ?></h1>
+						<h2><?php echo get_theme_mod('banner1_subtitle'); ?></h2>
 						<div class="btn-content">
-							<a class="btn-custom p-14 mr-4" href="buscar_tareas.html">Buscar tarea</a>
-							<a class="btn-custom p-14 btn-custom-transparent btn-custom-transparent-white"
-							href="" data-toggle="modal"
-							data-target="#step" >Publicar tarea</a>
+						  <?php if(get_theme_mod('banner1_button1') != NULL){ ?>
+							<a class="btn-custom p-14 mr-4" href="<?php echo get_theme_mod('banner1_urlbutton1'); ?>"><?php echo get_theme_mod('banner1_button1'); ?></a>
+					      <?php } ?>
+					      <?php if(get_theme_mod('banner1_button2') != NULL){ ?>		
+							<a class="btn-custom p-14 btn-custom-transparent btn-custom-transparent-white" href="<?php echo get_theme_mod('banner1_urlbutton2'); ?>" data-toggle="modal"	data-target="#step" ><?php echo get_theme_mod('banner1_button2'); ?></a>
+						  <?php } ?>	
 						</div>
 					</div>
 				</div>
 				<div class="main-banner__img">
-					<img src="<?php echo get_template_directory_uri();?>/assets/img/banner.jpeg" alt="">
+					<img src="<?php echo get_theme_mod('banner1_image'); ?>" alt="">
 				</div>
 			</div>
 
