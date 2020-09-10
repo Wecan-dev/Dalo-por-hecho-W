@@ -97,4 +97,20 @@ function dalo_por_hecho_widgets_init() {
 }
 add_action( 'widgets_init', 'dalo_por_hecho_widgets_init' );
 
+/***************** Termmeta IMG *****************/
+function termmeta_value_img( $meta_key, $post_id ){
+            global $wpdb;  
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."termmeta WHERE meta_key = '$meta_key' and term_id = '$post_id'"); 
+              foreach($result_link as $r)
+              {
+                      $value = $r->meta_value;                      
+              }
+              $result_link1 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."posts WHERE ID = '$value'"); 
+              foreach($result_link1 as $r1)
+               {
+                      $value_img = $r1->guid;                      
+              }              
+              return $value_img;
+
+}
 ?>
