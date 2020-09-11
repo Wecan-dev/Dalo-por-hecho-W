@@ -41,3 +41,7 @@ Stack trace:
 #3 {main}
   thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ingresar.php on line 100
 
+2020-09-11T21:40:15+00:00 CRITICAL syntax error, unexpected 'user' (T_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\header.php on line 54
+
+2020-09-11T21:41:04+00:00 CRITICAL syntax error, unexpected 'user' (T_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\header.php on line 54
+

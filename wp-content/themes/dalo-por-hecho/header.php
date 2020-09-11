@@ -51,7 +51,7 @@
 							<a class="nav-link" href="<?php echo get_home_url() ?>/about">Como funciona</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link naranja-color" href="<?php echo get_home_url() ?>/ingresar">ingresa <img class="user"
+							<a class="nav-link naranja-color" href="<?php if( is_user_logged_in() != NULL){ echo ''.get_home_url().'/confi-perfil'; } else { echo ''.get_home_url().'/ingresar'; }?>">ingresa <img class="user"
 									src="<?php echo get_template_directory_uri();?>/assets/img/user.png" alt=""></a>
 						</li>
 
