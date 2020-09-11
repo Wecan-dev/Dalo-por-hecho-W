@@ -33,7 +33,7 @@
 
 					<ul class="navbar-nav ">
 						<li class="nav-item">
-							<a class="nav-link btn-custom-nav mr-3" href="<?php echo get_home_url() ?>/buscar_tareas">Buscar tarea</a>
+							<a class="nav-link btn-custom-nav mr-3" href="<?php echo get_home_url() ?>/buscar-tareas">Buscar tarea</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" href="" data-toggle="modal"
@@ -45,13 +45,13 @@
 
 					<ul class="navbar-nav ">
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo get_home_url() ?>/confi_perfil">Soporte</a>
+							<a class="nav-link" href="<?php echo get_home_url() ?>/confi-perfil">Soporte</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo get_home_url() ?>/about">Como funciona</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link naranja-color" href="<?php echo get_home_url() ?>/confi_perfil">ingresa <img class="user"
+							<a class="nav-link naranja-color" href="<?php echo get_home_url() ?>/ingresar">ingresa <img class="user"
 									src="<?php echo get_template_directory_uri();?>/assets/img/user.png" alt=""></a>
 						</li>
 

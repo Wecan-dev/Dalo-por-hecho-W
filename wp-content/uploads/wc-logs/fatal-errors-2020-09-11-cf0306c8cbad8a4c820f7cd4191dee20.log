@@ -1,0 +1,43 @@
+2020-09-11T04:59:32+00:00 CRITICAL Cannot redeclare the_job_publish_date() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:123) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\plugins\wp-job-manager\wp-job-manager-template.php on line 754
+
+2020-09-11T06:01:55+00:00 CRITICAL Uncaught Error: Call to undefined function conocerDiaSemanaFecha() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:137
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php(174): obtenerFechaEnLetra('2020-09-11')
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#4 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 137
+
+2020-09-11T06:17:42+00:00 CRITICAL Uncaught Error: Call to undefined function the_job_important_info() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php:181
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 181
+
+2020-09-11T06:21:27+00:00 CRITICAL Cannot redeclare termmeta_value_img() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:101) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 205
+
+2020-09-11T06:22:07+00:00 CRITICAL Cannot redeclare termmeta_value_img() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:101) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 193
+
+2020-09-11T06:22:10+00:00 CRITICAL Cannot redeclare termmeta_value_img() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:101) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 193
+
+2020-09-11T06:22:14+00:00 CRITICAL Cannot redeclare termmeta_value_img() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:101) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 193
+
+2020-09-11T20:10:21+00:00 CRITICAL Uncaught Error: Call to undefined function lang() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ingresar.php:24
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ingresar.php on line 24
+
+2020-09-11T20:26:36+00:00 CRITICAL Uncaught Error: Call to undefined function lang() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ingresar.php:100
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ingresar.php on line 100
+

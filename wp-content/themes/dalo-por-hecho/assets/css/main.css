@@ -2144,3 +2144,10 @@ a.nav-link.link-mensaje {
     margin-bottom: 0px;
 
 } */
+
+a.card-job {
+    color: inherit !important;
+}
+a.card-job:hover {
+    color: inherit !important;
+}

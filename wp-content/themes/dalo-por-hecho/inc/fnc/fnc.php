@@ -113,4 +113,67 @@ function termmeta_value_img( $meta_key, $post_id ){
               return $value_img;
 
 }
+
+/**
+ * Displays the published date of the job listing.
+ *
+ * @since 1.25.3
+ * @param int|WP_Post $post (default: null).
+ */
+function the_job_publish_date2( $post = null ) {
+  $date_format = get_option( 'job_manager_date_format' );
+
+  if ( 'default' === $date_format ) {
+    $display_date = esc_html__( 'Posted on ', 'wp-job-manager' ) . date_i18n( get_option( 'date_format' ), get_post_time( 'U' ) );
+  } else {
+    // translators: Placeholder %s is the relative, human readable time since the job listing was posted.
+    $display_date = sprintf( esc_html__( 'Hace %s ', 'wp-job-manager' ), human_time_diff( get_post_time( 'U' ), current_time( 'timestamp' ) ) );
+  }
+
+  echo '<time datetime="' . esc_attr( get_post_time( 'Y-m-d' ) ) . '">' . wp_kses_post( $display_date ) . '</time>';
+}
+
+/***************** Date *****************/
+function date_new($fecha){
+    $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
+    $dia = $dias[date('w', strtotime($fecha))];
+    $num = date("j", strtotime($fecha));
+    $anno = date("Y", strtotime($fecha));
+    $mes = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+    $mes = $mes[(date('m', strtotime($fecha))*1)-1];
+    return $dia.' '.$num.', '.$mes;
+}
+
+/***************** Meta *****************/
+function meta_value( $meta_key, $post_id ){
+            global $wpdb;  
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE meta_key = '$meta_key' and post_id = '$post_id'"); 
+              foreach($result_link as $r)
+              {
+                      $value = $r->meta_value;                      
+              }
+              $value = str_replace("\n", "<br>", $value); 
+              return $value;
+
+}
+
+
+/***************** Meta IMG *****************/
+function meta_value_img( $meta_key, $post_id ){
+            global $wpdb;  
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE meta_key = '$meta_key' and post_id = '$post_id'"); 
+              foreach($result_link as $r)
+              {
+                      $value = $r->meta_value;                      
+              }
+              $result_link1 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."posts WHERE ID = '$value'"); 
+              foreach($result_link1 as $r1)
+               {
+                      $value_img = $r1->guid;                      
+              }              
+              return $value_img;
+
+}
+
+
 ?>
