@@ -1,0 +1,48 @@
+2020-09-12T00:01:24+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho/wp-content/plugins/wp-job-manager/includes/class-wp-job-manager.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 68
+
+2020-09-12T00:01:25+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho/wp-content/plugins/wp-job-manager/includes/class-wp-job-manager.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 68
+
+2020-09-12T00:02:41+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho/wp-content/plugins/wp-job-manager/includes/class-wp-job-manager-forms.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 68
+
+2020-09-12T00:02:59+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hechohttp://localhost/Dalo-por-hecho-W/wp-content/plugins/wp-job-manager/includes/class-wp-job-manager-forms.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 68
+
+2020-09-12T00:03:24+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hechohttp://localhost/Dalo-por-hecho-W/wp-content/plugins/wp-job-manager/includes/class-wp-job-manager-forms.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 68
+
+2020-09-12T00:05:24+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hechohttp://localhost/Dalo-por-hecho-W/wp-content/plugins/wp-job-manager/includes/class-wp-job-manager-forms.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 68
+
+2020-09-12T00:05:29+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hechohttp://localhost/Dalo-por-hecho-W/wp-content/plugins/wp-job-manager/includes/class-wp-job-manager-forms.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 68
+
+2020-09-12T00:08:12+00:00 CRITICAL Uncaught Error: Call to undefined function job_manager_multi_job_type() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php:70
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-settings.php(508): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-config.php(90): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-load.php(37): require_once('C:\\xampp2\\htdoc...')
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(13): require_once('C:\\xampp2\\htdoc...')
+#4 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#5 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 70
+
+2020-09-12T00:09:06+00:00 CRITICAL Uncaught Error: Using $this when not in object context in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php:73
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-settings.php(508): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-config.php(90): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-load.php(37): require_once('C:\\xampp2\\htdoc...')
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(13): require_once('C:\\xampp2\\htdoc...')
+#4 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#5 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 73
+
+2020-09-12T00:13:55+00:00 CRITICAL require_once(): Failed opening required 'dir_inc/wp-content/plugins/wp-job-manager/includes/forms/class-wp-job-manager-form-submit-job.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 51
+
+2020-09-12T00:15:05+00:00 CRITICAL require_once(): Failed opening required 'C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho/wp-content/plugins/wp-job-manager/includes/forms/class-wp-job-manager-form-submit-job.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 50
+
+2020-09-12T00:18:36+00:00 CRITICAL require_once(): Failed opening required '/wp-content/plugins/wp-job-manager/includes/forms/class-wp-job-manager-form-submit-job.php' (include_path='C:\xampp2\php\PEAR') in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 49
+
+2020-09-12T01:17:47+00:00 CRITICAL syntax error, unexpected '<', expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 51
+
+2020-09-12T01:17:50+00:00 CRITICAL syntax error, unexpected '<', expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 51
+
+2020-09-12T01:17:50+00:00 CRITICAL syntax error, unexpected '<', expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 51
+
+2020-09-12T01:18:07+00:00 CRITICAL Cannot redeclare gma_wpjmef_retrieve_salary_column() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\plugins\wpjm-extra-fields\wpjm-extra-fields.php:39) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 96
+

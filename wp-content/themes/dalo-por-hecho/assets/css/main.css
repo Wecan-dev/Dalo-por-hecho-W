@@ -2151,3 +2151,9 @@ a.card-job {
 a.card-job:hover {
     color: inherit !important;
 }
+.fieldset-application {
+    display: none !important;
+}
+#hidden{
+	display: none !important;
+}

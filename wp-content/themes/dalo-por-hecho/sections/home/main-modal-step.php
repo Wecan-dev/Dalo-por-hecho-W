@@ -36,23 +36,26 @@
 											</ul>
 										</div>
 										<div role="form" action="index.html" class="login-box">
+										<form action="<?php echo esc_url( $action ); ?>" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
 											<div class="tab-content" id="main_form">
 												<div class="tab-pane active" role="tabpanel" id="step1">
 													<h4 class="text-center">¿Que necesitas hacer?</h4>
 
 													<div class="start">
 														<label for="">Colocale título a tu tarea</label>
-														<input type="text" name="fname"
+														<input type="hidden" id="_wpjm_nonce" name="_wpjm_nonce" value="1ec4662030"><input type="hidden" name="_wp_http_referer" value="/Dalo-por-hecho-W/post-a-job/">
+
+														<input type="text" name="job_title" id="job_title"
 															placeholder="Ej, cargar maletas en edificio" />
 													</div>
 													<div class="form-group start">
 														<label for="exampleFormControlSelect1">Categorías</label>
-														<select class="form-control" id="exampleFormControlSelect1">
-															<option>Seleccionar</option>
-															<option>2</option>
-															<option>3</option>
-															<option>4</option>
-															<option>5</option>
+														<select class="form-control" name="job_category[]" id="job_category">
+														    <option>Seleccionar</option>
+                                                            <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
+                                                            <?php foreach($product_categories as $category):  global $wpdb;?>		
+                                                                <option value="<?=$category->term_id ?>"><?=$category->name ?></option>
+		                                                    <?php endforeach; ?>						
 														</select>
 													</div>
 													<div class="form-group start">
@@ -60,7 +63,7 @@
 															los
 															detalles de la
 															tarea</label>
-														<textarea class="form-control" id="exampleFormControlTextarea1"
+														<textarea class="form-control" name="job_description" id="job_description"
 															rows="3"
 															placeholder="Ej, vivo en el 5 piso , no puedo cargar peo por asuntos medicos"></textarea>
 													</div>
@@ -74,49 +77,29 @@
 													<div>
 														<h3 class="text-start">Donde se realizara la tarea</h3>
 														<div class="content-row">
-															<div class="col-md-6 step-content ">
-																<p class="p-0 m-0 color-blue"><i
-																		class="fa fa-map-marker" aria-hidden="true"></i>
-																	En persona </p>
-																<span>Lorem ipsum dolor sit amet consectetur
-																</span>
-															</div>
-															<div class="col-md-6 step-content">
-																<p class="p-0 m-0 "> <i class="fa fa-globe"
-																		aria-hidden="true"></i>
-																	En linea </p>
-																<span>Lorem ipsum dolor sit amet consectetur
-																</span>
-															</div>
+                                                            <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_type', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
+                                                            <?php foreach($product_categories as $category):  global $wpdb;?>		
+                                                                <div class="col-md-6 step-content ">
+																   <p class="p-0 m-0 color-blue"><i	class="<?php if($category->name == 'En persona'){ echo "fa fa-map-marker";}if($category->name == 'En línea'){ echo "fa fa-globe";} ?>" aria-hidden="true"></i><input name="job_type" id="job_type" type="radio" value="<?=$category->term_id ?>">
+																	<?=$category->name ?> </p>
+																   <span>Lorem ipsum dolor sit amet consectetur </span>
+															    </div>                                                                
+		                                                    <?php endforeach; ?>						
+	
 														</div>
 													</div>
 													<div class="form-group start">
-														<select class="form-control" id="exampleFormControlSelect1">
-															<option>Selecciona tu región</option>
-															<option>2</option>
-															<option>3</option>
-															<option>4</option>
-															<option>5</option>
-														</select>
+                                                        <input type="text" name="job_location" id="job_location"  placeholder="e.g. &quot;London&quot;" />
 													</div>
-													<div class="row mb-3">
-														<div class="col-md-6">
-
-															<input type="text" name="fname" placeholder="Ciudad" />
-														</div>
-														<div class="col-md-6">
-
-															<input type="text" name="fname" placeholder="Comuna" />
-														</div>
-													</div>
+													
 													<div class="form-group start">
-														<input type="text" name="fname"
+														<input type="text" name="job_direccion" id="job_direccion"
 															placeholder="Dirección y numero" />
 
 													</div>
 													<div class="start">
 														<label for="">Cuando necesitas las tareas?</label>
-														<input type="text" name="fname"
+														<input type="date" name="_job_expires" id="_job_expires"
 															placeholder="seleciona una fecha" />
 													</div>
 													<ul class="list-inline text-center">
@@ -138,11 +121,11 @@
 													<div class="row mb-3">
 														<div class="col-md-6">
 
-															<input type="text" name="fname" placeholder="CLP" />
+															<input type="text"  name="job_clp" id="job_clp" placeholder="CLP" />
 														</div>
 														<div class="col-md-6">
 
-															<input type="text" name="fname" placeholder="Horas" />
+															<input type="text" name="job_horas" id="job_horas" placeholder="Horas" />
 														</div>
 													</div>
 													<div class="presupuesto">
@@ -158,7 +141,7 @@
 															</div>
 															<div
 																class="col-md-4 d-flex justify-content-center align-items-center">
-																<p>00</p>
+																<p>00</p><input type="hidden" class="input-text" name="job_salary" id="job_salary" placeholder="e.g. USD$ 20.000" value="20" maxlength="">
 															</div>
 														</div>
 													</div>
@@ -184,11 +167,18 @@
 													<ul class="list-inline text-center ">
 														<!-- <li><button type="button"
 																class="default-btn prev-step">Back</button></li> -->
-														<li class="btn-line mt-4"><button type="button"
+														<li class="btn-line mt-4">
+      <input type="hidden" name="job_manager_form" value="submit-job">
+      <input type="hidden" name="job_id" value="0">
+      <input type="hidden" name="step" value="0">
+      <input type="submit" name="submit_job" class="button" value="Preview">
+      <input type="submit" name="save_draft" class="button secondary save_draft" value="Save Draft" formnovalidate="">      
+														  <button type="button"
 																class="default-btn next-step">Siguiente</button></li>
 													</ul>
 												</div>
 											</div>
+										</form>
 										</div>
 									</div>
 								</div>
