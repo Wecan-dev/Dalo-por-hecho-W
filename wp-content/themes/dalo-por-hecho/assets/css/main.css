@@ -358,6 +358,9 @@ section {
 	margin-left: 12px;
 	margin-top: -6px;
 }
+.avatar {
+	border-right: 50%;
+}
 
 .titulo-general p {
 	font-size: 30px;

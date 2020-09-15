@@ -39,9 +39,6 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
     if ( !empty( $_POST['description'] ) )
         update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
 
-    if ( !empty( $_POST['idiomas_user'] ) )
-        update_user_meta( $current_user->ID, 'idiomas_user', esc_attr( $_POST['idiomas_user'] ) );    
-
     /* Redirect so the page will show updated info.*/
   /*I am not Author of this Code- i dont know why but it worked for me after changing below line to if ( count($error) == 0 ){ */
     if ( count($error) == 0 ) {
@@ -66,7 +63,6 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                     <p class="form-username">
                         <label for="first-name"><?php _e('First Name', 'profile'); ?></label>
                         <input class="text-input" name="idiomas_user" type="text" id="idiomas_user" value="<?php the_author_meta( 'idiomas_user', $current_user->ID ); ?>" />
-
                     </p>                
                     <p class="form-username">
                         <label for="first-name"><?php _e('First Name', 'profile'); ?></label>
@@ -99,7 +95,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 
                     <?php 
                         //action hook for plugin and extra fields
-                       // do_action('edit_user_profile',$current_user); 
+                        do_action('edit_user_profile',$current_user); 
                     ?>
                     <p class="form-submit">
                         <?php echo $referer; ?>
