@@ -16,7 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-global $post;
+global $post, $current_user, $wp_roles;;
+
 $job_salary   = get_post_meta( get_the_ID(), '_job_salary', true );
 $job_featured = get_post_meta( get_the_ID(), '_featured', true );
 $company_name = get_post_meta( get_the_ID(), '_company_name', true );
@@ -105,7 +106,7 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
                                 <div class="content-tetimonios admin-card">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <img src="assets/img/user2.png" alt="">
+                                           <?php if (is_user_logged_in()){ echo get_avatar( $current_user->user_email, 50 );  }?> 
                                         </div>
                                         <div class="col-md-9 mb-2 text-justify">
                                             <p class="name"><?php wpjm_the_job_title(); ?></p>

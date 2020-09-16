@@ -2160,3 +2160,41 @@ a.card-job:hover {
 #hidden{
 	display: none !important;
 }
+
+.subir-foto img {
+    /* width: 50% !important; */
+    height: 220px;
+}
+input.regular-text.code {
+    display: none;
+}
+p#wp_user_profile_avatar_thumbnail {
+    display: none;
+}
+span.description {
+    display: none;
+}
+
+p#wp_user_profile_avatar_remove_button {
+    display: none;
+}
+input#job_salary {
+    background: none !important;
+    border: 0px !important;
+    color: #fff !important;
+}
+fieldset.fieldset-logged_in {
+    display: none;
+}
+.job-manager-info {
+    display: none;
+}
+fieldset.fieldset-login_required {
+    display: none;
+}
+fieldset.fieldset-create_account_email {
+    display: none;
+}
+.avatar{
+	border-radius: 50%;
+}

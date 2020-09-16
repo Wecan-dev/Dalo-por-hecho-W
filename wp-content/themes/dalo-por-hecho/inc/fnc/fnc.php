@@ -175,5 +175,39 @@ function meta_value_img( $meta_key, $post_id ){
 
 }
 
+/***************** Meta User *****************/
+function meta_user_value( $meta_key, $post_id ){
+            global $wpdb;  
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."usermeta WHERE meta_key = '$meta_key' and user_id = '$post_id'"); 
+              foreach($result_link as $r)
+              {
+                      $value = $r->meta_value;                      
+              }
+              $value = str_replace("\n", "<br>", $value); 
+              return $value;
+
+}
+
+/***************** Meta IMG FRM *****************/
+function meta_value_img_frm($user,$form_id){
+            global $wpdb;
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."frm_items WHERE user_id = '$user' and form_id = '$form_id' "); 
+              foreach($result_link as $r)
+              {
+                      $value_frm = $r->id;                      
+              }
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."frm_item_metas WHERE item_id = '$value_frm' "); 
+              foreach($result_link as $r)
+              {
+                      $value_post = $r->meta_value;                      
+              }
+
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."posts WHERE post_author = '$user' and ID = '$value_post' "); 
+              foreach($result_link as $r)
+              {
+                      $value_img = $r->guid;                      
+              }
+              return $value_img;
+}
 
 ?>

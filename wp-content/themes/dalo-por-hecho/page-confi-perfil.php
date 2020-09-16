@@ -1,12 +1,96 @@
-<?php get_header();?>
+<?php if(is_user_logged_in() == NULL)
+{ 
+  header('Location: '.get_home_url().'');
+}?>
     <div class="container perfil m-110">
         <section>
+<?php
+
+
+/* Get user info. */
+global $current_user, $wp_roles;
+//get_currentuserinfo(); //deprecated since 3.1
+
+/* Load the registration file. */
+//require_once( ABSPATH . WPINC . '/registration.php' ); //deprecated since 3.1
+$error = array();    
+/* If profile was saved, update profile. */
+
+
+if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+if (meta_user_value( 'email', $current_user->ID ) != NULL) $cont1 = $cont1 +1;
+if (meta_user_value( 'first_name', $current_user->ID ) != NULL) $cont2 = $cont2 +1;
+if (meta_user_value( 'last_name', $current_user->ID ) != NULL) $cont3 = $cont3 +1;
+if (meta_user_value( 'description', $current_user->ID ) != NULL) $cont4 = $cont4 +1;
+if (meta_user_value( 'direccion_user', $current_user->ID ) != NULL) $cont5 = $cont5 +1;
+if (meta_user_value( 'frase_user', $current_user->ID ) != NULL) $cont6 = $cont6 +1;
+if (meta_user_value( 'fecha_nac_user', $current_user->ID ) != NULL) $cont7 = $cont7 +1;
+if (meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) != NULL) $cont8 = $cont8 +1;
+
+$porcent = (($cont1 + $cont2 + $cont3 + $cont4 + $cont5 + $cont6 + $cont7 + $cont8)/8)*100;
+
+
+
+if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POST['action'] == 'update-user' ) {
+
+    /* Update user password. */
+    if ( !empty($_POST['pass1'] ) && !empty( $_POST['pass2'] ) ) {
+        if ( $_POST['pass1'] == $_POST['pass2'] )
+            wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => esc_attr( $_POST['pass1'] ) ) );
+        else
+            $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'profile');
+    }
+
+    /* Update user information. */
+    if ( !empty( $_POST['url'] ) )
+        wp_update_user( array( 'ID' => $current_user->ID, 'user_url' => esc_url( $_POST['url'] ) ) );
+    if ( !empty( $_POST['email'] ) ){
+        if (!is_email(esc_attr( $_POST['email'] )))
+            $error[] = __('The Email you entered is not valid.  please try again.', 'profile');
+        elseif(email_exists(esc_attr( $_POST['email'] )) != $current_user->id )
+            $error[] = __('This email is already used by another user.  try a different one.', 'profile');
+        else{
+            wp_update_user( array ('ID' => $current_user->ID, 'user_email' => esc_attr( $_POST['email'] )));
+        }
+    }
+
+    if ( !empty( $_POST['first-name'] ) )
+        update_user_meta( $current_user->ID, 'first_name', esc_attr( $_POST['first-name'] ) );
+    if ( !empty( $_POST['last-name'] ) )
+        update_user_meta($current_user->ID, 'last_name', esc_attr( $_POST['last-name'] ) );
+    if ( !empty( $_POST['description'] ) )
+        update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
+
+    if ( !empty( $_POST['direccion_user'] ) )
+        update_user_meta( $current_user->ID, 'direccion_user', esc_attr( $_POST['direccion_user'] ) );
+    if ( !empty( $_POST['frase_user'] ) )
+       update_user_meta( $current_user->ID, 'frase_user', esc_attr( $_POST['frase_user'] ) ); 
+    if ( !empty( $_POST['fecha_nac_user'] ) )
+       update_user_meta( $current_user->ID, 'fecha_nac_user', esc_attr( $_POST['fecha_nac_user'] ) ); 
+    if ( !empty( $_POST['user_registration_radio_1600171615'] ) )
+       update_user_meta( $current_user->ID, 'user_registration_radio_1600171615', esc_attr( $_POST['user_registration_radio_1600171615'] ) );          
+                
+
+    /* Redirect so the page will show updated info.*/
+  /*I am not Author of this Code- i dont know why but it worked for me after changing below line to if ( count($error) == 0 ){ */
+    if ( count($error) == 0 ) {
+        //action hook for plugins and extra fields saving
+        do_action('edit_user_profile_update', $current_user->ID);
+        wp_redirect( get_permalink() );
+        exit;
+    }
+}
+
+
+
+ get_header();?>
+ 
             <div class="container vertical-tabs">
                 <div class="row">
                     <div class="col-md-3 content-barra-lateral">
                         <div class="perfil-content">
-                            <img src="<?php echo get_template_directory_uri();?>/assets/img/user2.png" alt="">
-                            <p class="mt-3 mb-4"> Nombre y apellido</p>
+                           <?php if (is_user_logged_in()){ echo get_avatar( $current_user->user_email, 165 );  }?> 
+                            <p class="mt-3 mb-4"><?php the_author_meta( 'first_name', $current_user->ID ); ?></p>
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
@@ -20,7 +104,7 @@
                             role="tab" aria-controls="v-pills-recomendar" aria-selected="false">Recomendar a un
                             amigo</a>
 
-                            <a class="nav-link" id="v-pills-f-tab" data-toggle="pill" href="#v-pills-conf" role="tab"
+                            <a class="nav-link " id="v-pills-f-tab" data-toggle="pill" href="#v-pills-conf" role="tab"
                                 aria-controls="v-pills-three" aria-selected="false">Configuración de cuenta</a>
 
                             <a class="nav-link " id="v-pills-one-tab" data-toggle="pill" href="#v-pills-one"
@@ -31,12 +115,37 @@
                         
                             <a class="nav-link" id="v-pills-h-tab" data-toggle="pill" href="#v-pills-h" role="tab"
                                 aria-controls="v-pills-three" aria-selected="false">Señales de tareas</a>
+
+                            <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ ?>
+                            <a class="nav-link" id="v-pills-tareas-tab" data-toggle="pill" href="#v-pills-tareas" role="tab"
+                                aria-controls="v-pills-three" aria-selected="false">Tareas Publicadas</a>                               
+                            <?php } ?>  
+                            <a href="<?php echo wp_logout_url( home_url()); ?>" class="nav-link" 
+                                 aria-selected="false">Salir</a>   
                                 
 
                         </div>
                     </div>
                     <div class="col-md-8 main-content__tabs">
                         <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade " id="v-pills-tareas" role="tabpanel"
+                                aria-labelledby="v-pills-tareas-tab">
+                                <div id="accordion" role="tablist">
+                                    <div class="card">
+                                        <div class="card-header top-headline" role="tab" id="headingOne">
+                                            <h5>
+                                                
+                                                    <?php echo do_shortcode('[job_dashboard]');  ?>
+
+                                            
+                                            </h5>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="tab-pane fade " id="v-pills-one" role="tabpanel"
                                 aria-labelledby="v-pills-one-tab">
                                 <div id="accordion" role="tablist">
@@ -372,8 +481,19 @@
                                 </div>
 
                             </div>
-                            <div class="tab-pane fade" id="v-pills-conf" role="tabpanel"
+                            <div class="tab-pane fade show <?php echo $v_pills_conf; ?>" id="v-pills-conf" role="tabpanel"
                                 aria-labelledby="v-pills-f-tab">
+
+    <div id="post-<?php the_ID(); ?>">
+        <div class="entry-content entry">
+            <?php the_content(); ?>
+            <?php if ( !is_user_logged_in() ) : ?>
+                    <p class="warning">
+                        <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
+                    </p><!-- .warning -->
+            <?php else : ?>
+                <?php if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>'; ?>                                
+
                                 <div class="card">
                                     <div class="card-header top-headline" role="tab" id="headingOne">
                                         <h5>
@@ -390,7 +510,7 @@
                                                         <div class="cont-barra-progreso">
 
                                                             <div class="progress">
-                                                                <div class="progress-bar" style="width:75%"></div>
+                                                                <div class="progress-bar" style="width:<?php echo $porcent; ?>%"></div>
                                                             </div>
                                                         </div>
 
@@ -405,67 +525,105 @@
                                         aria-labelledby="headingOne" data-parent="#accordion">
 
                                         <div class="cont-img-conf-cuenta">
-                                            <div class="cont-img-conf-cuenta_img">
+                                            <?php                   
+                                            //if (is_user_logged_in()){
+                                               //echo get_avatar( $current_user->user_email, 100 ); 
+                                            //}?> 
+                                            <?php echo do_shortcode('[user_profile_avatar_upload]');  ?>
 
-                                            </div>
+
+                                                         
                                             <div class="cont-img-conf-cuenta_a">
                                                 <a class="ver-perfil-publico" href="perfil.html">Ver tu perfil publico</a>
                                             </div>
                                         </div>
                                         <div class="cont-inf-conf-cuenta">
-                                            <h6>Mejora tu perfil y has mas atractivo tu feed</h6>
-                                            <div class="subir-foto">
-                                                <h6>Subir foto de portada</h6>
+                                            <h6>Mejora tu perfil y has mas atractivo tu feed?></h6>
+                                            <div class="row cont-row-form">
+                                            <div class="subir-foto col-md-6">
+                                               <?php if(meta_value_img_frm($current_user->ID,7) == NULL){ ?>
+                                                   <h6>Subir foto de portada</h6>
+                                                <?php }else{ ?>   
+                                                    <img src="<?php echo meta_value_img_frm($current_user->ID,7); ?>"> 
+                                                <?php } ?>                                                    
                                             </div>
+                                            <div class="col-md-6">
+                                                <h6>Subir foto de portada</h6>
+                                                <?php echo do_shortcode('[frm-set-get id_user='.$current_user->ID.'][formidable id=7]');  ?>
+                                            </div>  
+                                            </div>                                          
                                         </div>
                                         <div class="form-conf-cuenta">
-                                            <form>
+
+                <form method="post" id="adduser" action="<?php the_permalink(); ?>?#v-pills-conf">                                        
+                                           
                                                 <div class="row cont-row-form">
                                                     <div class="col-md-6">
-                                                        <input type="text" class="form-control" id="email"
-                                                            placeholder="Nombre y Apellido" name="email">
+                                                        <input class="form-control" placeholder="Nombre y Apellido" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="password" class="form-control"
-                                                            placeholder="Dirección" name="pswd">
+                                                        <input class="form-control" placeholder="Dirección" name="direccion_user" type="text" id="direccion_user" value="<?php the_author_meta( 'direccion_user', $current_user->ID ); ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="row cont-row-form">
 
                                                     <div class="col-md-6">
-                                                        <input type="password" class="form-control"
-                                                            placeholder="Escribe tu frase" name="pswd">
+                                                        <input class="form-control" placeholder="Escribe tu frase" name="frase_user" type="text" id="frase_user" value="<?php the_author_meta( 'frase_user', $current_user->ID ); ?>" />
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input type="text" class="form-control" id="email"
-                                                            placeholder="Enter email" name="email">
+                                                        <input type="email" class="form-control" id="email"
+                                                            placeholder="Enter email" name="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
                                                     </div>
                                                 </div>
-                                            </form>
-                                            <h6>Fecha de cumpleaños</h6>
-                                            <form class="form-inline cumple">
-                                                <input type="email" class="form-control" placeholder="DD" id="email">
-                                                <input type="password" class="form-control" placeholder="MM" id="pwd">
-                                                <input type="password" class="form-control" placeholder="AA" id="pwd">
+                                           
+                                            <h6>Fecha de cumpleaños </h6>
+                                            <div class="form-inline cumple">
+                                                <input type="text" class="form-control" placeholder="DD" name="dia" id="dia" maxlength="2" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('d', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
+                                                <input type="text" class="form-control" placeholder="MM" name="mes" id="mes" min="1" max="12" maxlength="2" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('m', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
+                                                <input type="text" class="form-control" placeholder="AA" name="ano" id="ano" min="1900" maxlength="4" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('Y', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
+                                                <input type="hidden" class="form-control" id="fecha_nac_user" placeholder="Enter email" name="fecha_nac_user" value="<?php echo meta_user_value( 'fecha_nac_user', $current_user->ID ) ?>" />
 
-                                            </form>
-                                            <h6>Agrega tu descripción</h6>
-                                            <textarea name="" id="" cols="30" rows="10"
-                                                class="textarea-conf"></textarea>
-                                            <h6>Que deseas en DALO POR HECHO</h6>
-                                            <form class="opc-conf-cuenta">
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="optradio" checked>Publicar Tareas
-                                                </label>
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="optradio">Hacer Tareas
-                                                </label>
-
-                                            </form>
-                                            <div class="cont-boton-cambios">
-                                                <a class="guardar-cambios" href="#">Guardar cambios</a>
-                                                <a class="desactivar-cuenta" href="#">Desactivar cuenta</a>
                                             </div>
+                                            <h6>Agrega tu descripción</h6>
+                                            <textarea name="description" id="description" rows="10" cols="30" class="textarea-conf"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea>
+                                            
+                                            <h6>Que deseas en DALO POR HECHO </h6>
+                                            <div class="opc-conf-cuenta">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="user_registration_radio_1600171615" id="user_registration_radio_1600171615" value="Publicar Tareas"  <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ echo 'checked="checked"';} ?>>Publicar Tareas
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="user_registration_radio_1600171615" id="user_registration_radio_1600171615" value="Hacer tareas" <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ echo 'checked="checked"';} ?>>Hacer tareas
+                                                </label>
+
+                                            </div>
+                                            <div class="cont-boton-cambios">
+                                               <!-- <a class="guardar-cambios" href="#">Guardar cambios</a> -->
+                                              
+                                                <?php echo $referer; ?>
+                                                <input name="updateuser" type="submit" id="updateuser" class="guardar-cambios" value="Guardar cambios" />
+                                                <?php wp_nonce_field( 'update-user' ) ?>
+                                                <input name="action" type="hidden" id="action" value="update-user" />
+                                                <a class="desactivar-cuenta" href="#">Desactivar cuenta</a>                                             
+                                            </div>
+                    <?php 
+                        //action hook for plugin and extra fields
+                       // do_action('edit_user_profile',$current_user); 
+                    ?>
+
+                </form><!-- #adduser -->
+            <?php endif; ?>
+        </div><!-- .entry-content -->
+    </div><!-- .hentry .post -->
+    <?php endwhile; ?>
+<?php else: ?>
+    <p class="no-data">
+        <?php _e('Sorry, no page matched your criteria.', 'profile'); ?>
+    </p><!-- .no-data -->
+<?php endif; ?>
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -661,4 +819,36 @@
 
     </div>
 
+
+<script type="text/javascript">
+$(document).ready(function () {
+        $("#ano").keyup(function () {
+            var valuea =  document.getElementById("dia").value + "/" + document.getElementById("mes").value + "/" + $(this).val();
+            $("#fecha_nac_user").val(valuea);
+        });
+        $("#dia").keyup(function () {
+            var valuea =  $(this).val() + "/" + document.getElementById("mes").value + "/" + document.getElementById("ano").value;
+            $("#fecha_nac_user").val(valuea);
+        });  
+        $("#mes").keyup(function () {
+            var valuea =  document.getElementById("dia").value + "/" + $(this).val() + "/" + document.getElementById("ano").value;
+            $("#fecha_nac_user").val(valuea);
+        }); 
+
+        $(".form-table").html(function(serachreplace, replace) {
+            return replace.replace('<p>OR Upload Image</p>', '');
+        });
+
+        $(".wp_user_profile_avatar_upload").html(function(serachreplace, replace) {
+            return replace.replace('Seleccionadr archivo', 'xxxx');
+        });  
+
+        $("#wp_user_profile_avatar_add_button_existing").html(function(serachreplace, replace) {
+            return replace.replace('Ningún archivo seleccionado', 'xxxx');
+        });               
+         
+});
+
+
+</script>
 <?php get_footer(); ?>    

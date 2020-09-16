@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<title><?php wp_title('|', true, 'right'); ?></title>
-    <?php wp_head(); ?>
+    <?php wp_head(); global $current_user, $wp_roles;?>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
                             ingresa
                             <img class="user avatar" src="<?php echo get_template_directory_uri();?>/assets/img/user.png" alt=""></a>
                         <?php } ?>
-							
+							</a>
 						</li>
 
 					</ul>

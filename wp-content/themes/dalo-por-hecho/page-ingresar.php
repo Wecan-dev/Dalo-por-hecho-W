@@ -101,7 +101,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
         <h2><?php esc_html_e( $la, 'woocommerce' ); ?></h2>
 
-        <?php echo do_shortcode('[user_registration_form id="62"]');?>
+        <?php echo do_shortcode('[user_registration_form id="92"]');?>
 
             <div class="form-login__register" >
                 <p class="woocommerce-LostPassword lost_password">                  

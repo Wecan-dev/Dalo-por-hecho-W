@@ -90,3 +90,15 @@ Stack trace:
 #3 {main}
   thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-publicar.php on line 340
 
+2020-09-15T13:14:33+00:00 CRITICAL syntax error, unexpected 'endwhile' (T_ENDWHILE), expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 544
+
+2020-09-15T16:51:04+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 69
+
+2020-09-15T18:30:09+00:00 CRITICAL Uncaught Error: Call to undefined function get_author_meta() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php:514
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 514
+
