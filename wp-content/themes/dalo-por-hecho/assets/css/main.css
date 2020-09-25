@@ -2198,3 +2198,59 @@ fieldset.fieldset-create_account_email {
 .avatar{
 	border-radius: 50%;
 }
+
+
+
+.ingresar-t{
+	padding: 0 10rem;
+}
+.ingresar-t label{
+	width: 100%;
+	color: #3e3e3e;
+	font-size: 1.2rem;
+}
+.ingresar-t label input{
+	margin-top: 1rem;
+	height: 45px;
+}
+.ingresar-t button{
+	cursor: pointer;
+	background: #ec8603;
+	height: 45px;
+	color: #fff;
+	font-size: 1.4rem;
+	transition: .3s ease-in-out;
+}
+.ingresar-t button:hover{
+	background: #fff;
+	color: #ec8603;
+	transition: .3s ease-in-out;
+	border: 2px solid #ec8603;
+}
+#job-manager-job-dashboard{
+	padding: 7rem 5rem 5rem;
+}
+.job_listings{
+	padding: 5rem;
+}
+.job-listing-t .job_listings{
+	display: flex;
+	justify-content: space-around;
+	padding: 0;
+}
+.job-listing-t .job_listings article{
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.job-listing-t article figure{
+	width: 200px;
+}
+.job-listing-t article figure img{
+	width: 100%;
+}
+.job-listing-t article .job-title-wrap svg{
+	width: 50px;
+}

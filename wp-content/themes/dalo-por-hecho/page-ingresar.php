@@ -30,7 +30,7 @@ if (strpos($url, '?') !== false) {
 
 
 
-    <div class="container buscar_tareas perfil m-110">
+    <div class="container buscar_tareas ingresar-t perfil m-110">
         <div class="row">
             <div class="col-lg-12 col-md-12 scroll-admin order-last-xs ">
 
@@ -56,35 +56,36 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
                 <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/user.png">
             </div>
-            <h2>Iniciar sesión</h2>
+            <h2 class="text-center">Iniciar sesión</h2>
             <?php do_action( 'woocommerce_login_form_start' ); ?>
 
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                 <label for="username" class="label-user" >
                 <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/usergray.png">
-                <input type="text" placeholder="Usuario" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="off" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
+                Ingresa tu email
+                <input type="text" placeholder="" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="off" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
             </label>
             </p>
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                 <label for="password">
                 <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/pass.png">
-
-                <input placeholder="Contraseña" class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="off" />
+                Ingresa tu clave
+                <input placeholder="" class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="off" />
             </label>
             </p>
 
             <?php do_action( 'woocommerce_login_form' ); ?>
 
             <p class="form-row">
-                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                <!-- <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
                     <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span><?php esc_html_e('Recuerdame', 'woocommerce' ); ?></span>
-                </label>
+                </label> -->
                 <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
                 <button type="submit" class="main-general__button woocommerce-button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Iniciar sesión', 'woocommerce' ); ?></button>
             </p>
-            <div class="form-login__register" >
+            <div class="form-login__register text-center" >
                 <p class="woocommerce-LostPassword lost_password">
-                    <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Perdiste tu contraseña', 'woocommerce' ); ?></a>
+                    <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( '¿Se te olvidó tu contraseña?', 'woocommerce' ); ?></a>
                     <p class="woocommerce-in-account"><a href="?create=account"><?='Crea una cuenta' ?></a></p>
                 </p>
             </div>

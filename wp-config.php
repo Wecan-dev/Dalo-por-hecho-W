@@ -26,7 +26,7 @@ define( 'DB_NAME', 'db_dalo_por_hecho' );
 define( 'DB_USER', 'admin' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '1234' );
+define( 'DB_PASSWORD', '123456' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );

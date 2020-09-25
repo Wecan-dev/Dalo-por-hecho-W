@@ -329,6 +329,15 @@
 	.presupuesto_minicard {
 		margin-bottom: 50px;
 	}
+	.ingresar-t{
+		padding: 1rem;
+	}
+	#job-manager-job-dashboard{
+		padding: 4rem 2rem;
+		display: flex;
+		flex-direction: column;
+		overflow: scroll;
+	}
 }
 @media (min-width: 320px) and (max-width: 500px) {
 }
@@ -551,6 +560,9 @@
 	}
 	.custom-control {
 		padding-left: 0;
+	}
+	.ingresar-t{
+		padding: 1rem 5rem;
 	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
