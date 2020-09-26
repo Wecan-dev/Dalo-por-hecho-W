@@ -2254,3 +2254,17 @@ fieldset.fieldset-create_account_email {
 .job-listing-t article .job-title-wrap svg{
 	width: 50px;
 }
+.buscar_tareas-t{
+	padding: 1rem 0 3rem;
+}
+.job-manager-form{
+	padding: 7rem 5rem 0;
+}
+.job-manager-form .tab-content ul{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.job-manager-form .tab-content ul li{
+	margin-bottom: 1rem;
+}

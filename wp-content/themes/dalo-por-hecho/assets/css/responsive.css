@@ -338,6 +338,27 @@
 		flex-direction: column;
 		overflow: scroll;
 	}
+	.admin-card .datos_card{
+		text-align: center;
+		padding: 0;
+	}
+	.admin-card .datos{
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+	.admin-card ul{
+		padding: 0;
+	}
+	.content-tetimonios{
+		text-align: center;
+	}
+	.content-tetimonios .col-md-12 p{
+		text-align: center;
+	}
+	.job-manager-form{
+		padding: 4rem 2rem 0;
+	}
 }
 @media (min-width: 320px) and (max-width: 500px) {
 }
@@ -563,6 +584,27 @@
 	}
 	.ingresar-t{
 		padding: 1rem 5rem;
+	}
+	.admin-card .datos_card{
+		text-align: center;
+		padding: 0;
+	}
+	.admin-card .datos{
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+	.admin-card ul{
+		padding: 0;
+	}
+	.content-tetimonios{
+		text-align: center;
+	}
+	.content-tetimonios .col-md-12 p{
+		text-align: center;
+	}
+	.job-manager-form{
+		padding: 4rem;
 	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {

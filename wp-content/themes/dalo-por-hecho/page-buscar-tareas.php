@@ -88,7 +88,7 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
         </div>
     </header>
 
-    <div class="container buscar_tareas">
+    <div class="container buscar_tareas buscar_tareas-t">
         <div class="row">
             <div class="col-lg-4 col-md-12 scroll-admin order-last-xs ">
                 <!-- card -->
@@ -105,10 +105,10 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
                             <a class="av-link <?php if($i==0){ echo "active";} ?> card-job" id="v-pills-<?php echo get_the_ID();?>-tab" data-toggle="pill" href="#v-pills-<?php echo get_the_ID();?>" role="tab" aria-controls="v-pills-<?php echo get_the_ID();?>" aria-selected="false">
                                 <div class="content-tetimonios admin-card">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-12 col-lg-3 text-center">
                                            <?php if (is_user_logged_in()){ echo get_avatar( $current_user->user_email, 50 );  }?> 
                                         </div>
-                                        <div class="col-md-9 mb-2 text-justify">
+                                        <div class="col-md-12 col-lg-9 mb-2">
                                             <p class="name"><?php wpjm_the_job_title(); ?></p>
                                             <span> <?php echo $product_categories = wp_get_post_terms( get_the_ID(), 'job_listing_category' )[0]->name; ?></span>
                                         </div>
@@ -138,12 +138,12 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
             </div><!-- col-4 -->
 
             <!-- Tab panes -->
-            <div class="col-md-8 main-content__tabs">
+            <div class="col-lg-8 main-content__tabs">
             <div class="tab-content" id="v-pills-tabContent">
             <?php $loop = new WP_Query( $args ); $j = 0;
             while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>    
              <div class="tab-pane fade <?php if($j==0){ echo "show active";} ?>" id="v-pills-<?php echo get_the_ID();?>" role="tabpanel" aria-labelledby="v-pills-<?php echo get_the_ID();?>-tab">        
-                    <div class="col-lg-6 col-md-12 ">
+                    <div class="col-12 ">
                         <h3 class="mb-3"><?php wpjm_the_job_title(); ?></h3>
                         <div class="contenido">
                             <div class="datos_name">
@@ -224,7 +224,7 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
                         </div>
                     </div>
 
-                    <div class="col-lg-2 col-md-12 datos_presupuesto order-last-xs">
+                    <div class="col-12 datos_presupuesto order-last-xs">
                         <ul>
                             <li><a href="">Seguir</a></li>
                             <li><a href="">Ver mapa</a></li>
