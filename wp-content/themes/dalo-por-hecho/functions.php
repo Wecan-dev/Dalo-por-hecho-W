@@ -36,6 +36,7 @@ function theme_customize_register($wp_customize){
         );
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-banner.php';
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-tareas.php';
+  require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-cta.php';
   
 } 
 add_action('customize_register','theme_customize_register');
@@ -49,26 +50,10 @@ require_once trailingslashit( get_template_directory() ) . 'inc/fnc/fnc.php';
 //require_once trailingslashit( get_template_directory() ) . 'inc/fnc/local-field-group.php';
 
 
-/**
- * Plugin Name: WPJM Extra Fields
- * Plugin URI: https://tilcode.blog/wpjm-extra-fields-adds-extra-fields-to-wp-job-manager-job-listings
- * Description: Adds an extra Salary and Important Information fields to WP Job Manager job listings
- * Version: 1.3.0
- * Author: Gabriel Maldonado
- * Author URI: http://tilcode.blog/
- * Text Domain: wpjm-extra-fields
- *
- * License: GPLv2 or later
- */
-
-/**
- * Prevent direct access data leaks
- **/
+/***************** Form fields job *****************/
 if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
-
-//add_action( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'gma_wpjmef_add_support_link_to_plugin_page' );
 
 // Submit form filters
 add_filter( 'submit_job_form_fields', 'gma_wpjmef_frontend_add_salary_field');
@@ -100,19 +85,13 @@ add_action( 'single_job_listing_meta_end', 'gma_wpjmef_display_important_info_da
 add_filter( 'manage_edit-job_listing_columns', 'gma_wpjmef_retrieve_salary_column' );
 add_filter( 'manage_job_listing_posts_custom_column', 'gma_wpjmef_display_salary_column' );
 
-/**
-* Sets the job_salary metadata as a new $column that can be used in the back-end
-**/
+
 function gma_wpjmef_retrieve_salary_column($columns){
 
   $columns['job_salary']         = __( 'Salary', 'wpjm-extra-fields' );
   return $columns;
 
 };
-
-/**
-* Adds a new case to WP-Job-Manager/includes/admin/class-wp-job-manager-cpt.php
-**/
 
 function gma_wpjmef_display_salary_column($column){
   
@@ -136,9 +115,8 @@ function gma_wpjmef_display_salary_column($column){
 
 };
 
-/**
-* Hidden
-**/
+/********* Hidden 
+********/
 function gma_wpjmef_admin_add_company_website_field( $fields ) {
   $fields['_company_website'] = array(
     'type'        => 'hidden',
@@ -181,9 +159,9 @@ function gma_wpjmef_admin_add_company_video_field( $fields ) {
   );
   return $fields;
 }
-/**
-* Adds a new optional "Salary" text field at the "Submit a Job" form, generated via the [submit_job_form] shortcode
-**/
+
+/********** Adds fields 
+*************/
 function gma_wpjmef_frontend_add_salary_field( $fields ) {
   
   $fields['job']['job_salary'] = array(
@@ -243,9 +221,7 @@ function gma_wpjmef_frontend_add_job_horas_field( $fields ) {
   return $fields;
 
 }
-/**
-* Adds a new optional "Important Information" text field at the "Submit a Job" form, generated via the [submit_job_form] shortcode
-**/
+
 function gma_wpjmef_frontend_add_important_info_field( $fields ) {
   
   $fields['job']['job_important_info'] = array(
@@ -275,9 +251,7 @@ function gma_wpjmef_frontend_add_job_expires_field( $fields ) {
 
 }
 
-/**
-* Adds a text field to the Job Listing wp-admin meta box named “Salary”
-**/
+
 function gma_wpjmef_admin_add_salary_field( $fields ) {
   
   $fields['_job_salary'] = array(
@@ -329,9 +303,7 @@ function gma_wpjmef_admin_add_job_horas_field( $fields ) {
   return $fields;
 
 }
-/**
-* Adds a text field to the Job Listing wp-admin meta box named "Important Information"
-**/
+
 function gma_wpjmef_admin_add_important_info_field( $fields ) {
   
   $fields['_job_important_info'] = array(
@@ -345,9 +317,6 @@ function gma_wpjmef_admin_add_important_info_field( $fields ) {
 
 }
 
-/**
-* Displays "Salary" on the Single Job Page, by checking if meta for "_job_salary" exists and is displayed via do_action( 'single_job_listing_meta_end' ) on the template
-**/
 function gma_wpjmef_display_job_salary_data() {
   
   global $post;
@@ -365,9 +334,7 @@ function gma_wpjmef_display_job_salary_data() {
 
 }
 
-/**
-* Displays the content of the "Important Information" text-field on the Single Job Page, by checking if meta for "_job_important_info" exists and is displayed via do_action( 'single_job_listing_meta_end' ) on the template
-**/
+
 function gma_wpjmef_display_important_info_data() {
   
   global $post;

@@ -17,8 +17,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 global $job_manager, $current_user, $wp_roles;
+$action = NULL;
+$url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+if (strpos($url, '?') !== false) {
+    $action = $_GET['action'];
+}
+
 ?>
-<?php if ($_GET['action'] == NULL ) { ?>
+<?php if ($action == NULL ) { ?>
 <form action="<?php echo esc_url( $action ); ?>" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
 
 	<?php
@@ -213,7 +219,7 @@ global $job_manager, $current_user, $wp_roles;
 <?php } ?>
 
 
-<?php if ($_GET['action'] != NULL ) { ?>
+<?php if ($action != NULL ) { ?>
 <!--<form action="?action=edit&amp;job_id=85" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">-->
 <form action="<?php echo esc_url( $action ); ?>" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
 

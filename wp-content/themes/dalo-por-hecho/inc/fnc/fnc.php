@@ -1,4 +1,5 @@
 <?php
+
 /************* General wordpress ************/
 
 the_post_thumbnail();
@@ -11,47 +12,25 @@ add_theme_support( 'post-thumbnails' );
 the_post_thumbnail( array(100,100) ); 
 set_post_thumbnail_size( 1568, 9999 );
 
-// Add default posts and comments RSS feed links to head.
 add_theme_support( 'automatic-feed-links' );
 
-/*
- * Let WordPress manage the document title.
- * By adding theme support, we declare that this theme does not use a
- * hard-coded <title> tag in the document head, and expect WordPress to
- * provide it for us.
- *
- */add_theme_support( 'title-tag' );
+add_theme_support( 'title-tag' );
 
-/*
- * Enable support for Post Thumbnails on posts and pages.
-*
-* @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
- */
 add_theme_support( 'post-thumbnails' );
 
-    // This theme uses wp_nav_menu() in one location.
 register_nav_menus( array(
   'primary' => __( 'Primary Menu', 'store' ),
   'top' => __( 'Top Menu', 'store' ),
 ) );
 
-/*
- * Switch default core markup for search form, comment form, and comments
- * to output valid HTML5.
- */
 add_theme_support( 'html5', array(
   'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
 ) );
 
-/*
- * Enable support for Post Formats.
- * See http://codex.wordpress.org/Post_Formats
- */
 add_theme_support( 'post-formats', array(
     'aside', 'image', 'video', 'quote', 'link',
 ) );
 
-// Set up the WordPress core custom background feature.
 add_theme_support( 'custom-background', apply_filters( 'store_custom_background_args', array(
     'default-color' => 'f7f5ee',
     'default-image' => '',
@@ -61,12 +40,11 @@ add_image_size('store-sq-thumb', 600,600, true );
 add_image_size('store-thumb', 540,450, true );
 add_image_size('pop-thumb',542, 340, true );
 
-//Declare woocommerce support
 add_theme_support('woocommerce');
 add_theme_support( 'wc-product-gallery-lightbox' );
 
-/*********** Woocommerce **********************/
 
+/*********** Woocommerce **********************/
 function my_theme_setup() {
   add_theme_support( 'woocommerce' );
 }
@@ -78,8 +56,7 @@ function yourtheme_setup() {
 add_theme_support( 'wc-product-gallery-slider' );
 } 
 
-/*****************Widget ************************/
-
+/***************** Widget ************************/
 function dalo_por_hecho_widgets_init() {
 
   register_sidebar(
@@ -100,6 +77,7 @@ add_action( 'widgets_init', 'dalo_por_hecho_widgets_init' );
 /***************** Termmeta IMG *****************/
 function termmeta_value_img( $meta_key, $post_id ){
             global $wpdb;  
+            $value = NULL; $value_img = NULL;
               $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."termmeta WHERE meta_key = '$meta_key' and term_id = '$post_id'"); 
               foreach($result_link as $r)
               {
@@ -114,12 +92,7 @@ function termmeta_value_img( $meta_key, $post_id ){
 
 }
 
-/**
- * Displays the published date of the job listing.
- *
- * @since 1.25.3
- * @param int|WP_Post $post (default: null).
- */
+/***************** Format Date *****************/
 function the_job_publish_date2( $post = null ) {
   $date_format = get_option( 'job_manager_date_format' );
 
@@ -147,6 +120,7 @@ function date_new($fecha){
 /***************** Meta *****************/
 function meta_value( $meta_key, $post_id ){
             global $wpdb;  
+            $value = NULL;
               $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE meta_key = '$meta_key' and post_id = '$post_id'"); 
               foreach($result_link as $r)
               {
@@ -160,7 +134,8 @@ function meta_value( $meta_key, $post_id ){
 
 /***************** Meta IMG *****************/
 function meta_value_img( $meta_key, $post_id ){
-            global $wpdb;  
+            global $wpdb; 
+            $value = NULL; $value_img = NULL;
               $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE meta_key = '$meta_key' and post_id = '$post_id'"); 
               foreach($result_link as $r)
               {
@@ -177,13 +152,13 @@ function meta_value_img( $meta_key, $post_id ){
 
 /***************** Meta User *****************/
 function meta_user_value( $meta_key, $post_id ){
-            global $wpdb;  
+            global $wpdb; 
+            $value = NULL; 
               $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."usermeta WHERE meta_key = '$meta_key' and user_id = '$post_id'"); 
               foreach($result_link as $r)
               {
                       $value = $r->meta_value;                      
               }
-              $value = str_replace("\n", "<br>", $value); 
               return $value;
 
 }
@@ -191,6 +166,7 @@ function meta_user_value( $meta_key, $post_id ){
 /***************** Meta IMG FRM *****************/
 function meta_value_img_frm($user,$form_id){
             global $wpdb;
+            $value_frm = NULL; $value_post = NULL; $value_img = NULL;
               $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."frm_items WHERE user_id = '$user' and form_id = '$form_id' "); 
               foreach($result_link as $r)
               {
@@ -209,5 +185,7 @@ function meta_value_img_frm($user,$form_id){
               }
               return $value_img;
 }
+
+/***************** Cta Description *************/
 
 ?>

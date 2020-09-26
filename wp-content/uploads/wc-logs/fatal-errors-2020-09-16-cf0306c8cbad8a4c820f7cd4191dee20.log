@@ -100,3 +100,7 @@ Stack trace:
 
 2020-09-16T17:35:50+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 14
 
+2020-09-16T23:34:14+00:00 CRITICAL syntax error, unexpected 'if' (T_IF) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\job_manager\job-submit.php on line 22
+
+2020-09-16T23:34:49+00:00 CRITICAL syntax error, unexpected 'if' (T_IF) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\job_manager\job-submit.php on line 22
+

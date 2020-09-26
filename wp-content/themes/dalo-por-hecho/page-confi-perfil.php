@@ -16,7 +16,7 @@ global $current_user, $wp_roles;
 $error = array();    
 /* If profile was saved, update profile. */
 
-
+$cont1 = 0; $cont2 = 0; $cont3 = 0; $cont4 = 0; $cont5 = 0; $cont6 = 0; $cont7 = 0; $cont8 = 0;
 if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 if (meta_user_value( 'email', $current_user->ID ) != NULL) $cont1 = $cont1 +1;
 if (meta_user_value( 'first_name', $current_user->ID ) != NULL) $cont2 = $cont2 +1;
@@ -600,7 +600,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                             <div class="cont-boton-cambios">
                                                <!-- <a class="guardar-cambios" href="#">Guardar cambios</a> -->
                                               
-                                                <?php echo $referer; ?>
+                                                
                                                 <input name="updateuser" type="submit" id="updateuser" class="guardar-cambios" value="Guardar cambios" />
                                                 <?php wp_nonce_field( 'update-user' ) ?>
                                                 <input name="action" type="hidden" id="action" value="update-user" />

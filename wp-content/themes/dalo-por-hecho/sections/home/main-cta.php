@@ -3,32 +3,26 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="titulo-general titulo-general-custom">
-					<p>Lorem, ipsum dolor sit amet consectetur </p>
-					<span>Lorem, ipsum dolor sit amet consectetur</span>
+					<p><?php echo get_theme_mod('cta_title'); ?></p>
+					<span><?php echo get_theme_mod('cta_subtitle'); ?></span>
 				</div>
-
 				<div>
 					<ul>
-						<li><img src="<?php echo get_template_directory_uri();?>/assets/img/iconos/Trazado 3.png" alt="">Lorem, ipsum dolor sit</li>
-						<li><img src="<?php echo get_template_directory_uri();?>/assets/img/iconos/Trazado 3.png" alt="">Lorem, ipsum dolor sit amet consectetur
-						</li>
-
-						<li><img src="<?php echo get_template_directory_uri();?>/assets/img/iconos/Trazado 3.png" alt="">Lorem, ipsum dolor sit</li>
-
+					    <li>					        
+					        <img src="<?php echo get_template_directory_uri();?>/assets/img/iconos/Trazado 3.png" alt=""><?php echo str_replace("\n", '<br><img src="'.get_template_directory_uri().'/assets/img/iconos/Trazado 3.png" alt="">', get_theme_mod('cta_description')); ?>
+					    </li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-md-6">
-				<img class="cta-ilutracion " src="<?php echo get_template_directory_uri();?>/assets/img/iconos/Grupo 826.png" alt="">
+				<img class="cta-ilutracion " src="<?php echo get_theme_mod('cta_image'); ?>" alt="">
 			</div>
 		</div>
-
-
 		<div class="text-center d-flex justify-content-center">
 			<div class="cta-bg">
-				<p>Lorem ipsum dolor sit amet </p>
-				<span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi nemo maxime nesciunt </span>
-				<a href="" class="btn-custom mt-3 cta-color">Comienza ya</a>
+				<p><?php echo get_theme_mod('cta_message_title'); ?></p>
+				<span><?php echo get_theme_mod('cta_message_subtitle'); ?></span>
+				<a href="<?php echo get_theme_mod('cta_message_urlbuttom'); ?>" class="btn-custom mt-3 cta-color"><?php echo get_theme_mod('cta_message_buttom'); ?></a>
 			</div>
 		</div>
 	</section>

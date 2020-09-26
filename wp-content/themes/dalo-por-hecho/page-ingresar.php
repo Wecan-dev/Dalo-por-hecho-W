@@ -19,6 +19,13 @@ get_header();
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
+
+$create = NULL;
+$url = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+if (strpos($url, '?') !== false) {
+   $create = $_GET['create'];
+}
+
 ?>
 
 
@@ -43,7 +50,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 <?php endif; ?>
 
-    <?php if ($_GET["create"] != 'account') { ?>
+    <?php if ($create != 'account') { ?>
         <form class="woocommerce-form form-custom woocommerce-form-login login" method="post">
             <div class="login-img">
 
@@ -90,7 +97,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 
 
-<?php if ($_GET["create"] == 'account') { ?>
+<?php if ($create == 'account') { ?>
 
     <div class="u-column2 col-12 flex-login">
         <div class="form-custom form-register">
@@ -101,7 +108,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
         <h2><?php esc_html_e( $la, 'woocommerce' ); ?></h2>
 
-        <?php echo do_shortcode('[user_registration_form id="92"]');?>
+        <?php echo do_shortcode('[user_registration_form id="96"]');?>
 
             <div class="form-login__register" >
                 <p class="woocommerce-LostPassword lost_password">                  
