@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-global $post, $current_user, $wp_roles;;
+global $post, $current_user, $wp_roles;
 
 $job_salary   = get_post_meta( get_the_ID(), '_job_salary', true );
 $job_featured = get_post_meta( get_the_ID(), '_featured', true );
