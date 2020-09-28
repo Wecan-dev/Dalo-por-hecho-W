@@ -51,6 +51,61 @@ require_once trailingslashit( get_template_directory() ) . 'inc/fnc/fnc.php';
 
 //require_once trailingslashit( get_template_directory() ) . 'inc/fnc/local-field-group.php';
 
+/*********** Testimonios ***********/
+function custom_post_type_Testimonios() {
+
+  $labels = array(
+    'name'                  => _x( 'Testimonios', 'Post Type General Name', 'text_domain' ),
+    'singular_name'         => _x( 'Testimonios', 'Post Type Singular Name', 'text_domain' ),
+    'menu_name'             => __( 'Testimonios', 'text_domain' ),
+    'name_admin_bar'        => __( 'Testimonios', 'text_domain' ),
+    'archives'              => __( 'Archives', 'text_domain' ),
+    'attributes'            => __( 'Atributos', 'text_domain' ),
+    'parent_item_colon'     => __( 'Testimonios', 'text_domain' ),
+    'all_items Testimonios'             => __( 'All Testimonios', 'text_domain' ),
+    'add_new_item'          => __( 'Añadir nuevo Testimonios', 'text_domain' ),
+    'add_new'               => __( 'Añadir nuevo', 'text_domain' ),
+    'new_item'              => __( 'Nuevo Testimonios', 'text_domain' ),
+    'edit_item'             => __( 'Editar Testimonios', 'text_domain' ),
+    'update_item'           => __( 'Actualizar Testimonios', 'text_domain' ),
+    'view_items Testimonios'            => __( 'See Testimonios', 'text_domain' ),
+    'search_items Testimonios'          => __( 'Search Testimonios', 'text_domain' ),
+    'not_found'             => __( 'Not found', 'text_domain' ),
+    'not_found_in_trash'    => __( 'It is not in the trash', 'text_domain' ),
+    'featured_image'        => __( 'Featured Image', 'text_domain' ),
+    'set_featured_image'    => __( 'Set Featured Image', 'text_domain' ),
+    'remove_featured_image' => __( 'Remove Featured Image', 'text_domain' ),
+    'use_featured_image'    => __( 'Use Featured Image', 'text_domain' ),
+    'insert_into_item'      => __( 'Insert Into Item', 'text_domain' ),
+    'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+    'items Testimoios_list'            => __( 'Testimonios List', 'text_domain' ),
+    'items Testimoios_list_navigation' => __( 'Testimonios List Navigation', 'text_domain' ),
+    'filter_items Testimoios_list'     => __( 'filter Items Testimonios List', 'text_domain' ),
+  );
+  $args = array(
+    'label'                 => __( 'Testimonios', 'text_domain' ),
+    'description'           => __( 'Testimonios image', 'text_domain' ),
+    'labels'                => $labels,
+    'supports'              => array( 'title', 'custom-fields' ),
+    'taxonomies'            => array( '' ),
+    'hierarchical'          => false,
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_menu'          => true,
+    'menu_position'         => 5,
+    'menu_icon'             => 'dashicons-format-video',
+    'show_in_admin_bar'     => true,
+    'show_in_nav_menus'     => true,
+    'can_export'            => true,
+    'has_archive'           => true,
+    'exclude_from_search'   => false,
+    'publicly_queryable'    => true,
+    'capability_type'       => 'page', 
+  );
+  register_post_type( 'Testimonios', $args );
+
+}
+add_action( 'init', 'custom_post_type_Testimonios', 0 );
 
 /***************** Form fields job *****************/
 if ( ! defined( 'ABSPATH' ) ) {
