@@ -186,6 +186,18 @@ function meta_value_img_frm($user,$form_id){
               return $value_img;
 }
 
-/***************** Cta Description *************/
+/******************Excerp Cut*****************/
+function cut_text($text, $le) 
+{ 
+   $points = "...";
+   $words = explode(' ', $text); 
+   if (count($words) > $le) 
+   { 
+     return implode(' ', array_slice($words, 0, $le)) ." ". $points; 
+   } else
+         {
+           return $text; 
+         } 
+}
 
 ?>

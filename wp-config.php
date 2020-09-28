@@ -27,7 +27,7 @@ define( 'DB_USER', 'DaloPor_Hecho' );
 
 /** MySQL database password */
 define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
-
+define( 'DB_PASSWORD', '1234' );
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
 

@@ -37,6 +37,7 @@ function theme_customize_register($wp_customize){
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-banner.php';
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-tareas.php';
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-cta.php';
+  require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-funciona.php';
   
 } 
 add_action('customize_register','theme_customize_register');
