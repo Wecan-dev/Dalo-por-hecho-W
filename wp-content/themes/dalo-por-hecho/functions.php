@@ -49,7 +49,7 @@ require_once trailingslashit( get_template_directory() ) . 'inc/fnc/fnc.php';
 
 /***************** Local field group ************/
 
-//require_once trailingslashit( get_template_directory() ) . 'inc/fnc/local-field-group.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/fnc/local-field-group.php';
 
 /*********** Testimonios ***********/
 function custom_post_type_Testimonios() {
@@ -93,7 +93,7 @@ function custom_post_type_Testimonios() {
     'show_ui'               => true,
     'show_in_menu'          => true,
     'menu_position'         => 5,
-    'menu_icon'             => 'dashicons-format-video',
+    'menu_icon'             => 'dashicons-groups',
     'show_in_admin_bar'     => true,
     'show_in_nav_menus'     => true,
     'can_export'            => true,
