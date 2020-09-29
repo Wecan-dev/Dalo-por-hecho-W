@@ -19,7 +19,7 @@
 								</div>
 								<div class="col-md-10 mb-2 text-justify">
 									<p class="name"><?php the_field('name_testimonios') ?></p>
-									<span><?php the_field('name_testimonios') ?></span>
+									<span><?php the_field('especialidad_testimonios') ?></span>
 								</div>
 							</div>
 							<div class="row">

@@ -5,6 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<title><?php wp_title('|', true, 'right'); ?></title>
+	<link rel="icon" type="image/png" sizes="32x32" href="https://daloporhecho.cl/wp-content/uploads/2020/09/favicon-32x32-1.png">
     <?php wp_head(); global $current_user, $wp_roles;?>
 </head>
 

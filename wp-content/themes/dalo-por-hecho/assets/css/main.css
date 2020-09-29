@@ -1413,6 +1413,7 @@ input {
 	width: 50%;
 	border: 2px solid #ec8603;
 	border-radius: 50%;
+	height:130px;
 }
 .perfil-content {
 	text-align: center;
@@ -1567,9 +1568,10 @@ a.box-boton-emblemas_a {
 	border-radius: 50px;
 }
 .cont-img-conf-cuenta {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+	padding: 0 1rem;
 }
 a.ver-perfil-publico {
 	border: 1px solid #ec8603;
@@ -1632,6 +1634,7 @@ a.guardar-cambios {
 a.desactivar-cuenta {
 	font-size: 12px;
 	margin-left: 20px;
+
 }
 .cont-boton-cambios {
 	margin-top: 20px;
@@ -2257,9 +2260,12 @@ fieldset.fieldset-create_account_email {
 .buscar_tareas-t{
 	padding: 1rem 0 3rem;
 }
+/**
 .job-manager-form{
 	padding: 7rem 5rem 0;
 }
+
+**/
 .job-manager-form .tab-content ul{
 	display: flex;
 	align-items: center;
@@ -2267,4 +2273,60 @@ fieldset.fieldset-create_account_email {
 }
 .job-manager-form .tab-content ul li{
 	margin-bottom: 1rem;
+}
+
+
+/*NUevos estilos*/
+
+.cont-row-form{
+	display: flex;
+    flex-direction: column;
+}
+.form-conf-cuenta 
+.cont-row-form{
+	display: flex;
+    flex-direction: row;
+}
+
+#wp_user_profile_avatar_preview img, #wp_user_profile_avatar_preview-existing img, #wp_user_profile_avatar_thumbnail img, #wp_user_profile_avatar_thumbnail-existing img{
+	    border: 1px solid transparent;
+}
+.cont-img-conf-cuenta_a{
+	display: flex;
+    justify-content: flex-end;
+}
+.form-inline.cumple #dia, 
+.form-inline.cumple #mes,
+.form-inline.cumple #ano{
+	margin-bottom: 1rem;
+}
+.form-inline.cumple #dia, .form-inline.cumple #mes{
+	margin-right:.8rem;
+}
+.cont-inf-conf-cuenta, #adduser{
+	padding: 0 2rem;
+}
+
+.frm_dropzone.dz-clickable.frm_single_upload {
+    max-width: 100%;
+}
+.guardar-cambios{
+	background: #ec8603;
+    border-radius: 50px;
+    color: #fff !important;
+    text-align: center;
+    font-size: 14px;
+    padding: 8px !important;
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    text-decoration: none !important;
+    transition: 0.5s;
+	    height: calc(2.5rem + 2px);
+    border: 2px solid #fff;
+}
+.guardar-cambios:hover {
+	background: #fff;
+    border-radius: 50px;
+    color: #ec8603 !important;
+	border: 2px solid #ec8603;
 }
