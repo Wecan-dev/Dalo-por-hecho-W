@@ -2330,3 +2330,86 @@ fieldset.fieldset-create_account_email {
     color: #ec8603 !important;
 	border: 2px solid #ec8603;
 }
+
+/* inicio de sesion*/
+.main-login__container{
+	padding: 2rem;
+}
+.labels__login{
+	width: 100% !important;
+}
+
+.main-general__btn, .btn.button.ur-submit-button {
+	overflow: visible;
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #ec8603;
+    background-clip: padding-box;
+    border: 1px solid #ec8603;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	border-radius: 15px !important;
+	transition: 0.3s ease-in-out;
+}
+.main-general__btn:hover,.btn.button.ur-submit-button:hover{
+	background-color: #fff;
+	color: #ec8603;
+	transition: 0.3s ease-in-out;
+}
+.wc-social-login{
+	width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.ywsl-label{
+	display: none;
+}
+.ywsl-social img{
+	width: 50%;
+}
+
+.main-login__line{
+	position: relative;
+}
+.main-login__line::before{
+	position: absolute;
+	content: '';
+	height: 1px;
+	width: 30%;
+	background-color: gray;
+	left: 0;
+	bottom: 10px;
+}
+
+.main-login__line::after{
+	position: absolute;
+	content: '';
+	height: 1px;
+	width: 30%;
+	background-color: gray;
+	right: 0;
+	bottom: 10px;
+}
+
+.ur-frontend-form {
+    margin-bottom: 30px;
+    border: 1px solid transparent;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.password-input-group{
+	width: 100%;
+}
+
+#radio_1600171615_field{
+	display: flex;
+	flex-direction: column;
+}
+#radio_1600171615_field ul{
+	padding-left: 0px !important;
+}
