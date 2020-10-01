@@ -231,15 +231,25 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
                         </ul>
                         <div class="presupuesto_minicard">
                             <p>Presupuesto</p>
-                            <span class="precio">$40</span>
+                            <span class="precio">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></span>
 
-                            <a href="" class="btn-oferta">Ofertar</a>
+                            <a href="" class="btn-oferta" data-toggle="modal"
+                                data-target="#publicar">Ofertar</a>
                         </div>
                     </div>
                 </div><!--tab-->
 
-                
-            <?php $j = $j+1; endwhile; ?>
+                <!-- Modal Inicio de sesion -->
+                <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">  
+                      <div class="modal-body">
+                         <?php echo do_shortcode('[frm-set-get ofertar_id_tarea_publicada='.get_the_ID().'][frm-set-get ofertar_email_empleador='.get_the_author_meta( 'user_email' ).'][frm-set-get ofertar_monto_tarea='.get_post_meta( get_the_ID(), '_job_salary', true ).'][frm-set-get ofertar_id_empleado='.wp_get_current_user()->ID.'][formidable id=2]');  ?>
+                      </div>         
+                  </div>
+              </div>                
+
+       <?php $j = $j+1; endwhile; ?>
 
         </div><!--tab principal -->
         </div>

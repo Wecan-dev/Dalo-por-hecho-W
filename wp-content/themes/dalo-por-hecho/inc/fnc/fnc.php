@@ -150,6 +150,19 @@ function meta_value_img( $meta_key, $post_id ){
 
 }
 
+/***************** User *****************/
+function user_value( $post_id ){
+            global $wpdb; 
+            $value = NULL; 
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."users WHERE ID = '$post_id'"); 
+              foreach($result_link as $r)
+              {
+                      $value = $r->user_email;                      
+              }
+              return $value;
+
+}
+
 /***************** Meta User *****************/
 function meta_user_value( $meta_key, $post_id ){
             global $wpdb; 
@@ -162,7 +175,6 @@ function meta_user_value( $meta_key, $post_id ){
               return $value;
 
 }
-
 /***************** Meta IMG FRM *****************/
 function meta_value_img_frm($user,$form_id){
             global $wpdb;

@@ -15,6 +15,12 @@
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
+	.main-login__line::before{
+		left:20%;
+	}
+	.main-login__line::after{
+		right:20%;
+	}
 	.check-line {
 		flex-direction: column;
 	}

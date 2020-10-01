@@ -138,6 +138,7 @@ section {
 	color: #fff;
 	font-size: 15px;
 }
+
 .btn-custom-nav {
 	background: #ffffff;
 	border-radius: 50px;
@@ -196,6 +197,24 @@ section {
 	background: transparent !important;
 	transition: 0.5s;
 }
+.btn-custom-orange {
+	border: 2px solid #ec8603;
+	border-radius: 50px;
+	color: #fff !important;
+	background:  #ec8603 !important;
+	transition: 0.5s;
+	padding: 10px;
+}
+
+.btn-custom-orange:hover {
+	border: 2px solid #ec8603;
+	border-radius: 50px;
+	color:#ec8603!important;
+	background:  #fff !important;
+	transition: 0.5s;
+}
+
+
 .btn-custom-transparent-white:hover {
 	border: 2px solid #fff;
 	color: #ec8603 !important;
@@ -222,6 +241,10 @@ section {
 	position: relative;
 	margin-top: 60px;
 }
+
+
+
+
 /* .main-banner::before {
 	content: url(../img/wave.png);
 	position: absolute;

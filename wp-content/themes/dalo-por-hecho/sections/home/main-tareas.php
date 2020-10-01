@@ -6,15 +6,23 @@
 		</div>
 
 		<div class="main-tareas_grid mt-5">
-        <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
-        <?php foreach($product_categories as $category):  global $wpdb;?>
-			<div class="main-tareas_item">
-				<div class="main-tareas_item-content ">
-					<img src="<?php echo termmeta_value_img('image_job_category', $category->term_id );?>" alt="icono">
-					<p><?=$category->name ?></p>
+		<?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc'));  
+		 $category_count = 1;
+		?>
+        <?php foreach($product_categories as $category):  global $wpdb; ?>
+			<?php if ($category_count <= 10) { ?>
+				<div class="main-tareas_item">
+					<div class="main-tareas_item-content ">
+						<img src="<?php echo termmeta_value_img('image_job_category', $category->term_id );?>" alt="icono">
+						<p><?=$category->name ?></p>
+					</div>
 				</div>
-			</div>
-	    <?php endforeach; ?>		
-		</div>
+			<?php } ?>
+
+	    <?php $category_count++; endforeach; ?>	
+	</div>
+			<center class="mt-4 mb-4">
+				<a class="btn-custom-orange " href="#" tabindex="0">Ver más categorías</a>
+			</center>	
 	</section>
 	<!-- TAREAS-->
