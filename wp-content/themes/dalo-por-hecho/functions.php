@@ -107,6 +107,116 @@ function custom_post_type_Testimonios() {
 }
 add_action( 'init', 'custom_post_type_Testimonios', 0 );
 
+/*********** Postulados ***********/
+function custom_post_type_postulados() {
+
+  $labels = array(
+    'name'                  => _x( 'Postulados', 'Post Type General Name', 'text_domain' ),
+    'singular_name'         => _x( 'Postulados', 'Post Type Singular Name', 'text_domain' ),
+    'menu_name'             => __( 'Postulados', 'text_domain' ),
+    'name_admin_bar'        => __( 'Postulados', 'text_domain' ),
+    'archives'              => __( 'Archivos del artículo', 'text_domain' ),
+    'attributes'            => __( 'Atributos del artículo', 'text_domain' ),
+    'parent_item_colon'     => __( 'Artículo principal:', 'text_domain' ),
+    'all_items'             => __( 'Postulados', 'text_domain' ),
+    'add_new_item'          => __( 'Añadir artículo nuevo', 'text_domain' ),
+    'add_new'               => __( 'Añadir nuevo', 'text_domain' ),
+    'new_item'              => __( 'Nuevo artículo', 'text_domain' ),
+    'edit_item'             => __( 'Editar artículo', 'text_domain' ),
+    'update_item'           => __( 'Actualizar artículo', 'text_domain' ),
+    'view_items'            => __( 'Ver artículos', 'text_domain' ),
+    'search_items'          => __( 'Buscar artículo', 'text_domain' ),
+    'not_found'             => __( 'Not found', 'text_domain' ),
+    'not_found_in_trash'    => __( 'No se encuentra en la basura', 'text_domain' ),
+    'featured_image'        => __( 'Imagen destacada', 'text_domain' ),
+    'set_featured_image'    => __( 'Establecer imagen destacada', 'text_domain' ),
+    'remove_featured_image' => __( 'Eliminar imagen destacada', 'text_domain' ),
+    'use_featured_image'    => __( 'Usar como imagen destacada', 'text_domain' ),
+    'insert_into_item'      => __( 'Insertar en el artículo', 'text_domain' ),
+    'uploaded_to_this_item' => __( 'Subido a este artículo', 'text_domain' ),
+    'items_list'            => __( 'Lista de artículos', 'text_domain' ),
+    'items_list_navigation' => __( 'Lista de artículos de navegación', 'text_domain' ),
+    'filter_items_list'     => __( 'Filtro lista artículos', 'text_domain' ),
+  );
+  $args = array(
+    'label'                 => __( 'Postulados', 'text_domain' ),
+    'description'           => __( 'Postulados image', 'text_domain' ),
+    'labels'                => $labels,
+    'supports'              => array( 'title', '', '', 'custom-fields' ),
+    'taxonomies'            => array( ''),
+    'hierarchical'          => false,
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_menu'          => 'edit.php?post_type=job_listing',
+    'menu_position'         => 2,
+    'menu_icon'             => 'dashicons-groups',
+    'show_in_admin_bar'     => true,
+    'show_in_nav_menus'     => true,
+    'can_export'            => true,
+    'has_archive'           => true,
+    'exclude_from_search'   => false,
+    'publicly_queryable'    => true,
+    'capability_type'       => 'page',
+  );
+  register_post_type( 'postulados', $args );
+
+}
+add_action( 'init', 'custom_post_type_postulados', 0 );
+
+// cuestionarios Entrenamientos
+function my_theme_columns_head_postulados($defaults) {
+  unset($defaults['tags']);
+  unset($defaults['categories']);
+  $defaults['Entrenador'] = 'Entrenador';
+    $defaults['Estado'] = 'Estado';
+    $defaults['Entrenamiento'] = 'Plan Entrenamiento';    
+    return $defaults;
+}
+add_filter('manage_postulados_posts_columns', 'my_theme_columns_head_postulados');
+
+ 
+function fill_postulados_posts_columns( $column_name, $post_id ) {
+    
+    $publicacion_meta = get_post_meta($post_id);    
+    $plan_entrenamiento1= NULL;
+    $post_id_entrenamiento = NULL;
+     $post_id3 = NULL;
+    switch( $column_name ):  
+
+        case 'Entrenador':
+            
+            $post_id1 = $publicacion_meta['producto_id_entre'][0];
+            $post_id3 = meta_value( 'entrenador',  $post_id1 );
+            $queried_post_entrenador = get_post($post_id3);
+            $entrenador = $queried_post_entrenador->post_title;  
+            if (  $post_id3 != NULL) {
+              echo "$entrenador"; 
+            }
+            if (  $post_id3 == NULL) {
+              echo "Ninguno"; 
+            }                     
+            break;                
+
+        case 'Estado':
+            $post_id_estado = $publicacion_meta['estado_entre'][0];
+            if($post_id_estado == NULL){ $post_id_estado = "POR REVISAR"; }
+            echo "$post_id_estado";
+           break;
+
+        case 'Entrenamiento':
+            
+            $post_id_entrenamiento = $publicacion_meta['archivo_plan_de_entrenamiento'][0];
+            $queried_id_entrenamiento = get_post($post_id_entrenamiento);
+            $plan_entrenamiento = $queried_id_entrenamiento->guid;
+            if ($post_id_entrenamiento != NULL) {
+              $plan_entrenamiento1 = "Ver Plan";
+            }
+            echo "<a href='$plan_entrenamiento' target='_blank'>$plan_entrenamiento1</a>";            
+            break;         
+
+    endswitch;    
+}
+add_action( 'manage_postulados_posts_custom_column', 'fill_postulados_posts_columns', 10, 2 );
 /***************** Form fields job *****************/
 if ( ! defined( 'ABSPATH' ) ) {
     exit; 
