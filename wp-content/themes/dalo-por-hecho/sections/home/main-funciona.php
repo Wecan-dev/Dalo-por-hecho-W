@@ -1,5 +1,5 @@
 	<!-- funciona-->
-	<section class="main-funciona container mt-5">
+	<section id="funciona" class="main-funciona container mt-5">
 		<div class=" titulo-general text-center">
 			<p><?php echo get_theme_mod('funciona_title'); ?></p>
 			<span><?php echo get_theme_mod('funciona_subtitle'); ?></span>
@@ -28,3 +28,5 @@
 			</div>
 		</div>
 	</section>
+
+	

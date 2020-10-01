@@ -6,14 +6,18 @@
 		</div>
 
 		<div class="main-tareas_grid mt-5">
-        <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
-        <?php foreach($product_categories as $category):  global $wpdb;?>		
-			<div class="main-tareas_item">
-				<div class="main-tareas_item-content ">
-					<p><?=$category->name ?></p>
+		<?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'desc' ));
+		$category_counter = 1;
+		?>
+		<?php foreach($product_categories as $category):  global $wpdb;?>	
+			<?php if ($category_counter <= 10) { ?>	
+				<div class="main-tareas_item">
+					<div class="main-tareas_item-content ">
+						<p><?=$category->name ?></p>
+					</div>
 				</div>
-			</div>
-		<?php endforeach; ?>
+				<?php } ?>
+		<?php $category_counter++; endforeach; ?>
 		</div>
 	</section>
 	<!-- TAREAS-->
