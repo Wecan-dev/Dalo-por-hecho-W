@@ -82,112 +82,118 @@
     <div class="modal-content">
   
       <div class="modal-body">
-        <div class="container buscar_tareas perfil m-110">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 scroll-admin order-last-xs ">
 
-
-
-<div class="grid-woocommerce">
-    <div class="padding-left-right padding-top-bottom">
- 
-<?php           
-do_action( 'woocommerce_before_customer_login_form' ); ?>
-
-<?php if ( 'yes' === get_option( 'woocommerce_enable_myaccount_registration' ) ) : ?>
-
-<div class="u-columns col2-set" id="customer_login">
-
-    <div class="u-column1 col-12 flex-login">
-
-<?php endif; ?>
-
-    <?php if ($create != 'account') { ?>
-        <form class="woocommerce-form form-custom woocommerce-form-login login" method="post">
-            <div class="login-img">
-
-                <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/user.png">
-            </div>
-            <h2 class="text-center">Iniciar sesión</h2>
-            <?php do_action( 'woocommerce_login_form_start' ); ?>
-
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <label for="username" class="label-user" >
-                <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/usergray.png">
-                Ingresa tu email
-                <input type="text" placeholder="" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="off" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
-            </label>
-            </p>
-            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <label for="password">
-                <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/pass.png">
-                Ingresa tu clave
-                <input placeholder="" class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="off" />
-            </label>
-            </p>
-
-            <?php do_action( 'woocommerce_login_form' ); ?>
-
-            <p class="form-row">
-                <!-- <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
-                    <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span><?php esc_html_e('Recuerdame', 'woocommerce' ); ?></span>
-                </label> -->
-                <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
-                <button type="submit" class="main-general__button woocommerce-button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Iniciar sesión', 'woocommerce' ); ?></button>
-            </p>
-            <div class="form-login__register text-center" >
-                <p class="woocommerce-LostPassword lost_password">
-                    <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( '¿Se te olvidó tu contraseña?', 'woocommerce' ); ?></a>
-                    <p class="woocommerce-in-account"><a href="?create=account"><?='Crea una cuenta' ?></a></p>
-                </p>
-            </div>
-
-
-            <?php do_action( 'woocommerce_login_form_end' ); ?>
-
-        </form>
-    <?php } ?> 
-
-
-
-<?php if ($create == 'account') { ?>
-
-    <div class="u-column2 col-12 flex-login">
-        <div class="form-custom form-register">
-        <div class="login-img">
-            <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/user.png">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Iniciar Sesion</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Registrar</a>
+           
         </div>
-        Registrarse
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="container main-login__container ">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 order-last-xs ">
+                        <?php if ($create != 'account') { ?>
+                            <form class="woocommerce-form form-custom woocommerce-form-login login" method="post">
+                                <!--<div class="login-img">
 
-        <h2><?php esc_html_e( $la, 'woocommerce' ); ?></h2>
+                                    <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/user.png">
+                                </div>-->
+                                <h2 class="text-center">Iniciar sesión</h2>
+                                <br>
+                                <?php do_action( 'woocommerce_login_form_start' ); ?>
 
-        <?php echo do_shortcode('[user_registration_form id="96"]');?>
+                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                    <label for="username" class="label-user labels__login" >
+                                    <!--<img class="" src="<?php echo get_template_directory_uri();?>/assets/img/usergray.png">-->
+                                    Ingresa tu email
+                                    <input type="text" placeholder="" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="off" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
+                                </label>
+                                </p>
+                                <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                    <label for="password" class="labels__login">
+                                    <!--<img class="" src="<?php echo get_template_directory_uri();?>/assets/img/pass.png">-->
+                                    Ingresa tu clave
+                                    <input placeholder="" class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="off" />
+                                </label>
+                                </p>
 
-            <div class="form-login__register" >
-                <p class="woocommerce-LostPassword lost_password">                  
+                                <p class="form-row">
+                                    <!-- <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                                        <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span><?php esc_html_e('Recuerdame', 'woocommerce' ); ?></span>
+                                    </label> -->
+                                    <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
+                                    <button type="submit" class="main-general__btn main-general__button woocommerce-button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Iniciar sesión', 'woocommerce' ); ?></button>
+                                </p>
+                                <div class="form-login__register text-center" >
+                                    <p class="woocommerce-LostPassword lost_password">
+                                        <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( '¿Se te olvidó tu contraseña?', 'woocommerce' ); ?></a>
+                                        <p class="woocommerce-in-account">
+                                            <!--<a href="?create=account"><?='Crea una cuenta' ?></a>--></p>
+                                    </p>
+                                </div>
+
+                                <center>
+                                    <div class="main-login__line">
+                                        <p class="">Inicia sesión con</p>
+                                    </div>
+
+                                </center>
+                                <?php do_action( 'woocommerce_login_form' ); ?>
+                                <?php do_action( 'woocommerce_login_form_end' ); ?>
+
+                            </form>
+                        <?php } ?> 
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                <div class=" ">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 order-last-xs ">
+                            
                     
-                    <a href="?"><?='Iniciar sesión' ?></a>
-                    <p class="woocommerce-in-account"><a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Perdiste tu contraseña', 'woocommerce' ); ?></a></p>
-                </p>
-            </div>              
+
+                            <div class="woocommerce-form form-custom woocommerce-form-login login">
+                                <div class="">
+                                <br>
+                                <h2 class="text-center"> Registrarse</h2>
+                                
+                               
+                                <h2><?php esc_html_e( $la, 'woocommerce' ); ?></h2>
+
+                                <?php echo do_shortcode('[user_registration_form id="96"]');?>
+
+                                    <center>
+                                        <div class="form-login__register" >
+                                            <p class="woocommerce-LostPassword lost_password">                  
+                                                
+                                                <!--<a href="?"><?='Iniciar sesión' ?></a>-->
+                                                <p class="woocommerce-in-account"><a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Perdiste tu contraseña', 'woocommerce' ); ?></a></p>
+                                            </p>
+                                        </div>  
+                                    </center>            
+                                    </div>
+                            </div>
+                          
+
+                        </div>
+                    </div>
+                </div>
             </div>
-    </div>
-<?php } ?>
-
-</div>
-
-
-<?php do_action( 'woocommerce_after_customer_login_form' ); ?>
-
-    </div>
-</div>
-
-                
-            </div>
-        </div>    
+            
+        </div>
+         
     </div>
       </div>
       
     </div>
   </div>
 </div>
+
