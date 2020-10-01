@@ -1,0 +1,54 @@
+[
+    {
+        "name": "khipu/khipu-api-client",
+        "version": "2.8.2",
+        "version_normalized": "2.8.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/khipu/khipu-api-php-client.git",
+            "reference": "9803858fa8df38b4c91b641173c47a4ca1951051"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/khipu/khipu-api-php-client/zipball/9803858fa8df38b4c91b641173c47a4ca1951051",
+            "reference": "9803858fa8df38b4c91b641173c47a4ca1951051",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "satooshi/php-coveralls": "~0.6.1",
+            "squizlabs/php_codesniffer": "~2.0"
+        },
+        "time": "2019-03-01T19:06:35+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Khipu\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "khipu",
+                "homepage": "https://github.com/khipu/khipu-api-php-client"
+            }
+        ],
+        "homepage": "https://github.com/khipu/khipu-api-php-client",
+        "keywords": [
+            "api",
+            "khipu",
+            "php",
+            "sdk"
+        ]
+    }
+]
