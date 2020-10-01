@@ -167,9 +167,9 @@ add_action( 'init', 'custom_post_type_postulados', 0 );
 function my_theme_columns_head_postulados($defaults) {
   unset($defaults['tags']);
   unset($defaults['categories']);
-  $defaults['Entrenador'] = 'Entrenador';
+  $defaults['Postulado'] = 'Postulado';
     $defaults['Estado'] = 'Estado';
-    $defaults['Entrenamiento'] = 'Plan Entrenamiento';    
+    $defaults['Oferta'] = 'Oferta';    
     return $defaults;
 }
 add_filter('manage_postulados_posts_columns', 'my_theme_columns_head_postulados');
@@ -183,7 +183,7 @@ function fill_postulados_posts_columns( $column_name, $post_id ) {
      $post_id3 = NULL;
     switch( $column_name ):  
 
-        case 'Entrenador':
+        case 'Postulado':
             
             $post_id1 = $publicacion_meta['producto_id_entre'][0];
             $post_id3 = meta_value( 'entrenador',  $post_id1 );
@@ -203,7 +203,7 @@ function fill_postulados_posts_columns( $column_name, $post_id ) {
             echo "$post_id_estado";
            break;
 
-        case 'Entrenamiento':
+        case 'Oferta':
             
             $post_id_entrenamiento = $publicacion_meta['archivo_plan_de_entrenamiento'][0];
             $queried_id_entrenamiento = get_post($post_id_entrenamiento);
