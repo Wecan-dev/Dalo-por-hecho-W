@@ -180,19 +180,19 @@ function fill_postulados_posts_columns( $column_name, $post_id ) {
     $publicacion_meta = get_post_meta($post_id);    
     $plan_entrenamiento1= NULL;
     $post_id_entrenamiento = NULL;
-     $post_id3 = NULL;
+    $post_id3 = NULL;
     switch( $column_name ):  
 
         case 'Postulado':
             
-            $post_id1 = $publicacion_meta['producto_id_entre'][0];
+            $post_id1 = $publicacion_meta['ofertar_id_empleado'][0];
             $post_id3 = meta_value( 'entrenador',  $post_id1 );
             $queried_post_entrenador = get_post($post_id3);
             $entrenador = $queried_post_entrenador->post_title;  
-            if (  $post_id3 != NULL) {
-              echo "$entrenador"; 
+            if (  $post_id1 != NULL) {
+              echo  $post_id1; 
             }
-            if (  $post_id3 == NULL) {
+            if (  $post_id1 == NULL) {
               echo "Ninguno"; 
             }                     
             break;                

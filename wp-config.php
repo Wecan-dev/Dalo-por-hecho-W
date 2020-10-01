@@ -1,3 +1,4 @@
+
 <?php
 /**
  * The base configuration for WordPress
@@ -23,6 +24,7 @@
 
 define( 'DB_NAME', 'db_daloporhecho' );
 
+
 /** MySQL database username */
 define( 'DB_USER', 'admin' );
 
@@ -30,6 +32,9 @@ define( 'DB_USER', 'admin' );
 
 //define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
 define( 'DB_PASSWORD', '123456' );
+
+
+//define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );

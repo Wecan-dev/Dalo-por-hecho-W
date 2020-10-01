@@ -106,7 +106,7 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
                                 <div class="content-tetimonios admin-card">
                                     <div class="row">
                                         <div class="col-md-12 col-lg-3 text-center">
-                                           <?php if (is_user_logged_in()){ echo get_avatar( $current_user->user_email, 50 );  }?> 
+                                           <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
                                         </div>
                                         <div class="col-md-12 col-lg-9 mb-2">
                                             <p class="name"><?php wpjm_the_job_title(); ?></p>
@@ -230,11 +230,14 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
                             <li><a href="">Ver mapa</a></li>
                         </ul>
                         <div class="presupuesto_minicard">
-                            <p>Presupuesto</p>
+                            <p>Presupuesto<?php  ?></p>
                             <span class="precio">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></span>
-
-                            <a href="" class="btn-oferta" data-toggle="modal"
-                                data-target="#publicar">Ofertar</a>
+                            <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ ?>
+                                <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar">Ofertar</a>
+                            <?php }else { ?>
+                               <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
+                               <label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
+                            <?php } ?>   
                         </div>
                     </div>
                 </div><!--tab-->
@@ -244,10 +247,11 @@ $company_name = get_post_meta( get_the_ID(), '_company_name', true );
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">  
                       <div class="modal-body">
-                         <?php echo do_shortcode('[frm-set-get ofertar_id_tarea_publicada='.get_the_ID().'][frm-set-get ofertar_email_empleador='.get_the_author_meta( 'user_email' ).'][frm-set-get ofertar_monto_tarea='.get_post_meta( get_the_ID(), '_job_salary', true ).'][frm-set-get ofertar_id_empleado='.wp_get_current_user()->ID.'][formidable id=2]');  ?>
+                         <?php echo do_shortcode('[frm-set-get ofertar_title_tarea_publicada='.get_the_title().'][frm-set-get ofertar_name_tarea_publicada='.get_the_title().'][frm-set-get ofertar_id_tarea_publicada='.get_the_ID().'][frm-set-get ofertar_email_empleador='.get_the_author_meta( 'user_email' ).'][frm-set-get ofertar_monto_tarea='.get_post_meta( get_the_ID(), '_job_salary', true ).'][frm-set-get ofertar_id_empleado='.wp_get_current_user()->ID.'][frm-set-get ofertar_name_empleado='.meta_user_value( 'first_name', $current_user->ID ).'][formidable id=2]');  ?>
                       </div>         
-                  </div>
-              </div>                
+                    </div>
+                  </div> 
+                </div>                 
 
        <?php $j = $j+1; endwhile; ?>
 

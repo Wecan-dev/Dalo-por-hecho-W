@@ -74,12 +74,14 @@ global $post;?>
 											</div>
 
 											<div class="job_application application">
-
-												<input type="button" class="application_button button" value="Inscribirse al trabajo">
-
-												<div class="application_details" style="display: none;">
-													<a href="" class="btn-oferta" data-toggle="modal"  data-target="#publicar">Ofertar</a>
-												</div>
+												
+													<?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ ?>
+													<a href="" class="" data-toggle="modal" data-target="#publicar"><input type="button" class="application_button button" value="Ofertar"></a>
+													<?php }else { ?>
+													<a href="" class="" data-toggle="modal" data-target=""><input type="button" class="application_button button" value="Ofertar"></a>
+													<label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
+													<?php } ?>												
+												
 											</div>
 
 										</div>
@@ -89,5 +91,14 @@ global $post;?>
 
 
 						</div>
-
+                <!-- Modal Inicio de sesion -->
+                <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">  
+                      <div class="modal-body">
+                         <?php echo do_shortcode('[frm-set-get ofertar_title_tarea_publicada='.get_the_title().'][frm-set-get ofertar_name_tarea_publicada='.get_the_title().'][frm-set-get ofertar_id_tarea_publicada='.get_the_ID().'][frm-set-get ofertar_email_empleador='.get_the_author_meta( 'user_email' ).'][frm-set-get ofertar_monto_tarea='.get_post_meta( get_the_ID(), '_job_salary', true ).'][frm-set-get ofertar_id_empleado='.wp_get_current_user()->ID.'][frm-set-get ofertar_name_empleado='.meta_user_value( 'first_name', $current_user->ID ).'][formidable id=2]');  ?>
+                      </div>         
+                    </div>
+                  </div> 
+                </div>  
 <?php //get_footer(); ?>
