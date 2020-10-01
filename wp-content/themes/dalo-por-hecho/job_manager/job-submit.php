@@ -83,7 +83,7 @@ if (strpos($url, '?') !== false) {
 														<?php } ?>
                                                         <?php if(is_user_logged_in() == NULL OR meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) != "Publicar Tareas"){ ?>
 														    <button type="button" class="next-step" >Siguiente</button></li>
-														    <label for="exampleFormControlTextarea1">Create una cuenta para publicar tareas <a href="ingresar">aquí</a></label>
+														    <label for="exampleFormControlTextarea1">Create una cuenta para publicar tareas </label>
 														<?php } ?>														
                                                         
 													</ul>
