@@ -22,6 +22,24 @@
 														aria-expanded="true"><span class="round-tab"></span> <i></i></a>
 												</li>
 												<li role="presentation" class="disabled">
+													<a href="#step2" data-toggle="tab" aria-controls="step2" role="tab"
+														aria-expanded="false"><span class="round-tab"></span>
+														<i></i></a>
+												</li>
+												<li role="presentation" class="disabled">
+													<a href="#step3" data-toggle="tab" aria-controls="step3"
+														role="tab"><span class="round-tab"></span> <i></i></a>
+												</li>
+												<li role="presentation" class="disabled">
+													<a href="#step4" data-toggle="tab" aria-controls="step4"
+														role="tab"><span class="round-tab"></span> <i></i></a>
+												</li>
+												<!--
+												<li role="presentation" class="active">
+													<a href="#step1" data-toggle="tab" aria-controls="step1" role="tab"
+														aria-expanded="true"><span class="round-tab"></span> <i></i></a>
+												</li>
+												<li role="presentation" class="disabled">
 													<a href="<?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ echo"#step2"; } ?>" data-toggle="tab" aria-controls="step2" role="tab"
 														aria-expanded="false"><span class="round-tab"></span>
 														<i></i></a>
@@ -33,7 +51,7 @@
 												<li role="presentation" class="disabled">
 													<a href="<?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ echo"#step4"; } ?>" data-toggle="tab" aria-controls="step4"
 														role="tab"><span class="round-tab"></span> <i></i></a>
-												</li>
+												</li>-->
 											</ul>
 										</div>
 										<div role="form" action="index.html" class="login-box">
@@ -62,7 +80,19 @@ $(document).ready(function () {
             $("#job_salary").val(valuea);
         })                   
 });
-
+$(".nav-tabs").on("click", "li", function () {
+	$(".nav-tabs li.active").removeClass("active");
+	$(this).addClass("active");
+	if(".tab-step2.active"){
+		$(".tab-step1").addClass("check-tab");
+	}
+  if(".tab-step3.active"){
+		$(".tab-step2").addClass("check-tab");
+  }
+  if(".tab-step4.active"){
+		$(".tab-step3").addClass("check-tab");
+  }
+});
   </script>
 
   
