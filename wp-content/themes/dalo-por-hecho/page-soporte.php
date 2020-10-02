@@ -1,7 +1,4 @@
 <?php get_header(); ?>
-<<<<<<< HEAD
-
-=======
   <section class="main-soporte">
     <div class="container">
       <div class="main-soporte__content">
@@ -10,5 +7,4 @@
     </div>
     
   </section>
->>>>>>> 3b7b63715935d14f36f8d521ffceaf10158d4352
 <?php get_footer(); ?>
