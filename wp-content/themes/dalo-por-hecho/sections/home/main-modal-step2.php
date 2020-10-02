@@ -178,7 +178,9 @@
       <input type="submit" name="submit_job" class="button" value="Preview">
       <input type="submit" name="save_draft" class="button secondary save_draft" value="Save Draft" formnovalidate="">      
 														  <button type="button"
-																class="default-btn next-step">Siguiente</button></li>
+                                class="default-btn next-step">Siguiente</button></li>
+                                
+                                
 													</ul>
 												</div>
 											</div>
