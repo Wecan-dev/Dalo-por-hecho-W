@@ -361,6 +361,9 @@ section {
 	width: 100%;
 	height: auto;
 }
+#testimonios{
+	padding: 4rem 0;
+}
 #testimonios .slick-track {
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -444,9 +447,12 @@ section {
 	margin: 0;
 	font-weight: 300;
 	text-align: start;
+	color: #3e3e3e;
 }
 .content-tetimonios span {
 	font-size: 14px;
+	color: #3e3e3e;
+	font-weight: 500;
 }
 .money {
 	color: #ec8603;

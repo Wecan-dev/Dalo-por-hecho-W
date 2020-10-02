@@ -65,13 +65,15 @@
 															tarea</label>
 														<textarea class="form-control" name="job_description" id="job_description"
 															rows="3"
-															placeholder="Ej, vivo en el 5 piso , no puedo cargar peo por asuntos medicos"></textarea>
+															placeholder="Ej, vivo en el 5 piso , no puedo cargar peso por asuntos medicos"></textarea>
 													</div>
 													<ul class="list-inline text-center">
 														<li class="btn-line"><button type="button"
 																class="default-btn next-step">Siguiente</button></li>
 													</ul>
-												</div>
+                        </div>
+                        
+
 												<div class="tab-pane" role="tabpanel" id="step2">
 													<h4 class="text-center">¿Donde y cuando?</h4>
 													<div>
@@ -111,7 +113,9 @@
 														<li class="btn-line"><button type="button"
 																class="default-btn next-step">Siguiente</button></li>
 													</ul>
-												</div>
+                        </div>
+                        
+
 												<div class="tab-pane" role="tabpanel" id="step3">
 													<h4 class="text-center">¿Que necesitas hacer?</h4>
 													<label class="text-start mt-4">Cual es tu presupuesto para la tarea?
@@ -174,7 +178,9 @@
       <input type="submit" name="submit_job" class="button" value="Preview">
       <input type="submit" name="save_draft" class="button secondary save_draft" value="Save Draft" formnovalidate="">      
 														  <button type="button"
-																class="default-btn next-step">Siguiente</button></li>
+                                class="default-btn next-step">Siguiente</button></li>
+                                
+                                
 													</ul>
 												</div>
 											</div>
@@ -202,4 +208,146 @@ $(document).ready(function () {
         })                   
 });
 
-	</script>
+  </script>
+  
+  <style>
+
+
+.wizard-inner .nav-tabs{
+  justify-content: space-evenly;
+}
+.wizard .tab-pane h4{
+  color: #004857;
+  font-weight: 700;
+  font-size: 1.6rem
+}
+.form-afiliar__type{
+  padding-bottom: 2rem;
+}
+.form-afiliar__type p{
+  color: #004857;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.form-afiliar__type--btn a{
+  background: #dfdddd;
+  padding: .5rem 1.5rem;
+  border-radius: 25px;
+  margin-right: 1rem;
+  font-size: .8rem;
+  color: #004857;
+  transition: .3s ease-in-out;
+}
+.form-afiliar__type--btn a:hover, .form-afiliar__type--btn a:focus{
+  background: #f1ac00;
+  color: #fff;
+  transition: .3s ease-in-out;
+}
+.btn-form-afiliar{
+  padding: .4rem 3rem;
+}
+.button-group-pills .btn {
+  border-radius: 20px;
+  line-height: 1.2;
+  margin:1rem 0;
+  background-color: #dfdddd;
+  color: #707070;
+  font-size: .9rem;
+  transition: .2s ease-in-out;
+  cursor: pointer;
+}
+.button-group-pills .btn.active {
+  border-color: #f1ac00;
+  background-color: #f1ac00;
+  color: #fff;
+  box-shadow: none;
+}
+.button-group-pills .btn:hover {
+  border-color: #f1ac00;
+  background-color: #f1ac00;
+  color: #fff;
+  transition: .2s ease-in-out;
+}
+.btn-check-afiliar input[type="checkbox"]{
+  display: none;
+}
+.form-step2-afiliar__content p{
+  color: #004857;
+  padding-left: 2rem;
+}
+.content-form-step2 input{
+  background: transparent !important;
+    border: 2px solid #cb6120 !important;
+    border-radius: 20px !important;
+    padding: .3rem .8rem !important;
+    margin: .5rem 0 !important;
+    transition: .3s ease-in-out !important;
+    resize: none !important;
+    overflow: hidden;
+    width: 100%;
+    outline: none;
+}
+.content-form-step2{
+  padding-top: 1rem;
+}
+.content-form-step2__title{
+  color: #004857;
+  font-weight: 700;
+}
+  </style>
+
+<script>
+	
+	/*-- multistep form --*/
+
+
+$(document).ready(function () {
+	$(".nav-tabs > li a[title]").tooltip();
+
+	//Wizard
+	$('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+		var target = $(e.target);
+
+		if (target.parent().hasClass("disabled")) {
+			return false;
+		}
+	});
+
+	$(".next-step").click(function (e) {
+		var active = $(".wizard .nav-tabs li.active");
+		active.next().removeClass("disabled");
+		nextTab(active);
+	});
+	$(".prev-step").click(function (e) {
+		var active = $(".wizard .nav-tabs li.active");
+		prevTab(active);
+	});
+});
+
+function nextTab(elem) {
+	$(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+	$(elem).prev().find('a[data-toggle="tab"]').click();
+}
+
+$(".nav-tabs").on("click", "li", function () {
+	$(".nav-tabs li.active").removeClass("active");
+	$(this).addClass("active");
+	if(".tab-step2.active"){
+		$(".tab-step1").addClass("check-tab");
+	}else{
+		
+	}
+});
+
+
+
+	$('.panel-collapse').on('show.bs.collapse', function () {
+  $(this).siblings('.panel-heading').toggleClass('active');
+});
+
+$('.panel-collapse').on('hide.bs.collapse', function () {
+  $(this).siblings('.panel-heading').removeClass('active');
+});
+</script>
