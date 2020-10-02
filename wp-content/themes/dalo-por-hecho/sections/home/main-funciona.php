@@ -24,7 +24,7 @@
 			<div class="cta-bg cta-bg_blue">
 				<p><?php echo get_theme_mod('funciona_message_title'); ?></p>
 				<span><?php echo get_theme_mod('funciona_message_subtitle'); ?></span>
-				<a href="<?php echo get_theme_mod('funciona_message_urlbuttom'); ?>" class="btn-custom mt-3 cta-color"><?php echo get_theme_mod('funciona_message_buttom'); ?></a>
+ 				<a href="<?php echo get_theme_mod('funciona_message_urlbuttom'); ?>" data-toggle="modal"	data-target="#step" class="btn-custom mt-3 cta-color"><?php echo get_theme_mod('funciona_message_buttom'); ?></a>
 			</div>
 		</div>
 	</section>

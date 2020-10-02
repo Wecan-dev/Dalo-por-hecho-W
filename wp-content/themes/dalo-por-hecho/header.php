@@ -46,7 +46,7 @@
 
 					<ul class="navbar-nav ">
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo get_home_url() ?>/confi-perfil">Soporte</a>
+							<a class="nav-link" href="<?php echo get_home_url() ?>/soporte">Soporte</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#funciona">Como funciona</a>

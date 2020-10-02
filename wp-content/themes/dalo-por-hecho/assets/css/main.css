@@ -583,7 +583,9 @@ footer a {
 
 	margin: 6px;
 }
-
+.rrss:hover a i{
+	color: #353535;
+}
 .main-tareas_item-content:hover {
 	box-shadow: 0px 3px 10px #00000014;
 	transition: 0.6s;
@@ -2359,7 +2361,9 @@ fieldset.fieldset-create_account_email {
     color: #ec8603 !important;
 	border: 2px solid #ec8603;
 }
-
+.main-soporte, .main-categories{
+	padding: 5rem 0;
+}
 /* inicio de sesion*/
 .main-login__container{
 	padding: 2rem;
@@ -2444,5 +2448,5 @@ fieldset.fieldset-create_account_email {
 }
 
 .frm_style_formidable-style.with_frm_style .frm_compact .frm_dropzone.dz-clickable .dz-message, .frm_style_formidable-style.with_frm_style input[type=submit], .frm_style_formidable-style.with_frm_style .frm_submit input[type=button], .frm_style_formidable-style.with_frm_style .frm_submit button, .frm_form_submit_style{
-    padding: 10px 40px;
+    padding: 10px 50px;
 }

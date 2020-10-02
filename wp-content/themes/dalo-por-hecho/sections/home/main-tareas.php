@@ -22,7 +22,7 @@
 	    <?php $category_count++; endforeach; ?>	
 	</div>
 			<center class="mt-4 mb-4">
-				<a class="btn-custom-orange " href="#" tabindex="0">Ver más categorías</a>
+				<a class="btn-custom-orange " href="<?php echo get_home_url() ?>/categorias" tabindex="0">Ver más categorías</a>
 			</center>	
 	</section>
 	<!-- TAREAS-->

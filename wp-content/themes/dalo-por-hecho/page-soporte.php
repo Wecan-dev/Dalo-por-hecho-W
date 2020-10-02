@@ -1,5 +1,10 @@
 <?php get_header(); ?>
   <section class="main-soporte">
+	  <div class=" titulo-general text-center">
+		  <p>Contactar con el equipo de soporte</p>
+		  <br>
+		  <br>
+	  </div>
     <div class="container">
       <div class="main-soporte__content">
       <?php echo FrmFormsController::get_form_shortcode( array( 'id' => 8, 'title' => false, 'description' => false ) ); ?>
