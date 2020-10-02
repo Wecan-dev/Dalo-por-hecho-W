@@ -583,7 +583,9 @@ footer a {
 
 	margin: 6px;
 }
-
+.rrss:hover a i{
+	color: #353535;
+}
 .main-tareas_item-content:hover {
 	box-shadow: 0px 3px 10px #00000014;
 	transition: 0.6s;
