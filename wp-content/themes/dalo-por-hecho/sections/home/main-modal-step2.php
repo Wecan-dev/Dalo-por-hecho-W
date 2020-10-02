@@ -206,19 +206,7 @@ $(document).ready(function () {
             var valuea =  document.getElementById("job_clp").value*$(this).val();
             $("#job_salary").val(valuea);
         })                   
-});$(".nav-tabs").on("click", "li", function () {
-	$(".nav-tabs li.active").removeClass("active");
-	$(this).addClass("active");
-	if(".tab-step2.active"){
-		$(".tab-step1").addClass("check-tab");
-	}
-  if(".tab-step3.active"){
-		$(".tab-step2").addClass("check-tab");
-  }
-  if(".tab-step4.active"){
-		$(".tab-step3").addClass("check-tab");
-  }
-});
-
+})
   </script>
-
+  
+  

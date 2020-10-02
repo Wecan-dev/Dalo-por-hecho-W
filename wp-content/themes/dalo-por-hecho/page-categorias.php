@@ -25,6 +25,4 @@
 		
 	</section>
 	<!-- TAREAS-->
-
-
 <?php get_footer(); ?>
