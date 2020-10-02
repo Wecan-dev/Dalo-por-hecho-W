@@ -38,6 +38,8 @@
 			</div>
 		</div>
     </section>
+    
+  
  <!-- <div class="card step-progress">
   <?php global $current_user, $wp_roles;?>
     <div class="step-slider">

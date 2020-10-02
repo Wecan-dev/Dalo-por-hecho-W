@@ -52,6 +52,18 @@ $(document).ready(function () {
 		var active = $(".wizard .nav-tabs li.active");
 		prevTab(active);
 	});
+	$('.next-step').on("click", function () {
+		$(this).removeClass("next-step");
+		$(this).addClass("next-step1");
+		
+	});
+	$('.next-step1').on("click", function () {
+		alert("test")
+		$("#step2").removeClass("active show");
+		$("#step3").addClass("active show");
+		
+	});
+	
 });
 
 function nextTab(elem) {
@@ -65,3 +77,12 @@ $(".nav-tabs").on("click", "li", function () {
 	$(".nav-tabs li.active").removeClass("active");
 	$(this).addClass("active");
 });
+
+
+
+$('.next-step').on("click", function () {
+	alert("test");
+	$(this).addClass("open-1");
+	
+});
+
