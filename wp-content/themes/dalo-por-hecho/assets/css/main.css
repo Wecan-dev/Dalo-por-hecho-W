@@ -5,12 +5,25 @@ body {
 }
 body {
 	scroll-behavior: smooth !important;
+	margin: 0;
+  margin-bottom: 40px;
 }
 html {
 	overflow-x: hidden;
 	scroll-behavior: smooth !important;
 }
+html {
+  min-height: 100%;
+  position: relative;
+}
 
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
 ::-webkit-scrollbar {
 	width: 8px;
 	height: 8px;

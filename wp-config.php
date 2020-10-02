@@ -23,15 +23,15 @@
 /** The name of the database for WordPress */
 
 
-// define( 'DB_NAME', 'D4l0P0r_H3chO' );
-define( 'DB_NAME', 'db_daloporhecho' );
+ define( 'DB_NAME', 'D4l0P0r_H3chO' );
+//define( 'DB_NAME', 'db_daloporhecho' );
 /** MySQL database username */
-// define( 'DB_USER', 'DaloPor_Hecho' );
-define( 'DB_USER', 'admin' );
+ define( 'DB_USER', 'DaloPor_Hecho' );
+//define( 'DB_USER', 'admin' );
 /** MySQL database password */
 
-// define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
-define( 'DB_PASSWORD', '123456' );
+ define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
+//define( 'DB_PASSWORD', '123456' );
 //define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
 
 /** MySQL hostname */
