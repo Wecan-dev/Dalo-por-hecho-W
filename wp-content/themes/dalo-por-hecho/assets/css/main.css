@@ -2374,8 +2374,12 @@ fieldset.fieldset-create_account_email {
     color: #ec8603 !important;
 	border: 2px solid #ec8603;
 }
-.main-soporte, .main-categories{
+.main-soporte{
 	padding: 5rem 0;
+}
+
+.main-categories{
+	padding: 8rem 0 10rem 0;
 }
 /* inicio de sesion*/
 .main-login__container{
