@@ -17,24 +17,7 @@
 										<div class="wizard-inner">
 											<div class="connecting-line"></div>
 											<ul class="nav nav-tabs" role="tablist">
-												<!-- <li role="presentation" class="active">
-													<a href="#step1" data-toggle="tab" aria-controls="step1" role="tab"
-														aria-expanded="true"><span class="round-tab"></span> <i></i></a>
-												</li>
-												<li role="presentation" class="disabled">
-													<a href="#step2" data-toggle="tab" aria-controls="step2" role="tab"
-														aria-expanded="false"><span class="round-tab"></span>
-														<i></i></a>
-												</li>
-												<li role="presentation" class="disabled">
-													<a href="#step3" data-toggle="tab" aria-controls="step3"
-														role="tab"><span class="round-tab"></span> <i></i></a>
-												</li>
-												<li role="presentation" class="disabled">
-													<a href="#step4" data-toggle="tab" aria-controls="step4"
-														role="tab"><span class="round-tab"></span> <i></i></a>
-												</li> -->
-												
+											
 												<li role="presentation" class="active">
 													<a href="#step1" data-toggle="tab" aria-controls="step1" role="tab"
 														aria-expanded="true"><span class="round-tab"></span> <i></i></a>
@@ -70,21 +53,20 @@
 	</div>
 
 	<script type="text/javascript">
-$(document).ready(function () {
-        $("#job_clp").keyup(function () {
-            var valuea =  document.getElementById("job_horas").value*$(this).val();
-            $("#job_salary").val(valuea);
-        });    
-        $("#job_horas").keyup(function () {
-            var valuea =  document.getElementById("job_clp").value*$(this).val();
-            $("#job_salary").val(valuea);
-        })                   
-<<<<<<< HEAD
-})
-  </script>
-=======
-});
-	
+    $(document).ready(function () {
+            $("#job_clp").keyup(function () {
+                var valuea =  document.getElementById("job_horas").value*$(this).val();
+                $("#job_salary").val(valuea);
+            });    
+            $("#job_horas").keyup(function () {
+                var valuea =  document.getElementById("job_clp").value*$(this).val();
+                $("#job_salary").val(valuea);
+            })                   
+
+    })
+
+    });
+
 	/*-- multistep form --*/
 
 
@@ -138,6 +120,3 @@ $('.panel-collapse').on('hide.bs.collapse', function () {
   $(this).siblings('.panel-heading').removeClass('active');
 });
   </script>
-
-  
->>>>>>> 297000e9800d024cbfc29705a452859d93120ad3
