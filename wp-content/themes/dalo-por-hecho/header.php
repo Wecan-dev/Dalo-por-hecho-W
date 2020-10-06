@@ -38,7 +38,7 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" href="" data-toggle="modal"
-								data-target="#step">Publicar
+								data-target="#step" onclick="enviarDatos2();">Publicar
 								tarea</a>
 						</li>
 

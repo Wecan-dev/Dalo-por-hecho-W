@@ -59,13 +59,17 @@ if (strpos($url, '?') !== false) {
 													</div>
 													<div class="form-group start">
 														<label for="exampleFormControlSelect1">Categorías</label>
-														<select class="form-control" name="job_category[]" id="job_category">
-														    <option>Seleccionar</option>
-                                                            <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
-                                                            <?php foreach($product_categories as $category):  global $wpdb;?>		
-                                                                <option value="<?=$category->term_id ?>"><?=$category->name ?></option>
-		                                                    <?php endforeach; ?>						
+														<select class="form-control hid" name="job_category[]" id="job_category" >
+														    
+                                                            <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'order' => 'asc' ));  ?>
+                                                            <?php foreach($product_categories as $category):  global $wpdb;?>
+                                                                <?php if($i<1){ ?>                                                                
+                                                               	<option id="job_cat">Seleccionar</option>
+														        <?php } ?>
+                                                                <option id="<?=$category->term_id ?>" value="<?=$category->term_id ?>"><?=$category->name ?></option>
+		                                                    <?php $i=$i+1; endforeach; ?>						
 														</select>
+													
 													</div>
 													<div class="form-group start">
 														<label for="exampleFormControlTextarea1">Cuales son

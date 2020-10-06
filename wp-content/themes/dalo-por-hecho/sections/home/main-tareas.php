@@ -6,87 +6,61 @@
 		</div>
 		
 		<div class="main-tareas_grid mt-5">
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
+
+		<?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc'));  
+		 $category_count = 1;
+		?>
+        <?php foreach($product_categories as $category):  global $wpdb; ?>
+			<?php if ($category_count <= 9) { ?>
+			<a class="main-tareas_item" href="" data-toggle="modal"	data-target="#step" id="send" onclick="enviarDatos('<?=$category->term_id ?>','<?=$category->name ?>');">
+				<div class="main-tareas_item">
 					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-3.png" alt="icono">
-						<p>Aseo domestico</p>
+						<img src="<?php echo termmeta_value_img('image_job_category', $category->term_id );?>" alt="icono">
+						<p><?=$category->name ?></p>
+
 					</div>
 				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-4.png" alt="icono">
-						<p>Fletes y mudanza</p>
-					</div>
-				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-13.png" alt="icono">
-						<p>Cuidado de niños</p>
-					</div>
-				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-6.png" alt="icono">
-						<p>Armar muebles</p>
-					</div>
-				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/10/trabajos-pesados.png" alt="icono">
-						<p>Construcción</p>
-					</div>
-				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-12.png" alt="icono">
-						<p>Marketing y diseño</p>
-					</div>
-				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-11.png" alt="icono">
-						<p>Fiestas o eventos</p>
-					</div>
-				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-10.png" alt="icono">
-						<p>Jardinería</p>
-					</div>
-				</div>
-				<div class="main-tareas_item" data-toggle="modal" data-target="#step" >
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-8.png" alt="icono">
-						<p>Cocina</p>
-					</div>
-				</div>
-				<a href="<?php echo get_home_url() ?>/categorias"  class="main-tareas_item">
-					<div class="main-tareas_item-content ">
-						<img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-9.png" alt="icono">
-						<p>Otros</p>
-					</div>
-				</a>
+			</a>
+			<?php } ?>
+
+	    <?php $category_count++; endforeach; ?>	
+            <a class="main-tareas_item" style="margin-top: -3rem;">
+                <div class="main-tareas_item-content ">
+                <img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-9.png" alt="icono">
+                <p>Otros</p>
+                </div>
+            </a>
+
 		        							
 	</div>
 
-		<!--<div class="main-tareas_grid mt-5">
-		< ?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc'));  
-		 $category_count = 1;
-		?>
-        < ?php foreach($product_categories as $category):  global $wpdb; ?>
-			< ?php if ($category_count <= 10) { ?>
-				<div class="main-tareas_item">
-					<div class="main-tareas_item-content ">
-						<img src="< ?php echo termmeta_value_img('image_job_category', $category->term_id );?>" alt="icono">
-						<p>< ?=$category->name ?></p>
-					</div>
-				</div>
-			< ?  php } ?>
-
-	    < ?php $category_count++; endforeach; ?>	
-	</div>
-			<center class="mt-4 mb-4">
-				<a class="btn-custom-orange " href="< ?php echo get_home_url() ?>/categorias" tabindex="0">Ver más categorías</a>
-			</center>	-->
+		
 	</section>
 	<!-- TAREAS-->
+    <script type="text/javascript">
+              
+    //$('#send').click( function() {
+           //var val_cat_name =  document.getElementById("job_cat_name").value;
+           //var val_cat_id =  document.getElementById("job_cat_id").value; 
+           //document.getElementById('job_cat').innerHTML=val_cat_name;
+           //$("#job_cat").val(val_cat_id);       
+      //  }
+    //);
+    function enviarDatos(id_cat,names_cat){ 
+       this.names_cat = names_cat;
+       this.id_cat = id_cat;
+       document.getElementById('job_cat').innerHTML=this.names_cat;
+       $("#job_cat").val(this.id_cat);   
+
+       //$('.hid').prop('id', 'hidd');
+    }	
+   
+    function enviarDatos2(){ 
+       this.names_cat = 'Seleccionar';
+       this.id_cat = '0';
+       document.getElementById('job_cat').innerHTML=this.names_cat;
+       $("#job_cat").val(this.id_cat);   
+
+       //$('.hid').prop('id', 'hidd');
+    }
+    </script>
