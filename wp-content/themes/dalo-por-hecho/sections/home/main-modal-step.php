@@ -134,5 +134,3 @@ $('.panel-collapse').on('hide.bs.collapse', function () {
   $(this).siblings('.panel-heading').removeClass('active');
 });
   </script>
-
-  
