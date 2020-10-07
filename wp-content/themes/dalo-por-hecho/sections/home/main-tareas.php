@@ -7,23 +7,19 @@
 		
 		<div class="main-tareas_grid mt-5">
 
-		<?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'menu_order', 'order' => 'asc'));  
-		 $category_count = 1;
-		?>
-        <?php foreach($product_categories as $category):  global $wpdb; ?>
-			<?php if ($category_count <= 9) { ?>
-			<a class="main-tareas_item" href="" data-toggle="modal"	data-target="#step" id="send" onclick="enviarDatos('<?=$category->term_id ?>','<?=$category->name ?>');">
-				<div class="main-tareas_item">
-					<div class="main-tareas_item-content ">
-						<img src="<?php echo termmeta_value_img('image_job_category', $category->term_id );?>" alt="icono">
-						<p><?=$category->name ?></p>
-
-					</div>
-				</div>
-			</a>
+		<?php for ($i=1; $i <= 9; $i++) { ?>
+      <?php if(get_theme_mod('tareas_cat'.$i.'')!=NULL) { ?>
+        <a class="main-tareas_item" href="" data-toggle="modal"	data-target="#step" id="send" onclick="enviarDatos('<?=get_theme_mod('tareas_cat'.$i.'') ?>','<?=get_term(get_theme_mod('tareas_cat'.$i.''))->name ?>');">
+          <div class="main-tareas_item">
+            <div class="main-tareas_item-content ">
+              <img src="<?php echo termmeta_value_img('image_job_category', get_theme_mod('tareas_cat'.$i.'') );?>" alt="icono">
+              <p><?=get_term(get_theme_mod('tareas_cat'.$i.''))->name ?></p>
+            </div>
+          </div>
+        </a>
 			<?php } ?>
+    <?php } ?>  
 
-	    <?php $category_count++; endforeach; ?>	
             <a class="main-tareas_item" style="margin-top: -3rem;">
                 <div class="main-tareas_item-content ">
                 <img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-9.png" alt="icono">

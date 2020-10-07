@@ -1,0 +1,121 @@
+2020-10-07T21:55:49+00:00 CRITICAL syntax error, unexpected 'foreach' (T_FOREACH), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 50
+
+2020-10-07T21:56:34+00:00 CRITICAL syntax error, unexpected '.', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 47
+
+2020-10-07T22:02:09+00:00 CRITICAL syntax error, unexpected '}', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 46
+
+2020-10-07T14:35:41+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 39
+
+2020-10-07T14:35:42+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 39
+
+2020-10-07T14:36:50+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 40
+
+2020-10-07T14:41:28+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 40
+
+2020-10-07T14:47:18+00:00 CRITICAL Uncaught Error: Call to undefined function array_push_associative() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php:41
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php(38): require_once()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\class-wp-hook.php(287): theme_customize_register(Object(WP_Customize_Manager))
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\plugin.php(478): WP_Hook->do_action(Array)
+#4 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\class-wp-customize-manager.php(928): do_action('customize_regis...', Object(WP_Customize_Manager))
+#5 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\class-wp-hook.php(287): WP_Customize_Manager->wp_loaded('')
+#6 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#7 C:\xampp2\htdocs\Dalo-por-hecho- in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 41
+
+2020-10-07T14:52:15+00:00 CRITICAL Uncaught Error: Call to undefined function array_push_associative() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php:22
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(725): require()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(672): load_template('C:\\xampp2\\htdoc...', false)
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\general-template.php(168): locate_template(Array, true, false)
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\index.php(4): get_template_part('sections/home/m...')
+#4 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 22
+
+2020-10-07T15:21:50+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 14
+
+2020-10-07T15:37:39+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ']' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 16
+
+2020-10-07T15:38:10+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ']' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 16
+
+2020-10-07T15:38:29+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 16
+
+2020-10-07T15:40:23+00:00 CRITICAL Invalid numeric literal in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 12
+
+2020-10-07T15:40:46+00:00 CRITICAL Uncaught Error: Call to undefined function arrary_merge() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php:17
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(725): require()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(672): load_template('C:\\xampp2\\htdoc...', false)
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\general-template.php(168): locate_template(Array, true, false)
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\index.php(4): get_template_part('sections/home/m...')
+#4 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 17
+
+2020-10-07T15:50:06+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 17
+
+2020-10-07T15:51:49+00:00 CRITICAL Uncaught Error: Call to undefined function array_push_assoc() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php:18
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(725): require()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(672): load_template('C:\\xampp2\\htdoc...', false)
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\general-template.php(168): locate_template(Array, true, false)
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\index.php(4): get_template_part('sections/home/m...')
+#4 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 18
+
+2020-10-07T15:57:14+00:00 CRITICAL Uncaught Error: Call to undefined function array_push_assoc() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php:18
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(725): require()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template.php(672): load_template('C:\\xampp2\\htdoc...', false)
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\general-template.php(168): locate_template(Array, true, false)
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\index.php(4): get_template_part('sections/home/m...')
+#4 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 18
+
+2020-10-07T16:13:08+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 22
+
+2020-10-07T16:13:31+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 22
+
+2020-10-07T16:13:37+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 22
+
+2020-10-07T16:15:07+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 22
+
+2020-10-07T16:16:46+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 22
+
+2020-10-07T16:18:07+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 22
+
+2020-10-07T17:14:20+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 25
+
+2020-10-07T17:24:54+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 25
+
+2020-10-07T17:28:28+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 32
+
+2020-10-07T17:29:48+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ']' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 32
+
+2020-10-07T17:32:35+00:00 CRITICAL syntax error, unexpected '=', expecting ']' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 32
+
+2020-10-07T17:32:53+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ']' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 32
+
+2020-10-07T17:33:27+00:00 CRITICAL Assignments can only happen to writable values in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 33
+
+2020-10-07T17:38:17+00:00 CRITICAL Can't use function return value in write context in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 33
+
+2020-10-07T18:16:02+00:00 CRITICAL syntax error, unexpected 'for' (T_FOR) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\home\customizer-main-tareas.php on line 52
+
+2020-10-07T18:37:39+00:00 CRITICAL syntax error, unexpected '?>' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 11
+
+2020-10-07T18:37:51+00:00 CRITICAL syntax error, unexpected '?>' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 11
+
+2020-10-07T18:37:51+00:00 CRITICAL syntax error, unexpected '?>' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\sections\home\main-tareas.php on line 11
+
