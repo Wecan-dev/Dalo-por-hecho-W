@@ -42,6 +42,69 @@
 	<script>
 		new WOW().init();
 	</script>	
+
+
+<script>
+$(document).ready(function() {
+    $('#key').on('keyup', function() {
+        var key = $(this).val();        
+        var dataString = 'key='+key;
+        var url = "<?= get_home_url() ?>"; 
+    $.ajax({
+            type: "POST",
+            url: url+"/ajax/",
+            data: dataString,
+            success: function(data) {
+                //Escribimos las sugerencias que nos manda la consulta
+                $('#suggestions').fadeIn(1000).html(data);
+                //Al hacer click en algua de las sugerencias
+                $('.suggest-element').on('click', function(){
+                        //Obtenemos la id unica de la sugerencia pulsada
+                        var id = $(this).attr('id');
+                        //Editamos el valor del input con data de la sugerencia pulsada
+                        $('#key').val($('#'+id).attr('data'));
+                        //Hacemos desaparecer el resto de sugerencias
+                        $('#suggestions').fadeOut(1000);
+                        //alert('Has seleccionado el '+id+' '+$('#'+id).attr('data'));
+                        return true;
+                });
+            }
+        });
+    });
+
+
+    $('#job_location').on('keyup', function() {
+        var job_location = $(this).val();        
+        var dataString = 'job_location='+job_location;
+        var url = "<?= get_home_url() ?>"; 
+    $.ajax({
+            type: "POST",
+            url: url+"/ajax/",
+            data: dataString,
+            success: function(data) {
+                //Escribimos las sugerencias que nos manda la consulta
+                $('#suggestions').fadeIn(1000).html(data);
+                //Al hacer click en algua de las sugerencias
+                $('.suggest-element').on('click', function(){
+                        //Obtenemos la id unica de la sugerencia pulsada
+                        var id = $(this).attr('id');
+                        //Editamos el valor del input con data de la sugerencia pulsada
+                        //$('#job_location').val(data);
+                         //$("#job_location").val(data1);
+                        $('#job_location').val($('#'+id).attr('data'));
+                        //Hacemos desaparecer el resto de sugerencias
+                        $('#suggestions').fadeOut(1000);
+                        //alert('Has seleccionado el '+id+' '+$('#'+id).attr('data'));
+                       // $("#job_location").val(data);
+                        return false;
+                });
+            }
+        });
+    });
+
+
+}); 
+</script>	
 </body>
 <?php wp_footer(); ?>
 </html>	

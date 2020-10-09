@@ -21,8 +21,7 @@ global $post, $current_user, $wp_roles;
 $job_salary   = get_post_meta( get_the_ID(), '_job_salary', true );
 $job_featured = get_post_meta( get_the_ID(), '_featured', true );
 $company_name = get_post_meta( get_the_ID(), '_company_name', true );
-$al=str_replace("%2C%20", ", ", $_GET["location"]);
-$args = arg($_GET["cat"],$_GET["tax"],$_GET["search"],$_GET["location"]);         
+
 ?>
 
     <header>
@@ -31,18 +30,12 @@ $args = arg($_GET["cat"],$_GET["tax"],$_GET["search"],$_GET["location"]);
                 <li class='nav-item dropdown dowms'>
                     <a href='#' aria-expanded='false' aria-haspopup='true'
                         class='nav-link dropdown-toggle nav-link-black ' data-toggle='dropdown'>
-                        Localización <?php echo $al; ?>
-                       
+                        Localización
                     </a>
                     <div aria-labelledby='dropdownMenuButton' class='dropdown-menu'>
                         <div class='content-drop'>
                             <a class='dropdown-item' href='#'>
-                                <!--<form class="form-inline" method="post" action="#">-->
-                                    <div class="input-group input-group-sm">
-                                        <input class="search_query form-control" type="text" name="key" id="key" placeholder="Buscar...">
-                                    </div>
-                                <!--</form>-->
-                                <div id="suggestions"></div> 
+                                <p> Categoria 1</p>
                             </a>
                         </div>
                     </div>
@@ -60,7 +53,7 @@ $args = arg($_GET["cat"],$_GET["tax"],$_GET["search"],$_GET["location"]);
                             ?>                                                        
                             <?php foreach($product_categories as $category): ?>
                                 <?php $checked =NULL;  if ($category->slug == $_GET['cat']) { $checked = "checked='checked'"; } $categoria = $category->name; $category_id = $category->term_id; $category_link = get_category_link( $category_id ); ?>                 
-                                    <a class='dropdown-item' href='<?php echo get_home_url().'/buscar-tareas/?cat='.$category->slug.'&tax=job_listing_category'?>'>
+                                    <a class='dropdown-item' href='<?php echo $urlsinparametros.'/?cat='.$category->slug.'&tax=product_cat'?>'>
                                         <p><?= $categoria ?></p>
                                     </a>                                         
                                 <?php $i=$i+1;?>
@@ -69,30 +62,34 @@ $args = arg($_GET["cat"],$_GET["tax"],$_GET["search"],$_GET["location"]);
                     </div>
                 </li>
                 <li class='nav-item dropdown dowms'>
-                    <a href='' aria-expanded='false' aria-haspopup='true'
+                    <a href='#' aria-expanded='false' aria-haspopup='true'
                         class='nav-link dropdown-toggle nav-link-black ' data-toggle='dropdown'>
-                       
+                        Precios
                     </a>
                     <div aria-labelledby='dropdownMenuButton' class='dropdown-menu'>
                         <div class='content-drop'>
-
+                            <a class='dropdown-item' href='#'>
+                                <p> Categoria 1</p>
+                            </a>
                         </div>
                     </div>
                 </li>
                 <li class='nav-item dropdown dowms mr-auto'>
-                    <a href='' aria-expanded='false' aria-haspopup='true'
+                    <a href='#' aria-expanded='false' aria-haspopup='true'
                         class='nav-link dropdown-toggle nav-link-black ' data-toggle='dropdown'>
-                       
+                        Sugerencia
                     </a>
                     <div aria-labelledby='dropdownMenuButton' class='dropdown-menu'>
                         <div class='content-drop'>
- 
+                            <a class='dropdown-item' href='#'>
+                                <p> Categoria 1</p>
+                            </a>
                         </div>
                     </div>
                 </li>
-                <form class="form-inline position-relative" method="get">
-                    <input class="form-control buscador " type="search" placeholder="Buscar Tarea" aria-label="Search" name="search">
-                    <i class="fa fa-search" aria-hidden="true"><button type="submit"></button></i>
+                <form class="form-inline position-relative">
+                    <input class="form-control buscador " type="search" placeholder="Buscar Tarea" aria-label="Search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
 
                 </form>
             </ul>
@@ -105,6 +102,12 @@ $args = arg($_GET["cat"],$_GET["tax"],$_GET["search"],$_GET["location"]);
                 <!-- card -->
                       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php $i=0;
+                      $args = array (
+                         'post_type' => 'job_listing',
+                         'posts_per_page' => 10000,
+                         'post_status' => 'publish'
+
+                      ); 
                     $loop = new WP_Query( $args ); 
                     while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>                     
                             <a class="av-link <?php if($i==0){ echo "active";} ?> card-job" id="v-pills-<?php echo get_the_ID();?>-tab" data-toggle="pill" href="#v-pills-<?php echo get_the_ID();?>" role="tab" aria-controls="v-pills-<?php echo get_the_ID();?>" aria-selected="false">
