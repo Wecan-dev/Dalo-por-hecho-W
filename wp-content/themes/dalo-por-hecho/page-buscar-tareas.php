@@ -216,6 +216,9 @@ $args = arg($_GET["cat"],$_GET["tax"],$_GET["search"],$_GET["location"]);
                                                 <div class="respnse">
                                                     <a href="">Mostrar menos</a>
                                                     <a href="" class="ml-auto"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Responder oferta</a>
+                                                    <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ 
+                                                        echo do_shortcode('[wdgk_donation]');  
+                                                    } ?>                                                    
                                                 </div>
                                             </div>
                                         </div>

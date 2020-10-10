@@ -43,9 +43,19 @@
 		new WOW().init();
 	</script>	
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
+
+    
+    var value_ofertar_monto =  document.getElementById("ofertar_monto").value;
+    var porcent = ((value_ofertar_monto*0.10);
+    var sumat = (porcent+value_ofertar_monto);
+    $(".wdgk_donation").val(sumat);
+    $('.wdgk_donation').prop('disabled', true);
+
     $('#key').on('keyup', function() {
         var key = $(this).val();        
         var dataString = 'key='+key;
