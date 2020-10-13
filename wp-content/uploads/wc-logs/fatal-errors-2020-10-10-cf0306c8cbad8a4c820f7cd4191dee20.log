@@ -1,0 +1,28 @@
+2020-10-10T05:26:58+00:00 CRITICAL syntax error, unexpected '->' (T_OBJECT_OPERATOR) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 161
+
+2020-10-10T05:27:10+00:00 CRITICAL syntax error, unexpected '->' (T_OBJECT_OPERATOR) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 161
+
+2020-10-10T05:42:13+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\wp-db.php on line 2024
+
+2020-10-10T05:54:28+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\cache.php on line 126
+
+2020-10-10T06:07:44+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\shortcodes.php on line 529
+
+2020-10-10T06:10:08+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 233
+
+2020-10-10T06:26:34+00:00 CRITICAL Uncaught Error: Call to undefined function wchoget_the_author_meta() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php:232
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 232
+
+2020-10-10T07:08:25+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\wp-db.php on line 2024
+
+2020-10-10T07:47:21+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\wp-db.php on line 2024
+
+2020-10-10T07:54:41+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\wp-db.php on line 2024
+
+2020-10-10T08:01:25+00:00 CRITICAL Maximum execution time of 360 seconds exceeded in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\wp-db.php on line 2024
+

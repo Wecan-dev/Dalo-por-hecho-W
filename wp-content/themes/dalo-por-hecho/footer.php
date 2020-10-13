@@ -43,19 +43,10 @@
 		new WOW().init();
 	</script>	
 
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 <script>
-$(document).ready(function() {
-
-    
-    var value_ofertar_monto =  document.getElementById("ofertar_monto").value;
-    var porcent = ((value_ofertar_monto*0.10);
-    var sumat = (porcent+value_ofertar_monto);
-    $(".wdgk_donation").val(sumat);
-    $('.wdgk_donation').prop('disabled', true);
-
+$(document).ready(function() {     
+                   
     $('#key').on('keyup', function() {
         var key = $(this).val();        
         var dataString = 'key='+key;
@@ -111,10 +102,50 @@ $(document).ready(function() {
             }
         });
     });
+    
 
 
+$('#note_description').appendTo('.variation');
+    
 }); 
-</script>	
+
+    function monto_salary2(tile_tarea,name_tarea,id_tarea,email_empleador,name_empleado,id_empleado,salary){ 
+       $("input#field_ccdeo").val(name_tarea);
+       $("input#field_vqrer").val(tile_tarea);
+       $("input#field_a9ti0").val(id_tarea);
+       $("input#field_gvep8").val(email_empleador);
+       $("input#field_urvk3").val(name_empleado);
+       $("input#field_xjqxf").val(id_empleado);
+       $("input#field_41hfd").val(salary);
+    } 
+
+    function function_donation(salary_donation,array_note){
+
+       $('.wdgk_donation').prop('disabled', true);
+       var value_ofertar_monto =  salary_donation;
+       var porcent = (value_ofertar_monto*0.10);
+       var suma = parseFloat(porcent)+parseFloat(value_ofertar_monto);
+       $("input.wdgk_donation").val(suma);
+
+       $("textarea#w3mission").val(array_note);
+       $('textarea#w3mission').prop('hidden', true);       
+
+       //$("input#field_41hfd").val(salary);
+    }    
+
+//
+</script>
+ <!-- Modal Donation-->
+<div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">  
+        <div class="modal-body">
+         <?php  echo do_shortcode('[wdgk_donation]');  ?>
+        </div>         
+    </div>
+ </div> 
+</div>	
+
 </body>
 <?php wp_footer(); ?>
 </html>	

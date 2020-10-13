@@ -20,7 +20,7 @@ html {
 footer {
   background-color: black;
   position: absolute;
-  bottom: 0;
+ /* bottom: 0;*/
   width: 100%;
   color: white;
 }
@@ -2484,3 +2484,6 @@ fieldset.fieldset-create_account_email {
     width: 100%;
     float: left;
 }    
+.variation-Description1{
+	display: none;
+}
