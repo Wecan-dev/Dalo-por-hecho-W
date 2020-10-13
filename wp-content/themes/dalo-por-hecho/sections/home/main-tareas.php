@@ -20,7 +20,7 @@
 			<?php } ?>
     <?php } ?>  
 
-            <a class="main-tareas_item" style="margin-top: -3rem;">
+            <a class="main-tareas_item" href="<?php echo get_home_url() ?>/categorias"  style="margin-top: -3rem;">
                 <div class="main-tareas_item-content ">
                 <img src="https://daloporhecho.cl/wp-content/uploads/2020/09/Enmascarar-grupo-9.png" alt="icono">
                 <p>Otros</p>

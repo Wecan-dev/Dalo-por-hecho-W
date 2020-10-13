@@ -20,7 +20,10 @@ html {
 footer {
   background-color: black;
   position: absolute;
+  bottom: -10rem;
+
  /* bottom: 0;*/
+
   width: 100%;
   color: white;
 }
@@ -1190,6 +1193,8 @@ input[type="checkbox"]:checked::before {
 }
 
 @media (max-width: 767px) {
+
+
 	.sign-content h3 {
 		font-size: 40px;
 	}
@@ -2375,7 +2380,7 @@ fieldset.fieldset-create_account_email {
 	border: 2px solid #ec8603;
 }
 .main-soporte{
-	padding: 5rem 0;
+	padding: 8rem 0 14rem 0;
 }
 
 .main-categories{
