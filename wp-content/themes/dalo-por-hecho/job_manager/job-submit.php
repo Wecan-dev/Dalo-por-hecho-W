@@ -109,7 +109,9 @@ if (strpos($url, '?') !== false) {
 														</div>
 													</div>
 													<div class="form-group start">
-                                                        <input type="text" name="job_location" id="job_location"  placeholder="e.g. &quot;London&quot;" />
+                                                       <!-- <input type="text" name="job_location" id="job_location"  placeholder="e.g. &quot;London&quot;" />-->
+                                                        <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Buscar...">
+                                                        <div id="suggestions"></div>
 													</div>
 													
 													<div class="form-group start">

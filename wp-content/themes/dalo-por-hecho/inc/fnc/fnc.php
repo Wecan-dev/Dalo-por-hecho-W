@@ -212,4 +212,63 @@ function cut_text($text, $le)
          } 
 }
 
+/********************Arg **********************/
+
+function arg($cat,$tax,$search,$location){ 
+
+  if ($cat == NULL && $search == NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+      'post_status' => 'publish',
+     // 'paged' => $paged,
+      //'posts_per_page' =>12,
+    );
+  }
+
+  if ($cat != NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+     // 'paged' => $paged,
+     // 'posts_per_page' => 12,        
+      'post_status' => 'publish',
+      'tax_query' => array(
+      'relation'=>'AND', // 'AND' 'OR' ...
+        array(
+        'taxonomy'        => $tax,
+        'field'           => 'slug',
+        'terms'           => array($cat),
+        'operator'        => 'IN',
+        )),
+    );
+  } 
+        
+  if ($search != NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+      'post_status' => 'publish',
+      's' => $search,
+    );
+  }
+
+  if ($location != NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+      'post_status' => 'publish',
+      'meta_query' => array(
+      'relation'=>'AND', // 'AND' 'OR' ...
+        array(
+        'key' => '_job_location',
+        'value' => $location,
+        'compare' => 'LIKE',
+        )),
+    );    
+  }
+
+  return $args; 
+} 
+
 ?>

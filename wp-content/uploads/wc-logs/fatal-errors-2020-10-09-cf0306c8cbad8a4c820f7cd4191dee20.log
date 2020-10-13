@@ -1,0 +1,121 @@
+2020-10-09T03:29:58+00:00 CRITICAL Uncaught Error: Call to undefined function get_the_field() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php:39
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 39
+
+2020-10-09T03:29:58+00:00 CRITICAL Uncaught Error: Call to undefined function get_the_field() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php:39
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 39
+
+2020-10-09T03:29:59+00:00 CRITICAL Uncaught Error: Call to undefined function get_the_field() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php:39
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 39
+
+2020-10-09T03:29:59+00:00 CRITICAL Uncaught Error: Call to undefined function get_the_field() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php:39
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 39
+
+2020-10-09T04:18:43+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:18:43+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:18:43+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:18:43+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:15+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:16+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:16+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:17+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:17+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:17+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:18+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:23+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:47+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:47+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:48+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:49+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:50+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:50+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:55+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:55+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:57+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:57+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:57+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:19:57+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:21:37+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:21:38+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:21:38+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:21:38+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:21:59+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:22:18+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:22:19+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:22:19+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:22:19+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:22:46+00:00 CRITICAL syntax error, unexpected '' data="'' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 71
+
+2020-10-09T04:36:56+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 268
+
+2020-10-09T04:36:56+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 268
+
+2020-10-09T04:36:57+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 268
+
+2020-10-09T04:36:57+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 268
+
+2020-10-09T04:37:57+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 268
+
+2020-10-09T04:38:54+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 273
+
+2020-10-09T04:39:58+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function arg(), 3 passed in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 25 and exactly 4 expected in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:217
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php(25): arg(NULL, NULL, 'ayudante')
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#4 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 217
+

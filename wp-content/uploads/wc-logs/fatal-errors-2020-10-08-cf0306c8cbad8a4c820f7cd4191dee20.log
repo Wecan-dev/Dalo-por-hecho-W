@@ -1,0 +1,28 @@
+2020-10-08T04:51:54+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:51:54+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:51:57+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:51:57+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:51:57+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:52:53+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:52:55+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:52:55+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:52:56+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T04:52:56+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-ajax.php on line 15
+
+2020-10-08T15:46:39+00:00 CRITICAL Uncaught Error: Call to undefined function arg() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php:25
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 25
+

@@ -29,7 +29,7 @@ if (meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) !
 
 $porcent = (($cont1 + $cont2 + $cont3 + $cont4 + $cont5 + $cont6 + $cont7 + $cont8)/8)*100;
 
-
+$user_actual = $current_user->ID;  
 
 if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POST['action'] == 'update-user' ) {
 
@@ -120,6 +120,10 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                             <a class="nav-link" id="v-pills-tareas-tab" data-toggle="pill" href="#v-pills-tareas" role="tab"
                                 aria-controls="v-pills-three" aria-selected="false">Tareas Publicadas</a>                               
                             <?php } ?>  
+                            <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ ?>
+                            <a class="nav-link" id="v-pills-notification-tab" data-toggle="pill" href="#v-pills-notification" role="tab"
+                                aria-controls="v-pills-three" aria-selected="false">Notificaciones</a>                               
+                            <?php } ?>                             
                             <a href="<?php echo wp_logout_url( home_url()); ?>" class="nav-link" 
                                  aria-selected="false">Salir</a>   
                                 
@@ -128,6 +132,108 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                     </div>
                     <div class="col-md-8 main-content__tabs">
                         <div class="tab-content" id="v-pills-tabContent">
+
+                        <div class="tab-pane fade " id="v-pills-notification" role="tabpanel"
+                                aria-labelledby="v-pills-tareas-tab">
+                                <div id="accordion" role="tablist">
+                                    <div class="card">
+                                        <div class="card-header top-headline" role="tab" id="headingOne">
+                                            <h5>
+                                                
+                                                   Notificaciones
+
+                                            
+                                            </h5>
+                                <?php 
+                                $args = 
+                                array(
+                                  'post_type' => 'job_listing',
+                                  'post_status' => 'publish',
+                                  'post_author' => $current_user->ID,
+
+                                ); 
+                                $loop = new WP_Query( $args ); 
+                                while ( $loop->have_posts() ) : $loop->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10);
+                                $user_tarea = get_the_author_meta( 'ID' ); $title_tarea = get_the_title(); $id_tarea = get_the_ID(); $monto_salary = get_post_meta( get_the_ID(), '_job_salary', true ); $email_empleador = get_the_author_meta( 'user_email' );
+                                $args3 = array (
+                                    'post_type' => 'postulados',
+                                    'meta_query' => array(
+                                    'relation'=>'AND', // 'AND' 'OR' ...
+                                    array(
+                                       'key' => 'ofertar_id_tarea_publicada',
+                                       'value' => get_the_ID(),
+                                       'operator' => 'IN',
+                                    )),                     
+                                ); 
+                                $loop3 = new WP_Query( $args3 ); 
+                                while ( $loop3->have_posts() ) : $loop3->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10); ?>
+                                
+                                <div class="ofertas_conetnt">
+                                    <div class="datos_name">
+                                        <div class="row border-n mb-5">
+                                            <div class="col-md-12">
+                                                <div class="ofertas_titulos mb-3">
+                                                    <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
+                                                    <div class="flex ml-3">
+                                                        <span><?php echo meta_user_value( 'first_name',  get_the_author_meta( 'ID' ) ); ?></span>
+                                                        <div>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <!-- <p>5.0 (3)</p> -->
+
+                                                        </div>
+                                                    </div>
+                                                    <p class="ml-auto">Hace 15 minutos <?php echo $user_tarea; ?></p>
+                                                </div>
+                                                <p><?php the_field('ofertar_message_empleado'); ?></p>
+                                                <div class="cube mb-4"> 
+                                                    <p>$ <?php the_field('ofertar_monto_tarea'); ?></p>
+                                                </div>
+                                                <div class="respnse">
+                                                <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  $current_user->ID )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
+                                                    <?php                                                   
+
+                                                    $value_var_array = str_replace("<br>",":",$var_array); 
+                                                    $sinparametros= explode(':', $value_var_array, 14);
+                                                    if ($sinparametros[3] =="124") {
+                                                      '<p>'.$sinparametros[3].'</p>';
+                                                  }
+                                                  ?> 
+                                                  
+                                                  <script>
+                                                    $(document).ready(function() {
+                                                        var array_note = "<?= $var_array ?>"; 
+                                                       // $("textarea#w3mission").val(array_note);
+                                                        //$('textarea#w3mission').prop('hidden', true);
+                                                    }); 
+                                                </script>    
+
+                                                    <a href="">Mostrar menos </a>                                                   
+                                                    <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" && $user_actual == $user_tarea ){ 
+                                                        ?>
+                                                        <a href="" class="ml-auto" data-toggle="modal" data-target="#modal_donation" onclick="function_donation('<?php echo get_field('ofertar_monto_tarea') ?>','<?php echo $var_array ?>');"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Responder oferta</a> 
+                                                    <?php } ?> 
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="preguntas mb-4">
+                                            <p>Preguntas (0)</p>
+                                            <textarea name="" id="" cols="37" rows="5" placeholder="Hacer preguntas"></textarea>
+                                        </div>
+                                    </div>
+                                </div>                                
+                               <?php endwhile; ?> 
+                               <?php endwhile; ?>                                            
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="tab-pane fade " id="v-pills-tareas" role="tabpanel"
                                 aria-labelledby="v-pills-tareas-tab">
                                 <div id="accordion" role="tablist">
