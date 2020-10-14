@@ -107,9 +107,9 @@ $user_actual = $current_user->ID;
             <div class="col-lg-4 col-md-12 scroll-admin order-last-xs ">
                 <!-- card -->
                       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <?php $i=0;
-                    $loop = new WP_Query( $args ); 
-                    while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>                     
+                       <?php $i=0;
+                       $loop = new WP_Query( $args ); 
+                       while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>                     
                             <a class="av-link <?php if($i==0){ echo "active";} ?> card-job" id="v-pills-<?php echo get_the_ID();?>-tab" data-toggle="pill" href="#v-pills-<?php echo get_the_ID();?>" role="tab" aria-controls="v-pills-<?php echo get_the_ID();?>" aria-selected="false">
                                 <div class="content-tetimonios admin-card">
                                     <div class="row">
@@ -140,7 +140,7 @@ $user_actual = $current_user->ID;
                                 </div>
                             </a>  
                         
-                    <?php $i = $i+1; endwhile; ?>    
+                         <?php $i = $i+1; endwhile; ?>    
                     </div>   
                 <!-- card -->
             </div><!-- col-4 -->

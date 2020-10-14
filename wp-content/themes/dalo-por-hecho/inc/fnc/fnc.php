@@ -117,6 +117,17 @@ function date_new($fecha){
     return $dia.' '.$num.', '.$mes;
 }
 
+/***************** Date Order *****************/
+function date_order_new($fecha){
+    $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
+    $dia = $dias[date('d', strtotime($fecha))];
+    $num = date("j", strtotime($fecha));
+    $anno = date("Y", strtotime($fecha));
+    $mes = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+    $mes = $mes[(date('m', strtotime($fecha))*1)-1];
+    return $dia.' '.$num.' de '.$mes. ' del '.$anno;
+}
+
 /***************** Meta *****************/
 function meta_value( $meta_key, $post_id ){
             global $wpdb;  
@@ -271,4 +282,31 @@ function arg($cat,$tax,$search,$location){
   return $args; 
 } 
 
-?>
+/********************Order Itemmeta **********************/
+
+function order_itemmeta($key,$id){ 
+            global $wpdb; 
+            $value = NULL; 
+            $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."woocommerce_order_items WHERE order_id = '$id' and order_item_type = 'line_item' "); 
+            foreach($result_link as $r)
+            {
+                     $order_item_id = $r->order_item_id; 
+                     $result_link2 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."woocommerce_order_itemmeta WHERE meta_key = '$key' and order_item_id = '$order_item_id' "); 
+                    foreach($result_link2 as $r2)
+                    {
+                            $value = $r2->meta_value;                      
+                    }                                           
+            }
+            return $value;
+}  
+
+/*********************Crypt Array Note ******************/
+
+function descrypt_note($array_note,$wp_pedido_id,$key){
+  $value_var_array = str_replace("<br>",":",$array_note); 
+  $sinparametros= explode(':', $value_var_array, 14);
+  if ($key == "name_tarea") {
+    return $sinparametros[1];
+  }
+  
+}
