@@ -94,9 +94,12 @@ $user_actual = $current_user->ID;
                     </div>
                 </li>
                 <form class="form-inline position-relative" method="get">
-                    <input class="form-control buscador " type="search" placeholder="Buscar Tarea" aria-label="Search" name="search">
-                    <i class="fa fa-search" aria-hidden="true"><button type="submit"></button></i>
-
+					<div class="main-form__icons">
+						 <input class="form-control buscador " type="search" placeholder="Buscar Tarea" aria-label="Search" name="search">
+						<i class="fa fa-search" aria-hidden="true"></i>
+						<button type="submit"></button>	
+					</div>
+                   
                 </form>
             </ul>
         </div>
@@ -150,8 +153,9 @@ $user_actual = $current_user->ID;
             <div class="tab-content" id="v-pills-tabContent">
             <?php $loop2 = new WP_Query( $args ); $j = 0;
             while ( $loop2->have_posts() ) : $loop2->the_post(); $user_tarea = get_the_author_meta( 'ID' ); $title_tarea = get_the_title(); $id_tarea = get_the_ID(); $monto_salary = get_post_meta( get_the_ID(), '_job_salary', true ); $email_empleador = get_the_author_meta( 'user_email' ); ?>    
-             <div class="tab-pane fade <?php if($j==0){ echo "show active";} ?>" id="v-pills-<?php echo get_the_ID();?>" role="tabpanel" aria-labelledby="v-pills-<?php echo get_the_ID();?>-tab">        
-                    <div class="col-12 ">
+             <div class="tab-pane fade <?php if($j==0){ echo "show active";} ?>" id="v-pills-<?php echo get_the_ID();?>" role="tabpanel" aria-labelledby="v-pills-<?php echo get_the_ID();?>-tab">  
+				 <div class="row">
+                    <div class="col-md-8">
                         <h3 class="mb-3"><?php wpjm_the_job_title(); ?></h3>
                         <div class="contenido">
                             <div class="datos_name">
@@ -174,13 +178,29 @@ $user_actual = $current_user->ID;
                             <div class="datos_genereal">
                                 <div class="row ">
                                     <div class="col-md-6">
-                                        <p> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt="">
-                                            localizacion
-                                        </p>
-                                        <span><?php the_job_location( false ); ?></span>
+										<div class="main-content__localization">
+										
+											<img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt="">	
+											<div class="main-content__localizationtext">
+												<p> 
+													Localización
+												</p>
+												 <span><?php the_job_location( false ); ?></span>
+											</div>
+										</div>
+                                        
+                                        
                                     </div>
                                     <div class="col-md-6">
-                                        <p> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt="">Fecha del evento</p><span><?php echo date_new(get_post_time( 'Y-m-d' )); ?></span>
+										<div class="main-content__localization">
+											<img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt="">
+											<div class="main-content__localizationtext">
+												<p> 
+													Fecha del evento
+												</p>
+												<span><?php echo date_new(get_post_time( 'Y-m-d' )); ?></span>
+											</div>
+                                      	</div>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +287,7 @@ $user_actual = $current_user->ID;
                         </div>
                     </div>
 
-                    <div class="col-12 datos_presupuesto order-last-xs">
+                    <div class="col-md-4 datos_presupuesto order-last-xs">
                         <ul>
                             <li><a href="">Seguir</a></li>
                             <li><a href="">Ver mapa</a></li>
@@ -284,7 +304,12 @@ $user_actual = $current_user->ID;
                             <?php } ?>   
                         </div>
                     </div>
+				 </div>
+				</div>
                 </div><!--tab-->
+				</div>
+				</div>
+
 
                 <!-- Modal Inicio de sesion -->
                 <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -301,7 +326,7 @@ $user_actual = $current_user->ID;
 
         </div><!--tab principal -->
         </div>
-
+</div>
         </div>
     </div>       
 
