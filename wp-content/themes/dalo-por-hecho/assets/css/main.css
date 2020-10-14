@@ -16,7 +16,9 @@ html {
   min-height: 100%;
   position: relative;
 }
-
+.navbar-toggler:focus {
+	background-color: transparent;
+}
 footer {
   background-color: black;
   position: absolute;
@@ -895,6 +897,7 @@ button:focus,
 .main-modal__close{
 	position: absolute;
     right: .3rem;
+	z-index: 9999;
 }
 .modal-content {
 	border-radius: 10px;
@@ -1308,6 +1311,10 @@ input {
 }
 .main-content__localization img.icons{
 	margin-right: 10px;
+}
+.dropdown-menu__scroll{
+	height: 300px;
+	overflow: scroll;
 }
 .admin-card .price {
 	font-size: 1.5rem;

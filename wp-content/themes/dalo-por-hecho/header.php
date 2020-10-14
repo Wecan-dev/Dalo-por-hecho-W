@@ -138,12 +138,12 @@
                                     </p>
                                 </div>
 
-                                <center>
+                                <!--<center>
                                     <div class="main-login__line">
                                         <p class="">Inicia sesión con</p>
                                     </div>
 
-                                </center>
+                                </center>-->
                                 
                             </form>
                             <?php do_action( 'woocommerce_login_form' ); ?>

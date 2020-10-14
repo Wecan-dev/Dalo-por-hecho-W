@@ -55,7 +55,7 @@ $user_actual = $current_user->ID;
                         class='nav-link dropdown-toggle nav-link-black ' data-toggle='dropdown'>
                         Categorías
                     </a>
-                    <div aria-labelledby='dropdownMenuButton' class='dropdown-menu'>
+                    <div aria-labelledby='dropdownMenuButton' class='dropdown-menu dropdown-menu__scroll'>
                         <div class='content-drop'>
                             <?php
                             global $wpdb;
@@ -305,23 +305,12 @@ $user_actual = $current_user->ID;
                         </div>
                     </div>
 				 </div>
-				</div>
+				
                 </div><!--tab-->
-				</div>
-				</div>
+				
 
 
-                <!-- Modal Inicio de sesion -->
-                <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">  
-                      <div class="modal-body">
-                         <?php echo do_shortcode('[formidable id=2]');  ?>
-                      </div>         
-                    </div>
-                  </div> 
-                </div>                 
-
+              
        <?php $j = $j+1; endwhile; ?>
 
         </div><!--tab principal -->
@@ -329,6 +318,16 @@ $user_actual = $current_user->ID;
 </div>
         </div>
     </div>       
+  <!-- Modal Inicio de sesion -->
+<div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">  
+			<div class="modal-body">
+				<?php echo do_shortcode('[formidable id=2]');  ?>
+			</div>         
+		</div>
+	</div> 
+</div>                 
 
 
 
