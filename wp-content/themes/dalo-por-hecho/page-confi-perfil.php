@@ -957,4 +957,5 @@ $(document).ready(function () {
 
 
 </script>
+<?php get_template_part('sections/home/main-modal-step'); ?>
 <?php get_footer(); ?>    

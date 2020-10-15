@@ -15,6 +15,30 @@
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
+	.scroll-admin{
+		height: 60vh;
+	}
+	.main-content__taksdesktop{
+		display: none;
+	}
+	.main-content__localization{
+		justify-content:center;
+	}
+	.main-presupuesto__mobile{
+		display:block;
+	}
+	.main-presupuest__desktop{
+		display:none;
+	}
+	.buscar_tareas-t{
+		padding: 1rem;
+	}
+	.main-task__title{
+		text-align: center;
+	}
+	.main-tareas_item{
+		margin-bottom: 0px;
+	}
 	.main-login__line::before{
 		left:20%;
 	}
@@ -312,7 +336,7 @@
 		display: none;
 	}
 	.buscar_tareas {
-		margin-top: 100px;
+		margin: 100px 0;
 	}
 	.order-last-xs {
 		order: 13;

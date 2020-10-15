@@ -71,22 +71,22 @@ $user_actual = $current_user->ID;
                         </div>
                     </div>
                 </li>
-                <li class='nav-item dropdown dowms'>
-                    <a href='' aria-expanded='false' aria-haspopup='true'
+                <li class='nav-item '>
+                    <!--<a href='' aria-expanded='false' aria-haspopup='true'
                         class='nav-link dropdown-toggle nav-link-black ' data-toggle='dropdown'>
                        
-                    </a>
+                    </a>-->
                     <div aria-labelledby='dropdownMenuButton' class='dropdown-menu'>
                         <div class='content-drop'>
 
                         </div>
                     </div>
                 </li>
-                <li class='nav-item dropdown dowms mr-auto'>
-                    <a href='' aria-expanded='false' aria-haspopup='true'
+                <li class='nav-item  mr-auto'>
+                    <!--<a href='' aria-expanded='false' aria-haspopup='true'
                         class='nav-link dropdown-toggle nav-link-black ' data-toggle='dropdown'>
                        
-                    </a>
+                    </a>-->
                     <div aria-labelledby='dropdownMenuButton' class='dropdown-menu'>
                         <div class='content-drop'>
  
@@ -107,8 +107,14 @@ $user_actual = $current_user->ID;
 
     <div class="container buscar_tareas buscar_tareas-t">
         <div class="row">
-            <div class="col-lg-4 col-md-12 scroll-admin order-last-xs ">
+            <div class="col-lg-4 col-md-12 scroll-admin ">
+				<h4>
+					Tareas
+					<i class="fa fa-angle-right"></i>
+				</h4>
                 <!-- card -->
+				<div>
+								
                       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php $i=0;
                     $loop = new WP_Query( $args ); 
@@ -144,7 +150,8 @@ $user_actual = $current_user->ID;
                             </a>  
                         
                     <?php $i = $i+1; endwhile; ?>    
-                    </div>   
+                    </div> 
+				<div>
                 <!-- card -->
             </div><!-- col-4 -->
 
@@ -156,7 +163,7 @@ $user_actual = $current_user->ID;
              <div class="tab-pane fade <?php if($j==0){ echo "show active";} ?>" id="v-pills-<?php echo get_the_ID();?>" role="tabpanel" aria-labelledby="v-pills-<?php echo get_the_ID();?>-tab">  
 				 <div class="row">
                     <div class="col-md-8">
-                        <h3 class="mb-3"><?php wpjm_the_job_title(); ?></h3>
+                        <h3 class="mb-3 main-task__title"><?php wpjm_the_job_title(); ?></h3>
                         <div class="contenido">
                             <div class="datos_name">
                                 <div class="row">
@@ -204,6 +211,19 @@ $user_actual = $current_user->ID;
                                     </div>
                                 </div>
                             </div>
+							<div class=" datos_presupuesto main-presupuesto__mobile">
+								<div class="presupuesto_minicard">
+									<p>Presupuesto</p>
+									<span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
+
+									<?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
+										<a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
+									<?php }else { ?>
+									   <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
+									   <label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
+									<?php } ?>   
+								</div>
+							</div>
                             <!-- descripcion -->
                             <p class="description"><?php wpjm_the_job_description(); ?></p>
                             <h6 class="">Detalle</h6>
@@ -288,21 +308,24 @@ $user_actual = $current_user->ID;
                     </div>
 
                     <div class="col-md-4 datos_presupuesto order-last-xs">
-                        <ul>
+                        <!--<ul>
                             <li><a href="">Seguir</a></li>
                             <li><a href="">Ver mapa</a></li>
-                        </ul>
-                        <div class="presupuesto_minicard">
-                            <p>Presupuesto</p>
-                            <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
-                            
-                            <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
-                                <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
-                            <?php }else { ?>
-                               <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
-                               <label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
-                            <?php } ?>   
-                        </div>
+                        </ul>-->
+						<div class="main-presupuest__desktop">
+							 <div class="presupuesto_minicard">
+								<p>Presupuesto</p>
+								<span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
+
+								<?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
+									<a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
+								<?php }else { ?>
+								   <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
+								   <label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
+								<?php } ?>   
+							</div>
+						</div>
+                       
                     </div>
 				 </div>
 				
@@ -328,7 +351,7 @@ $user_actual = $current_user->ID;
 		</div>
 	</div> 
 </div>                 
-
+<?php get_template_part('sections/home/main-modal-step'); ?>
 
 
     <?php get_footer(); ?>

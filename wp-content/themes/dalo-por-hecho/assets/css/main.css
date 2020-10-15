@@ -899,6 +899,9 @@ button:focus,
     right: .3rem;
 	z-index: 9999;
 }
+.main-modal__close:focus{
+	background-color: transparent;
+}
 .modal-content {
 	border-radius: 10px;
 }
@@ -1299,6 +1302,9 @@ input {
 	font-weight: 300;
 	font-size: 13px;
 	padding-left: 20px;
+}
+.main-presupuesto__mobile{
+	display:none;
 }
 .main-content__localization{
 	display: flex;

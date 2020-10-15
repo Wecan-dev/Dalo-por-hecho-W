@@ -46,21 +46,36 @@
 
 					<ul class="navbar-nav ">
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo get_home_url() ?>/soporte">Soporte</a>
+							<a class="nav-link" href="">Soporte</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#funciona">Como funciona</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item dropdown dowms" style="color: #ec8603;margin-top: 5px;">
 							<?php if( is_user_logged_in() != NULL):?>
-							<a class="nav-link naranja-color" href="<?php echo get_home_url() ?>/confi-perfil"> 
+							
+						
+							<div aria-labelledby='dropdownMenuButton' class='dropdown-menu' >
+								<div class='content-drop'>
+									<a class='dropdown-item' href='<?php echo wp_logout_url( home_url() ); ?>'>
+										<p>
+											Cerrar Sesión
+										</p>
+									</a>
+								</div>
+							</div>
 							<?php else: ?>
-							<a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal"> 
+							<a class="nav-link naranja-color" style="margin-top:-5px;" href="#" data-toggle="modal" data-target="#exampleModal"> 
 							<?php endif; ?>
 							
-                        <?php if (is_user_logged_in()){
-                        	echo "Mi cuenta";
-                            echo get_avatar( $current_user->user_email, 30 ); 
+                        <?php if (is_user_logged_in()){ ?>
+								<a class="naranja-color" href='<?php echo get_home_url() ?>/confi-perfil'> 
+								<?php 
+									echo "Mi cuenta";
+                            		echo get_avatar( $current_user->user_email, 30 );
+								?>
+								</a>
+                        	 <?php
                         }else{ ?>
                             ingresa
                             <img class="user avatar" src="<?php echo get_template_directory_uri();?>/assets/img/user.png" alt=""></a>
