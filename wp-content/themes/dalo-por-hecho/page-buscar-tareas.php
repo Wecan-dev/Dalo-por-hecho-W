@@ -306,9 +306,9 @@ $user_actual = $current_user->ID;
                     </div>
 				 </div>
 				</div>
-                </div><!--tab-->
-				</div>
-				</div>
+                <!--</div>-->
+				<!--</div>-->
+				<!--</div>-->
 
 
                 <!-- Modal Inicio de sesion -->
