@@ -1,4 +1,4 @@
-    <?php  get_template_part('sections/home/modal-step'); ?>
+    
 	<footer>
 		<ul class="footer">
 			<li><a href=""><img class="logo-f" src="<?php echo get_template_directory_uri();?>/assets/img/logo-blanco.png"></a></li>

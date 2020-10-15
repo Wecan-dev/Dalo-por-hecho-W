@@ -38,7 +38,7 @@ defined( 'ABSPATH' ) || exit;
 			</p>
 
 		<?php else : ?>
-
+<?php echo do_shortcode('[formidable id=6]');  ?>
 			<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
 			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
@@ -86,3 +86,9 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 
 </div>
+
+<script>
+$(document).ready(function() { 
+	$("#btn_modal").trigger("click");
+}	
+</script>
