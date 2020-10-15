@@ -241,7 +241,7 @@ $user_actual = $current_user->ID;
 
                                                         </div>
                                                     </div>
-                                                    <p class="ml-auto">Hace 15 minutos</p>
+                                                    <p class="ml-auto"><?php the_job_publish_date_postu(); ?></p>
                                                 </div>
                                                 <p><?php the_field('ofertar_message_empleado'); ?></p>
                                                 <div class="cube mb-4"> 

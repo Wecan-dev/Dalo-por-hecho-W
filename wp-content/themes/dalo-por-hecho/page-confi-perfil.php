@@ -149,12 +149,15 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 array(
                                   'post_type' => 'job_listing',
                                   'post_status' => 'publish',
-                                  'post_author' => $current_user->ID,
+                                  'author' => $current_user->ID,
 
                                 ); 
                                 $loop = new WP_Query( $args ); 
                                 while ( $loop->have_posts() ) : $loop->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10);
                                 $user_tarea = get_the_author_meta( 'ID' ); $title_tarea = get_the_title(); $id_tarea = get_the_ID(); $monto_salary = get_post_meta( get_the_ID(), '_job_salary', true ); $email_empleador = get_the_author_meta( 'user_email' );
+                                
+                                the_title();
+
                                 $args3 = array (
                                     'post_type' => 'postulados',
                                     'meta_query' => array(
@@ -173,6 +176,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                         <div class="row border-n mb-5">
                                             <div class="col-md-12">
                                                 <div class="ofertas_titulos mb-3">
+
                                                     <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
                                                     <div class="flex ml-3">
                                                         <span><?php echo meta_user_value( 'first_name',  get_the_author_meta( 'ID' ) ); ?></span>
@@ -185,7 +189,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 
                                                         </div>
                                                     </div>
-                                                    <p class="ml-auto">Hace 15 minutos <?php echo $user_tarea; ?></p>
+                                                    <p class="ml-auto"><?php the_job_publish_date_postu(); ?> <?php echo $user_tarea; ?></p>
                                                 </div>
                                                 <p><?php the_field('ofertar_message_empleado'); ?></p>
                                                 <div class="cube mb-4"> 
