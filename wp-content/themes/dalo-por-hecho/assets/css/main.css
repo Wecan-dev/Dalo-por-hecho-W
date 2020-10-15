@@ -832,6 +832,7 @@ button:focus,
 .form-control:focus {
 	outline: none;
 	box-shadow: none;
+	background-color: #ededed;
 }
 .form-control:disabled,
 .form-control[readonly] {
@@ -890,6 +891,10 @@ button:focus,
 	cursor: default;
 	border: 0;
 	border-bottom-color: transparent;
+}
+.main-modal__close{
+	position: absolute;
+    right: .3rem;
 }
 .modal-content {
 	border-radius: 10px;
@@ -1264,7 +1269,7 @@ input {
 }
 .nav_bottom ul a {
 	color: #353535 !important;
-	margin-left: 50px;
+	margin-right: 50px;
 }
 .navbar-nav .dropdown-menu {
 	position: absolute;
@@ -1290,7 +1295,19 @@ input {
 .admin-card .datos_card li:nth-child(3) {
 	font-weight: 300;
 	font-size: 13px;
-	padding-left: 26px;
+	padding-left: 20px;
+}
+.main-content__localization{
+	display: flex;
+	align-items: flex-start;
+}
+.main-content__localizationtext{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.main-content__localization img.icons{
+	margin-right: 10px;
 }
 .admin-card .price {
 	font-size: 1.5rem;
@@ -1339,6 +1356,7 @@ input {
 	background: #47c0d3;
 	padding: 3px 13px;
 	border-radius: 15px;
+	color: #fff;
 }
 .contenido .description {
 	font-weight: 300;
@@ -1355,6 +1373,7 @@ input {
 	margin: 0;
 	color: #0000006b;
 	font-weight: 400;
+	text-align: left;
 }
 
 .border-n {
@@ -1403,6 +1422,7 @@ input {
 .btn-oferta {
 	background: #ec8603 !important;
 	color: #fff !important;
+	border: 1px solid #ec8603;
 }
 .btn-oferta:hover {
 	background: #fff !important;
@@ -1531,11 +1551,17 @@ input {
 	margin-bottom: 0;
 }
 .cube {
-	width: 150px;
-	height: 100px;
-	background: #00000059;
-	border-radius: 10px;
+	background: #ededed;
+    border-radius: 10px;
+    padding: .8rem;
+    width: 75px;
 }
+.cube p{
+	margin-bottom:0;
+	color: #3e3e3e;
+	font-weight: 600;
+}
+
 .respnse {
 	display: flex;
 }
@@ -1550,10 +1576,13 @@ input {
 	border: 1px solid #0000004d;
 	font-weight: 300;
 	padding-left: 14px;
+	height: 70px;
+	font-size: 15px;
 }
 .datos_card .icons {
 	width: 15px;
 	height: 18px;
+	margin-right: 5px;
 }
 .chat {
 	position: fixed;
@@ -1563,8 +1592,17 @@ input {
 }
 .form-inline .fa-search {
 	position: absolute;
-	right: 15px;
-	color: #00000078;
+    right: 15px;
+    color: #00000078;
+    top: .8rem;
+}
+.main-form__icons button{
+	width: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: transparent;
+	border: transparent;
 }
 .vertical-tabs .nav-link.active:hover {
 	color: #353535 !important;
@@ -2109,6 +2147,14 @@ button.btn-d-estado-p.dropdown-toggle {
 	display: flex;
 	align-items: center;
 }
+.dropdown-item p{
+	transition: 0.3s ease-in-out;
+	margin-bottom:0;
+}
+.dropdown-item p:hover{
+	color: #ec8603;
+	transition: 0.3s ease-in-out;
+}
 a.nav-link.historial-pago-tab.active {
 	background: #fff;
 	color: #ec8603;
@@ -2308,6 +2354,10 @@ fieldset.fieldset-create_account_email {
 }
 .buscar_tareas-t{
 	padding: 1rem 0 3rem;
+}
+
+.main-form__icons{
+	
 }
 /**
 .job-manager-form{
