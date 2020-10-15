@@ -375,7 +375,7 @@ $user_actual = $current_user->ID;
 
                     
                 </div><!--tab-->
-				
+                
 
                 <!-- Modal Inicio de sesion -->
                 <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

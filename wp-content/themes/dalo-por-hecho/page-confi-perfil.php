@@ -149,12 +149,15 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 array(
                                   'post_type' => 'job_listing',
                                   'post_status' => 'publish',
-                                  'post_author' => $current_user->ID,
+                                  'author' => $current_user->ID,
 
                                 ); 
                                 $loop = new WP_Query( $args ); 
                                 while ( $loop->have_posts() ) : $loop->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10);
                                 $user_tarea = get_the_author_meta( 'ID' ); $title_tarea = get_the_title(); $id_tarea = get_the_ID(); $monto_salary = get_post_meta( get_the_ID(), '_job_salary', true ); $email_empleador = get_the_author_meta( 'user_email' );
+                                
+                                the_title();
+
                                 $args3 = array (
                                     'post_type' => 'postulados',
                                     'meta_query' => array(
@@ -173,6 +176,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                         <div class="row border-n mb-5">
                                             <div class="col-md-12">
                                                 <div class="ofertas_titulos mb-3">
+
                                                     <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
                                                     <div class="flex ml-3">
                                                         <span><?php echo meta_user_value( 'first_name',  get_the_author_meta( 'ID' ) ); ?></span>
@@ -185,7 +189,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 
                                                         </div>
                                                     </div>
-                                                    <p class="ml-auto">Hace 15 minutos <?php echo $user_tarea; ?></p>
+                                                    <p class="ml-auto"><?php the_job_publish_date_postu(); ?> <?php echo $user_tarea; ?></p>
                                                 </div>
                                                 <p><?php the_field('ofertar_message_empleado'); ?></p>
                                                 <div class="cube mb-4"> 
@@ -335,6 +339,29 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                             </div>
                             <div class="tab-pane fade  show active" id="v-pills-history" role="tabpanel"
                                 aria-labelledby="v-pills-history-tab">
+                                <?php $pf = 0;
+                                 $pedidos = get_posts( array(
+                                    'numberposts' => -1,
+                                    'meta_key'    => '_customer_user',
+                                    'meta_value'  => get_current_user_id(),
+                                    'post_type'   => wc_get_order_types(),
+                                    'post_status' => "wc-completed",
+
+                                    ) );
+                                    foreach ($pedidos as $pedido)
+                                    {
+                                        $wp_pedido = new WC_Order($pedido->ID);
+                                        $cant_pedidos = $cant_pedidos +1;
+                                        $gastado = $gastado + $wp_pedido->discount_total;
+                                        if ($pf < 1) {
+                                            $primera_fecha = $wp_pedido->date_created; 
+                                        }
+                                        $ultima_fecha = $wp_pedido->date_created;
+                                        $pf = $pf + 1;
+                                    }
+                                    $trans = "".$cant_pedidos." transacciones del ".date_order_new($primera_fecha)." al ".date_order_new($ultima_fecha).""; 
+                                    
+                                 ?>
                                 <div class="content-metodos-pago">
                                     <h5>Historial de pagos</h5>
 
@@ -454,12 +481,11 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                             <h6>A</h6>
                                                             <input class="cont-pago-estado-form_input" type="date">
                                                             <div class="cont-pago-estado-form-ganado">
-                                                                <h5>Ganado neto</h5>
-                                                                <p>000 $</p>
+                                                                <h5>Gastado neto</h5>
+                                                                <p><?php echo $gastado ?> $</p>
                                                             </div>
                                                         </div>
-                                                        <small>1 transacciones del 07 de noviembre del 2020 al 30 de
-                                                            noviembre del 2020</small>
+                                                        <small><?php echo $trans ?> </small>
                                                         <div class="tabla-pagos">
                                                             <table class="tabla-pagos_table">
                                                                 <thead>
@@ -470,40 +496,47 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                                         <th>Pago realizado</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="tabla-pagos_table_td">
-                                                                            <p>07/11/20</p>
-                                                                        </td>
-                                                                        <td class="tabla-pagos_table_td">
-                                                                            <p>Ayuda para cargar mobiliario</p>
-                                                                        </td>
-                                                                        <td class="tabla-pagos_table_td">
-                                                                            <p>
-                                                                            <div class="tabla-pagos_table-valoracion">
-                                                                                <div
-                                                                                    class="tabla-pagos_table-valoracion-div-g">
-                                                                                </div>
-                                                                                <div
-                                                                                    class="tabla-pagos_table-valoracion-div-n">
-                                                                                </div>
-                                                                                <div
-                                                                                    class="tabla-pagos_table-valoracion-div-n">
-                                                                                </div>
-                                                                                <div
-                                                                                    class="tabla-pagos_table-valoracion-div-n">
-                                                                                </div>
-                                                                                <div
-                                                                                    class="tabla-pagos_table-valoracion-div-n">
-                                                                                </div>
+                                                                <tbody>                                                                  
+                                                                    <?php
+                                                                    foreach ($pedidos as $pedido)
+                                                                    {
+                                                                       $wp_pedido = new WC_Order($pedido->ID);?>
+                                                                        <tr>
+                                                                            <td class="tabla-pagos_table_td">
+                                                                                <p><?php echo date("d/m/y",strtotime(get_post($sinparametros[3])->post_date));?></p>
+                                                                            </td>
+                                                                            <td class="tabla-pagos_table_td">
+                                                                                <p><?php echo descrypt_note(order_itemmeta('Description', $wp_pedido->id),$wp_pedido->id,'name_tarea') ?></p>
+                                                                            </td>
+                                                                            <td class="tabla-pagos_table_td">
+                                                                                <p>
+                                                                                <div class="tabla-pagos_table-valoracion">
+                                                                                    <div
+                                                                                        class="tabla-pagos_table-valoracion-div-g">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="tabla-pagos_table-valoracion-div-n">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="tabla-pagos_table-valoracion-div-n">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="tabla-pagos_table-valoracion-div-n">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="tabla-pagos_table-valoracion-div-n">
+                                                                                    </div>
 
-                                                                            </div>
-                                                                            </p>
-                                                                        </td>
-                                                                        <td class="tabla-pagos_table_td">
-                                                                            <p class="n-m">$ 20.000</p>
-                                                                        </td>
-                                                                    </tr>
+                                                                                </div>
+                                                                                </p>
+                                                                            </td>
+                                                                            <td class="tabla-pagos_table_td">
+                                                                                <p class="n-m">$ <?php if ($wp_pedido->discount_total > 0){echo $wp_pedido->discount_total;}else{ echo "000";} ?></p>
+                                                                            </td>
+                                                                        </tr>                                                                       
+
+                                                                   <?php } ?>                                                        
+
                                                                 </tbody>
                                                             </table>
                                                         </div>

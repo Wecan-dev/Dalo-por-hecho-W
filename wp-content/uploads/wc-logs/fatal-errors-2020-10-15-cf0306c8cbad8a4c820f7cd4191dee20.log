@@ -1,0 +1,10 @@
+2020-10-15T05:02:46+00:00 CRITICAL Uncaught Error: Call to undefined function the_tilte() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php:159
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 159
+
+2020-10-15T23:02:58+00:00 CRITICAL syntax error, unexpected end of file in /var/www/daloporhecho.cl/wp-content/themes/dalo-por-hecho/page-buscar-tareas.php on line 725
+

@@ -106,6 +106,23 @@ function the_job_publish_date2( $post = null ) {
   echo '<time datetime="' . esc_attr( get_post_time( 'Y-m-d' ) ) . '">' . wp_kses_post( $display_date ) . '</time>';
 }
 
+/***************** Format Date pPostulados*****************/
+function the_job_publish_date_postu( $post = null ) {
+  $date_format = get_post(get_the_ID())->post_date;
+  //$date_format = get_option( 'job_manager_date_format' );
+
+  if ( 'default' === $date_format ) {
+    $display_date = esc_html__( 'Posted on ', 'wp-job-manager' ) . date_i18n( get_option( 'date_format' ), get_post_time( 'U' ) );
+  } else {
+    // translators: Placeholder %s is the relative, human readable time since the job listing was posted.
+    $display_date = sprintf( esc_html__( 'Hace %s ', 'wp-job-manager' ), human_time_diff( get_post_time( 'U' ), current_time( 'timestamp' ) ) );
+  }
+
+//echo get_the_ID();
+  echo '<time datetime="' . esc_attr( get_post_time( 'Y-m-d' ) ) . '">' . wp_kses_post( $display_date ) . '</time>';
+}
+
+
 /***************** Date *****************/
 function date_new($fecha){
     $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
@@ -115,6 +132,17 @@ function date_new($fecha){
     $mes = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
     $mes = $mes[(date('m', strtotime($fecha))*1)-1];
     return $dia.' '.$num.', '.$mes;
+}
+
+/***************** Date Order *****************/
+function date_order_new($fecha){
+    $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
+    $dia = $dias[date('d', strtotime($fecha))];
+    $num = date("j", strtotime($fecha));
+    $anno = date("Y", strtotime($fecha));
+    $mes = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+    $mes = $mes[(date('m', strtotime($fecha))*1)-1];
+    return $dia.' '.$num.' de '.$mes. ' del '.$anno;
 }
 
 /***************** Meta *****************/
@@ -271,4 +299,31 @@ function arg($cat,$tax,$search,$location){
   return $args; 
 } 
 
-?>
+/********************Order Itemmeta **********************/
+
+function order_itemmeta($key,$id){ 
+            global $wpdb; 
+            $value = NULL; 
+            $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."woocommerce_order_items WHERE order_id = '$id' and order_item_type = 'line_item' "); 
+            foreach($result_link as $r)
+            {
+                     $order_item_id = $r->order_item_id; 
+                     $result_link2 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."woocommerce_order_itemmeta WHERE meta_key = '$key' and order_item_id = '$order_item_id' "); 
+                    foreach($result_link2 as $r2)
+                    {
+                            $value = $r2->meta_value;                      
+                    }                                           
+            }
+            return $value;
+}  
+
+/*********************Crypt Array Note ******************/
+
+function descrypt_note($array_note,$wp_pedido_id,$key){
+  $value_var_array = str_replace("<br>",":",$array_note); 
+  $sinparametros= explode(':', $value_var_array, 14);
+  if ($key == "name_tarea") {
+    return $sinparametros[1];
+  }
+  
+}

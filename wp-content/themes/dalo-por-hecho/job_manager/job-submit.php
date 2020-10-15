@@ -110,7 +110,7 @@ if (strpos($url, '?') !== false) {
 													</div>
 													<div class="form-group start">
                                                        <!-- <input type="text" name="job_location" id="job_location"  placeholder="e.g. &quot;London&quot;" />-->
-                                                        <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Buscar...">
+                                                        <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Lugar">
                                                         <div id="suggestions"></div>
 													</div>
 													
@@ -121,7 +121,7 @@ if (strpos($url, '?') !== false) {
 													</div>
 													<div class="start">
 														<label for="">Cuando necesitas las tareas?</label>
-														<input type="date" name="_job_expires" id="_job_expires"
+														<input type="date" name="job_expires" id="job_expires"
 															placeholder="seleciona una fecha" />
 													</div>
 													<ul class="list-inline text-center">
@@ -167,6 +167,19 @@ if (strpos($url, '?') !== false) {
 															</div>
 														</div>
 													</div>
+
+													<fieldset class="fieldset-company_logo fieldset-type-file">
+														<label for="company_logo">Agregar Imagen <small>(opcional)</small></label>
+														<div class="field ">
+															<div class="job-manager-uploaded-files">
+															</div>
+
+															<input type="file" class="input-text wp-job-manager-file-upload" data-file_types="jpg|jpeg|gif|png" name="company_logo" id="company_logo" placeholder="">
+															<small class="description">
+																Tamaño máximo del archivo: 10 MB.	</small>
+														</div>
+													</fieldset>
+
 													<ul class="list-inline text-center">
 														<!-- <li><button type="button"
 																class="default-btn prev-step">Back</button></li>
