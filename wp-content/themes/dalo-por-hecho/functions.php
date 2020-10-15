@@ -233,6 +233,7 @@ add_filter( 'submit_job_form_fields', 'gma_wpjmef_frontend_add_job_expires_field
 // Text fields filters
 add_filter( 'job_manager_job_listing_data_fields', 'gma_wpjmef_admin_add_salary_field' ); // #
 add_filter( 'job_manager_job_listing_data_fields', 'gma_wpjmef_admin_add_important_info_field' );
+add_filter( 'job_manager_job_listing_data_fields', 'gma_wpjmef_admin_add_job_expires_field' ); //
 
 add_filter( 'job_manager_job_listing_data_fields', 'gma_wpjmef_admin_add_job_direccion_field' ); 
 add_filter( 'job_manager_job_listing_data_fields', 'gma_wpjmef_admin_add_job_clp_field' );
@@ -407,7 +408,7 @@ function gma_wpjmef_frontend_add_job_expires_field( $fields ) {
   
   $fields['job']['job_expires'] = array(
     'label'       => __( 'Date: ', 'wpjm-extra-fields' ),
-    'type'        => 'date',
+    'type'        => 'text',
     'required'    => false,
     'placeholder' => '',
     'description' => '',
@@ -418,6 +419,18 @@ function gma_wpjmef_frontend_add_job_expires_field( $fields ) {
 
 }
 
+function gma_wpjmef_admin_add_job_expires_field( $fields ) {
+  
+  $fields['_job_expires'] = array(
+    'label'       => __( 'ex', 'wpjm-extra-fields' ),
+    'type'        => 'text',
+    'placeholder' => 'e.g. USD$ 20.000',
+    'description' => ''
+  );
+
+  return $fields;
+
+}
 
 function gma_wpjmef_admin_add_salary_field( $fields ) {
   

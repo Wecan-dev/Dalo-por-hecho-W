@@ -121,7 +121,7 @@ if (strpos($url, '?') !== false) {
 													</div>
 													<div class="start">
 														<label for="">Cuando necesitas las tareas?</label>
-														<input type="date" name="_job_expires" id="_job_expires"
+														<input type="date" name="job_expires" id="job_expires"
 															placeholder="seleciona una fecha" />
 													</div>
 													<ul class="list-inline text-center">
