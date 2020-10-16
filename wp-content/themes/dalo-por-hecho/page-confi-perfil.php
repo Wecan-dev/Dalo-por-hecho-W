@@ -160,6 +160,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 
                                 $args3 = array (
                                     'post_type' => 'postulados',
+                                    'post_status' =>'publish',
                                     'meta_query' => array(
                                     'relation'=>'AND', // 'AND' 'OR' ...
                                     array(
@@ -196,7 +197,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                     <p>$ <?php the_field('ofertar_monto_tarea'); ?></p>
                                                 </div>
                                                 <div class="respnse">
-                                                <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  $current_user->ID )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
+                                                <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  get_the_author_meta( 'ID' ) )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
                                                     <?php                                                   
 
                                                     $value_var_array = str_replace("<br>",":",$var_array); 
@@ -419,6 +420,8 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if ($recibir_pagos != NULL) { ?>
+
                                                                     <tr>
                                                                         <td class="tabla-pagos_table_td">
                                                                             <p>07/11/20</p>
@@ -452,6 +455,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                                             <p class="n-m">$ 20.000</p>
                                                                         </td>
                                                                     </tr>
+                                                                 <?php } ?>   
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -694,7 +698,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                         </div>
                                         <div class="form-conf-cuenta">
 
-                <form method="post" id="adduser" action="<?php the_permalink(); ?>?#v-pills-conf">                                        
+                <form method="post" id="adduser" action="<?php echo get_home_url(); ?>/confi-perfil/?#v-pills-conf">                                        
                                            
                                                 <div class="row cont-row-form">
                                                     <div class="col-md-6">

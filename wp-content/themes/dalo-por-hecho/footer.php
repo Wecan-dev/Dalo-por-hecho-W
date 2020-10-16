@@ -107,14 +107,22 @@ $('#note_description').appendTo('.variation');
     
 }); 
 
-    function monto_salary2(tile_tarea,name_tarea,id_tarea,email_empleador,name_empleado,id_empleado,salary){ 
-       $("input#field_ccdeo").val(name_tarea);
-       $("input#field_vqrer").val(tile_tarea);
-       $("input#field_a9ti0").val(id_tarea);
-       $("input#field_gvep8").val(email_empleador);
-       $("input#field_urvk3").val(name_empleado);
-       $("input#field_xjqxf").val(id_empleado);
-       $("input#field_41hfd").val(salary);
+    function monto_salary2(name_tarea,title_tarea,id_tarea,email_empleador,name_empleado,id_empleado,salary){ 
+       //$("input#field_ccdeo").val(name_tarea);
+       //$("input#field_vqrer").val(tile_tarea);
+       //$("input#field_a9ti0").val(id_tarea);
+       //$("input#field_gvep8").val(email_empleador);
+       //$("input#field_urvk3").val(name_empleado);
+       //$("input#field_xjqxf").val(id_empleado);
+       //$("input#field_41hfd").val(salary);
+
+       $("input#field_name_tarea").val(name_tarea);
+       $("input#field_title_tarea").val(title_tarea);
+       $("input#field_id_tarea").val(id_tarea);
+       $("input#field_email_empleador").val(email_empleador);
+       $("input#field_name_empleado").val(name_empleado);
+       $("input#field_id_empleado").val(id_empleado);
+       $("input#field_salary_ofertado").val(salary)       
     } 
 
     function function_donation(salary_donation,array_note){

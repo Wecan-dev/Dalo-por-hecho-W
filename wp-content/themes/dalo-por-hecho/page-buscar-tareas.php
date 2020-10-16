@@ -234,6 +234,7 @@ $user_actual = $current_user->ID;
                                 <?php 
                                 $args3 = array (
                                     'post_type' => 'postulados',
+                                    'post_status' =>'publish',
                                     'meta_query' => array(
                                     'relation'=>'AND', // 'AND' 'OR' ...
                                     array(
@@ -261,14 +262,14 @@ $user_actual = $current_user->ID;
 
                                                         </div>
                                                     </div>
-                                                    <p class="ml-auto">Hace 15 minutos</p>
+                                                    <p class="ml-auto"><?php the_job_publish_date_postu(); ?></p>
                                                 </div>
                                                 <p><?php the_field('ofertar_message_empleado'); ?></p>
                                                 <div class="cube mb-4"> 
                                                     <p>$ <?php the_field('ofertar_monto_tarea'); ?></p>
                                                 </div>
                                                 <div class="respnse">
-                                                <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  $current_user->ID )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
+                                                <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  get_the_author_meta( 'ID' ))."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
                                                     <?php                                                   
 
                                                     $value_var_array = str_replace("<br>",":",$var_array); 
@@ -346,7 +347,7 @@ $user_actual = $current_user->ID;
     <div class="modal-dialog" role="document">
         <div class="modal-content">  
             <div class="modal-body">
-                <?php echo do_shortcode('[formidable id=2]');  ?>
+                <?php echo do_shortcode('[formidable id=9]');  ?>
             </div>         
         </div>
     </div> 

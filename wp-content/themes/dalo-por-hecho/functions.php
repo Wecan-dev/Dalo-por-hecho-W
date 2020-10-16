@@ -1,4 +1,10 @@
 <?php 
+// Redirigir usuarios después de agregar al carrito.
+function dl_redirigir_anadir_carrito( $url ) {
+  $url = home_url( 'checkout/' ); // Pon la url entre las comillas a la que quieras redirigir
+  return $url;
+}
+add_filter( 'woocommerce_add_to_cart_redirect', 'dl_redirigir_anadir_carrito' );
 
 /****************** Styles *****************/
 function dalo_por_hecho_styles(){
@@ -217,6 +223,9 @@ function fill_postulados_posts_columns( $column_name, $post_id ) {
     endswitch;    
 }
 add_action( 'manage_postulados_posts_custom_column', 'fill_postulados_posts_columns', 10, 2 );
+
+
+
 /***************** Form fields job *****************/
 if ( ! defined( 'ABSPATH' ) ) {
     exit; 
