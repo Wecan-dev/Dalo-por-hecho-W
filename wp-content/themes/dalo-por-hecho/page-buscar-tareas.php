@@ -396,7 +396,7 @@ $user_actual = $current_user->ID;
         </div>
     </div>       
 
-
+<?php get_template_part('sections/home/main-modal-step'); ?>
 <!-- FOOTER -->
 
 <script src="<?php echo get_template_directory_uri();?>/assets/js/setting-slick.js"></script>

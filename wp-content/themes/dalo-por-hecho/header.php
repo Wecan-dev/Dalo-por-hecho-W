@@ -9,6 +9,16 @@
     <?php wp_head(); global $current_user, $wp_roles;?>
 </head>
 
+        	<?php if( is_user_logged_in() != NULL):?>
+                
+                <?php else: ?>
+					<style> 
+                		.next-step{
+                            pointer-events: none;
+                        }
+                	</style>		
+            <?php endif; ?>
+        
 <body>
 	<header>
 		<nav class="navbar navbar-expand-md fixed-top navbar-fixed-js">
@@ -37,16 +47,21 @@
 							<a class="nav-link btn-custom-nav mr-3" href="<?php echo get_home_url() ?>/buscar-tareas">Buscar tarea</a>
 						</li>
 						<li class="nav-item">
+        				<?php if( is_user_logged_in() != NULL):?>
 							<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" href="" data-toggle="modal"
 								data-target="#step" onclick="enviarDatos2();">Publicar
 								tarea</a>
+                            <?php else: ?>
+<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" style="pointer-event: none;">Publicar
+								tarea</a>
+                                <?php endif; ?>
 						</li>
 
 					</ul>
 
 					<ul class="navbar-nav ">
 						<li class="nav-item">
-							<a class="nav-link" href="">Soporte</a>
+							<a class="nav-link" href="<?php echo get_home_url() ?>/soporte">Soporte</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#funciona">Como funciona</a>
@@ -214,4 +229,3 @@
     </div>
   </div>
 </div>
-
