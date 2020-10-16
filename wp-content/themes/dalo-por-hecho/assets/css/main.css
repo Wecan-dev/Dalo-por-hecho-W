@@ -1349,7 +1349,7 @@ input {
 	padding-left: 20px;
 }
 .scroll-admin {
-	height: 100vh;
+	height: 63vh;
 	overflow: hidden;
 	overflow-y: scroll;
 	margin-bottom: 50px;
@@ -2366,7 +2366,8 @@ fieldset.fieldset-create_account_email {
 	width: 50px;
 }
 .buscar_tareas-t{
-	padding: 1rem 0 3rem;
+	padding: 0rem;
+	height: 70vh;
 }
 
 .main-form__icons{
@@ -2554,4 +2555,36 @@ fieldset.fieldset-create_account_email {
 }    
 .variation-Description1{
 	display: none;
+}
+
+/* GRID */
+.main-taks__sidebar{
+	    position: absolute;
+    background-color: #fff;
+    z-index: 999;
+    height: 80vh;
+    left: -100%;
+    width: 100%;
+}
+
+.main-taks__sidebar.active{
+	left: 0%;
+}
+.main-taks__sidebar .scroll-admin {
+	height:70vh;	
+}
+
+.main-taks__cardsmobile{
+	display:none;
+}
+.main-taks__maxgrid{
+	display: grid;
+	grid-template-columns: 30% 70%;
+	grid-gap: 2rem;
+}
+
+.main-task__minigrid{
+	display: grid;
+	grid-template-columns: 70% 30%;
+	grid-gap: 2rem;
 }

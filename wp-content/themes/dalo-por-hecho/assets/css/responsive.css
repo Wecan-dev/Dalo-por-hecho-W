@@ -1,22 +1,19 @@
-@media (max-width: 991.98px) {
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-	th, td.tabla-pagos_table_td p {
-		font-size: 12px;
-		text-align: left;
-	}
-	.cont-pago-estado-form-ganado h5, .cont-pago-estado-form-ganado p{
-		font-size:14px;
-	}
-	.content-recomendar-amigo-creditos-inf {
-		width: 100%;
-	}
-}
-
 @media (min-width: 0px) and (max-width: 767px) {
+	
+	.main-taks__mobiletitle{
+		margin-bottom: 1rem;
+	}
+	.buscar_tareas.scrollhiden{
+		overflow: hidden;
+	}
+	.main-taks__cardsmobile{
+		display: block;
+	}
+	.main-taks__cardsdesktop{
+		display: none;
+	}
 	.scroll-admin{
-		height: 60vh;
+		height: 30vh;
 	}
 	.main-content__taksdesktop{
 		display: none;
@@ -27,7 +24,7 @@
 	.main-presupuesto__mobile{
 		display:block;
 	}
-	.main-presupuest__desktop{
+	.main-presupuesto__desktop{
 		display:none;
 	}
 	.buscar_tareas-t{
@@ -330,13 +327,13 @@
 		text-align: center;
 	}
 	.text-justify {
-		text-align: center !important;
+		text-align: left !important;
 	}
 	.nav_bottom {
 		display: none;
 	}
 	.buscar_tareas {
-		margin: 100px 0;
+		margin: 80px 0;
 	}
 	.order-last-xs {
 		order: 13;
@@ -389,8 +386,20 @@
 	.job-manager-form{
 		padding: 4rem 2rem 0;
 	}
-}
-@media (min-width: 320px) and (max-width: 500px) {
+	
+	.main-taks__maxgrid{
+		grid-template-columns:100%;
+		grid-gap: 0rem;
+	}
+	.main-task__minigrid{
+		grid-template-columns: 100%;
+	}
+	.main-task__tabs{
+		height: 75vh;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		padding: 1rem;
+	}
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -505,12 +514,15 @@
 		margin-bottom: 50px;
 	}
 	.buscar_tareas h3 {
-		text-align: center;
+		text-align: left;
 	}
 	.datos_name {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
+	}
+	.main-content__localizationtext{
+		font-size: 13px;
 	}
 	.order-last-xs {
 		order: 13;
@@ -636,7 +648,31 @@
 	.job-manager-form{
 		padding: 4rem;
 	}
+	.main-presupuesto__desktop{
+		display: none;
+	}
+	.main-presupuesto__mobile{
+		display:block;
+	}
+	
+	.main-task__maxgrid{
+		grid-template-columns: 35% 65%;
+		grid-gap: 0rem;
+	}
+	.main-task__minigrid{
+		grid-template-columns: 100%;
+	}
+	.main-task__tabs{
+		height: 65vh;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		padding: 1rem;
+	}
+	.datos_name ul li{
+		font-size:12px;
+	}
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
 	.main-tareas-2 .main-tareas_grid {
 		padding-left: 0;
@@ -683,4 +719,35 @@
 		justify-content: center;
 		align-items: self-start;
 	}
+	th, td.tabla-pagos_table_td p {
+		font-size: 12px;
+		text-align: left;
+	}
+	.cont-pago-estado-form-ganado h5, .cont-pago-estado-form-ganado p{
+		font-size:14px;
+	}
+	.content-recomendar-amigo-creditos-inf {
+		width: 100%;
+	}
+	.main-presupuesto__desktop{
+		display: none;
+	}
+	.main-presupuesto__mobile{
+		display:block;
+	}
+	
+	.main-taks__maxgrid{
+		grid-template-columns: 35% 65%;
+		grid-gap: 1rem;
+	}
+	.main-task__minigrid{
+		grid-template-columns: 100%;
+	}
+	.main-taks__tabs{
+		height: 65vh;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+
 }
+

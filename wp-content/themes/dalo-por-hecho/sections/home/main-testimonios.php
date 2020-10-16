@@ -7,7 +7,7 @@
                 <?php $i=0;
                   $args = array (
                      'post_type' => 'job_listing',
-                     'posts_per_page' => 10000,
+                     'posts_per_page' => 10,
                      'post_status' => 'publish'
                   ); 
                 $loop = new WP_Query( $args ); 
