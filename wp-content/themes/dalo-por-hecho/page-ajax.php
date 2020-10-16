@@ -275,11 +275,14 @@ $arraycolombia = array(
 if($key != NULL){ 
 $termToSearch = $key;
 $matches = array_filter($arraycolombia, function($var) use ($termToSearch) { return stristr($var, $termToSearch); });
-if($matches) {
+if($matches) { $i = 0;
    // echo 'Se ha encontrado el termino "'.$termToSearch.'" en los siguientes campos: <br>';
     foreach ($matches as $match) {
+      if ($i <= 4) {
       //  echo $match.'<br>';
         $html .= '<div><a href="'.get_home_url().'/buscar-tarea/?location='.$match.'" class="suggest-element"  data="'.$match.'" id="product'.$row['id_product'].'">'.$match.'</a></div>';
+        $i = $i +1;
+      }  
     }
 } else {
     echo 'El termino "'.$termToSearch.'" no se ha encontrado en el array.';
@@ -288,12 +291,16 @@ if($matches) {
 if($job_location != NULL){ 
 $termToSearch = $job_location;
 $matches = array_filter($arraycolombia, function($var) use ($termToSearch) { return stristr($var, $termToSearch); });
-if($matches) {
+if($matches) { $j = 0;
    // echo 'Se ha encontrado el termino "'.$termToSearch.'" en los siguientes campos: <br>';
     foreach ($matches as $match) {
-      //  echo $match.'<br>';
-          $match1 = $match;
-        $html .= '<div><a class="suggest-element"  data="'.$match.'" id="product'.$row['id_product'].'">'.$match.'</a></div>';
+      if ($j <= 4) {
+//  echo $match.'<br>';
+        $match1 = $match;
+        $html .= '<div><a class="suggest-element"  data="'.$match.'" id="product'.$row['id_product'].'">'.$match.'</a></div>';        
+        $j = $j +1;
+      }
+      
     }
 } else {
     echo 'El termino "'.$termToSearch.'" no se ha encontrado.';
