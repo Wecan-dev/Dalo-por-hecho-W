@@ -271,6 +271,7 @@ $user_actual = $current_user->ID;
                                 <!-- descripcion -->
                                 <p class="description"><?php wpjm_the_job_description(); ?></p>
                                 <h6 class="">Detalle</h6>
+                                <img src="<?php echo get_home_url().'/wp-content/uploads/'.meta_value( '_wp_attached_file', '235' ); ?>" >
                                 <p class="description m-0 border-n"><?php echo meta_value( '_job_important_info', get_the_ID()); ?>
                                 </p>
                                 <div class="ofertas">

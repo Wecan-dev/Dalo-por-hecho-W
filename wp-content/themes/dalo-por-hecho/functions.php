@@ -1,10 +1,13 @@
 <?php 
-// Redirigir usuarios después de agregar al carrito.
-function dl_redirigir_anadir_carrito( $url ) {
-  $url = home_url( 'checkout/' ); // Pon la url entre las comillas a la que quieras redirigir
-  return $url;
+///Redirigir al chekcout sin pasar por el carrito
+add_filter ('add_to_cart_redirect', 'redirect_to_checkout');
+
+function redirect_to_checkout() {
+  global $woocommerce;
+  $checkout_url = $woocommerce->cart->get_checkout_url();
+  return $checkout_url;
 }
-add_filter( 'woocommerce_add_to_cart_redirect', 'dl_redirigir_anadir_carrito' );
+
 
 /****************** Styles *****************/
 function dalo_por_hecho_styles(){
