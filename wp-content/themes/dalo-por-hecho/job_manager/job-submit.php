@@ -100,9 +100,9 @@ if (strpos($url, '?') !== false) {
                                                             <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_type', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
                                                             <?php foreach($product_categories as $category):  global $wpdb;?>		
                                                                 <div class="col-md-6 step-content ">
-																   <p class="p-0 m-0 color-blue"><i	class="<?php if($category->name == 'En persona'){ echo "fa fa-map-marker";}if($category->name == 'En línea'){ echo "fa fa-globe";} ?>" aria-hidden="true"></i><input name="job_type" id="job_type" type="radio" value="<?=$category->term_id ?>">
+																   <p class="p-0 m-0 color-blue"><i	class="<?php if($category->name == 'En persona'){ $mens = "Selecciona si necesitas la persona físicamente en el lugar"; echo "fa fa-map-marker";}if($category->name == 'En línea'){ $mens = "Selecciona si la tarea se puede hacer desde casa"; echo "fa fa-globe";} ?>" aria-hidden="true"></i><input name="job_type" id="job_type" type="radio" value="<?=$category->term_id ?>">
 																	<?=$category->name ?> </p>
-																   <span>Lorem ipsum dolor sit amet consectetur </span>
+																   <span><?php echo $mens; ?></span>
 															    </div>                                                                
 		                                                    <?php endforeach; ?>						
 	
@@ -141,32 +141,57 @@ if (strpos($url, '?') !== false) {
 													<span style="font-size: 12px;color: #b3b3b3;" class="list-inline text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
 														Reiciendis voluptates nobis </span>
 													<div class="row mb-3">
-														<div class="col-md-6">
-
-															<input type="text"  name="job_clp" id="job_clp" placeholder="CLP" />
-														</div>
-														<div class="col-md-6">
-
-															<input type="text" name="job_horas" id="job_horas" placeholder="Horas" />
-														</div>
+													    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+														    <div class="col-md-6">
+														        <!--<a class="nav-item nav-link active" id="nav-total-tab" data-toggle="tab" href="#nav-total" role="tab" aria-controls="nav-total" aria-selected="true">-->
+															    <input type="radio" class="radio1" name="radio1" value="1" class="nav-item nav-link active" id="nav-total-tab radio1" data-toggle="tab" href="#nav-total" role="tab" aria-controls="nav-total" aria-selected="true">Total
+															    <!--</a>-->
+														    </div>	
+														    <div class="col-md-6">
+												                <!--<a class="nav-item nav-link " id="nav-horas-tab" data-toggle="tab" href="#nav-horas" role="tab" aria-controls="nav-horas" aria-selected="false">-->
+															    <input type="radio" name="radio1" value="1"  id="nav-horas-tab radio1" data-toggle="tab" href="#nav-horas" role="tab" aria-controls="nav-horas" aria-selected="false" onclick="quitar();">Tarifa por Horas
+															    <!--</a>-->
+														    </div>	
+												        </div>																	
 													</div>
-													<div class="presupuesto">
-														<div class="row">
-															<div class="col-md-8">
-																<label class="text-start m-0">Presupueto estimado
-																</label>
-																<span class="list-inline text-center">Lorem ipsum dolor
-																	sit amet
-																	consectetur adipisicing
-																	elit.
-																</span>
-															</div>
-															<div class="col-md-4 d-flex justify-content-center align-items-center" >
-																<p id="multipli"></p>
-																<input type="text" class="form-control" name="job_salary" id="job_salary" value="" />
-															</div>
-														</div>
-													</div>
+                                                    <div class="tab-content" id="nav-tabContent">
+                                                        <div class="tab-pane fade show active" id="nav-total" role="tabpanel" aria-labelledby="nav-total-tab">
+                                                            <div class="row mb-3">
+                                                            	<div class="col-md-6">
+                                                            		<input type="text"  name="job_total" id="job_total" placeholder="$000" />
+                                                            	</div>
+														    </div>													        
+                                                        </div>
+                                                        <!--   -->
+                                                        <div class="tab-pane fade " id="nav-horas" role="tabpanel" aria-labelledby="nav-horas-tab">
+                                                            <div class="row mb-3">
+                                                            	<div class="col-md-6">
+                                                            		<input type="text"  name="job_clp" id="job_clp" placeholder="CLP" />
+                                                            	</div>
+                                                            	<div class="col-md-6">
+                                                            		<input type="text" name="job_horas" id="job_horas" placeholder="Horas" />
+                                                            	</div>
+														    </div>													        
+                                                        </div>
+
+
+                                                            <div class="presupuesto">
+														        <div class="row">
+															        <div class="col-md-8">
+																        <label class="text-start m-0">Presupueto estimado
+																        </label>
+																        <span class="list-inline text-center">El monto tendrá un recargo del 10%
+																        </span>
+															        </div>
+															        <div class="col-md-4 d-flex justify-content-center align-items-center" >
+																        <p id="multipli"></p>
+																        <input type="text" class="form-control" name="job_salary" id="job_salary" value="" />
+															        </div>
+														        </div>
+													        </div>
+
+
+                                                    </div>													
 
 													<fieldset class="fieldset-company_logo fieldset-type-file">
 														<label for="company_logo">Agregar Imagen <small>(opcional)</small></label>

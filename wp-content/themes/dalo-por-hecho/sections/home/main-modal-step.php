@@ -70,7 +70,12 @@
 	</div>
 
 	<script type="text/javascript">
+function quitar(){
+   var valuea = 000;
+   $("#job_salary").val(valuea);
+}	
 $(document).ready(function () {
+ 	    
         $("#job_clp").keyup(function () {
             var valuea =  document.getElementById("job_horas").value*$(this).val();
             $("#job_salary").val(valuea);
@@ -78,7 +83,11 @@ $(document).ready(function () {
         $("#job_horas").keyup(function () {
             var valuea =  document.getElementById("job_clp").value*$(this).val();
             $("#job_salary").val(valuea);
-        })                   
+        })     
+        $("#job_total").keyup(function () {
+            var valuea =  document.getElementById("job_total").value;
+            $("#job_salary").val(valuea);
+        })                      
 });
 	
 	/*-- multistep form --*/
