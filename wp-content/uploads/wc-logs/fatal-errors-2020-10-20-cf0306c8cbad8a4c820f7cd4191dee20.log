@@ -1,0 +1,35 @@
+2020-10-20T03:00:30+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 124
+
+2020-10-20T03:02:47+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 123
+
+2020-10-20T03:07:11+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 126
+
+2020-10-20T03:10:01+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE), expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 155
+
+2020-10-20T03:25:17+00:00 CRITICAL Uncaught Error: Call to a member function have_posts() on null in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php:193
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 193
+
+2020-10-20T03:25:49+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 193
+
+2020-10-20T03:39:05+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function arg(), 4 passed in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 25 and exactly 5 expected in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php:245
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php(25): arg('adiestrador-de-...', 'job_listing_cat...', NULL, NULL)
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#3 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#4 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 245
+
+2020-10-20T05:05:04+00:00 CRITICAL Uncaught Error: Call to undefined function get_user() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php:38
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\single.php on line 38
+
