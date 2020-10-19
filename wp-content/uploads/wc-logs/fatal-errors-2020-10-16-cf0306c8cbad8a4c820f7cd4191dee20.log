@@ -1,0 +1,20 @@
+2020-10-16T08:11:57+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 126
+
+2020-10-16T08:13:54+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 126
+
+2020-10-16T09:50:46+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 200
+
+2020-10-16T09:52:20+00:00 CRITICAL syntax error, unexpected '?>', expecting ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 322
+
+2020-10-16T09:53:20+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 272
+
+2020-10-16T10:58:50+00:00 CRITICAL Cannot redeclare dl_redirigir_anadir_carrito() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php:3) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\woocommerce\cart\cart.php on line 23
+
+2020-10-16T12:26:41+00:00 CRITICAL Uncaught Error: Call to undefined function wpjm_the_wp_attached_file() in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php:272
+Stack trace:
+#0 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-includes\template-loader.php(106): include()
+#1 C:\xampp2\htdocs\Dalo-por-hecho-W\wp-blog-header.php(19): require_once('C:\\xampp2\\htdoc...')
+#2 C:\xampp2\htdocs\Dalo-por-hecho-W\index.php(17): require('C:\\xampp2\\htdoc...')
+#3 {main}
+  thrown in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 272
+

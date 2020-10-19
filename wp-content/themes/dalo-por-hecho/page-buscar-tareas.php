@@ -97,7 +97,7 @@ $user_actual = $current_user->ID;
                   <div class="main-form__icons">
                     <input class="form-control buscador " type="search" placeholder="Buscar Tarea" aria-label="Search" name="search">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                    <button type="submit"></button>	
+                    <button type="submit"></button> 
                   </div>
                    
                 </form>
@@ -108,95 +108,95 @@ $user_actual = $current_user->ID;
     <div class="container buscar_tareas buscar_tareas-t">
         <div class="main-taks__maxgrid">
             <div class="main-taks__cards">
-					<div class="main-taks__cardsmobile">
-						<div class="main-taks__mobiletitle">
-							Ver más tareas
-							<i class="fa fa-angle-right"></i>
-						</div>
-						<div class="main-taks__sidebar">
-							<div class="scroll-admin ">
-								<!-- card -->
-									  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-									<?php $i=0;
-									$loop = new WP_Query( $args ); 
-									while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>                     
-											<a class="av-link <?php if($i==0){ echo "active";} ?> card-job" id="v-pills-<?php echo get_the_ID();?>-tab" data-toggle="pill" href="#v-pills-<?php echo get_the_ID();?>" role="tab" aria-controls="v-pills-<?php echo get_the_ID();?>" aria-selected="false">
-												<div class="content-tetimonios admin-card">
-													<div class="row">
-														<div class="col-md-12 col-lg-3 text-center">
-														   <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
-														</div>
-														<div class="col-md-12 col-lg-9 mb-2">
-															<p class="name"><?php wpjm_the_job_title(); ?></p>
-															<span> <?php echo $product_categories = wp_get_post_terms( get_the_ID(), 'job_listing_category' )[0]->name; ?></span>
-														</div>
-														<!-- datos -->
-														<div class="datos">
-															<div class="">
-																<ul class="datos_card">
-																   <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt=""><?php the_job_location( false ); ?></li>
-																   <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt=""><?php echo date_new(get_post_time( 'Y-m-d' )); ?></li>
-																   <li>Total participantes 12</li>
-																</ul>
-															</div>
-															<div class="">
-																<ul>
-																   <li class="price">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></li>
-																   <li class="open">Abierta</li>
-																</ul>
-															</div>
-														</div>
-													</div>
-												</div>
-											</a>  
+                    <div class="main-taks__cardsmobile">
+                        <div class="main-taks__mobiletitle">
+                            Ver más tareas
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+                        <div class="main-taks__sidebar">
+                            <div class="scroll-admin ">
+                                <!-- card -->
+                                      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <?php $i=0;
+                                    $loop = new WP_Query( $args ); 
+                                    while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>                     
+                                            <a class="av-link <?php if($i==0){ echo "active";} ?> card-job" id="v-pills-<?php echo get_the_ID();?>-tab" data-toggle="pill" href="#v-pills-<?php echo get_the_ID();?>" role="tab" aria-controls="v-pills-<?php echo get_the_ID();?>" aria-selected="false">
+                                                <div class="content-tetimonios admin-card">
+                                                    <div class="row">
+                                                        <div class="col-md-12 col-lg-3 text-center">
+                                                           <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
+                                                        </div>
+                                                        <div class="col-md-12 col-lg-9 mb-2">
+                                                            <p class="name"><?php wpjm_the_job_title(); ?></p>
+                                                            <span> <?php echo $product_categories = wp_get_post_terms( get_the_ID(), 'job_listing_category' )[0]->name; ?></span>
+                                                        </div>
+                                                        <!-- datos -->
+                                                        <div class="datos">
+                                                            <div class="">
+                                                                <ul class="datos_card">
+                                                                   <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt=""><?php the_job_location( false ); ?></li>
+                                                                   <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt=""><?php echo date_new(get_post_time( 'Y-m-d' )); ?></li>
+                                                                   <li>Total participantes 12</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="">
+                                                                <ul>
+                                                                   <li class="price">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></li>
+                                                                   <li class="open">Abierta</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>  
 
-									<?php $i = $i+1; endwhile; ?>    
-									</div>   
-								<!-- card -->
-							</div>
-						</div>
-					</div>	
-					<div class="scroll-admin main-taks__cardsdesktop">
-					<!-- card -->
-						  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-						<?php $i=0;
-						$loop = new WP_Query( $args ); 
-						while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>                     
-								<a class="av-link <?php if($i==0){ echo "active";} ?> card-job" id="v-pills-<?php echo get_the_ID();?>-tab" data-toggle="pill" href="#v-pills-<?php echo get_the_ID();?>" role="tab" aria-controls="v-pills-<?php echo get_the_ID();?>" aria-selected="false">
-									<div class="content-tetimonios admin-card">
-										<div class="row">
-											<div class="col-md-12 col-lg-3 text-center">
-											   <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
-											</div>
-											<div class="col-md-12 col-lg-9 mb-2">
-												<p class="name"><?php wpjm_the_job_title(); ?></p>
-												<span> <?php echo $product_categories = wp_get_post_terms( get_the_ID(), 'job_listing_category' )[0]->name; ?></span>
-											</div>
-											<!-- datos -->
-											<div class="datos">
-												<div class="">
-													<ul class="datos_card">
-													   <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt=""><?php the_job_location( false ); ?></li>
-													   <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt=""><?php echo date_new(get_post_time( 'Y-m-d' )); ?></li>
-													   <li>Total participantes 12</li>
-													</ul>
-												</div>
-												<div class="">
-													<ul>
-													   <li class="price">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></li>
-													   <li class="open">Abierta</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</a>  
+                                    <?php $i = $i+1; endwhile; ?>    
+                                    </div>   
+                                <!-- card -->
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="scroll-admin main-taks__cardsdesktop">
+                    <!-- card -->
+                          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <?php $i=0;
+                        $loop = new WP_Query( $args ); 
+                        while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>                     
+                                <a class="av-link <?php if($i==0){ echo "active";} ?> card-job" id="v-pills-<?php echo get_the_ID();?>-tab" data-toggle="pill" href="#v-pills-<?php echo get_the_ID();?>" role="tab" aria-controls="v-pills-<?php echo get_the_ID();?>" aria-selected="false">
+                                    <div class="content-tetimonios admin-card">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-3 text-center">
+                                               <?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
+                                            </div>
+                                            <div class="col-md-12 col-lg-9 mb-2">
+                                                <p class="name"><?php wpjm_the_job_title(); ?></p>
+                                                <span> <?php echo $product_categories = wp_get_post_terms( get_the_ID(), 'job_listing_category' )[0]->name; ?></span>
+                                            </div>
+                                            <!-- datos -->
+                                            <div class="datos">
+                                                <div class="">
+                                                    <ul class="datos_card">
+                                                       <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt=""><?php the_job_location( false ); ?></li>
+                                                       <li> <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt=""><?php echo date_new(get_post_time( 'Y-m-d' )); ?></li>
+                                                       <li>Total participantes 12</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="">
+                                                    <ul>
+                                                       <li class="price">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></li>
+                                                       <li class="open">Abierta</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>  
 
-						<?php $i = $i+1; endwhile; ?>    
-						</div>   
-					<!-- card -->
-				</div>
-			</div>
+                        <?php $i = $i+1; endwhile; ?>    
+                        </div>   
+                    <!-- card -->
+                </div>
+            </div>
 
             <!-- Tab panes -->
             <div class=" main-content__tabs">
@@ -229,48 +229,49 @@ $user_actual = $current_user->ID;
                                 <div class="datos_genereal">
                                     <div class="row ">
                                         <div class="col-md-6">
-										  <div class="main-content__localization">
+                                          <div class="main-content__localization">
 
-											<img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt="">	
-											<div class="main-content__localizationtext">
-											  <p> 
-												Localización
-											  </p>
-											  <span><?php the_job_location( false ); ?></span>
-											</div>
-										  </div>
+                                            <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt="">    
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                                Localización
+                                              </p>
+                                              <span><?php the_job_location( false ); ?></span>
+                                            </div>
+                                          </div>
 
 
-										</div>
-										<div class="col-md-6">
-										  <div class="main-content__localization">
-											<img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt="">
-											<div class="main-content__localizationtext">
-											  <p> 
-												Fecha del evento
-											  </p>
-											  <span><?php echo date_new(get_post_time( 'Y-m-d' )); ?></span>
-											</div>
-										  </div>
-										</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">
+                                            <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt="">
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                                Fecha del evento
+                                              </p>
+                                              <span><?php echo date_new(get_post_time( 'Y-m-d' )); ?></span>
+                                            </div>
+                                          </div>
+                                        </div>
                                     </div>
                                 </div>
-								<div class=" datos_presupuesto main-presupuesto__mobile">
-								  <div class="presupuesto_minicard">
-									<p>Presupuesto</p>
-									<span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
+                                <div class=" datos_presupuesto main-presupuesto__mobile">
+                                  <div class="presupuesto_minicard">
+                                    <p>Presupuesto</p>
+                                    <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
 
-									<?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
-									  <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
-									<?php }else { ?>
-									  <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
-									  <label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
-									<?php } ?>   
-								  </div>
-								</div>
+                                    <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
+                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
+                                    <?php }else { ?>
+                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
+                                      <label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
+                                    <?php } ?>   
+                                  </div>
+                                </div>
                                 <!-- descripcion -->
                                 <p class="description"><?php wpjm_the_job_description(); ?></p>
                                 <h6 class="">Detalle</h6>
+                                <img src="<?php echo get_home_url().'/wp-content/uploads/'.meta_value( '_wp_attached_file', '235' ); ?>" >
                                 <p class="description m-0 border-n"><?php echo meta_value( '_job_important_info', get_the_ID()); ?>
                                 </p>
                                 <div class="ofertas">
@@ -278,6 +279,7 @@ $user_actual = $current_user->ID;
                                     <?php 
                                     $args3 = array (
                                         'post_type' => 'postulados',
+                                        'post_status' =>'publish',
                                         'meta_query' => array(
                                         'relation'=>'AND', // 'AND' 'OR' ...
                                         array(
@@ -305,7 +307,7 @@ $user_actual = $current_user->ID;
 
                                                             </div>
                                                         </div>
-                                                        <p class="ml-auto">Hace 15 minutos</p>
+                                                        <p class="ml-auto"><?php the_job_publish_date_postu(); ?></p>
                                                     </div>
                                                     <p><?php the_field('ofertar_message_empleado'); ?></p>
                                                     <div class="cube mb-4"> 
@@ -352,41 +354,32 @@ $user_actual = $current_user->ID;
                         </div>
 
                         <div class="main-taks__presupuesto datos_presupuesto ">
-							<!--<ul>
-								<li><a href="">Seguir</a></li>
-								<li><a href="">Ver mapa</a></li>
-							</ul>-->
-						  <div class="main-presupuesto__desktop">
-							<div class="presupuesto_minicard">
-							  <p>Presupuesto</p>
-							  <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
+                            <!--<ul>
+                                <li><a href="">Seguir</a></li>
+                                <li><a href="">Ver mapa</a></li>
+                            </ul>-->
+                          <div class="main-presupuesto__desktop">
+                            <div class="presupuesto_minicard">
+                              <p>Presupuesto</p>
+                              <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
 
-							  <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
-								<a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
-							  <?php }else { ?>
-								<a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
-								<label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
-							  <?php } ?>   
-							</div>
-						  </div>
+                              <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
+                                <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
+                              <?php }else { ?>
+                                <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
+                                <label for="exampleFormControlTextarea1">Create una cuenta para hacer tareas <a class="nav-link naranja-color" href="#" data-toggle="modal" data-target="#exampleModal">aquí</a></label>
+                              <?php } ?>   
+                            </div>
+                          </div>
 
-						</div>
+                        </div>
                     </div>
 
                     
                 </div><!--tab-->
                 
 
-                <!-- Modal Inicio de sesion -->
-                <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">  
-                      <div class="modal-body">
-                         <?php echo do_shortcode('[formidable id=2]');  ?>
-                      </div>         
-                    </div>
-                  </div> 
-                </div>                 
+                 
 
        <?php $j = $j+1; endwhile; ?>
 
@@ -503,19 +496,17 @@ $('#note_description').appendTo('.variation');
         <div class="modal-body">
          <?php  echo do_shortcode('[wdgk_donation]');  ?>
         </div>         
+
+    <!-- Modal Inicio de sesion -->
+    <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">  
+          <div class="modal-body">
+             <?php echo do_shortcode('[formidable id=9]');  ?>
+          </div>         
+        </div>
+      </div> 
+
     </div>
- </div> 
-</div>	
-<script>
-	$('.main-taks__mobiletitle').click(function(){
-		$('.main-taks__sidebar').toggleClass('active')
-		$('.buscar_tareas-t').addClass('scrollhiden')
-	})
-	$('.admin-card').click(function(){
-		$('.main-taks__sidebar').removeClass('active')
-		$('.buscar_tareas-t').removeClass('scrollhiden')
-	})
-</script>
-</body>
-<?php wp_footer(); ?>
-</html>	
+
+<?php get_footer(); ?>    

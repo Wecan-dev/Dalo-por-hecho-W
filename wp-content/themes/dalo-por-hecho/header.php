@@ -13,11 +13,16 @@
                 
                 <?php else: ?>
 					<style> 
-                		.next-step{
+                		.next-step, .round-tab{
                             pointer-events: none;
                         }
                 	</style>		
             <?php endif; ?>
+					<style> 
+                		.round-tab{
+                            pointer-events: none;
+                        }
+                	</style>
         
 <body>
 	<header>

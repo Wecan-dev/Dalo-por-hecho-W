@@ -1,4 +1,13 @@
 <?php 
+///Redirigir al chekcout sin pasar por el carrito
+add_filter ('add_to_cart_redirect', 'redirect_to_checkout');
+
+function redirect_to_checkout() {
+  global $woocommerce;
+  $checkout_url = $woocommerce->cart->get_checkout_url();
+  return $checkout_url;
+}
+
 
 /****************** Styles *****************/
 function dalo_por_hecho_styles(){
@@ -217,6 +226,9 @@ function fill_postulados_posts_columns( $column_name, $post_id ) {
     endswitch;    
 }
 add_action( 'manage_postulados_posts_custom_column', 'fill_postulados_posts_columns', 10, 2 );
+
+
+
 /***************** Form fields job *****************/
 if ( ! defined( 'ABSPATH' ) ) {
     exit; 
