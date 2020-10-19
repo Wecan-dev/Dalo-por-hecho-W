@@ -25,6 +25,20 @@
                 	</style>
         
 <body>
+	 <div class="main-fixed__ws">
+    <?php if ( wp_is_mobile() ) : ?>
+		<a href="https://api.whatsapp.com/send?phone=" >
+			<img src="https://daloporhecho.cl/wp-content/uploads/2020/10/whatsapp-1.png">
+		</a>
+	 <?php else:?>
+	
+		<a href="https://web.whatsapp.com/send?phone=" >
+			<img src="https://daloporhecho.cl/wp-content/uploads/2020/10/whatsapp-1.png">
+		</a>
+	 <?php endif;?>
+  </div>
+	
+	
 	<header>
 		<nav class="navbar navbar-expand-md fixed-top navbar-fixed-js">
 			<div class="container">
@@ -57,7 +71,7 @@
 								data-target="#step" onclick="enviarDatos2();">Publicar
 								tarea</a>
                             <?php else: ?>
-<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" style="pointer-event: none;">Publicar
+<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" data-toggle="modal" data-target="#exampleModal" >Publicar
 								tarea</a>
                                 <?php endif; ?>
 						</li>
@@ -68,9 +82,17 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo get_home_url() ?>/soporte">Soporte</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#funciona">Como funciona</a>
-						</li>
+						<?php 
+							if ( is_home()): ?>
+								<li class="nav-item">
+									<a class="nav-link" href="#funciona">Como funciona</a>
+								</li>
+							<?php else:?>
+								<li class="nav-item">
+									<a class="nav-link" href="<?php echo get_home_url() ?>/#funciona">Como funciona</a>
+								</li>
+							<?php endif;?>
+								
 						<li class="nav-item dropdown dowms" style="color: #ec8603;margin-top: 5px;">
 							<?php if( is_user_logged_in() != NULL):?>
 							

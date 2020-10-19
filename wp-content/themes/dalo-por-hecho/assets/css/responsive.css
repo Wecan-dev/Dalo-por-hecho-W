@@ -407,9 +407,7 @@
 		padding-top: 30px;
 	}
 
-	.main-content__tabs{
-		margin-left: 2rem;
-	}
+	
 	.recomendar-link-copiar{
 		margin-bottom: 1rem;
 	}
@@ -464,7 +462,8 @@
 		width: 100%;
 	}
 	.navbar-brand img {
-		width: 90%;
+		    width: 60%;
+    		margin-top: 1rem;
 	}
 	.iso-desk {
 		display: block;
@@ -661,6 +660,7 @@
 	}
 	.main-task__minigrid{
 		grid-template-columns: 100%;
+		padding-right: 2rem;
 	}
 	.main-task__tabs{
 		height: 65vh;
@@ -749,5 +749,11 @@
 		overflow-x: hidden;
 	}
 
+}
+
+@media (min-width:1200px ) and (max-width: 1600px ){
+	.container {
+		max-width: 1250px;
+	}
 }
 

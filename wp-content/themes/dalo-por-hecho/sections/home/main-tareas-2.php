@@ -1,5 +1,5 @@
 	<!-- TAREAS 2-->
-	<section class="main-tareas main-tareas-2 container mt-60 ">
+	<section class="main-tareas-2 container">
 		<div class="titulo-general text-center">
 			<p><?php echo get_theme_mod('tareas2_title'); ?></p>
 			<span><?php echo get_theme_mod('tareas2_subtitle'); ?></span>

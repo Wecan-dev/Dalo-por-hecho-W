@@ -393,9 +393,16 @@ $user_actual = $current_user->ID;
 <!-- FOOTER -->
 
 <script src="<?php echo get_template_directory_uri();?>/assets/js/setting-slick.js"></script>
-	<script>
-		new WOW().init();
-	</script>	
+<script>
+	new WOW().init();
+
+	$('.main-taks__mobiletitle').click(function(){
+		$('.main-taks__sidebar').toggleClass('active')
+	})
+	$('.content-tetimonios').click(function(){
+		$('.main-taks__sidebar').removeClass('active')
+	})
+</script>	
 
 
 <script>
