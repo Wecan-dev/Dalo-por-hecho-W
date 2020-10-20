@@ -180,10 +180,7 @@ if (strpos($url, '?') !== false) {
 															        <div class="col-md-8">
 																        <label class="text-start m-0">Presupueto estimado
 																        </label>
-																        <span class="list-inline text-center">Lorem ipsum dolor
-																	        sit amet
-																	        consectetur adipisicing
-																	        elit.
+																        <span class="list-inline text-center">El monto tendrá un recargo del 10%
 																        </span>
 															        </div>
 															        <div class="col-md-4 d-flex justify-content-center align-items-center" >
