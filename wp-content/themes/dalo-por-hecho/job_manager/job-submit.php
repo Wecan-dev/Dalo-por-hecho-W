@@ -144,12 +144,12 @@ if (strpos($url, '?') !== false) {
 													    <div class="nav nav-tabs" id="nav-tab" role="tablist">
 														    <div class="col-md-6">
 														        <!--<a class="nav-item nav-link active" id="nav-total-tab" data-toggle="tab" href="#nav-total" role="tab" aria-controls="nav-total" aria-selected="true">-->
-															    <input type="radio"  name="radio1" value="1" class="nav-item nav-link active" id="nav-total-tab" data-toggle="tab" href="#nav-total" role="tab" aria-controls="nav-total" aria-selected="true">Total
+															    <input type="radio" class="radio1" name="radio1" value="1" class="nav-item nav-link active" id="nav-total-tab radio1" data-toggle="tab" href="#nav-total" role="tab" aria-controls="nav-total" aria-selected="true">Total
 															    <!--</a>-->
 														    </div>	
 														    <div class="col-md-6">
 												                <!--<a class="nav-item nav-link " id="nav-horas-tab" data-toggle="tab" href="#nav-horas" role="tab" aria-controls="nav-horas" aria-selected="false">-->
-															    <input type="radio" name="radio1" value="1"  id="nav-horas-tab" data-toggle="tab" href="#nav-horas" role="tab" aria-controls="nav-horas" aria-selected="false">Tarifa por Horas
+															    <input type="radio" name="radio1" value="1"  id="nav-horas-tab radio1" data-toggle="tab" href="#nav-horas" role="tab" aria-controls="nav-horas" aria-selected="false" onclick="quitar();">Tarifa por Horas
 															    <!--</a>-->
 														    </div>	
 												        </div>																	
