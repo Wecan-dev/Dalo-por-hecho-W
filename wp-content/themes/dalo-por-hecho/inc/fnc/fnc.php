@@ -178,6 +178,25 @@ function meta_value_img( $meta_key, $post_id ){
 
 }
 
+/***************** Meta JOB IMG *****************/
+function job_meta_value_img($post_id ){
+            global $wpdb; 
+            $value = NULL; $value_img = NULL;
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE meta_key = '_thumbnail_id' and post_id = '$post_id'"); 
+              foreach($result_link as $r)
+              {
+                      $value = $r->meta_value;                      
+              }
+              $result_link1 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE meta_key = '_wp_attached_file' and post_id = '$value'"); 
+              foreach($result_link1 as $r1)
+               {
+                      $value_img = $r1->meta_value;                       
+              }              
+              return $value_img;
+
+}
+
+
 /***************** User *****************/
 function user_value( $post_id ){
             global $wpdb; 
