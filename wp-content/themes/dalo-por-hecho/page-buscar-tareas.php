@@ -515,7 +515,10 @@ $('#note_description').appendTo('.variation');
     <div class="modal-content">  
         <div class="modal-body">
          <?php  echo do_shortcode('[wdgk_donation]');  ?>
-        </div>         
+        </div> 
+    </div>
+ </div>
+</div>                
 
     <!-- Modal Inicio de sesion -->
     <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
