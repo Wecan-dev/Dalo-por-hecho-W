@@ -165,7 +165,7 @@ if (strpos($url, '?') !== false) {
 														Reiciendis voluptates nobis </span>
 													
 													<div class="row main-type__inputs mb-3">
-														<input class="input-type__presupuesto" type="radio" name="radio1" id="radio1" checked />
+														<input class="input-type__presupuesto" type="radio" name="radio1" id="radio1" onclick="quitar();" checked />
 														<label class="label-type__presupuesto" for="tab1">Total</label>
 														<input class="input-type__presupuesto" type="radio" name="radio1" id="radio2" onclick="quitar();"/>
 														<label class="label-type__presupuesto"  for="tab2">Tarifa por horas</label>

@@ -71,8 +71,11 @@
 
 	<script type="text/javascript">
 function quitar(){
-   var valuea = 000;
+   var valuea = "";
    $("#job_salary").val(valuea);
+   $("#job_clp").val(valuea);
+   $("#job_horas").val(valuea);
+   $("#job_total").val(valuea);
 }	
 $(document).ready(function () {
  	    
