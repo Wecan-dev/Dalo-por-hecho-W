@@ -11,7 +11,7 @@
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
-								<div class="col-md-9">
+								<div class="col-md-11">
 
 									<div class="wizard">
 										<div class="wizard-inner">

@@ -27,12 +27,12 @@
 <body>
 	 <div class="main-fixed__ws">
     <?php if ( wp_is_mobile() ) : ?>
-		<a href="https://api.whatsapp.com/send?phone=" >
+		<a href="https://api.whatsapp.com/send?phone=5637069999" >
 			<img src="https://daloporhecho.cl/wp-content/uploads/2020/10/whatsapp-1.png">
 		</a>
 	 <?php else:?>
 	
-		<a href="https://web.whatsapp.com/send?phone=" >
+		<a href="https://web.whatsapp.com/send?phone=5637069999" >
 			<img src="https://daloporhecho.cl/wp-content/uploads/2020/10/whatsapp-1.png">
 		</a>
 	 <?php endif;?>
@@ -71,7 +71,7 @@
 								data-target="#step" onclick="enviarDatos2();">Publicar
 								tarea</a>
                             <?php else: ?>
-<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" data-toggle="modal" data-target="#exampleModal" >Publicar
+<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" style="pointer-event: none;">Publicar
 								tarea</a>
                                 <?php endif; ?>
 						</li>

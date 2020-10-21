@@ -25,6 +25,31 @@ if (strpos($url, '?') !== false) {
 
 ?>
 <?php if ($action == NULL ) { ?>
+<style>
+	
+	input + label { display: inline-block }
+
+	input ~ .tab { display: none }
+	#radio1:checked ~ .tab.content1,
+	#radio2:checked ~ .tab.content2{ display: block; }
+	.input-type__presupuesto{
+		margin-top: .4rem;
+	}
+	.main-type__inputs{
+		margin-left: 0.2rem;
+		margin-top: 1rem;
+	}
+	.label-type__presupuesto{
+		margin-right: 2rem;
+	}
+	.close{
+		z-index: 99999;
+	}
+	.close:focus{
+		background-color: transparent;
+	}
+
+</style>
 <form action="<?php echo esc_url( $action ); ?>" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
 
 	<?php
@@ -110,7 +135,7 @@ if (strpos($url, '?') !== false) {
 													</div>
 													<div class="form-group start">
                                                        <!-- <input type="text" name="job_location" id="job_location"  placeholder="e.g. &quot;London&quot;" />-->
-                                                        <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Lugar">
+                                                        <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Ciudad">
                                                         <div id="suggestions"></div>
 													</div>
 													
@@ -125,11 +150,9 @@ if (strpos($url, '?') !== false) {
 															placeholder="seleciona una fecha" />
 													</div>
 													<ul class="list-inline text-center">
-														<!-- <li><button type="button"
-																class="default-btn prev-step">Back</button></li>
-														<li><button type="button"
-																class="default-btn next-step skip-btn">Skip</button>
-														</li> -->
+														<li class="main-li__back"><button type="button"
+																class="default-btn prev-step">Atrás</button></li>
+													
 														<li class="btn-line"><button type="button"
 																class="default-btn next-step">Siguiente</button></li>
 													</ul>
@@ -140,42 +163,32 @@ if (strpos($url, '?') !== false) {
 													</label>
 													<span style="font-size: 12px;color: #b3b3b3;" class="list-inline text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
 														Reiciendis voluptates nobis </span>
-													<div class="row mb-3">
-													    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-														    <div class="col-md-6">
-														        <!--<a class="nav-item nav-link active" id="nav-total-tab" data-toggle="tab" href="#nav-total" role="tab" aria-controls="nav-total" aria-selected="true">-->
-															    <input type="radio" class="radio1" name="radio1" value="1" class="nav-item nav-link active" id="nav-total-tab radio1" data-toggle="tab" href="#nav-total" role="tab" aria-controls="nav-total" aria-selected="true">Total
-															    <!--</a>-->
-														    </div>	
-														    <div class="col-md-6">
-												                <!--<a class="nav-item nav-link " id="nav-horas-tab" data-toggle="tab" href="#nav-horas" role="tab" aria-controls="nav-horas" aria-selected="false">-->
-															    <input type="radio" name="radio1" value="1"  id="nav-horas-tab radio1" data-toggle="tab" href="#nav-horas" role="tab" aria-controls="nav-horas" aria-selected="false" onclick="quitar();">Tarifa por Horas
-															    <!--</a>-->
-														    </div>	
-												        </div>																	
-													</div>
-                                                    <div class="tab-content" id="nav-tabContent">
-                                                        <div class="tab-pane fade show active" id="nav-total" role="tabpanel" aria-labelledby="nav-total-tab">
-                                                            <div class="row mb-3">
+													
+													<div class="row main-type__inputs mb-3">
+														<input class="input-type__presupuesto" type="radio" name="radio1" id="radio1" checked />
+														<label class="label-type__presupuesto" for="tab1">Total</label>
+														<input class="input-type__presupuesto" type="radio" name="radio1" id="radio2" onclick="quitar();"/>
+														<label class="label-type__presupuesto"  for="tab2">Tarifa por horas</label>
+														
+														<div class="tab content1">
+															<div class="row mb-3">
                                                             	<div class="col-md-6">
                                                             		<input type="text"  name="job_total" id="job_total" placeholder="$000" />
                                                             	</div>
-														    </div>													        
-                                                        </div>
-                                                        <!--   -->
-                                                        <div class="tab-pane fade " id="nav-horas" role="tabpanel" aria-labelledby="nav-horas-tab">
-                                                            <div class="row mb-3">
+														    </div>
+														</div>
+														<div class="tab content2">
+															 <div class="row mb-3">
                                                             	<div class="col-md-6">
                                                             		<input type="text"  name="job_clp" id="job_clp" placeholder="CLP" />
                                                             	</div>
                                                             	<div class="col-md-6">
                                                             		<input type="text" name="job_horas" id="job_horas" placeholder="Horas" />
                                                             	</div>
-														    </div>													        
-                                                        </div>
-
-
-                                                            <div class="presupuesto">
+														    </div>	
+															
+														</div>
+														 <div class="presupuesto">
 														        <div class="row">
 															        <div class="col-md-8">
 																        <label class="text-start m-0">Presupueto estimado
@@ -189,9 +202,9 @@ if (strpos($url, '?') !== false) {
 															        </div>
 														        </div>
 													        </div>
-
-
-                                                    </div>													
+													   															
+													</div>
+                                                  												
 
 													<fieldset class="fieldset-company_logo fieldset-type-file">
 														<label for="company_logo">Agregar Imagen <small>(opcional)</small></label>
@@ -206,11 +219,8 @@ if (strpos($url, '?') !== false) {
 													</fieldset>
 
 													<ul class="list-inline text-center">
-														<!-- <li><button type="button"
-																class="default-btn prev-step">Back</button></li>
-														<li><button type="button"
-																class="default-btn next-step skip-btn">Skip</button>
-														</li> -->
+														<li class="main-li__back"><button type="button"
+																class="default-btn prev-step">Atrás</button></li>
 														<li class="btn-line"><button type="button"
 																class="default-btn next-step">Siguiente</button></li>
 													</ul>
