@@ -71,7 +71,7 @@
 								data-target="#step" onclick="enviarDatos2();">Publicar
 								tarea</a>
                             <?php else: ?>
-<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" style="pointer-event: none;">Publicar
+<a class="nav-link btn-custom-nav  btn-custom-transparent-nav" href="#" data-toggle="modal" data-target="#exampleModal">Publicar
 								tarea</a>
                                 <?php endif; ?>
 						</li>
