@@ -43,6 +43,25 @@
 
 
 <script>
+function enviarDatos(id_cat,names_cat){ 
+    this.names_cat = names_cat;
+    this.id_cat = id_cat;
+    document.getElementById('job_cat').innerHTML=this.names_cat;
+    $("#job_cat").val(this.id_cat);   
+
+    //$('.hid').prop('id', 'hidd');
+} 
+   
+function enviarDatos2(){ 
+    this.names_cat = 'Seleccionar';
+    this.id_cat = '0';
+    document.getElementById('job_cat').innerHTML=this.names_cat;
+    $("#job_cat").val(this.id_cat);   
+
+    //$('.hid').prop('id', 'hidd');
+}
+
+
 $(document).ready(function() {     
                    
     $('#key').on('keyup', function() {

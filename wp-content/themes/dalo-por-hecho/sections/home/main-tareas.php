@@ -33,30 +33,3 @@
 		
 	</section>
 	<!-- TAREAS-->
-    <script type="text/javascript">
-              
-    //$('#send').click( function() {
-           //var val_cat_name =  document.getElementById("job_cat_name").value;
-           //var val_cat_id =  document.getElementById("job_cat_id").value; 
-           //document.getElementById('job_cat').innerHTML=val_cat_name;
-           //$("#job_cat").val(val_cat_id);       
-      //  }
-    //);
-    function enviarDatos(id_cat,names_cat){ 
-       this.names_cat = names_cat;
-       this.id_cat = id_cat;
-       document.getElementById('job_cat').innerHTML=this.names_cat;
-       $("#job_cat").val(this.id_cat);   
-
-       //$('.hid').prop('id', 'hidd');
-    }	
-   
-    function enviarDatos2(){ 
-       this.names_cat = 'Seleccionar';
-       this.id_cat = '0';
-       document.getElementById('job_cat').innerHTML=this.names_cat;
-       $("#job_cat").val(this.id_cat);   
-
-       //$('.hid').prop('id', 'hidd');
-    }
-    </script>
