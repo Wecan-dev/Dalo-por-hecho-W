@@ -267,7 +267,7 @@ function arg($cat,$tax,$search,$location){
     $args = 
     array(
       'post_type' => 'job_listing',
-      'post_status' => 'publish',
+      'post_status' => array('publish','draft'),
      // 'paged' => $paged,
       //'posts_per_page' =>12,
     );
@@ -279,7 +279,7 @@ function arg($cat,$tax,$search,$location){
       'post_type' => 'job_listing',
      // 'paged' => $paged,
      // 'posts_per_page' => 12,        
-      'post_status' => 'publish',
+      'post_status' => array('publish','draft'),
       'tax_query' => array(
       'relation'=>'AND', // 'AND' 'OR' ...
         array(
@@ -295,7 +295,7 @@ function arg($cat,$tax,$search,$location){
     $args = 
     array(
       'post_type' => 'job_listing',
-      'post_status' => 'publish',
+      'post_status' => array('publish','draft'),
       's' => $search,
     );
   }
@@ -304,7 +304,7 @@ function arg($cat,$tax,$search,$location){
     $args = 
     array(
       'post_type' => 'job_listing',
-      'post_status' => 'publish',
+      'post_status' => array('publish','draft'),
       'meta_query' => array(
       'relation'=>'AND', // 'AND' 'OR' ...
         array(

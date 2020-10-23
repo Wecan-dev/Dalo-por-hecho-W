@@ -7,12 +7,12 @@
                 <?php $i=0;
                   $args = array (
                      'post_type' => 'job_listing',
-                     'posts_per_page' => 10,
-                     'post_status' => 'publish'
+                     'posts_per_page' => 100,
+                     'post_status' => array('publish','draft'),
                   ); 
                 $loop = new WP_Query( $args ); 
                 while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>	
-                <a href="<?php the_job_permalink(); ?>">			
+                <a href="<?php the_permalink(); ?>">			
 					<div class="main-testimonios__item">
 						<div class="content-tetimonios">
 							<div class="row">

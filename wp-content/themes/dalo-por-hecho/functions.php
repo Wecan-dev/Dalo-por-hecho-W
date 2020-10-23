@@ -1,4 +1,12 @@
 <?php 
+
+function ceo_single_page_published_and_draft_posts( $query ) {
+    if( is_single() ) {
+        $query->set('post_status', 'publish,draft');
+    }
+}
+add_action('pre_get_posts', 'ceo_single_page_published_and_draft_posts');
+
 ///Redirigir al chekcout sin pasar por el carrito
 add_filter ('add_to_cart_redirect', 'redirect_to_checkout');
 

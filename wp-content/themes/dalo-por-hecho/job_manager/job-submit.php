@@ -112,7 +112,7 @@ if (strpos($url, '?') !== false) {
 														<?php } ?>
                                                         <?php if(is_user_logged_in() == NULL OR meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) != "Publicar Tareas"){ ?>
 														    <button type="button" class="next-step" >Siguiente</button></li>
-														    <label for="exampleFormControlTextarea1">Create una cuenta para publicar tareas </label>
+														    <label for="exampleFormControlTextarea1">Para publicar tareas cambia tu rol de perfil <a href="<?php echo get_home_url() ?>/confi-perfil">aquí </a></label>
 														<?php } ?>														
                                                         
 													</ul>

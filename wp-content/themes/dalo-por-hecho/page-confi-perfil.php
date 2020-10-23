@@ -148,7 +148,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 $args = 
                                 array(
                                   'post_type' => 'job_listing',
-                                  'post_status' => 'publish',
+                                  'post_status' => array('publish','draft'),
                                   'author' => $current_user->ID,
 
                                 ); 
@@ -156,8 +156,8 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 while ( $loop->have_posts() ) : $loop->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10);
                                 $user_tarea = get_the_author_meta( 'ID' ); $title_tarea = get_the_title(); $id_tarea = get_the_ID(); $monto_salary = get_post_meta( get_the_ID(), '_job_salary', true ); $email_empleador = get_the_author_meta( 'user_email' );
                                 
-                                the_title();
-
+                                
+                                $a = 0;
                                 $args3 = array (
                                     'post_type' => 'postulados',
                                     'post_status' =>'publish',
@@ -171,7 +171,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 ); 
                                 $loop3 = new WP_Query( $args3 ); 
                                 while ( $loop3->have_posts() ) : $loop3->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10); ?>
-                                
+                                <?php if ($a == 0) {echo '<p class="nav-link active show">'.$title_tarea.'</p>';} ?>
                                 <div class="ofertas_conetnt">
                                     <div class="datos_name">
                                         <div class="row border-n mb-5">
@@ -230,7 +230,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                         </div>
                                     </div>
                                 </div>                                
-                               <?php endwhile; ?> 
+                               <?php $a = $a+1; endwhile; ?> 
                                <?php endwhile; ?>                                            
                                         </div>
                                         
