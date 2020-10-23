@@ -262,18 +262,13 @@ $user_actual = $current_user->ID;
 
                                     <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
                                       <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
-<<<<<<< HEAD
+
                                     <?php }else { ?>
 									
                                       <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
 									<label>Se cargará un 10% del presupuesto por cargos de servicio</label>
                                       
-=======
-                                      <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
-                                    <?php }else { ?>									
-                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
-									  <label>Se cargará un 10% del presupuesto por cargos de servicio</label> 
->>>>>>> c049ec72bf17dd797d1b08ae3862160b69e193a8
+
                                     <?php } ?>   
                                   </div>
                                 </div>
@@ -374,16 +369,11 @@ $user_actual = $current_user->ID;
 
                               <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
                                 <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
-<<<<<<< HEAD
+
                               <?php }else { ?>
-                                <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
-									
-=======
-                                <label>Se cargará un 10% del presupuesto por cargos de servicio</label> 
-                              <?php }else { ?>                                
+                                
                                 <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
-							    <label>Se cargará un 10% del presupuesto por cargos de servicio</label>									
->>>>>>> c049ec72bf17dd797d1b08ae3862160b69e193a8
+							    <label>Se cargará un 10% del presupuesto por cargos de servicio</label>			
                               <?php } ?>   
                             </div>
                           </div>

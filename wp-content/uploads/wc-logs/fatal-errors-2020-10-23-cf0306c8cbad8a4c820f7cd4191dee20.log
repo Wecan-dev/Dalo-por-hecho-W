@@ -8,3 +8,5 @@
 
 2020-10-23T13:43:54+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE) in /var/www/daloporhecho.cl/wp-content/themes/dalo-por-hecho/page-buscar-tareas.php on line 273
 
+2020-10-23T13:53:59+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE) in /var/www/daloporhecho.cl/wp-content/themes/dalo-por-hecho/page-buscar-tareas.php on line 273
+
