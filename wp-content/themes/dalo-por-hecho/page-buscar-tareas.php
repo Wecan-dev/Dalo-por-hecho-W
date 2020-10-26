@@ -318,7 +318,7 @@ $user_actual = $current_user->ID;
                                                         <p>$ <?php the_field('ofertar_monto_tarea'); ?></p>
                                                     </div>
                                                     <div class="respnse">
-                                                    <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  $current_user->ID )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
+                                                    <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  get_the_author_meta( 'ID' ) )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
                                                         <?php                                                   
 
                                                         $value_var_array = str_replace("<br>",":",$var_array); 
@@ -411,97 +411,7 @@ $user_actual = $current_user->ID;
 </script>	
 
 
-<script>
-$(document).ready(function() {     
-                   
-    $('#key').on('keyup', function() {
-        var key = $(this).val();        
-        var dataString = 'key='+key;
-        var url = "<?= get_home_url() ?>"; 
-    $.ajax({
-            type: "POST",
-            url: url+"/ajax/",
-            data: dataString,
-            success: function(data) {
-                //Escribimos las sugerencias que nos manda la consulta
-                $('#suggestions').fadeIn(1000).html(data);
-                //Al hacer click en algua de las sugerencias
-                $('.suggest-element').on('click', function(){
-                        //Obtenemos la id unica de la sugerencia pulsada
-                        var id = $(this).attr('id');
-                        //Editamos el valor del input con data de la sugerencia pulsada
-                        $('#key').val($('#'+id).attr('data'));
-                        //Hacemos desaparecer el resto de sugerencias
-                        $('#suggestions').fadeOut(1000);
-                        //alert('Has seleccionado el '+id+' '+$('#'+id).attr('data'));
-                        return true;
-                });
-            }
-        });
-    });
 
-
-    $('#job_location').on('keyup', function() {
-        var job_location = $(this).val();        
-        var dataString = 'job_location='+job_location;
-        var url = "<?= get_home_url() ?>"; 
-    $.ajax({
-            type: "POST",
-            url: url+"/ajax/",
-            data: dataString,
-            success: function(data) {
-                //Escribimos las sugerencias que nos manda la consulta
-                $('#suggestions').fadeIn(1000).html(data);
-                //Al hacer click en algua de las sugerencias
-                $('.suggest-element').on('click', function(){
-                        //Obtenemos la id unica de la sugerencia pulsada
-                        var id = $(this).attr('id');
-                        //Editamos el valor del input con data de la sugerencia pulsada
-                        //$('#job_location').val(data);
-                         //$("#job_location").val(data1);
-                        $('#job_location').val($('#'+id).attr('data'));
-                        //Hacemos desaparecer el resto de sugerencias
-                        $('#suggestions').fadeOut(1000);
-                        //alert('Has seleccionado el '+id+' '+$('#'+id).attr('data'));
-                       // $("#job_location").val(data);
-                        return false;
-                });
-            }
-        });
-    });
-    
-
-
-$('#note_description').appendTo('.variation');
-    
-}); 
-
-    function monto_salary2(tile_tarea,name_tarea,id_tarea,email_empleador,name_empleado,id_empleado,salary){ 
-       $("input#field_ccdeo").val(name_tarea);
-       $("input#field_vqrer").val(tile_tarea);
-       $("input#field_a9ti0").val(id_tarea);
-       $("input#field_gvep8").val(email_empleador);
-       $("input#field_urvk3").val(name_empleado);
-       $("input#field_xjqxf").val(id_empleado);
-       $("input#field_41hfd").val(salary);
-    } 
-
-    function function_donation(salary_donation,array_note){
-
-       $('.wdgk_donation').prop('disabled', true);
-       var value_ofertar_monto =  salary_donation;
-       var porcent = (value_ofertar_monto*0.10);
-       var suma = parseFloat(porcent)+parseFloat(value_ofertar_monto);
-       $("input.wdgk_donation").val(suma);
-
-       $("textarea#w3mission").val(array_note);
-       $('textarea#w3mission').prop('hidden', true);       
-
-       //$("input#field_41hfd").val(salary);
-    }    
-
-//
-</script>
  <!-- Modal Donation-->
 <div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
  <div class="modal-dialog" role="document">

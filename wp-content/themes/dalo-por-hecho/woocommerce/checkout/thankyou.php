@@ -38,7 +38,21 @@ defined( 'ABSPATH' ) || exit;
 			</p>
 
 		<?php else : ?>
-<?php echo do_shortcode('[formidable id=6]');  ?>
+            <?php 
+                $array_note = order_itemmeta('Description',$order->get_id());
+                $name_tarea = descrypt_note($array_note,'name_tarea');
+                $title_tarea2 = $name_tarea."- Pedido#".$order->get_id();
+                $id_tarea = descrypt_note($array_note,'id_tarea');                
+                $id_postulacion  = descrypt_note($array_note,'id_postulacion');
+                $email_empleador = meta_value('ofertar_email_empleador', $id_postulacion);
+                $name_empleado = descrypt_note($array_note,'name_empleado');
+                $id_empleado = descrypt_note($array_note,'id_empleado');
+                $monto_tarea =  meta_value('ofertar_monto_tarea', $id_postulacion);
+                $monto_pagar =  $monto_tarea-($monto_tarea*0.10);
+ 
+            ?>
+            <?php echo do_shortcode('[formidable id=10]');  ?>
+            <?php //echo do_shortcode('[frm-set-get asignar_title_tarea_publicada='.$title_tarea.'][frm-set-get asignar_name_tarea_publicada='.$name_tarea.'][frm-set-get asignar_id_tarea_publicada='.$id_tarea.'][frm-set-get asignar_email_empleador='.$email_empleador.'][frm-set-get asignar_name_empleado='.$name_empleado.'][frm-set-get asignar_id_empleado='.$id_empleado.'][frm-set-get asignar_monto_tarea='.$monto_tarea.'][formidable id=10]');  ?>
 			<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
 			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
@@ -86,9 +100,37 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 
 </div>
+<style type="text/css">
+form#form_asignados {
+    display: none;
+}	
+.frm_message {
+    display: none;
+}
+</style>
 
 <script>
-$(document).ready(function() { 
-	$("#btn_modal").trigger("click");
-}	
-</script>
+       var id_postulacion = "<?= $id_postulacion ?>"; 		
+       var name_tarea = "<?= $name_tarea ?>"; 
+       var title_tarea2 = "<?= $title_tarea2 ?>";
+       var id_tarea = "<?= $id_tarea ?>";
+       var email_empleador = "<?= $email_empleador ?>";
+       var name_empleado = "<?= $name_empleado ?>";
+       var id_empleado = "<?= $id_empleado ?>";
+       var monto_tarea = "<?= $monto_tarea ?>";
+       var monto_pagar = "<?= $monto_pagar ?>";
+
+       $("input#field_asignar_title_tarea2").val(title_tarea2);
+       $("input#field_asignar_id_postulacion").val(id_postulacion);
+       $("input#field_asignar_name_tarea_publicada").val(name_tarea);       
+       $("input#field_asignar_id_tarea_publicada").val(id_tarea);
+       $("input#field_asignar_email_empleador").val(email_empleador);
+       $("input#field_asignar_name_empleado").val(name_empleado);
+       $("input#field_asignar_id_empleado").val(id_empleado);
+       $("input#field_asignar_monto_tarea").val(monto_tarea) 
+       $("input#field_asignar_monto_a_pagar").val(monto_pagar) 
+
+
+    form = document.getElementById('form_asignados');
+    form.submit();	
+ </script>
