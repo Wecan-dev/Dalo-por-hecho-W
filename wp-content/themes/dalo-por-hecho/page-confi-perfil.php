@@ -5,7 +5,7 @@
     <div class="container perfil m-110">
         <section>
 <?php
-
+echo $answer= $_POST["first-name"];
 
 /* Get user info. */
 global $current_user, $wp_roles;
@@ -31,8 +31,9 @@ $porcent = (($cont1 + $cont2 + $cont3 + $cont4 + $cont5 + $cont6 + $cont7 + $con
 
 $user_actual = $current_user->ID;  
 
-if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POST['action'] == 'update-user' ) {
+if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POST['action'] == 'update-user' ) { ?>
 
+<?php
     /* Update user password. */
     if ( !empty($_POST['pass1'] ) && !empty( $_POST['pass2'] ) ) {
         if ( $_POST['pass1'] == $_POST['pass2'] )
@@ -54,11 +55,12 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
         }
     }
 
-    if ( !empty( $_POST['first-name'] ) )
-        update_user_meta( $current_user->ID, 'first_name', esc_attr( $_POST['first-name'] ) );
+
+    if ( !empty( $_POST['first-name'] ) )        
+        update_user_meta( $current_user->ID, 'first_name', esc_attr( $_POST['first-name'] ) );    
     if ( !empty( $_POST['last-name'] ) )
         update_user_meta($current_user->ID, 'last_name', esc_attr( $_POST['last-name'] ) );
-    if ( !empty( $_POST['description'] ) )
+    if ( !empty( $_POST['description'] ) ) 
         update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
 
     if ( !empty( $_POST['direccion_user'] ) )
@@ -69,7 +71,8 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
        update_user_meta( $current_user->ID, 'fecha_nac_user', esc_attr( $_POST['fecha_nac_user'] ) ); 
     if ( !empty( $_POST['user_registration_radio_1600171615'] ) )
        update_user_meta( $current_user->ID, 'user_registration_radio_1600171615', esc_attr( $_POST['user_registration_radio_1600171615'] ) );          
-                
+        
+
 
     /* Redirect so the page will show updated info.*/
   /*I am not Author of this Code- i dont know why but it worked for me after changing below line to if ( count($error) == 0 ){ */
@@ -80,6 +83,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
         exit;
     }
 }
+
 
 
 
@@ -94,32 +98,36 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab"
+                            <a class="nav-link" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab"
                             aria-controls="v-pills-history" aria-selected="false">Hitorial de pagos</a>
 
                             <a class="nav-link" id="v-pills-method-tab" data-toggle="pill" href="#v-pills-method"
                                 role="tab" aria-controls="v-pills-method" aria-selected="false">Método de pago</a>
 
+                           <a class="nav-link" id="v-pills-bancario-tab" data-toggle="pill" href="#v-pills-bancario"
+                                role="tab" aria-controls="v-pills-bancario" aria-selected="false">Método de pago</a>                                
+
                             <a class="nav-link" id="v-pills-recomendar-tab" data-toggle="pill" href="#v-pills-recomendar"
                             role="tab" aria-controls="v-pills-recomendar" aria-selected="false">Recomendar a un
                             amigo</a>
 
-                            <a class="nav-link " id="v-pills-f-tab" data-toggle="pill" href="#v-pills-conf" role="tab"
+                            <a class="nav-link " id="v-pills-conf-tab" data-toggle="pill" href="#v-pills-conf" role="tab"
                                 aria-controls="v-pills-three" aria-selected="false">Configuración de cuenta</a>
 
-                            <a class="nav-link " id="v-pills-one-tab" data-toggle="pill" href="#v-pills-one"
-                            role="tab" aria-controls="v-pills-one" aria-selected="true">Mis aptitudes</a>
-                            <a class="nav-link" id="v-pills-f-tab" data-toggle="pill" href="#v-pills-f" role="tab"
-                                aria-controls="v-pills-three" aria-selected="false">Mis emblemas</a>
-                                
+                            <a class="nav-link " id="v-pills-aptitudes-tab" data-toggle="pill" href="#v-pills-aptitudes"
+                            role="tab" aria-controls="v-pills-aptitudes" aria-selected="true">Mis aptitudes</a>
+
+                            <a class="nav-link" id="v-pills-emblemas-tab" data-toggle="pill" href="#v-pills-emblemas" role="tab"
+                                aria-controls="v-pills-three" aria-selected="false">Mis emblemas</a>                                
                         
-                            <a class="nav-link" id="v-pills-h-tab" data-toggle="pill" href="#v-pills-h" role="tab"
+                            <a class="nav-link" id="v-pills-senales-tab" data-toggle="pill" href="#v-pills-senales" role="tab"
                                 aria-controls="v-pills-three" aria-selected="false">Señales de tareas</a>
 
                             <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ ?>
                             <a class="nav-link" id="v-pills-tareas-tab" data-toggle="pill" href="#v-pills-tareas" role="tab"
                                 aria-controls="v-pills-three" aria-selected="false">Tareas Publicadas</a>                               
                             <?php } ?>  
+
                             <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ ?>
                             <a class="nav-link" id="v-pills-notification-tab" data-toggle="pill" href="#v-pills-notification" role="tab"
                                 aria-controls="v-pills-three" aria-selected="false">Notificaciones</a>                               
@@ -257,8 +265,8 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade " id="v-pills-one" role="tabpanel"
-                                aria-labelledby="v-pills-one-tab">
+                            <div class="tab-pane fade " id="v-pills-aptitudes" role="tabpanel"
+                                aria-labelledby="v-pills-aptitudes-tab">
                                 <div id="accordion" role="tablist">
                                     <div class="card">
                                         <div class="card-header top-headline" role="tab" id="headingOne">
@@ -338,7 +346,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade  show active" id="v-pills-history" role="tabpanel"
+                            <div class="tab-pane fade" id="v-pills-history" role="tabpanel"
                                 aria-labelledby="v-pills-history-tab">
                                 <?php $pf = 0;
                                  $pedidos = get_posts( array(
@@ -510,7 +518,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                                                 <p><?php echo date("d/m/y",strtotime(get_post($sinparametros[3])->post_date));?></p>
                                                                             </td>
                                                                             <td class="tabla-pagos_table_td">
-                                                                                <p><?php echo descrypt_note(order_itemmeta('Description', $wp_pedido->id),$wp_pedido->id,'name_tarea') ?></p>
+                                                                                <p><?php echo descrypt_note(order_itemmeta('Description', $wp_pedido->id),'name_tarea') ?></p>
                                                                             </td>
                                                                             <td class="tabla-pagos_table_td">
                                                                                 <p>
@@ -564,6 +572,19 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                     tempor commodo eiusmod.
                                 </p>
                             </div>
+                          <div class="tab-pane fade" id="v-pills-bancario" role="tabpanel"
+                                aria-labelledby="v-pills-bancario-tab">
+                                <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur
+                                    elit id
+                                    dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum
+                                    duis
+                                    aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi
+                                    id do
+                                    Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in
+                                    aute
+                                    tempor commodo eiusmod.
+                                </p>
+                            </div>                            
 
                             
                             <div class="tab-pane fade" id="v-pills-recomendar" role="tabpanel"
@@ -624,156 +645,136 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 </div>
 
                             </div>
-                            <div class="tab-pane fade show <?php echo $v_pills_conf; ?>" id="v-pills-conf" role="tabpanel"
-                                aria-labelledby="v-pills-f-tab">
+                            <div class="tab-pane fade" id="v-pills-conf" role="tabpanel" aria-labelledby="v-pills-conf-tab">
+                                <div id="post-<?php the_ID(); ?>">
+                                    <div class="entry-content entry">
+                                        <?php the_content(); ?>
+                                        <?php if ( !is_user_logged_in() ) : ?>
+                                                <p class="warning">
+                                                    <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
+                                                </p><!-- .warning -->
+                                        <?php else : ?>
+                                        <?php if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>'; ?>                                
+                                            <div class="card">
+                                                <div class="card-header top-headline" role="tab" id="headingOne">
+                                                    <h5>
+                                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            <div class="cont-top-conf-cuenta">
+                                                                <div class="cont-top-conf-cuenta_h4">
+                                                                    Cuenta <?php $urlsinparametros= explode('=', $_SERVER['REQUEST_URI'], 2);
+$urlsin = $urlsinparametros[1];
+echo $_SERVER['REQUEST_URI'];
+ ?>
+                                                                </div>
+                                                                <div class="barra-progreso">
+                                                                    <h6>Completa tu perfil para mejorar tus oportunidades de trabajo
+                                                                    </h6>
+                                                                    <br>
+                                                                    <div class="cont-barra-progreso">
 
-    <div id="post-<?php the_ID(); ?>">
-        <div class="entry-content entry">
-            <?php the_content(); ?>
-            <?php if ( !is_user_logged_in() ) : ?>
-                    <p class="warning">
-                        <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
-                    </p><!-- .warning -->
-            <?php else : ?>
-                <?php if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>'; ?>                                
+                                                                        <div class="progress">
+                                                                            <div class="progress-bar" style="width:<?php echo $porcent; ?>%"></div>
+                                                                        </div>
+                                                                    </div>
 
-                                <div class="card">
-                                    <div class="card-header top-headline" role="tab" id="headingOne">
-                                        <h5>
-                                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
-                                                aria-controls="collapseOne">
-                                                <div class="cont-top-conf-cuenta">
-                                                    <div class="cont-top-conf-cuenta_h4">
-                                                        Cuenta
-                                                    </div>
-                                                    <div class="barra-progreso">
-                                                        <h6>Completa tu perfil para mejorar tus oportunidades de trabajo
-                                                        </h6>
-                                                        <br>
-                                                        <div class="cont-barra-progreso">
+                                                                </div>
 
-                                                            <div class="progress">
-                                                                <div class="progress-bar" style="width:<?php echo $porcent; ?>%"></div>
                                                             </div>
+
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne" class="collapse show mb-5" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="cont-img-conf-cuenta">
+                                                        <?php                   
+                                                        //if (is_user_logged_in()){
+                                                           //echo get_avatar( $current_user->user_email, 100 ); 
+                                                        //}?> 
+                                                        <?php echo do_shortcode('[user_profile_avatar_upload]');  ?>
+                                                         <div class="cont-img-conf-cuenta_a">
+                                                            <a class="ver-perfil-publico" href="perfil.html">Ver tu perfil publico</a>
                                                         </div>
-
                                                     </div>
-
-                                                </div>
-
-                                            </a>
-                                        </h5>
-                                    </div>
-                                    <div id="collapseOne" class="collapse show mb-5" role="tabpanel"
-                                        aria-labelledby="headingOne" data-parent="#accordion">
-
-                                        <div class="cont-img-conf-cuenta">
-                                            <?php                   
-                                            //if (is_user_logged_in()){
-                                               //echo get_avatar( $current_user->user_email, 100 ); 
-                                            //}?> 
-                                            <?php echo do_shortcode('[user_profile_avatar_upload]');  ?>
-
-
-                                                         
-                                            <div class="cont-img-conf-cuenta_a">
-                                                <a class="ver-perfil-publico" href="perfil.html">Ver tu perfil publico</a>
-                                            </div>
-                                        </div>
-                                        <div class="cont-inf-conf-cuenta">
-                                            <h6>Mejora tu perfil y has mas atractivo tu feed?></h6>
-                                            <div class="row cont-row-form">
-                                            <div class="subir-foto col-md-6">
-                                               <?php if(meta_value_img_frm($current_user->ID,7) == NULL){ ?>
-                                                   <h6>Subir foto de portada</h6>
-                                                <?php }else{ ?>   
-                                                    <img src="<?php echo meta_value_img_frm($current_user->ID,7); ?>"> 
-                                                <?php } ?>                                                    
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h6>Subir foto de portada</h6>
-                                                <?php echo do_shortcode('[frm-set-get id_user='.$current_user->ID.'][formidable id=7]');  ?>
-                                            </div>  
-                                            </div>                                          
-                                        </div>
-                                        <div class="form-conf-cuenta">
-
-                <form method="post" id="adduser" action="<?php echo get_home_url(); ?>/confi-perfil/?#v-pills-conf">                                        
-                                           
-                                                <div class="row cont-row-form">
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" placeholder="Nombre y Apellido" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
+                                                    <div class="cont-inf-conf-cuenta">
+                                                        <h6>Mejora tu perfil y has mas atractivo tu feed?></h6>
+                                                        <div class="row cont-row-form">
+                                                            <div class="subir-foto col-md-6">
+                                                               <?php if(meta_value_img_frm($current_user->ID,7) == NULL){ ?>
+                                                                   <h6>Subir foto de portada</h6>
+                                                                <?php }else{ ?>   
+                                                                    <img src="<?php echo meta_value_img_frm($current_user->ID,7); ?>"> 
+                                                                <?php } ?>                                                    
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <h6>Subir foto de portada</h6>
+                                                                <?php echo do_shortcode('[frm-set-get id_user='.$current_user->ID.'][formidable id=7]');  ?>
+                                                            </div>  
+                                                        </div>                                          
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" placeholder="Dirección" name="direccion_user" type="text" id="direccion_user" value="<?php the_author_meta( 'direccion_user', $current_user->ID ); ?>" />
-                                                    </div>
-                                                </div>
-                                                <div class="row cont-row-form">
-
-                                                    <div class="col-md-6">
-                                                        <input class="form-control" placeholder="Escribe tu frase" name="frase_user" type="text" id="frase_user" value="<?php the_author_meta( 'frase_user', $current_user->ID ); ?>" />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="email" class="form-control" id="email"
+                                                    <div class="form-conf-cuenta">
+                                                        <form method="post" id="adduser" action="<?php echo get_home_url(); ?>/confi-perfil/">                                        
+                                                            <div class="row cont-row-form">
+                                                                <div class="col-md-6">
+                                                                    <input class="form-control" placeholder="Nombre y Apellido" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <input class="form-control" placeholder="Dirección" name="direccion_user" type="text" id="direccion_user" value="<?php the_author_meta( 'direccion_user', $current_user->ID ); ?>" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row cont-row-form">
+                                                                <div class="col-md-6">
+                                                                    <input class="form-control" placeholder="Escribe tu frase" name="frase_user" type="text" id="frase_user" value="<?php the_author_meta( 'frase_user', $current_user->ID ); ?>" />
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <input type="email" class="form-control" id="email"
                                                             placeholder="Enter email" name="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
-                                                    </div>
-                                                </div>
-                                           
-                                            <h6>Fecha de cumpleaños </h6>
-                                            <div class="form-inline cumple">
-                                                <input type="text" class="form-control" placeholder="DD" name="dia" id="dia" maxlength="2" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('d', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
-                                                <input type="text" class="form-control" placeholder="MM" name="mes" id="mes" min="1" max="12" maxlength="2" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('m', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
-                                                <input type="text" class="form-control" placeholder="AA" name="ano" id="ano" min="1900" maxlength="4" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('Y', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
-                                                <input type="hidden" class="form-control" id="fecha_nac_user" placeholder="Enter email" name="fecha_nac_user" value="<?php echo meta_user_value( 'fecha_nac_user', $current_user->ID ) ?>" />
-
-                                            </div>
-                                            <h6>Agrega tu descripción</h6>
-                                            <textarea name="description" id="description" rows="10" cols="30" class="textarea-conf"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea>
-                                            
-                                            <h6>Que deseas en DALO POR HECHO </h6>
-                                            <div class="opc-conf-cuenta">
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="user_registration_radio_1600171615" id="user_registration_radio_1600171615" value="Publicar Tareas"  <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ echo 'checked="checked"';} ?>>Publicar Tareas
-                                                </label>
-                                                <label class="radio-inline">
-                                                    <input type="radio" name="user_registration_radio_1600171615" id="user_registration_radio_1600171615" value="Hacer tareas" <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ echo 'checked="checked"';} ?>>Hacer tareas
-                                                </label>
-
-                                            </div>
-                                            <div class="cont-boton-cambios">
-                                               <!-- <a class="guardar-cambios" href="#">Guardar cambios</a> -->
-                                              
-                                                
-                                                <input name="updateuser" type="submit" id="updateuser" class="guardar-cambios" value="Guardar cambios" />
-                                                <?php wp_nonce_field( 'update-user' ) ?>
-                                                <input name="action" type="hidden" id="action" value="update-user" />
-                                                <a class="desactivar-cuenta" href="#">Desactivar cuenta</a>                                             
-                                            </div>
-                    <?php 
-                        //action hook for plugin and extra fields
-                       // do_action('edit_user_profile',$current_user); 
-                    ?>
-
-                </form><!-- #adduser -->
-            <?php endif; ?>
-        </div><!-- .entry-content -->
-    </div><!-- .hentry .post -->
-    <?php endwhile; ?>
-<?php else: ?>
-    <p class="no-data">
-        <?php _e('Sorry, no page matched your criteria.', 'profile'); ?>
-    </p><!-- .no-data -->
-<?php endif; ?>
-
-
-
-                                        </div>
+                                                                </div>
+                                                            </div>                                           
+                                                            <h6>Fecha de cumpleaños </h6>
+                                                            <div class="form-inline cumple">
+                                                                <input type="text" class="form-control" placeholder="DD" name="dia" id="dia" maxlength="2" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('d', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
+                                                                <input type="text" class="form-control" placeholder="MM" name="mes" id="mes" min="1" max="12" maxlength="2" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('m', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
+                                                                <input type="text" class="form-control" placeholder="AA" name="ano" id="ano" min="1900" maxlength="4" value="<?php if (meta_user_value( 'fecha_nac_user', $current_user->ID )!=NULL) {echo date('Y', strtotime(meta_user_value( 'fecha_nac_user', $current_user->ID ))); }?>">
+                                                                <input type="hidden" class="form-control" id="fecha_nac_user" placeholder="Enter email" name="fecha_nac_user" value="<?php echo meta_user_value( 'fecha_nac_user', $current_user->ID ) ?>" />
+                                                            </div>
+                                                            <h6>Agrega tu descripción</h6>
+                                                            <textarea name="description" id="description" rows="10" cols="30" class="textarea-conf"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea>
+                                                            <h6>Que deseas en DALO POR HECHO </h6>
+                                                            <div class="opc-conf-cuenta">
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="user_registration_radio_1600171615" id="user_registration_radio_1600171615" value="Publicar Tareas"  <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" ){ echo 'checked="checked"';} ?>>Publicar Tareas
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="user_registration_radio_1600171615" id="user_registration_radio_1600171615" value="Hacer tareas" <?php if( meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ echo 'checked="checked"';} ?>>Hacer tareas
+                                                                </label>
+                                                            </div>
+                                                            <div class="cont-boton-cambios">
+                                                                <input name="updateuser" type="submit" id="updateuser" class="guardar-cambios" value="Guardar cambios" />
+                                                                <?php wp_nonce_field( 'update-user' ) ?>
+                                                                <input name="action" type="hidden" id="action" value="update-user" />
+                                                                <a class="desactivar-cuenta" href="#">Desactivar cuenta</a>                                             
+                                                            </div>
+                                                            <?php 
+                                                                //action hook for plugin and extra fields
+                                                            // do_action('edit_user_profile',$current_user); 
+                                                            ?>
+                                                        </form><!-- #adduser -->
+                                                    </div>    
+                                                </div>    
+                                            </div>    
+                                        <?php endif; ?>
+                                        <?php endwhile; ?>
+                                        <?php else: ?>
+                                        <p class="no-data">
+                                            <?php _e('Sorry, no page matched your criteria.', 'profile'); ?>
+                                        </p><!-- .no-data -->
+                                        <?php endif; ?>                                      
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="tab-pane fade" id="v-pills-f" role="tabpanel" aria-labelledby="v-pills-f-tab">
+                            <div class="tab-pane fade" id="v-pills-emblemas" role="tabpanel" aria-labelledby="v-pills-emblemas-tab">
                                 <div class="card">
                                     <div class="card-header top-headline" role="tab" id="headingOne">
                                         <h5>
@@ -912,8 +913,8 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="v-pills-h" role="tabpanel"
-                            aria-labelledby="v-pills-h-tab">
+                            <div class="tab-pane fade" id="v-pills-senales" role="tabpanel"
+                            aria-labelledby="v-pills-senales-tab">
                             <div class="card">
                                 <div class="card-header top-headline" role="tab" id="headingOne">
                                     <h5>
@@ -990,9 +991,21 @@ $(document).ready(function () {
             return replace.replace('Ningún archivo seleccionado', 'xxxx');
         });               
          
+        var tab = "<?= $_GET['tab']; ?>";         
+        if (tab == "") {
+            $("#v-pills-history-tab").addClass("nav-link active");
+            $("#v-pills-history").addClass("tab-pane fade  show active");
+        };          
+        if (tab != "") {
+            $("#v-pills-history-tab").addClass("nav-link");
+            $("#v-pills-history").addClass("tab-pane fade");
+
+            $("#v-pills-"+tab+"-tab").addClass("nav-link active show");
+            $("#v-pills-"+tab).addClass("tab-pane fade  show active");
+        }; 
+        
 });
-
-
+//
 </script>
 <?php get_template_part('sections/home/main-modal-step'); ?>
 <?php get_footer(); ?>    

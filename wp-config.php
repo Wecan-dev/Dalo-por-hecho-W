@@ -23,7 +23,7 @@
 /** The name of the database for WordPress */
 
  define( 'DB_NAME', 'db_dalo_por_hecho' );
-// define( 'DB_NAME', 'D4l0P0r_H3chO' );
+//define( 'DB_NAME', 'D4l0P0r_H3chO' );
 //define( 'DB_NAME', 'db_daloporhecho' );
 /** MySQL database username */
 //define( 'DB_USER', 'DaloPor_Hecho' );

@@ -1,0 +1,12 @@
+2020-10-26T00:39:27+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 759
+
+2020-10-26T04:29:40+00:00 CRITICAL Cannot use [] for reading in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 664
+
+2020-10-26T05:10:11+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE), expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 766
+
+2020-10-26T05:10:55+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE), expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 766
+
+2020-10-26T05:11:17+00:00 CRITICAL syntax error, unexpected 'endif' (T_ENDIF), expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 767
+
+2020-10-26T05:15:19+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE), expecting end of file in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 766
+

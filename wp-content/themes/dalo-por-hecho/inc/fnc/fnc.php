@@ -338,11 +338,29 @@ function order_itemmeta($key,$id){
 
 /*********************Crypt Array Note ******************/
 
-function descrypt_note($array_note,$wp_pedido_id,$key){
+function descrypt_note($array_note,$key){
   $value_var_array = str_replace("<br>",":",$array_note); 
   $sinparametros= explode(':', $value_var_array, 14);
   if ($key == "name_tarea") {
     return $sinparametros[1];
   }
+  if ($key == "id_tarea") {
+    return $sinparametros[3];
+  } 
+  if ($key == "email_empleador") {
+    return $sinparametros[3];
+  }  
+  if ($key == "id_postulacion") {
+    return $sinparametros[13];
+  }  
+  if ($key == "name_empleado") {
+    return $sinparametros[5];
+  }     
+  if ($key == "id_empleado") {
+    return $sinparametros[7];
+  } 
+  if ($key == "monto_tarea") {
+    return $sinparametros[9];
+  }     
   
 }

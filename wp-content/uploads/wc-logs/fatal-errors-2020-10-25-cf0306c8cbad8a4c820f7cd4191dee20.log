@@ -1,0 +1,6 @@
+2020-10-25T08:41:37+00:00 CRITICAL syntax error, unexpected '""' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\woocommerce\checkout\thankyou.php on line 44
+
+2020-10-25T08:41:59+00:00 CRITICAL syntax error, unexpected '.' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\woocommerce\checkout\thankyou.php on line 44
+
+2020-10-25T09:01:33+00:00 CRITICAL syntax error, unexpected ',' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\woocommerce\checkout\thankyou.php on line 50
+
