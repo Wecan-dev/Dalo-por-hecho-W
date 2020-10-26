@@ -48,6 +48,14 @@ if (strpos($url, '?') !== false) {
 	.close:focus{
 		background-color: transparent;
 	}
+	@media (min-width:0) and (max-width: 767px){
+		.label-type__presupuesto{
+			margin-right: 1rem;
+		}
+		#job_clp{
+			margin-bottom: 5px;
+		}
+	}
 
 </style>
 <form action="<?php echo esc_url( $action ); ?>" method="post" id="submit-job-form" class="job-manager-form" enctype="multipart/form-data">
@@ -103,7 +111,7 @@ if (strpos($url, '?') !== false) {
 															tarea</label>
 														<textarea class="form-control" name="job_description" id="job_description"
 															rows="3"
-															placeholder="Ej, vivo en el 5 piso , no puedo cargar peo por asuntos medicos"></textarea>
+															placeholder="Ej, vivo en el 5 piso , no puedo cargar peso por asuntos medicos"></textarea>
 													</div>
 													<ul class="list-inline text-center">
 														<li class="btn-line">
@@ -161,8 +169,7 @@ if (strpos($url, '?') !== false) {
 													<h4 class="text-center">¿Que necesitas hacer?</h4>
 													<label class="text-start mt-4">Cual es tu presupuesto para la tarea?
 													</label>
-													<span style="font-size: 12px;color: #b3b3b3;" class="list-inline text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-														Reiciendis voluptates nobis </span>
+													<span style="font-size: 12px;color: #b3b3b3;" class="list-inline text-center">Cuanto estás dispuesto a pagar por la tarea</span>
 													
 													<div class="row main-type__inputs mb-3">
 														<input class="input-type__presupuesto" type="radio" name="radio1" id="radio1" onclick="quitar();" checked />

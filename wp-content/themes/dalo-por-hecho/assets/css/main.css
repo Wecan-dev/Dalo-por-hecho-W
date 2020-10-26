@@ -375,14 +375,7 @@ section {
 .mt-60 {
 	margin-top: 60px;
 }
-.main-tareas-2 .main-tareas_item-content:hover {
-	background: #47c0d3;
-	transition: 0.5s;
-}
-.main-tareas-2 .main-tareas_item-content:hover p {
-	color: #ffffff;
-	transition: 0.5s;
-}
+
 .bg-testimonios {
 	padding: 100px;
 	padding-bottom: 0;
@@ -2634,4 +2627,7 @@ fieldset.fieldset-create_account_email {
 }
 input[type="file"] {
 	border: none;
+}
+.main-tareas__last{
+	margin-top: -3px;
 }

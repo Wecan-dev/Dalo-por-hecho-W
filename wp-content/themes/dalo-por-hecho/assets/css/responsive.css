@@ -164,6 +164,14 @@
 	}
 	.main-tareas_item-content {
 		width: 100%;
+		padding: 1rem;
+	}
+	.main-tareas__last{
+		margin-top:0;
+		padding: 0.8rem;
+	}
+	.content-tetimonios{
+		height: auto;
 	}
 	.main-tareas-2 .main-tareas_item-content {
 		width: 100%;
@@ -212,13 +220,12 @@
 	.mx-4 {
 		margin-right: 0 !important;
 	}
+	
 	.btn-custom {
+		margin-bottom: 30px;
+		width: 80%;
 		font-size: 12px;
 		padding: 12px !important;
-	}
-	.btn-custom {
-		margin-bottom: 20px;
-		width: 80%;
 	}
 	.cta-bg {
 		width: 95%;
@@ -384,9 +391,21 @@
 		text-align: center;
 	}
 	.job-manager-form{
-		padding: 4rem 2rem 0;
+		padding: 4rem 0rem 0;
 	}
-	
+	.wizard > div.wizard-inner{
+		    top: 40px;
+	}
+	.tab-content h4 {
+		margin-bottom: 40px;
+		font-size: 20px;
+	}
+	.main-banner__text{
+		    margin-top: -140px;
+	}
+	.main-type__inputs{
+		width:100%;
+	}
 	.main-taks__maxgrid{
 		grid-template-columns:100%;
 		grid-gap: 0rem;

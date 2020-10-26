@@ -1,0 +1,18 @@
+2020-10-26T02:12:03+00:00 CRITICAL Uncaught Error: Call to undefined function Khipu\curl_init() in /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/ApiClient.php:158
+Stack trace:
+#0 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/Client/PaymentsApi.php(448): Khipu\ApiClient->callApi('/payments', 'POST', Array, 'subject=Orden+2...', Array, '\\Khipu\\Model\\Pa...')
+#1 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/class-wc-khipu.php(274): Khipu\Client\PaymentsApi->paymentsPost('Orden 259 - Dal...', 'CLP', '550000.00', Array)
+#2 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/class-wc-khipu.php(310): WC_Gateway_khipu->generate_khipu_generate_payment(259)
+#3 /var/www/daloporhecho.cl/wp-includes/class-wp-hook.php(287): WC_Gateway_khipu->receipt_page(259)
+#4 /var/www/daloporhecho.cl/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#5 /var/www/daloporhecho.cl/wp-includes/plugi in /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/ApiClient.php on line 158
+
+2020-10-26T02:14:40+00:00 CRITICAL Uncaught Error: Call to undefined function Khipu\curl_init() in /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/ApiClient.php:158
+Stack trace:
+#0 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/Client/PaymentsApi.php(448): Khipu\ApiClient->callApi('/payments', 'POST', Array, 'subject=Orden+2...', Array, '\\Khipu\\Model\\Pa...')
+#1 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/class-wc-khipumanual.php(256): Khipu\Client\PaymentsApi->paymentsPost('Orden 260 - Dal...', 'CLP', '550000.00', Array)
+#2 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/class-wc-khipumanual.php(281): WC_Gateway_khipumanual->generate_khipumanual_submit_button(260)
+#3 /var/www/daloporhecho.cl/wp-includes/class-wp-hook.php(287): WC_Gateway_khipumanual->receipt_page(260)
+#4 /var/www/daloporhecho.cl/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#5 /var/www/dalopo in /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/ApiClient.php on line 158
+
