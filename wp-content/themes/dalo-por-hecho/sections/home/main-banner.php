@@ -23,7 +23,7 @@
 			</div>
 
 		</div>
-		<div class="text-center">
+		<div class="text-center main-banner__down">
 			<a href="#down"><img class="arrow" src="<?php echo get_template_directory_uri();?>/assets/img/arrow.png" alt=""></a>
 		</div>
 
