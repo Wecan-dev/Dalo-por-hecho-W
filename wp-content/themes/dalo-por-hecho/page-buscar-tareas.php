@@ -201,7 +201,8 @@ $user_actual = $current_user->ID;
             <div class=" main-content__tabs">
             <div class="tab-content main-taks__tabs" id="v-pills-tabContent">
             <?php $loop2 = new WP_Query( $args ); $j = 0;
-            while ( $loop2->have_posts() ) : $loop2->the_post(); $user_tarea = get_the_author_meta( 'ID' ); $title_tarea = get_the_title(); $id_tarea = get_the_ID(); $monto_salary = get_post_meta( get_the_ID(), '_job_salary', true ); $email_empleador = get_the_author_meta( 'user_email' ); ?>    
+            while ( $loop2->have_posts() ) : $loop2->the_post(); $user_tarea = get_the_author_meta( 'ID' ); $title_tarea = get_the_title(); $id_tarea = get_the_ID(); $monto_salary = get_post_meta( get_the_ID(), '_job_salary', true ); $email_empleador = get_the_author_meta( 'user_email' ); ?>
+                    
              <div class="tab-pane fade <?php if($j==0){ echo "show active";} ?>" id="v-pills-<?php echo get_the_ID();?>" role="tabpanel" aria-labelledby="v-pills-<?php echo get_the_ID();?>-tab">        
                     <div class="main-task__minigrid">
                     
@@ -294,7 +295,7 @@ $user_actual = $current_user->ID;
                                         )),                     
                                     ); 
                                     $loop3 = new WP_Query( $args3 ); 
-                                    while ( $loop3->have_posts() ) : $loop3->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10); 
+                                    while ( $loop3->have_posts() ) : $loop3->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10); $salarys = get_field('ofertar_monto_tarea');
                                         global $id_postulado;
                                         $id_postulado = get_the_author_meta( 'ID' ); ?>  
                                     <div class="ofertas_conetnt">
@@ -416,16 +417,7 @@ $user_actual = $current_user->ID;
 
 
 
- <!-- Modal Donation-->
-<div class="modal fade" id="modal_donation2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog" role="document">
-    <div class="modal-content">  
-        <div class="modal-body">
-         <?php  echo do_shortcode('[wdgk_donation]');  ?>
-        </div> 
-    </div>
- </div>
-</div>                
+             
 
     <!-- Modal Publicar -->
     <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -448,5 +440,89 @@ $user_actual = $current_user->ID;
         </div>
       </div>
     </div>    
+
+ <!-- Modal Donation-->
+<div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">  
+        <div class="modal-body">
+           <h3 class="mb-3 main-task__title">Pagar Oferta</h3>
+                            <div class="contenido">
+                                <div class="datos_name">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3">
+                                            <?php echo get_avatar( user_value( 10 ), 50 ); ?> 
+                                        </div>
+                                        <div class="col-lg-8 col-md-9">
+                                            <p class="name"><?php echo get_the_author(); ?></p>
+                                            <span><?php echo $sinparametros[1]; ?></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="datos_genereal">
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                   
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                               Resumen
+                                              </p>
+                                              <p>Monto tarea</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                       
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                               <br>
+                                              </p>
+                                              <p>$<?php echo $salarys; ?></p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                   
+                                            <div class="main-content__localizationtext">
+                                              <p>Monto Comisiòn</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                    
+                                            <div class="main-content__localizationtext">
+                                              <p>$<?php echo $comision; ?></p>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                   
+                                            <div class="main-content__localizationtext">
+                                              <span>Total</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                    
+                                            <div class="main-content__localizationtext">
+                                              <span>$<?php echo ($salarys+$comision); ?></span>
+                                            </div>
+                                          </div>
+                                        </div>                                        
+                                                                         
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+         <?php  echo do_shortcode('[wdgk_donation]');  ?>
+        </div>         
+    </div>
+ </div> 
+</div>      
 
 <?php get_footer(); ?>
