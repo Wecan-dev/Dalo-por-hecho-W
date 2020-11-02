@@ -5,7 +5,6 @@
     <div class="container perfil m-110">
         <section>
 <?php
-echo $answer= $_POST["first-name"];
 
 /* Get user info. */
 global $current_user, $wp_roles;
@@ -70,8 +69,18 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
     if ( !empty( $_POST['fecha_nac_user'] ) )
        update_user_meta( $current_user->ID, 'fecha_nac_user', esc_attr( $_POST['fecha_nac_user'] ) ); 
     if ( !empty( $_POST['user_registration_radio_1600171615'] ) )
-       update_user_meta( $current_user->ID, 'user_registration_radio_1600171615', esc_attr( $_POST['user_registration_radio_1600171615'] ) );          
-        
+       update_user_meta( $current_user->ID, 'user_registration_radio_1600171615', esc_attr( $_POST['user_registration_radio_1600171615'] ) );  
+    ///Datos bancarios
+    //if ( !empty( $_POST['nombre_bancario'] ) )
+            update_user_meta( $current_user->ID, 'nombre_bancario', esc_attr( $_POST['nombre_bancario'] ) ); 
+    //if ( !empty( $_POST['rut_bancario'] ) )
+            update_user_meta( $current_user->ID, 'rut_bancario', esc_attr( $_POST['rut_bancario'] ) );                      
+    //if ( !empty( $_POST['banco_bancario'] ) )
+            update_user_meta( $current_user->ID, 'banco_bancario', esc_attr( $_POST['banco_bancario'] ) );         
+    //if ( !empty( $_POST['numero_de_cuenta_bancario'] ) )
+            update_user_meta( $current_user->ID, 'numero_de_cuenta_bancario', esc_attr( $_POST['numero_de_cuenta_bancario'] ) );         
+    //if ( !empty( $_POST['email_bancario'] ) )
+            update_user_meta( $current_user->ID, 'email_bancario', esc_attr( $_POST['email_bancario'] ) );                             
 
 
     /* Redirect so the page will show updated info.*/
@@ -105,7 +114,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 role="tab" aria-controls="v-pills-method" aria-selected="false">Método de pago</a>
 
                            <a class="nav-link" id="v-pills-bancario-tab" data-toggle="pill" href="#v-pills-bancario"
-                                role="tab" aria-controls="v-pills-bancario" aria-selected="false">Método de pago</a>                                
+                                role="tab" aria-controls="v-pills-bancario" aria-selected="false">Datos Bancarios</a>                                
 
                             <a class="nav-link" id="v-pills-recomendar-tab" data-toggle="pill" href="#v-pills-recomendar"
                             role="tab" aria-controls="v-pills-recomendar" aria-selected="false">Recomendar a un
@@ -146,11 +155,8 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                 <div id="accordion" role="tablist">
                                     <div class="card">
                                         <div class="card-header top-headline" role="tab" id="headingOne">
-                                            <h5>
-                                                
-                                                   Notificaciones
-
-                                            
+                                            <h5>                                             
+                                                   Notificaciones                                            
                                             </h5>
                                 <?php 
                                 $args = 
@@ -158,7 +164,6 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                   'post_type' => 'job_listing',
                                   'post_status' => array('publish','draft'),
                                   'author' => $current_user->ID,
-
                                 ); 
                                 $loop = new WP_Query( $args ); 
                                 while ( $loop->have_posts() ) : $loop->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10);
@@ -574,16 +579,85 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                             </div>
                           <div class="tab-pane fade" id="v-pills-bancario" role="tabpanel"
                                 aria-labelledby="v-pills-bancario-tab">
-                                <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur
-                                    elit id
-                                    dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum
-                                    duis
-                                    aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi
-                                    id do
-                                    Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in
-                                    aute
-                                    tempor commodo eiusmod.
-                                </p>
+                                <div id="post-<?php the_ID(); ?>">
+                                    <div class="entry-content entry">
+                                        <?php the_content(); ?>
+                                        <?php if ( !is_user_logged_in() ) : ?>
+                                                <p class="warning">
+                                                    <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
+                                                </p><!-- .warning -->
+                                        <?php else : ?>
+                                        <?php if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>'; ?>                                
+                                            <div class="card">
+                                                <div class="card-header top-headline" role="tab" id="headingOne">
+                                                    <h5>
+                                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            <div class="cont-top-conf-cuenta">
+                                                                <div class="cont-top-conf-cuenta_h4">
+                                                                    Datos Bancarios
+                                                                </div>
+                                                                <div class="barra-progreso">
+                                                                    <h6>Completa tu perfil para mejorar tus oportunidades de trabajo
+                                                                    </h6>
+                                                                    <br>
+                                                                    <div class="cont-barra-progreso">
+
+                                                                        <div class="progress">
+                                                                            <div class="progress-bar" style="width:<?php echo $porcent; ?>%"></div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseOne" class="collapse show mb-5" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">                                
+                                                    <div class="form-conf-cuenta">
+                                                        <form method="post" id="adduser" action="<?php echo get_home_url(); ?>/confi-perfil/">                                      
+                                                            <div class="row cont-row-form">
+                                                                <div class="col-md-12">
+                                                                    <input class="form-control" placeholder="Nombre y Apellido" name="nombre_bancario" type="text" id="nombre_bancario" value="<?php the_author_meta( 'nombre_bancario', $current_user->ID ); ?>" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row cont-row-form">    
+                                                                <div class="col-md-12">
+                                                                    <input class="form-control" placeholder="Rut" name="rut_bancario" type="text" id="rut_bancario" value="<?php the_author_meta( 'rut_bancario', $current_user->ID ); ?>" />
+                                                                </div>
+                                                            </div>                            
+                                                            <div class="row cont-row-form">
+                                                                <div class="col-md-12">
+                                                                    <input class="form-control" placeholder="Banco" name="banco_bancario" type="text" id="banco_bancario" value="<?php the_author_meta( 'banco_bancario', $current_user->ID ); ?>" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row cont-row-form">    
+                                                                <div class="col-md-12">
+                                                                    <input type="text" class="form-control" id="numero_de_cuenta_bancario"
+                                                            placeholder="Nùmero de Cuenta" name="numero_de_cuenta_bancario" value="<?php the_author_meta( 'numero_de_cuenta_bancario', $current_user->ID ); ?>" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row cont-row-form">   
+                                                                <div class="col-md-12">
+                                                                    <input type="text" class="form-control" id="email_bancario"
+                                                            placeholder="Email" name="email_bancario" value="<?php the_author_meta( 'email_bancario', $current_user->ID ); ?>" />
+                                                                </div>
+                                                            </div> 
+                                                            <div class="cont-boton-cambios">
+                                                                <input name="updateuser" type="submit" id="updateuser" class="guardar-cambios" value="Guardar cambios" />
+                                                                <?php wp_nonce_field( 'update-user' ) ?>
+                                                                <input name="action" type="hidden" id="action" value="update-user" />
+                                                                                                            
+                                                            </div>                                                                                                 
+                                                        </form><!-- #adduser -->
+                                                    </div>    
+                                                </div>    
+                                            </div>    
+                                        <?php endif; ?>
+                                      
+                                    </div>
+                                </div>
                             </div>                            
 
                             

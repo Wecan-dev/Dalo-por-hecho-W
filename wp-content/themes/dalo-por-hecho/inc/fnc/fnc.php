@@ -364,3 +364,10 @@ function descrypt_note($array_note,$key){
   }     
   
 }
+
+/********************* Bank data ******************/
+
+function bank_data(){
+   global $current_user;
+   if (meta_user_value( 'nombre_bancario', $current_user->ID ) != NULL && meta_user_value( 'rut_bancario', $current_user->ID ) != NULL && meta_user_value( 'banco_bancario', $current_user->ID ) != NULL && meta_user_value( 'numero_de_cuenta_bancario', $current_user->ID ) != NULL && meta_user_value( 'email_bancario', $current_user->ID ) != NULL){ return "yes"; }
+}

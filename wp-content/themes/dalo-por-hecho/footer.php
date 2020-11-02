@@ -164,6 +164,57 @@ $('#note_description').appendTo('.variation');
  <div class="modal-dialog" role="document">
     <div class="modal-content">  
         <div class="modal-body">
+           <h3 class="mb-3 main-task__title">Pagar Oferta2 <?php echo $id_postulado; ?></h3>
+                            <div class="contenido">
+                                <div class="datos_name">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3">
+                                            <?php echo get_avatar( user_value( get_post($var_array[7])->post_author ), 50 ); echo $var_array[7]; echo "dasdasdsad";?> 
+                                        </div>
+                                        <div class="col-lg-8 col-md-9">
+                                            <p class="name">Publicado por</p>
+                                            <span><?php echo get_the_author(); ?></span>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li class="mr-4 ml-0"><?php the_job_publish_date2(); ?></li>
+                                        <li class="active">Abierto</li>
+                                        <li>Asignado</li>
+                                        <li>Terminado</li>
+                                    </ul>
+                                </div>
+                                <div class="datos_genereal">
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">
+
+                                            <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt="">    
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                                Localización
+                                              </p>
+                                              <span><?php the_job_location( false ); ?></span>
+                                            </div>
+                                          </div>
+
+
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">
+                                            <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt="">
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                                Fecha del evento
+                                              </p>
+                                              <span><?php echo date_new(get_post_time( 'Y-m-d' )); ?></span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
          <?php  echo do_shortcode('[wdgk_donation]');  ?>
         </div>         
     </div>

@@ -35,7 +35,6 @@ $user_actual = $current_user->ID;
                     <a href='#' aria-expanded='false' aria-haspopup='true'
                         class='nav-link dropdown-toggle nav-link-black ' data-toggle='dropdown'>
                         Localización
-                       
                     </a>
                     <div aria-labelledby='dropdownMenuButton' class='dropdown-menu'>
                         <div class='content-drop'>
@@ -257,11 +256,13 @@ $user_actual = $current_user->ID;
                                 </div>
                                 <div class=" datos_presupuesto main-presupuesto__mobile">
                                   <div class="presupuesto_minicard">
-                                    <p>Presupuesto</p>
+                                    <p>Presupuestoo </p>
                                     <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
 
-                                    <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
-                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
+                                    <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); 
+                                        if (bank_data() == "yes" ){ $target = "publicar"; }else{ $target = "publicar_bank"; }
+                                    ?>
+                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="#<?php echo $target ?>" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');">Ofertar</a>
                                       <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
                                     <?php }else { ?>
 									
@@ -293,7 +294,9 @@ $user_actual = $current_user->ID;
                                         )),                     
                                     ); 
                                     $loop3 = new WP_Query( $args3 ); 
-                                    while ( $loop3->have_posts() ) : $loop3->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10); ?>  
+                                    while ( $loop3->have_posts() ) : $loop3->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10); 
+                                        global $id_postulado;
+                                        $id_postulado = get_the_author_meta( 'ID' ); ?>  
                                     <div class="ofertas_conetnt">
                                         <div class="datos_name">
                                             <div class="row border-n mb-5">
@@ -366,10 +369,11 @@ $user_actual = $current_user->ID;
                             <div class="presupuesto_minicard">
                               <p>Presupuesto</p>
                               <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
-
-                              <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); ?>
-                                <a href="" class="btn-oferta" data-toggle="modal" data-target="#publicar" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');" <>Ofertar</a>
-                                <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
+                              <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); 
+                                        if (bank_data() == "yes" ){ $target = "publicar"; }else{ $target = "publicar_bank"; }
+                                    ?>
+                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="#<?php echo $target ?>" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');">Ofertar</a>   
+                               <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
                               <?php }else { ?>
                                 
                                 <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
@@ -413,7 +417,7 @@ $user_actual = $current_user->ID;
 
 
  <!-- Modal Donation-->
-<div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_donation2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
  <div class="modal-dialog" role="document">
     <div class="modal-content">  
         <div class="modal-body">
@@ -423,7 +427,7 @@ $user_actual = $current_user->ID;
  </div>
 </div>                
 
-    <!-- Modal Inicio de sesion -->
+    <!-- Modal Publicar -->
     <div class="modal fade" id="publicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">  
@@ -432,7 +436,17 @@ $user_actual = $current_user->ID;
           </div>         
         </div>
       </div> 
-
     </div>
+
+    <!-- Modal publicar bancario -->
+    <div class="modal fade" id="publicar_bank" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">  
+          <div class="modal-body">
+            <label>Para ofertar debe completar sus datos bancarios <a href="confi-perfil/?tab=bancario">Aquì</a></label>
+          </div>         
+        </div>
+      </div>
+    </div>    
 
 <?php get_footer(); ?>

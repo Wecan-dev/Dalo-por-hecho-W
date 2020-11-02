@@ -1,0 +1,6 @@
+2020-12-02T12:43:10+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\Dalo-por-hecho-W\wp-includes\wp-db.php on line 2024
+
+2020-12-02T12:44:22+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\Dalo-por-hecho-W\wp-includes\wp-db.php on line 2024
+
+2020-12-02T12:45:33+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\Dalo-por-hecho-W\wp-includes\Requests\Transport\cURL.php on line 441
+

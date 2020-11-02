@@ -1,6 +1,0 @@
-2020-10-13T00:06:10+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\inc\fnc\fnc.php on line 230
-
-2020-10-13T03:49:16+00:00 CRITICAL syntax error, unexpected '" class="' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 293
-
-2020-10-13T08:43:52+00:00 CRITICAL syntax error, unexpected '<' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-confi-perfil.php on line 157
-
