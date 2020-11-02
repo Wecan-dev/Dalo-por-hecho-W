@@ -446,7 +446,7 @@ $user_actual = $current_user->ID;
  <div class="modal-dialog" role="document">
     <div class="modal-content">  
         <div class="modal-body">
-           <h3 class="mb-3 main-task__title">Pagar Oferta</h3>
+           <h3 class="mb-3 main-task__title">Pagar Ofertas</h3>
                             <div class="contenido">
                                 <div class="datos_name">
                                     <div class="row">
@@ -454,7 +454,7 @@ $user_actual = $current_user->ID;
                                             <?php echo get_avatar( user_value( 10 ), 50 ); ?> 
                                         </div>
                                         <div class="col-lg-8 col-md-9">
-                                            <p class="name"><?php echo get_the_author(); ?></p>
+                                            <p class="name"><?php echo meta_user_value( 'first_name',  $sinparametros[7] ) ?></p>
                                             <span><?php echo $sinparametros[1]; ?></span>
                                         </div>
                                     </div>
