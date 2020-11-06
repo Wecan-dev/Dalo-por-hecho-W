@@ -340,10 +340,10 @@ $user_actual = $current_user->ID;
                                                         }); 
                                                     </script>    
 
-                                                        <a href="">Mostrar menos </a>                                                   
+                                                        <a href="">Mostrar menos</a>                                                   
                                                         <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" && $user_actual == $user_tarea ){ 
                                                             ?>
-                                                            <a href="" class="ml-auto" data-toggle="modal" data-target="#modal_donation" onclick="function_donation('<?php echo get_field('ofertar_monto_tarea') ?>','<?php echo $var_array ?>');"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Responder oferta</a> 
+                                                            <a href="" class="ml-auto" data-toggle="modal" data-target="#modal_donation" onclick="function_donation('<?php echo get_field('ofertar_monto_tarea') ?>','<?php echo $var_array ?>'), show_data('<?php echo get_field('ofertar_monto_tarea') ?>','<?php echo $var_array ?>','<?php echo $sinparametros[5]; ?>','<?php echo get_post(meta_user_value( '_wpupa_attachment_id', $sinparametros[7] ))->guid; ?>') "><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Responder oferta</a> 
                                                         <?php } ?> 
 
                                                     </div>
@@ -442,7 +442,7 @@ $user_actual = $current_user->ID;
     </div>    
 
  <!-- Modal Donation-->
-<div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_donation2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
  <div class="modal-dialog" role="document">
     <div class="modal-content">  
         <div class="modal-body">
@@ -478,7 +478,7 @@ $user_actual = $current_user->ID;
                                               <p> 
                                                <br>
                                               </p>
-                                              <p>$<?php echo $salarys; ?></p>
+                                              <p id="modal_salary">$<?php echo $salarys; ?></p>
                                             </div>
                                           </div>
                                         </div>

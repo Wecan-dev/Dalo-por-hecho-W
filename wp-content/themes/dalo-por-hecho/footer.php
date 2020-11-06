@@ -35,6 +35,89 @@
 			<a href="<?php echo get_home_url() ?>/soporte" class="border-b">Soporte</a>
 		</div>
 	</footer>
+
+<!-- Modal Donation-->
+<div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">  
+        <div class="modal-body">
+           <h3 class="mb-3 main-task__title">Pagar Ofertas</h3>
+                            <div class="contenido">
+                                <div class="datos_name">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3">
+                                           <div id="img_avatar"></div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-9">
+                                            <p class="name" id="nombre_empleado"></p>
+                                            <span><?php echo $sinparametros[1]; ?></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="datos_genereal">
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                   
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                               Resumen
+                                              </p>
+                                              <p>Monto tarea</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                       
+                                            <div class="main-content__localizationtext">
+                                              <p> 
+                                               <br>
+                                              </p>
+                                              <p id="monto_tarea"></p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                   
+                                            <div class="main-content__localizationtext">
+                                              <p>Monto Comisiòn</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                    
+                                            <div class="main-content__localizationtext">
+                                              <p id="monto_comision"></p>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                   
+                                            <div class="main-content__localizationtext">
+                                              <span>Total</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="main-content__localization">                    
+                                            <div class="main-content__localizationtext">
+                                              <span id="monto_total"></span>
+                                            </div>
+                                          </div>
+                                        </div>                               
+                                    </div>
+                                </div>
+                            </div>
+
+
+         <?php  echo do_shortcode('[wdgk_donation]');  ?>
+        </div>         
+    </div>
+ </div> 
+</div>      
+
     <script src="<?php echo get_template_directory_uri();?>/assets/js/setting-slick.js"></script>
 	<script>
 		new WOW().init();
@@ -62,7 +145,7 @@ function enviarDatos2(){
 
 
 $(document).ready(function() {     
-                   
+                  
     $('#key').on('keyup', function() {
         var key = $(this).val();        
         var dataString = 'key='+key;
@@ -152,74 +235,31 @@ $('#note_description').appendTo('.variation');
        $("input.wdgk_donation").val(suma);
 
        $("textarea#w3mission").val(array_note);
-       $('textarea#w3mission').prop('hidden', true);       
+       $('textarea#w3mission').prop('hidden', true); 
 
-       //$("input#field_41hfd").val(salary);
     }    
+
+    function show_data(salary_donation,array_note,nombre_empleado,img_avatar){
+
+
+       var value_ofertar_monto =  salary_donation;
+       var porcent = (value_ofertar_monto*0.10);
+       var suma = parseFloat(porcent)+parseFloat(value_ofertar_monto);
+       var nombre_empleado =  nombre_empleado;
+       var img_avatar =  img_avatar;
+  
+      
+       document.getElementById("monto_tarea").innerHTML ="$"+salary_donation;
+       document.getElementById("monto_comision").innerHTML ="$"+porcent; 
+       document.getElementById("monto_total").innerHTML ="$"+suma; 
+       document.getElementById("nombre_empleado").innerHTML = nombre_empleado; 
+       document.getElementById("img_avatar").innerHTML = '<img alt="" src="'+img_avatar+'" class="avatar avatar-50 photo" height="50" width="50">'; 
+
+    }     
 
 //
 </script>
- <!-- Modal Donation-->
-<div class="modal fade" id="modal_donation2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog" role="document">
-    <div class="modal-content">  
-        <div class="modal-body">
-           <h3 class="mb-3 main-task__title">Pagar Oferta2 <?php echo $id_postulado; ?></h3>
-                            <div class="contenido">
-                                <div class="datos_name">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-3">
-                                            <?php echo get_avatar( user_value( get_post($var_array[7])->post_author ), 50 ); echo $var_array[7]; echo "dasdasdsad";?> 
-                                        </div>
-                                        <div class="col-lg-8 col-md-9">
-                                            <p class="name">Publicado por</p>
-                                            <span><?php echo get_the_author(); ?></span>
-                                        </div>
-                                    </div>
-                                    <ul>
-                                        <li class="mr-4 ml-0"><?php the_job_publish_date2(); ?></li>
-                                        <li class="active">Abierto</li>
-                                        <li>Asignado</li>
-                                        <li>Terminado</li>
-                                    </ul>
-                                </div>
-                                <div class="datos_genereal">
-                                    <div class="row ">
-                                        <div class="col-md-6">
-                                          <div class="main-content__localization">
-
-                                            <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt="">    
-                                            <div class="main-content__localizationtext">
-                                              <p> 
-                                                Localización
-                                              </p>
-                                              <span><?php the_job_location( false ); ?></span>
-                                            </div>
-                                          </div>
-
-
-                                        </div>
-                                        <div class="col-md-6">
-                                          <div class="main-content__localization">
-                                            <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/calendario.png" alt="">
-                                            <div class="main-content__localizationtext">
-                                              <p> 
-                                                Fecha del evento
-                                              </p>
-                                              <span><?php echo date_new(get_post_time( 'Y-m-d' )); ?></span>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-         <?php  echo do_shortcode('[wdgk_donation]');  ?>
-        </div>         
-    </div>
- </div> 
-</div>	
+ 
 
 </body>
 <?php wp_footer(); ?>
