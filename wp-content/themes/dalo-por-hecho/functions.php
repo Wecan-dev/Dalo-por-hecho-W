@@ -1,22 +1,5 @@
 <?php 
 
-function ceo_single_page_published_and_draft_posts( $query ) {
-    if( is_single() ) {
-        $query->set('post_status', 'publish,draft');
-    }
-}
-add_action('pre_get_posts', 'ceo_single_page_published_and_draft_posts');
-
-///Redirigir al chekcout sin pasar por el carrito
-add_filter ('add_to_cart_redirect', 'redirect_to_checkout');
-
-function redirect_to_checkout() {
-  global $woocommerce;
-  $checkout_url = $woocommerce->cart->get_checkout_url();
-  return $checkout_url;
-}
-
-
 /****************** Styles *****************/
 function dalo_por_hecho_styles(){
   wp_enqueue_style('bootstrap', get_stylesheet_directory_uri() . '/assets/css/bootstrap.min.css' );
@@ -658,3 +641,35 @@ function gma_wpjmef_display_important_info_data() {
 
 }
 
+add_shortcode('wdgk_donation','wdgk_donation_shortcode1');
+function wdgk_donation_shortcode1(){
+  global $woocommerce;
+  $product="";
+  $text="";
+  $note_html="";
+  $options= wdgk_get_wc_donation_setting();
+  if(isset($options['Product'])){
+    $product = $options['Product'];
+  }
+  if(isset($options['Text'])){
+    $text = $options['Text'];
+  }
+  if(isset($options['Note'])){
+    $note = $options['Note'];
+  }
+  if(!empty($product) && $note=='on'){
+    $note_html = '<textarea id="w3mission" rows="3" cols="20" placeholder="Note" name="donation_note" class="donation_note"></textarea>';
+  }
+  if(!empty($product)){ 
+    $cart_url = get_permalink( wc_get_page_id( 'checkout' ) ); 
+    $ajax_url= admin_url('admin-ajax.php');
+    ob_start();
+    echo '<div class="wdgk_donation_content"><input type="text" name="donation-price" class="wdgk_donation" placeholder="Ex.100">'.$note_html.'<a 
+href="javascript:void(0)" class="button wdgk_add_donation" data-product-id="'.$product.'" data-product-url="'.$cart_url.'">'.$text.'</a><input 
+type="hidden" name="wdgk_product_id" value="" class="wdgk_product_id"><input type="hidden" name="wdgk_ajax_url" value="'.$ajax_url.'" 
+class="wdgk_ajax_url"><img src="'.wdgk_PLUGIN_URL.'/assets/images/ajax-loader.gif" class="wdgk_loader wdgk_loader_img"><div 
+class="wdgk_error_front"></div></div>';
+    return ob_get_clean();
+  
+  }
+}

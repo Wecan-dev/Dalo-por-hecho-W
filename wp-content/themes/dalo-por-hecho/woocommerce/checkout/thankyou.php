@@ -130,8 +130,10 @@ form#form_asignados {
         var asignar_banco = "<?= $banco_bancario ?>";
         var asignar_numero_de_cuenta = "<?= $numero_de_cuenta_bancario ?>";
         var asignar_email_banco = "<?= $email_bancario ?>";
+        var asignar_codigo_unico = id_empleado+"-"+id_tarea;
 
-       $("input#field_asignar_title_tarea2").val(123);
+       $("input#field_asignar_codigo_unico").val(asignar_codigo_unico);
+       $("input#field_asignar_title_tarea2").val(title_tarea2);
        $("input#field_asignar_id_postulacion").val(id_postulacion);
        $("input#field_asignar_name_tarea_publicada").val(name_tarea);       
        $("input#field_asignar_id_tarea_publicada").val(id_tarea);
