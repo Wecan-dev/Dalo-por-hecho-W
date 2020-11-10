@@ -372,19 +372,27 @@ function bank_data(){
 }
 
 /***************** Asignados *****************/
-function post_asignados($author,$codigo_unico){
-            global $wpdb;            
+function post_asignados($author,$codigo_unico,$id_empleado){
+            global $wpdb;  
+            
               $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."posts WHERE post_type = 'asignados' and post_author = '$author' ORDER by ID ASC"); 
               foreach($result_link as $r)
               {
-                      $post_id = $r->ID;
-                      $result_link2 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE post_id = '$post_id' and meta_key = 'asignar_codigo_unico' and meta_value = '$codigo_unico' "); 
-                      foreach($result_link2 as $r2)
+                $post_id = $r->ID; 
+                $result_link2 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE post_id = '$post_id' and meta_key = 'asignar_codigo_unico' and meta_value = '$codigo_unico' "); 
+                foreach($result_link2 as $r2)
+                {              
+                    $value = 1;
+                }  
+                if ($value == 1) {
+                      $result_link3 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE post_id = '$post_id' and meta_key = 'asignar_id_empleado' and meta_value = '$id_empleado' "); 
+                      foreach($result_link3 as $r3)
                       {              
-                          $value = 1;
-                      }                      
+                          $value2 = 1;
+                      } 
+                }
                                           
               }           
-              return $value;
+              return $value2;
 
 }
