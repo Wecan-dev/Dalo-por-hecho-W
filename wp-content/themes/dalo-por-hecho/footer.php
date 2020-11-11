@@ -15,7 +15,7 @@
                         <?php if (is_user_logged_in()){
                         	echo "Mi cuenta";
                         }else{ ?>
-                            ingresa
+                            Ingresa
                             </a>
                         <?php } ?>
 							</a>
