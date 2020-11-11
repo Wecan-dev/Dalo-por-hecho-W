@@ -126,11 +126,30 @@
         "title": "Asignados",
         "fields": [
             {
+                "key": "field_5fa583c7160a3",
+                "label": "",
+                "name": "asignar_codigo_unico",
+                "type": "text",
+                "instructions": "Código",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
                 "key": "field_5f9539c67a17e",
-                "label": "ID Postulación",
+                "label": "",
                 "name": "asignar_id_postulacion",
                 "type": "text",
-                "instructions": "",
+                "instructions": "ID Postulación",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -146,10 +165,10 @@
             },
             {
                 "key": "field_5f94e58946290",
-                "label": "Nombre Tarea",
+                "label": "",
                 "name": "asignar_name_tarea_publicada",
                 "type": "text",
-                "instructions": "",
+                "instructions": "Nombre Tarea",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -165,10 +184,10 @@
             },
             {
                 "key": "field_5f94e5894665b",
-                "label": "ID Tarea",
+                "label": "",
                 "name": "asignar_id_tarea_publicada",
                 "type": "text",
-                "instructions": "",
+                "instructions": "ID Tarea",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -184,10 +203,10 @@
             },
             {
                 "key": "field_5f94e58946a4b",
-                "label": "Email Empleador",
+                "label": "",
                 "name": "asignar_email_empleador",
                 "type": "text",
-                "instructions": "",
+                "instructions": "Email Empleador",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -203,10 +222,10 @@
             },
             {
                 "key": "field_5f94e58946df3",
-                "label": "Nombre Empleado",
+                "label": "",
                 "name": "asignar_name_empleado",
                 "type": "text",
-                "instructions": "",
+                "instructions": "Nombre Empleado",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -222,10 +241,10 @@
             },
             {
                 "key": "field_5f94e589471c5",
-                "label": "ID Empleado",
+                "label": "",
                 "name": "asignar_id_empleado",
                 "type": "text",
-                "instructions": "",
+                "instructions": "ID Empleado",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -240,11 +259,140 @@
                 "maxlength": ""
             },
             {
+                "key": "field_5fa43f80e5366",
+                "label": "",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "<h3>Datos Bancarios<\/h3>",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
+                "key": "field_5fa440112f264",
+                "label": "",
+                "name": "asignar_nombre",
+                "type": "text",
+                "instructions": "Nombre y Apellido",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5fa4407d2f266",
+                "label": "",
+                "name": "asignar_rut",
+                "type": "text",
+                "instructions": "Rut",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5fa440da2f267",
+                "label": "",
+                "name": "asignar_banco",
+                "type": "text",
+                "instructions": "Banco",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5fa440ed2f268",
+                "label": "",
+                "name": "asignar_numero_de_cuenta",
+                "type": "text",
+                "instructions": "Nùmero de Cuenta",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5fa441062f269",
+                "label": "",
+                "name": "asignar_email_banco",
+                "type": "text",
+                "instructions": "Email",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5fa440512f265",
+                "label": "",
+                "name": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "<h3>Resumen Pago<\/h3>",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            },
+            {
                 "key": "field_5f94e58947599",
-                "label": "Monto Pagado",
+                "label": "",
                 "name": "asignar_monto_tarea",
                 "type": "text",
-                "instructions": "",
+                "instructions": "Monto Pagado",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
@@ -260,10 +408,29 @@
             },
             {
                 "key": "field_5f9541cfa8993",
-                "label": "Monto A Pagar",
+                "label": "",
                 "name": "asignar_monto_a_pagar",
                 "type": "text",
-                "instructions": "",
+                "instructions": "Monto A Pagar",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5fa441242f26a",
+                "label": "",
+                "name": "asignar_referencia_de_pago",
+                "type": "text",
+                "instructions": "Referencia de Pago",
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
