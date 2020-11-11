@@ -24,7 +24,7 @@
 
 
 // define( 'DB_NAME', 'db_dalo_por_hecho' );
- define( 'DB_NAME', 'D4l0P0r_H3chO' );
+define( 'DB_NAME', 'D4l0P0r_H3chO' );
 // define( 'DB_NAME', 'db_dalo_por_hecho' );
 //define( 'DB_NAME', 'D4l0P0r_H3chO' );
 //define( 'DB_NAME', 'db_daloporhecho' );

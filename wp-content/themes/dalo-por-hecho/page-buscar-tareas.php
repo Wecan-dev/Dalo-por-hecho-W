@@ -277,7 +277,9 @@ $user_actual = $current_user->ID;
                                 <!-- descripcion -->
                                 <p class="description"><?php wpjm_the_job_description(); ?></p>
                                 <h6 class="">Detalle</h6>
-                                <img src="<?php echo get_home_url().'/wp-content/uploads/'.job_meta_value_img( get_the_ID()); ?>" >
+                                <?php if (job_meta_value_img( get_the_ID()) != NULL) { ?>
+                                    <img src="<?php echo get_home_url().'/wp-content/uploads/'.job_meta_value_img( get_the_ID()); ?>" >
+                                <?php } ?>
                                 <p class="description m-0 border-n"><?php echo meta_value( '_job_important_info', get_the_ID()); ?>
                                 </p>
                                 <div class="ofertas">
@@ -340,11 +342,15 @@ $user_actual = $current_user->ID;
                                                         }); 
                                                     </script>    
 
-                                                        <a href="">Mostrar menos </a>                                                   
+                                                        <a href="">Mostrar menos</a>                                                   
                                                         <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Publicar Tareas" && $user_actual == $user_tarea ){ 
-                                                            ?>
-                                                            <a href="" class="ml-auto" data-toggle="modal" data-target="#modal_donation" onclick="function_donation('<?php echo get_field('ofertar_monto_tarea') ?>','<?php echo $var_array ?>');"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Responder oferta</a> 
-                                                        <?php } ?> 
+                                                            $codigo_unico = get_the_author_meta( 'ID' )."".$id_tarea;
+                                                            $codigo_unico = str_replace(' ', '', $codigo_unico); ?>
+                                                            <?php if (post_asignados($current_user->ID,$codigo_unico,get_the_author_meta( 'ID' )) == 1) { ?>
+                                                               <div class="ml-auto"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Oferta respondida</div>
+                                                             <?php }else{ ?>
+                                                            <a href="" class="ml-auto" data-toggle="modal" data-target="#modal_donation" onclick="function_donation('<?php echo get_field('ofertar_monto_tarea') ?>','<?php echo $var_array ?>'), show_data('<?php echo get_field('ofertar_monto_tarea') ?>','<?php echo $var_array ?>','<?php echo $sinparametros[5]; ?>','<?php echo get_post(meta_user_value( '_wpupa_attachment_id', $sinparametros[7] ))->guid; ?>') "><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Responder oferta</a> 
+                                                        <?php }} ?> 
 
                                                     </div>
                                                 </div>
@@ -442,11 +448,11 @@ $user_actual = $current_user->ID;
     </div>    
 
  <!-- Modal Donation-->
-<div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_donation2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
  <div class="modal-dialog" role="document">
     <div class="modal-content">  
         <div class="modal-body">
-           <h3 class="mb-3 main-task__title">Pagar Oferta</h3>
+           <h3 class="mb-3 main-task__title">Pagar Ofertas</h3>
                             <div class="contenido">
                                 <div class="datos_name">
                                     <div class="row">
@@ -454,7 +460,7 @@ $user_actual = $current_user->ID;
                                             <?php echo get_avatar( user_value( 10 ), 50 ); ?> 
                                         </div>
                                         <div class="col-lg-8 col-md-9">
-                                            <p class="name"><?php echo get_the_author(); ?></p>
+                                            <p class="name"><?php echo meta_user_value( 'first_name',  $sinparametros[7] ) ?></p>
                                             <span><?php echo $sinparametros[1]; ?></span>
                                         </div>
                                     </div>
@@ -478,7 +484,7 @@ $user_actual = $current_user->ID;
                                               <p> 
                                                <br>
                                               </p>
-                                              <p>$<?php echo $salarys; ?></p>
+                                              <p id="modal_salary">$<?php echo $salarys; ?></p>
                                             </div>
                                           </div>
                                         </div>
@@ -523,6 +529,6 @@ $user_actual = $current_user->ID;
         </div>         
     </div>
  </div> 
-</div>      
+</div>
 
 <?php get_footer(); ?>

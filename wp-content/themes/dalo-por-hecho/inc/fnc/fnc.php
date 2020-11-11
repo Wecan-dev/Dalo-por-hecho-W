@@ -366,8 +366,33 @@ function descrypt_note($array_note,$key){
 }
 
 /********************* Bank data ******************/
-
 function bank_data(){
    global $current_user;
    if (meta_user_value( 'nombre_bancario', $current_user->ID ) != NULL && meta_user_value( 'rut_bancario', $current_user->ID ) != NULL && meta_user_value( 'banco_bancario', $current_user->ID ) != NULL && meta_user_value( 'numero_de_cuenta_bancario', $current_user->ID ) != NULL && meta_user_value( 'email_bancario', $current_user->ID ) != NULL){ return "yes"; }
+}
+
+/***************** Asignados *****************/
+function post_asignados($author,$codigo_unico,$id_empleado){
+            global $wpdb;  
+            
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."posts WHERE post_type = 'asignados' and post_author = '$author' ORDER by ID ASC"); 
+              foreach($result_link as $r)
+              {
+                $post_id = $r->ID; 
+                $result_link2 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE post_id = '$post_id' and meta_key = 'asignar_codigo_unico' and meta_value = '$codigo_unico' "); 
+                foreach($result_link2 as $r2)
+                {              
+                    $value = 1;
+                }  
+                if ($value == 1) {
+                      $result_link3 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE post_id = '$post_id' and meta_key = 'asignar_id_empleado' and meta_value = '$id_empleado' "); 
+                      foreach($result_link3 as $r3)
+                      {              
+                          $value2 = 1;
+                      } 
+                }
+                                          
+              }           
+              return $value2;
+
 }

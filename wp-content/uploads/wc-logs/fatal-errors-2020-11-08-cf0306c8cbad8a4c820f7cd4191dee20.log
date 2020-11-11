@@ -1,0 +1,8 @@
+2020-11-08T15:02:35+00:00 CRITICAL Cannot redeclare wdgk_add_donation_on_cart_page() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\plugins\woo-donations\woo-donations.php:158) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 672
+
+2020-11-08T15:05:13+00:00 CRITICAL Cannot redeclare wdgk_donation_shortcode() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\plugins\woo-donations\woo-donations.php:105) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 676
+
+2020-11-08T15:05:49+00:00 CRITICAL Cannot redeclare wdgk_add_donation_on_cart_page() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\plugins\woo-donations\woo-donations.php:158) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 726
+
+2020-11-08T15:06:04+00:00 CRITICAL Cannot redeclare wdgk_add_donation_on_cart_page() (previously declared in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\plugins\woo-donations\woo-donations.php:158) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\functions.php on line 726
+

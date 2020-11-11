@@ -1,0 +1,4 @@
+2020-11-10T21:12:47+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 348
+
+2020-11-10T23:08:10+00:00 CRITICAL syntax error, unexpected 'endwhile' (T_ENDWHILE) in C:\xampp2\htdocs\Dalo-por-hecho-W\wp-content\themes\dalo-por-hecho\page-buscar-tareas.php on line 365
+
