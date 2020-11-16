@@ -76,7 +76,9 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
     //if ( !empty( $_POST['rut_bancario'] ) )
             update_user_meta( $current_user->ID, 'rut_bancario', esc_attr( $_POST['rut_bancario'] ) );                      
     //if ( !empty( $_POST['banco_bancario'] ) )
-            update_user_meta( $current_user->ID, 'banco_bancario', esc_attr( $_POST['banco_bancario'] ) );         
+            update_user_meta( $current_user->ID, 'banco_bancario', esc_attr( $_POST['banco_bancario'] ) );   
+    //if ( !empty( $_POST['banco_bancario'] ) )
+            update_user_meta( $current_user->ID, 'tipo_de_cuenta_bancario', esc_attr( $_POST['tipo_de_cuenta_bancario'] ) );                   
     //if ( !empty( $_POST['numero_de_cuenta_bancario'] ) )
             update_user_meta( $current_user->ID, 'numero_de_cuenta_bancario', esc_attr( $_POST['numero_de_cuenta_bancario'] ) );         
     //if ( !empty( $_POST['email_bancario'] ) )
@@ -619,29 +621,76 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                         <form method="post" id="adduser" action="<?php echo get_home_url(); ?>/confi-perfil/">                                      
                                                             <div class="row cont-row-form">
                                                                 <div class="col-md-12">
-                                                                    <input class="form-control" placeholder="Nombre y Apellido" name="nombre_bancario" type="text" id="nombre_bancario" value="<?php the_author_meta( 'nombre_bancario', $current_user->ID ); ?>" />
+                                                                    <input class="form-control" placeholder="Nombre y Apellido" name="nombre_bancario" type="text" id="nombre_bancario" value="<?php the_author_meta( 'nombre_bancario', $current_user->ID ); ?>" required />
                                                                 </div>
                                                             </div>
                                                             <div class="row cont-row-form">    
                                                                 <div class="col-md-12">
-                                                                    <input class="form-control" placeholder="Rut" name="rut_bancario" type="text" id="rut_bancario" value="<?php the_author_meta( 'rut_bancario', $current_user->ID ); ?>" />
+                                                                    <input class="form-control" placeholder="Rut" name="rut_bancario" type="text" id="rut_bancario" value="<?php the_author_meta( 'rut_bancario', $current_user->ID ); ?>" required />
                                                                 </div>
-                                                            </div>                            
+                                                            </div> 
+
+                                                            <div class="row cont-row-form">
+                                                                <div class="col-md-12">            <label for="exampleFormControlSelect1">Tipo de Cuenta</label><br>                                              
+                                                                    <select name="tipo_de_cuenta_bancario" id="tipo_de_cuenta_bancario" required>
+                                                                        <?php if (meta_user_value( 'tipo_de_cuenta_bancario', $current_user->ID ) != NULL) { ?>
+                                                                            <option><?php echo meta_user_value( 'tipo_de_cuenta_bancario', $current_user->ID )?></option>
+                                                                             
+                                                                        <?php } else { ?>       
+                                                                            <option value="">Seleccione</option>
+                                                                        <?php } ?>      
+                                                                        <option value="Cuenta Vista">Cuenta Vista</option>
+                                                                        <option value="Chequera Electrónica">Chequera Electrónica</option>
+                                                                        <option value="Cuenta Ahorro">Cuenta Ahorro</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>                    
+
                                                             <div class="row cont-row-form">
                                                                 <div class="col-md-12">
-                                                                    <input class="form-control" placeholder="Banco" name="banco_bancario" type="text" id="banco_bancario" value="<?php the_author_meta( 'banco_bancario', $current_user->ID ); ?>" />
+                                                                    <label for="exampleFormControlSelect1">Banco</label><br>
+                                                                    <select name="banco_bancario" id="banco_bancario" required>
+                                                                        <?php if (meta_user_value( 'banco_bancario', $current_user->ID ) != NULL) { ?>
+                                                                            <option><?php echo meta_user_value( 'banco_bancario', $current_user->ID )?></option>
+                                                                             
+                                                                        <?php } else { ?>       
+                                                                            <option value="">Seleccione</option>
+                                                                        <?php } ?>      
+                                                                        <option value="Coopeuch">Coopeuch</option>
+                                                                        <option value="HSBC Bank">HSBC Bank</option>
+                                                                        <option value="Itaú">Itaú</option>
+                                                                        <option value="Rabobank">Rabobank</option>
+                                                                        <option value="Prepao Los Héroes">Prepao Los Héroes</option>
+                                                                        <option value="Scotiabank">Scotiabank</option>
+                                                                        <option value="Scotiabank Azul">Scotiabank Azul</option>
+                                                                        <option value="Banco BICE">Banco BICE</option>
+                                                                        <option value="Banco Consorio">Banco Consorio</option>
+                                                                        <option value="Banco Corpbanca">Banco Corpbanca</option>
+                                                                        <option value="Banco Crédito e Inversiones">Banco Crédito e Inversiones</option>
+                                                                        <option value="Banco Estado">Banco Estado</option>
+                                                                        <option value="Banco Falabella">Banco Falabella</option>
+                                                                        <option value="Banco Internacional">Banco Internacional</option>
+                                                                        <option value="Banco París">Banco París</option>
+                                                                        <option value="Banco Ripley">Banco Ripley</option>
+                                                                        <option value="Banco Santander">Banco Santander</option>
+                                                                        <option value="Banco Security">Banco Security</option>
+                                                                        <option value="Banco de Chile / Edwards-Citi">Banco de Chile / Edwards-Citi</option>
+                                                                        <option value="Banco del Desarollo">Banco del Desarollo</option>
+
+                                                                    </select>
+                                                                    
                                                                 </div>
                                                             </div>
                                                             <div class="row cont-row-form">    
                                                                 <div class="col-md-12">
                                                                     <input type="text" class="form-control" id="numero_de_cuenta_bancario"
-                                                            placeholder="Nùmero de Cuenta" name="numero_de_cuenta_bancario" value="<?php the_author_meta( 'numero_de_cuenta_bancario', $current_user->ID ); ?>" />
+                                                            placeholder="Nùmero de Cuenta" name="numero_de_cuenta_bancario" value="<?php the_author_meta( 'numero_de_cuenta_bancario', $current_user->ID ); ?>" required/>
                                                                 </div>
                                                             </div>
                                                             <div class="row cont-row-form">   
                                                                 <div class="col-md-12">
                                                                     <input type="text" class="form-control" id="email_bancario"
-                                                            placeholder="Email" name="email_bancario" value="<?php the_author_meta( 'email_bancario', $current_user->ID ); ?>" />
+                                                            placeholder="Email" name="email_bancario" value="<?php the_author_meta( 'email_bancario', $current_user->ID ); ?>" required/>
                                                                 </div>
                                                             </div> 
                                                             <div class="cont-boton-cambios">
@@ -1040,6 +1089,11 @@ echo $_SERVER['REQUEST_URI'];
 
 <script type="text/javascript">
 $(document).ready(function () {
+
+///Validation fields
+var nombre_bancario = document.getElementsByName("nombre_bancario")[0].value;
+
+
         $("#ano").keyup(function () {
             var valuea =  document.getElementById("dia").value + "/" + document.getElementById("mes").value + "/" + $(this).val();
             $("#fecha_nac_user").val(valuea);
