@@ -120,7 +120,7 @@ function wdgk_donation_shortcode(){
 		$note_html = '<textarea id="w3mission" rows="3" cols="20" placeholder="Note" name="donation_note" class="donation_note"></textarea>';
 	}
 	if(!empty($product)){	
-		$cart_url = get_permalink( wc_get_page_id( 'cart' ) ); 
+		$cart_url = get_permalink( wc_get_page_id( 'checkout' ) ); 
 		$ajax_url= admin_url('admin-ajax.php');
 		ob_start();
 		echo '<div class="wdgk_donation_content"><input type="text" name="donation-price" class="wdgk_donation" placeholder="Ex.100">'.$note_html.'<a 
@@ -139,8 +139,8 @@ class="wdgk_error_front"></div></div>';
 	if(isset($options['Product'])){
 		$product = $options['Product'];
 	}
-	if(isset($options['Cart'])){
-		$cart = $options['Cart'];
+	if(isset($options['Checkout'])){
+		$cart = $options['ch'];
 	}
 	if(isset($options['Checkout'])){
 		$checkout = $options['Checkout'];

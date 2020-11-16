@@ -41,7 +41,7 @@ defined( 'ABSPATH' ) || exit;
             <?php 
                 $array_note = order_itemmeta('Description',$order->get_id());
                 $name_tarea = descrypt_note($array_note,'name_tarea');
-                $title_tarea2 = $name_tarea."- Pedido#".$order->get_id();
+                $title_tarea2 = $name_tarea." - Pedido#".$order->get_id();
                 $id_tarea = descrypt_note($array_note,'id_tarea');                
                 $id_postulacion  = descrypt_note($array_note,'id_postulacion');
                 $email_empleador = meta_value('ofertar_email_empleador', $id_postulacion);
@@ -49,12 +49,30 @@ defined( 'ABSPATH' ) || exit;
                 $id_empleado = descrypt_note($array_note,'id_empleado');
                 $monto_tarea =  meta_value('ofertar_monto_tarea', $id_postulacion);
                 $monto_pagar =  $monto_tarea-($monto_tarea*0.10);
-                //Datos bacarios
+                //Data banks
                 $asignar_nombre = meta_user_value( 'nombre_bancario', $id_empleado );
                 $asignar_rut = meta_user_value( 'rut_bancario', $id_empleado );
                 $asignar_banco = meta_user_value( 'banco_bancario', $id_empleado );
                 $asignar_numero_de_cuenta = meta_user_value( 'numero_de_cuenta_bancario', $id_empleado );
                 $asignar_email_banco = meta_user_value( 'email_bancario', $id_empleado );
+                $codigo_unico = $id_empleado."".$id_tarea;
+                $codigo_unico = str_replace(' ', '', $codigo_unico);
+                $customer_id = $order->customer_id;
+            global $wpdb;  
+            $value = NULL;
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."posts WHERE post_type = 'asignados' and post_author = '$customer_id' ORDER by ID ASC"); 
+              foreach($result_link as $r)
+              {
+                      $post_id = $r->ID;
+                                          
+              }
+                      
+              $result_link2 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE post_id = '$post_id' and meta_key = 'asignar_codigo_unico' and meta_value = '$codigo_unico' "); 
+              foreach($result_link2 as $r2)
+              {              
+                      $value = "yes";
+              }                             
+              echo $value;
 
             ?>
             <?php echo do_shortcode('[formidable id=12]');  ?>
@@ -107,7 +125,7 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <style type="text/css">
 form#form_asignados {
-    display: none;
+   /* display: none; */
 }	
 .frm_message {
     display: none;
@@ -115,35 +133,47 @@ form#form_asignados {
 </style>
 
 <script>
-        var id_postulacion = "<?= $id_postulacion ?>"; 		
-        var name_tarea = "<?= $name_tarea ?>"; 
-        var title_tarea2 = "<?= $title_tarea2 ?>";
-        var id_tarea = "<?= $id_tarea ?>";
-        var email_empleador = "<?= $email_empleador ?>";
-        var name_empleado = "<?= $name_empleado ?>";
-        var id_empleado = "<?= $id_empleado ?>";
-        var monto_tarea = "<?= $monto_tarea ?>";
-        var monto_pagar = "<?= $monto_pagar ?>";
+    var id_postulacion = "<?= $id_postulacion ?>"; 		
+    var name_tarea = "<?= $name_tarea ?>"; 
+    var title_tarea2 = "<?= $title_tarea2 ?>";
+    var id_tarea = "<?= $id_tarea ?>";
+    var email_empleador = "<?= $email_empleador ?>";
+    var name_empleado = "<?= $name_empleado ?>";
+    var id_empleado = "<?= $id_empleado ?>";
+    var monto_tarea = "<?= $monto_tarea ?>";
+    var monto_pagar = "<?= $monto_pagar ?>";
 
-        var asignar_nombre = "<?= $nombre_bancario ?>";
-        var asignar_rut = "<?= $rut_bancario ?>";
-        var asignar_banco = "<?= $banco_bancario ?>";
-        var asignar_numero_de_cuenta = "<?= $numero_de_cuenta_bancario ?>";
-        var asignar_email_banco = "<?= $email_bancario ?>";
-        var asignar_codigo_unico = id_empleado+"-"+id_tarea;
+    var asignar_nombre2 = "<?= $nombre_bancario ?>";
+    var asignar_rut2 = "<?= $rut_bancario ?>";
+    var asignar_banco2 = "<?= $banco_bancario ?>";
+    var asignar_numero_de_cuenta2 = "<?= $numero_de_cuenta_bancario ?>";
+    var asignar_email_banco2 = "<?= $email_bancario ?>";
 
-       $("input#field_asignar_codigo_unico").val(asignar_codigo_unico);
-       $("input#field_asignar_title_tarea2").val(title_tarea2);
-       $("input#field_asignar_id_postulacion").val(id_postulacion);
-       $("input#field_asignar_name_tarea_publicada").val(name_tarea);       
-       $("input#field_asignar_id_tarea_publicada").val(id_tarea);
-       $("input#field_asignar_email_empleador").val(email_empleador);
-       $("input#field_asignar_name_empleado").val(name_empleado);
-       $("input#field_asignar_id_empleado").val(id_empleado);
-       $("input#field_asignar_monto_tarea").val(monto_tarea) 
-       $("input#field_asignar_monto_a_pagar").val(monto_pagar) 
+    var asignar_codigo_unico = "<?= $codigo_unico ?>";
+    var asignar_codigo_existente = "<?= $value ?>";
+
+    $("input#field_asignar_codigo_unico").val(asignar_codigo_unico);
+    $("input#field_asignar_title_tarea2").val(title_tarea2);
+    $("input#field_asignar_id_postulacion").val(id_postulacion);
+    $("input#field_asignar_name_tarea_publicada").val(name_tarea);       
+    $("input#field_asignar_id_tarea_publicada").val(id_tarea);
+    $("input#field_asignar_email_empleador").val(email_empleador);
+    $("input#field_asignar_name_empleado").val(name_empleado);
+    $("input#field_asignar_id_empleado").val(id_empleado);
+    $("input#field_asignar_monto_tarea").val(monto_tarea); 
+    $("input#field_asignar_monto_a_pagar").val(monto_pagar);
+
+    $("input#field_asignar_nombre").val(asignar_nombre2);
+    $("input#field_asignar_rut").val(asignar_rut2);
+    $("input#field_asignar_banco").val(asignar_banco2);
+    $("input#field_asignar_numero_de_cuenta").val(asignar_numero_de_cuenta2);
+    $("input#field_asignar_email_banco").val(asignar_email_banco2);
 
 
-    form = document.getElementById('form_asignados');
-    form.submit();	
+    if (asignar_codigo_existente == '')
+    {
+      form = document.getElementById('form_asignados');
+      form.submit();      
+    }
+	
  </script>

@@ -641,6 +641,7 @@ function gma_wpjmef_display_important_info_data() {
 
 }
 
+// Forced to checkout
 add_shortcode('wdgk_donation','wdgk_donation_shortcode1');
 function wdgk_donation_shortcode1(){
   global $woocommerce;
