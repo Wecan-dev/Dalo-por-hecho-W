@@ -38,7 +38,9 @@ defined( 'ABSPATH' ) || exit;
 			</p>
 
 		<?php else : ?>
+          <?php echo do_shortcode('[formidable id=12]');  ?>
             <?php 
+            
                 $array_note = order_itemmeta('Description',$order->get_id());
                 $name_tarea = descrypt_note($array_note,'name_tarea');
                 $title_tarea2 = $name_tarea." - Pedido#".$order->get_id();
@@ -56,6 +58,7 @@ defined( 'ABSPATH' ) || exit;
                 $asignar_numero_de_cuenta = meta_user_value( 'numero_de_cuenta_bancario', $id_empleado );
                 $asignar_email_banco = meta_user_value( 'email_bancario', $id_empleado );
                 $codigo_unico = $id_empleado."".$id_tarea;
+<<<<<<< HEAD
                 $codigo_unico = str_replace(' ', '', $codigo_unico);
                 $customer_id = $order->customer_id;
             global $wpdb;  
@@ -73,9 +76,27 @@ defined( 'ABSPATH' ) || exit;
                       $value = "yes";
               }                             
               echo $value;
+=======
+                
+                $codigo_unico = str_replace(' ', '', $codigo_unico); 
+                $customer_id = $order->customer_id;
+            global $wpdb;  
+            
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."posts WHERE post_type = 'asignados' and post_author = '$customer_id' ORDER by ID ASC"); 
+              foreach($result_link as $r)
+              {
+                      $post_id = $r->ID; 
+                      $result_link2 = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."postmeta WHERE post_id = '$post_id' and meta_key = 'asignar_codigo_unico' and meta_value = '$codigo_unico' "); 
+                      foreach($result_link2 as $r2)
+                      {              
+                          $value = 1;
+                      }                      
+                                          
+              }                 
+>>>>>>> 48336c31ec24c12d65828c1cc65d7a53897b9148
 
             ?>
-            <?php echo do_shortcode('[formidable id=12]');  ?>
+            
             <?php //echo do_shortcode('[frm-set-get asignar_title_tarea_publicada='.$title_tarea.'][frm-set-get asignar_name_tarea_publicada='.$name_tarea.'][frm-set-get asignar_id_tarea_publicada='.$id_tarea.'][frm-set-get asignar_email_empleador='.$email_empleador.'][frm-set-get asignar_name_empleado='.$name_empleado.'][frm-set-get asignar_id_empleado='.$id_empleado.'][frm-set-get asignar_monto_tarea='.$monto_tarea.'][formidable id=10]');  ?>
 			<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', esc_html__( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 
@@ -125,11 +146,17 @@ defined( 'ABSPATH' ) || exit;
 </div>
 <style type="text/css">
 form#form_asignados {
+<<<<<<< HEAD
    /* display: none; */
 }	
 .frm_message {
+=======
     display: none;
-}
+} 
+div#frm_form_12_container {
+>>>>>>> 48336c31ec24c12d65828c1cc65d7a53897b9148
+    display: none;
+}   
 </style>
 
 <script>
@@ -143,6 +170,7 @@ form#form_asignados {
     var monto_tarea = "<?= $monto_tarea ?>";
     var monto_pagar = "<?= $monto_pagar ?>";
 
+<<<<<<< HEAD
     var asignar_nombre2 = "<?= $nombre_bancario ?>";
     var asignar_rut2 = "<?= $rut_bancario ?>";
     var asignar_banco2 = "<?= $banco_bancario ?>";
@@ -151,6 +179,17 @@ form#form_asignados {
 
     var asignar_codigo_unico = "<?= $codigo_unico ?>";
     var asignar_codigo_existente = "<?= $value ?>";
+=======
+    var asignar_nombre2 = "<?= $asignar_nombre ?>";
+    var asignar_rut2 = "<?= $asignar_rut ?>";
+    var asignar_banco2 = "<?= $asignar_banco ?>";
+    var asignar_numero_de_cuenta2 = "<?= $asignar_numero_de_cuenta ?>";
+    var asignar_email_banco2 = "<?= $asignar_email_banco ?>";
+
+    var asignar_codigo_unico = "<?= $codigo_unico ?>";
+    var asignar_codigo_existente = "<?= $value ?>";
+   
+>>>>>>> 48336c31ec24c12d65828c1cc65d7a53897b9148
 
     $("input#field_asignar_codigo_unico").val(asignar_codigo_unico);
     $("input#field_asignar_title_tarea2").val(title_tarea2);
@@ -170,10 +209,21 @@ form#form_asignados {
     $("input#field_asignar_email_banco").val(asignar_email_banco2);
 
 
+<<<<<<< HEAD
     if (asignar_codigo_existente == '')
     {
       form = document.getElementById('form_asignados');
       form.submit();      
     }
+=======
+    if (asignar_codigo_existente != 1)
+    {
+      form = document.getElementById('form_asignados');
+      form.submit();   
+     // $('.frm_button_submit').prop('disabled', true);    
+    }
+
+
+>>>>>>> 48336c31ec24c12d65828c1cc65d7a53897b9148
 	
  </script>
