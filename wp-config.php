@@ -23,18 +23,18 @@
 /** The name of the database for WordPress */
 
 
- define( 'DB_NAME', 'db_dalo_por_hecho' );
-//define( 'DB_NAME', 'D4l0P0r_H3chO' );
+// define( 'DB_NAME', 'db_dalo_por_hecho' );
+define( 'DB_NAME', 'D4l0P0r_H3chO' );
 // define( 'DB_NAME', 'db_dalo_por_hecho' );
 //define( 'DB_NAME', 'D4l0P0r_H3chO' );
 //define( 'DB_NAME', 'db_daloporhecho' );
 /** MySQL database username */
-//define( 'DB_USER', 'DaloPor_Hecho' );
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'DaloPor_Hecho' );
+//define( 'DB_USER', 'root' );
 /** MySQL database password */
 
-define( 'DB_PASSWORD', '' );
-//define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
+//define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
 //define( 'DB_PASSWORD', '123456' );
 //define( 'DB_PASSWORD', '_*DaloPorHecho2020d' );
 
