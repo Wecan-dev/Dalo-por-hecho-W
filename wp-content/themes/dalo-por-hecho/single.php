@@ -133,7 +133,7 @@ $user_tarea = get_post($post_actual)->post_author; $title_tarea = get_the_title(
                                                 </div>
                                                 <div class="">
                                                     <ul>
-                                                       <li class="price">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></li>
+                                                       <li class="price">$<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?></li>
                                                        <li class="open">Abierta</li>
                                                     </ul>
                                                 </div>

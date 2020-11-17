@@ -88,16 +88,16 @@ if (strpos($url, '?') !== false) {
 														<label for="">Colocale título a tu tarea</label>
 
 														<input type="text" name="job_title" id="job_title"
-															placeholder="Ej, cargar maletas en edificio" />
+															placeholder="Ej, cargar maletas en edificio" required/>
 													</div>
 													<div class="form-group start">
 														<label for="exampleFormControlSelect1">Categorías</label>
-														<select class="form-control hid" name="job_category[]" id="job_category" >
+														<select class="form-control hid" name="job_category[]" id="job_category" required="">
 														    
                                                             <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'order' => 'asc' ));  ?>
                                                             <?php foreach($product_categories as $category):  global $wpdb;?>
                                                                 <?php if($i<1){ ?>                                                                
-                                                               	<option id="job_cat">Seleccionar</option>
+                                                               	<option value="" id="job_cat">Seleccionar</option>
 														        <?php } ?>
                                                                 <option id="<?=$category->term_id ?>" value="<?=$category->term_id ?>"><?=$category->name ?></option>
 		                                                    <?php $i=$i+1; endforeach; ?>						
@@ -111,7 +111,7 @@ if (strpos($url, '?') !== false) {
 															tarea</label>
 														<textarea class="form-control" name="job_description" id="job_description"
 															rows="3"
-															placeholder="Ej, vivo en el 5 piso , no puedo cargar peso por asuntos medicos"></textarea>
+															placeholder="Ej, vivo en el 5 piso , no puedo cargar peso por asuntos medicos" required=""></textarea>
 													</div>
 													<ul class="list-inline text-center">
 														<li class="btn-line">
@@ -133,7 +133,7 @@ if (strpos($url, '?') !== false) {
                                                             <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_type', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
                                                             <?php foreach($product_categories as $category):  global $wpdb;?>		
                                                                 <div class="col-md-6 step-content ">
-																   <p class="p-0 m-0 color-blue"><i	class="<?php if($category->name == 'En persona'){ $mens = "Selecciona si necesitas la persona físicamente en el lugar"; echo "fa fa-map-marker";}if($category->name == 'En línea'){ $mens = "Selecciona si la tarea se puede hacer desde casa"; echo "fa fa-globe";} ?>" aria-hidden="true"></i><input name="job_type" id="job_type" type="radio" value="<?=$category->term_id ?>">
+																   <p class="p-0 m-0 color-blue"><i	class="<?php if($category->name == 'En persona'){ $mens = "Selecciona si necesitas la persona físicamente en el lugar"; echo "fa fa-map-marker";}if($category->name == 'En línea'){ $mens = "Selecciona si la tarea se puede hacer desde casa"; echo "fa fa-globe";} ?>" aria-hidden="true"></i><input name="job_type" id="job_type" type="radio" value="<?=$category->term_id ?>" >
 																	<?=$category->name ?> </p>
 																   <span><?php echo $mens; ?></span>
 															    </div>                                                                
@@ -143,19 +143,18 @@ if (strpos($url, '?') !== false) {
 													</div>
 													<div class="form-group start">
                                                        <!-- <input type="text" name="job_location" id="job_location"  placeholder="e.g. &quot;London&quot;" />-->
-                                                        <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Ciudad">
+                                                        <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Ciudad" required="">
                                                         <div id="suggestions"></div>
 													</div>
 													
 													<div class="form-group start">
-														<input type="text" name="job_direccion" id="job_direccion"
-															placeholder="Dirección y numero" />
+														<input type="text" name="job_direccion" id="job_direccion" placeholder="Dirección y numero" required="" />
 
 													</div>
 													<div class="start">
 														<label for="">Cuando necesitas las tareas?</label>
 														<input type="date" name="job_expires" id="job_expires"
-															placeholder="seleciona una fecha" />
+															placeholder="seleciona una fecha" required="" />
 													</div>
 													<ul class="list-inline text-center">
 														<li class="main-li__back"><button type="button"
@@ -180,7 +179,7 @@ if (strpos($url, '?') !== false) {
 														<div class="tab content1">
 															<div class="row mb-3">
                                                             	<div class="col-md-6">
-                                                            		<input type="text"  name="job_total" id="job_total" placeholder="$000" />
+                                                            		<input type="text"  name="job_total" id="job_total" placeholder="$000" required="" />
                                                             	</div>
 														    </div>
 														</div>

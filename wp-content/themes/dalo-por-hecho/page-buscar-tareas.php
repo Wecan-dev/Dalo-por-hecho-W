@@ -140,7 +140,7 @@ $user_actual = $current_user->ID;
                                                             </div>
                                                             <div class="">
                                                                 <ul>
-                                                                   <li class="price">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></li>
+                                                                   <li class="price">$<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?></li>
                                                                    <li class="open">Abierta</li>
                                                                 </ul>
                                                             </div>
@@ -182,7 +182,7 @@ $user_actual = $current_user->ID;
                                                 </div>
                                                 <div class="">
                                                     <ul>
-                                                       <li class="price">$<?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?></li>
+                                                       <li class="price">$<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?></li>
                                                        <li class="open">Abierta</li>
                                                     </ul>
                                                 </div>

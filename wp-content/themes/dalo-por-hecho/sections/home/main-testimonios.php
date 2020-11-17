@@ -29,7 +29,7 @@
 									<p><?php echo cut_text(get_post_meta( get_the_ID(), '_job_description', true ), 10); ?></p>
 								</div>
 								<div class="col-md-4">
-									<p class="money"><?php echo get_post_meta( get_the_ID(), '_job_salary', true ); ?>$</p>
+									<p class="money"><?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?>$</p>
 								</div>
 							</div>
 						</div>
