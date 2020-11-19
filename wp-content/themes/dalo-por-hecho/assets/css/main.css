@@ -2640,3 +2640,9 @@ input[type="file"] {
 .lost_password a{
 	 color: #47c0d3 ;
 }
+body > header > nav > div > div.navbar-collapse.offcanvas-collapse > ul:nth-child(3) > li.nav-item.dropdown.dowms > a > img{
+	margin-left:.5rem
+}
+#wp_user_profile_avatar_add_button_existing > input.input-text.wp-user-profile-avatar-image{
+	padding-left:0;
+}

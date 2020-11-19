@@ -338,10 +338,26 @@
 		text-align: left !important;
 	}
 	.nav_bottom {
-		display: none;
+		
+	}
+	.nav_bottom ul{
+		justify-content:space-evenly
+	}
+	.nav_bottom ul li a{
+		margin-right:10px;
+		font-size:.9rem;
+	}
+	body > header:nth-child(4) .nav_bottom  ul > li:nth-child(3), body > header:nth-child(4) .nav_bottom  ul > li:nth-child(4){
+		display:none;
+	}
+	body > header:nth-child(4) > div > ul > form > div > input{
+		width:100px !important;
+	}
+	body > header:nth-child(4) > div > ul > form > div > input::placeholder{
+		color:transparent;
 	}
 	.buscar_tareas {
-		margin: 80px 0;
+		margin: 20px 0 80px;
 	}
 	.order-last-xs {
 		order: 13;
@@ -611,11 +627,18 @@
 	}
 	.navbar-expand-md .navbar-nav .nav-link {
 		font-size: 15px;
-		margin-bottom: 11px;
+		margin: 6px 0;
 	}
 	.btn-custom-nav {
 		padding-left: 5px !important;
 		padding-right: 5px !important;
+		border: 2px solid #ec8603;
+		border-radius: 50px;
+		color: #ec8603 !important;
+		background: transparent !important;
+		margin-right:0 !important;
+	}
+
 	}
 	.main-banner::after {
 		bottom: -48px;

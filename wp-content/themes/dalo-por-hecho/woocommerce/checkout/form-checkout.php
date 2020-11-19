@@ -1,3 +1,14 @@
+<style>
+	.padding-t{
+		padding-top:6rem
+	}
+	.woocommerce form .form-row textarea{
+		width:300px !important;
+	}
+</style>
+
+<div class="padding-t">
+
 <?php
 /**
  * Checkout Form
@@ -36,11 +47,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 		<div class="col2-set" id="customer_details">
-			<div class="col-1">
+			<div class="col-12">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 			</div>
 
-			<div class="col-2">
+			<div class="col-12">
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 			</div>
 		</div>
@@ -64,3 +75,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 </form>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
+
+
+</div>

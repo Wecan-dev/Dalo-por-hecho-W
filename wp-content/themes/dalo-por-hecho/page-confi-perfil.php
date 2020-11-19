@@ -102,7 +102,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
  
             <div class="container vertical-tabs">
                 <div class="row">
-                    <div class="col-md-3 content-barra-lateral">
+                    <div class="col-md-4 content-barra-lateral">
                         <div class="perfil-content">
                            <?php if (is_user_logged_in()){ echo get_avatar( $current_user->user_email, 165 );  }?> 
                             <p class="mt-3 mb-4"><?php the_author_meta( 'first_name', $current_user->ID ); ?></p>
@@ -110,7 +110,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
                             <a class="nav-link" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab"
-                            aria-controls="v-pills-history" aria-selected="false">Hitorial de pagos</a>
+                            aria-controls="v-pills-history" aria-selected="false">Historial de pagos</a>
 
                             <a class="nav-link" id="v-pills-method-tab" data-toggle="pill" href="#v-pills-method"
                                 role="tab" aria-controls="v-pills-method" aria-selected="false">Método de pago</a>
@@ -402,7 +402,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                             <div id="ganado" class="container tab-pane active"><br>
                                                 <div class="cont-pago-estado">
                                                     <div class="cont-pago-estado-tab">
-                                                        <p>Demostración g</p>
+                                                        <p>Demostración</p>
                                                         <div class="cont-pago-estado-form">
                                                             <div class="dropdown">
                                                                 <button type="button"
@@ -687,8 +687,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
                                                             </div>
                                                             <div class="row cont-row-form">    
                                                                 <div class="col-md-12">
-                                                                    <input type="text" class="form-control" id="numero_de_cuenta_bancario"
-                                                            placeholder="Nùmero de Cuenta" name="numero_de_cuenta_bancario" value="<?php the_author_meta( 'numero_de_cuenta_bancario', $current_user->ID ); ?>" required/>
+                                                                    <input type="text" class="form-control" id="numero_de_cuenta_bancario" placeholder="Número de Cuenta" name="numero_de_cuenta_bancario" value="<?php the_author_meta( 'numero_de_cuenta_bancario', $current_user->ID ); ?>" required/>
                                                                 </div>
                                                             </div>
                                                             <div class="row cont-row-form">   
