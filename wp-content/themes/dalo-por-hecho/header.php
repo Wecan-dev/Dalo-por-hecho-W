@@ -27,12 +27,12 @@
 <body>
 	 <div class="main-fixed__ws">
     <?php if ( wp_is_mobile() ) : ?>
-		<a href="https://api.whatsapp.com/send?phone=5637069999" >
+		<a href="https://api.whatsapp.com/send?phone=56937069999" >
 			<img src="https://daloporhecho.cl/wp-content/uploads/2020/10/whatsapp-1.png">
 		</a>
 	 <?php else:?>
 	
-		<a href="https://web.whatsapp.com/send?phone=5637069999" >
+		<a href="https://web.whatsapp.com/send?phone=56937069999" >
 			<img src="https://daloporhecho.cl/wp-content/uploads/2020/10/whatsapp-1.png">
 		</a>
 	 <?php endif;?>

@@ -1,0 +1,9 @@
+2020-11-25T11:30:40+00:00 CRITICAL Uncaught Error: Call to undefined function Khipu\curl_init() in /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/ApiClient.php:158
+Stack trace:
+#0 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/Client/PaymentsApi.php(448): Khipu\ApiClient->callApi('/payments', 'POST', Array, 'subject=Orden+2...', Array, '\\Khipu\\Model\\Pa...')
+#1 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/class-wc-khipuwebpay.php(250): Khipu\Client\PaymentsApi->paymentsPost('Orden 285 - Dal...', 'CLP', '4950.00', Array)
+#2 /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/class-wc-khipuwebpay.php(275): WC_Gateway_khipuwebpay->generate_khipuwebpay_submit_button(285)
+#3 /var/www/daloporhecho.cl/wp-includes/class-wp-hook.php(287): WC_Gateway_khipuwebpay->receipt_page(285)
+#4 /var/www/daloporhecho.cl/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#5 /var/www/daloporh in /var/www/daloporhecho.cl/wp-content/plugins/woocommerce-khipu-gateway/vendor/khipu/khipu-api-client/lib/ApiClient.php on line 158
+

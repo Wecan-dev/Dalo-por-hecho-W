@@ -719,7 +719,11 @@
 		font-size:12px;
 	}
 }
-
+@media (min-width: 999px) and (max-width: 1199px){
+	.content-tetimonios{
+		height:250px;
+	}
+}
 @media (min-width: 992px) and (max-width: 1199px) {
 	.main-tareas-2 .main-tareas_grid {
 		padding-left: 0;
@@ -795,7 +799,10 @@
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
-
+	.content-tetimonios{
+		height:250px;
+	}
+	
 }
 
 @media (min-width:1200px ) and (max-width: 1600px ){
@@ -803,4 +810,6 @@
 		max-width: 1250px;
 	}
 }
-
+.money{
+		font-size:20px;
+	}

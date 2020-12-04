@@ -16,19 +16,19 @@
 					<div class="main-testimonios__item">
 						<div class="content-tetimonios">
 							<div class="row">
-								<div class="col-md-2">
+								<div class="col-md-2 col-lg-12 col-xl-2" style="display:flex;justify-content:center">
 									<?php echo get_avatar( get_the_author_meta( 'user_email' ), 50 );?> 
 								</div>
-								<div class="col-md-10 mb-2 text-justify">
+								<div class="col-md-10 col-lg-12 col-xl-10 mb-2 text-justify">
 									<p class="name"><?php echo $product_categories = wp_get_post_terms( get_the_ID(), 'job_listing_category' )[0]->name; ?></p>
 									<span><?php the_author_meta( 'first_name', 1); ?></span>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-8">
+								<div class="col-md-8 col-lg-12 col-xl-8">
 									<p><?php echo cut_text(get_post_meta( get_the_ID(), '_job_description', true ), 10); ?></p>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 col-lg-12 col-xl-4">
 									<p class="money">$<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?></p>
 								</div>
 							</div>
