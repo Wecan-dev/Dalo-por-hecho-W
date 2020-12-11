@@ -133,7 +133,7 @@ if (strpos($url, '?') !== false) {
                                                             <?php $product_categories = get_categories( array( 'taxonomy' => 'job_listing_type', 'orderby' => 'menu_order', 'order' => 'asc' ));  ?>
                                                             <?php foreach($product_categories as $category):  global $wpdb;?>		
                                                                 <div class="col-md-6 step-content ">
-																   <p class="p-0 m-0 color-blue"><i	class="<?php if($category->name == 'En persona'){ $mens = "Selecciona si necesitas la persona físicamente en el lugar"; echo "fa fa-map-marker";}if($category->name == 'En línea'){ $mens = "Selecciona si la tarea se puede hacer desde casa"; echo "fa fa-globe";} ?>" aria-hidden="true"></i><input name="job_type" id="job_type" type="radio" value="<?=$category->term_id ?>" >
+																   <p class="p-0 m-0 color-blue"><i	class="<?php if($category->name == 'En persona'){ $mens = "Selecciona si necesitas la persona físicamente en el lugar"; echo "fa fa-map-marker";}if($category->name == 'En línea'){ $mens = "Selecciona si la tarea se puede hacer desde casa"; echo "fa fa-globe";} ?>" aria-hidden="true"></i><input name="job_type" id="job_type <?=$category->slug ?>" type="radio" value="<?=$category->term_id ?>"  onclick="block_<?=$category->term_id ?>()"
 																	<?=$category->name ?> </p>
 																   <span><?php echo $mens; ?></span>
 															    </div>                                                                
@@ -141,13 +141,13 @@ if (strpos($url, '?') !== false) {
 	
 														</div>
 													</div>
-													<div class="form-group start">
+													<div class="form-group start" id="job_location">
                                                        <!-- <input type="text" name="job_location" id="job_location"  placeholder="e.g. &quot;London&quot;" />-->
                                                         <input class="search_query form-control" type="text" name="job_location" id="job_location" placeholder="Ciudad" required="">
                                                         <div id="suggestions"></div>
 													</div>
 													
-													<div class="form-group start">
+													<div class="form-group start" id="job_direccion">
 														<input type="text" name="job_direccion" id="job_direccion" placeholder="Dirección y numero" required="" />
 
 													</div>

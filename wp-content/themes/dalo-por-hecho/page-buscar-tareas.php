@@ -257,21 +257,31 @@ $user_actual = $current_user->ID;
                                 </div>
                                 <div class=" datos_presupuesto main-presupuesto__mobile">
                                   <div class="presupuesto_minicard">
-                                    <p>Presupuestoo </p>
-                                    <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
+                                    <p>Presupuesto </p>
+                                    <span class="precio">$<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?></span>
 
                                     <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); 
                                         if (bank_data() == "yes" ){ $target = "publicar"; }else{ $target = "publicar_bank"; }
                                     ?>
-                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="#<?php echo $target ?>" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo get_post_meta( $id_tarea, '_job_salary', true ) ?>');">Ofertar</a>
+                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="#<?php echo $target ?>" onclick="monto_salary2('<?php echo $title_tarea2 ?>','<?php echo $title_tarea ?>','<?php echo $id_tarea ?>','<?php echo $email_empleador ?>','<?php echo meta_user_value( 'first_name', $current_user->ID ) ?>','<?php echo wp_get_current_user()->ID ?>','<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))) ?>');">Ofertar</a>
                                       <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
-                                    <?php }else { ?>
-									
+                                    <?php }
+                                    if (is_user_logged_in() == NULL ){?>
                                       <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>
-									<label>Se cargará un 10% del presupuesto por cargos de servicio</label>
-                                      
+                                      <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
+                                      <label>Debe regristrarse <a href="#" data-toggle="modal" data-target="#exampleModal">aquí</a> para poder ofertar</label>
 
-                                    <?php } ?>   
+                                    <?php } ?>  
+                                     <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) != "Hacer tareas" ){?> 
+                                      <a href="" class="btn-oferta" data-toggle="modal" data-target="">Ofertar</a>  
+                                      <label>Se cargará un 10% del presupuesto por cargos de servicio</label>
+                                      <label>Debes cambiar tu rol de perfil <a href="<?php echo get_home_url() ?>/confi-perfil/?tab=conf">aquí </a> para poder ofertar</label>
+
+                                    <?php } ?>                                                                          
+									
+                         
+
+                                      
                                   </div>
                                 </div>
                                 <!-- descripcion -->
@@ -320,11 +330,11 @@ $user_actual = $current_user->ID;
                                                         <p class="ml-auto"><?php the_job_publish_date_postu(); ?></p>
                                                     </div>
                                                     <p><?php the_field('ofertar_message_empleado'); ?></p>
-                                                    <div class="cube mb-4"> 
-                                                        <p>$ <?php the_field('ofertar_monto_tarea'); ?></p>
+                                                    <div class="cube mb-4">
+                                                        <p>$ <?php echo get_field('ofertar_monto_tarea'); ?></p>
                                                     </div>
                                                     <div class="respnse">
-                                                    <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  get_the_author_meta( 'ID' ) )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".get_field('ofertar_monto_tarea')."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
+                                                    <?php $var_array ="Tarea Publicada: ".$title_tarea."<br>ID Tarea: ".$id_tarea."<br>Usuario Postulado: ".meta_user_value( 'first_name',  get_the_author_meta( 'ID' ) )."<br>ID Postulado: ".get_the_author_meta( 'ID' )."<br>Monto Ofertado: $".str_replace(',', '.' ,number_format(get_field('ofertar_monto_tarea')))."<br>Porcentaje Comisión: $".$comision."<br>ID Postulación: ".get_the_ID().""; ?>
                                                         <?php                                                   
 
                                                         $value_var_array = str_replace("<br>",":",$var_array); 
@@ -375,7 +385,7 @@ $user_actual = $current_user->ID;
                           <div class="main-presupuesto__desktop">
                             <div class="presupuesto_minicard">
                               <p>Presupuesto</p>
-                              <span class="precio">$<?php echo get_post_meta( $id_tarea, '_job_salary', true ); ?></span>
+                              <span class="precio">$<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?></span>
                               <?php if (is_user_logged_in() != NULL && meta_user_value( 'user_registration_radio_1600171615', $current_user->ID ) == "Hacer tareas" ){ $title_tarea2 = $title_tarea."-".meta_user_value( 'first_name', $current_user->ID ); 
                                         if (bank_data() == "yes" ){ $target = "publicar"; }else{ $target = "publicar_bank"; }
                                     ?>

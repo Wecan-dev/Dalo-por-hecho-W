@@ -257,6 +257,17 @@ $('#note_description').appendTo('.variation');
 
     }     
 
+
+    function block_2(){        
+        $("#job_location").css("display", "none");
+        $("#job_direccion").css("display", "none");      
+      //  $("input#job_location").prop('disabled', true);  
+    }  
+
+    function block_5(){         
+        $("#job_location").css("display", "block");
+        $("#job_direccion").css("display", "block");        
+    }     
 //
 </script>
  
