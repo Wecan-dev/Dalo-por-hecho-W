@@ -718,7 +718,7 @@ function job_manager_user_can_edit_job( $job_id ) {
 	} else {
 		$job = get_post( $job_id );
 
-		if ( ! $job || ( absint( $job->post_author ) !== get_current_user_id() && ! current_user_can( 'edit_post', $job_id ) ) ) {
+		if ( ! $job || 'job_listing' !== $job->post_type || ( absint( $job->post_author ) !== get_current_user_id() && ! current_user_can( 'edit_post', $job_id ) ) ) {
 			$can_edit = false;
 		}
 	}
@@ -772,7 +772,9 @@ function is_wpjm_page() {
 		 */
 		$wpjm_page_ids = array_unique( apply_filters( 'job_manager_page_ids', $wpjm_page_ids ) );
 
-		$is_wpjm_page = is_page( $wpjm_page_ids );
+		if ( ! empty( $wpjm_page_ids ) ) {
+			$is_wpjm_page = is_page( $wpjm_page_ids );
+		}
 	}
 
 	/**
@@ -1064,8 +1066,11 @@ function wpjm_published_submission_edits_require_moderation() {
 function wpjm_get_category_slugs_from_search_query_string() {
 	$search_category_slugs = [];
 
-	if ( isset( $_GET['search_category'] ) && $_GET['search_category'] ) {
-		$search_category_slugs = explode( ',', sanitize_text_field( wp_unslash( $_GET['search_category'] ) ) );
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Should be checked outside of this function.
+	$search_category = ! empty( $_GET['search_category'] ) ? sanitize_text_field( wp_unslash( $_GET['search_category'] ) ) : false;
+
+	if ( $search_category ) {
+		$search_category_slugs = explode( ',', $search_category );
 	}
 
 	return $search_category_slugs;
@@ -1430,23 +1435,28 @@ function job_manager_get_allowed_mime_types( $field = '' ) {
  * Calculates and returns the job expiry date.
  *
  * @since 1.22.0
- * @param  int $job_id
- * @return string
+ * @since 1.35.0 Added the `$return_datetime` param.
+ *
+ * @param  int  $job_id          Job ID.
+ * @param  bool $return_datetime Return the date time object.
+ * @return string|DateTimeImmutable When `$return_datetime`, it will return either DateTimeImmutable or null.
  */
-function calculate_job_expiry( $job_id ) {
+function calculate_job_expiry( $job_id, $return_datetime = false ) {
 	// Get duration from the product if set...
 	$duration = get_post_meta( $job_id, '_job_duration', true );
 
 	// ...otherwise use the global option.
 	if ( ! $duration ) {
-		$duration = absint( get_option( 'job_manager_submission_duration' ) );
+		$duration = get_option( 'job_manager_submission_duration' );
 	}
 
 	if ( $duration ) {
-		return date( 'Y-m-d', strtotime( "+{$duration} days", current_time( 'timestamp' ) ) );
+		$new_job_expiry = current_datetime()->add( new DateInterval( 'P' . absint( $duration ) . 'D' ) );
+
+		return $return_datetime ? WP_Job_Manager_Post_Types::instance()->prepare_job_expires_time( $new_job_expiry ) : $new_job_expiry->format( 'Y-m-d' );
 	}
 
-	return '';
+	return $return_datetime ? null : '';
 }
 
 /**
@@ -1464,7 +1474,7 @@ function job_manager_duplicate_listing( $post_id ) {
 	}
 
 	$post = get_post( $post_id );
-	if ( ! $post ) {
+	if ( ! $post || 'job_listing' !== $post->post_type ) {
 		return 0;
 	}
 
@@ -1509,14 +1519,21 @@ function job_manager_duplicate_listing( $post_id ) {
 	if ( ! empty( $post_meta ) ) {
 		$post_meta = wp_list_pluck( $post_meta, 'meta_value', 'meta_key' );
 
-		$default_duplicate_ignore_keys = [ '_filled', '_featured', '_job_expires', '_job_duration', '_package_id', '_user_package_id' ];
+		$default_duplicate_ignore_keys = [ '_filled', '_featured', '_job_expires', '_job_duration', '_package_id', '_user_package_id', '_edit_lock', '_submitting_key', '_tracked_submitted', '_tracked_approved' ];
 		$duplicate_ignore_keys         = apply_filters( 'job_manager_duplicate_listing_ignore_keys', $default_duplicate_ignore_keys, true );
 
 		foreach ( $post_meta as $meta_key => $meta_value ) {
-			if ( in_array( $meta_key, $duplicate_ignore_keys, true ) ) {
+			$sanitized_key = preg_replace( "/[^\x20-\x7E]/", '', $meta_key );
+
+			if ( in_array( $sanitized_key, $duplicate_ignore_keys, true ) ) {
 				continue;
 			}
-			update_post_meta( $new_post_id, $meta_key, maybe_unserialize( $meta_value ) );
+
+			if ( 1 === preg_match( '/^(_wp_|_oembed_)/', $sanitized_key ) ) {
+				continue;
+			}
+
+			update_post_meta( $new_post_id, wp_slash( $meta_key ), wp_slash( maybe_unserialize( $meta_value ) ) );
 		}
 	}
 

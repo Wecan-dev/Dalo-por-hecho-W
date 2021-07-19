@@ -12,7 +12,12 @@
 							<a class="btn-custom p-14 mr-4" href="<?php echo get_theme_mod('banner1_urlbutton1'); ?>"><?php echo get_theme_mod('banner1_button1'); ?></a>
 					      <?php } ?>
 					      <?php if(get_theme_mod('banner1_button2') != NULL){ ?>		
-							<a class="btn-custom p-14 btn-custom-transparent btn-custom-transparent-white" href="<?php echo get_theme_mod('banner1_urlbutton2'); ?>" data-toggle="modal"	data-target="#step" ><?php echo get_theme_mod('banner1_button2'); ?></a>
+
+                        <?php if( is_user_logged_in() != NULL):?>
+                            <a class="btn-custom p-14 btn-custom-transparent btn-custom-transparent-white" href="<?php echo get_theme_mod('banner1_urlbutton2'); ?>" data-toggle="modal"	data-target="#step" ><?php echo get_theme_mod('banner1_button2'); ?></a>
+                        <?php else: ?>
+							<a class="btn-custom p-14 btn-custom-transparent btn-custom-transparent-white" href="#" data-toggle="modal" data-target="#exampleModal" ><?php echo get_theme_mod('banner1_button2'); ?></a>                        
+                        <?php endif; ?>							
 						  <?php } ?>	
 						</div>
 					</div>

@@ -69,28 +69,72 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
+<script type="text/javascript">
+    function message_rol(){
+        $("#message_rol").css("display", "block");
+    }
+</script>
+
+<script language="javascript">
+
+$("#job_total").on({
+    "focus": function (event) {
+        $(event.target).select();
+    },
+    "keyup": function (event) {
+        $(event.target).val(function (index, value ) {
+        	$("#job_salary").val(value.replace(/\./g, ''));
+            return value.replace(/\D/g, "")
+                        //.replace(/([0-9])([0-9]{2})$/, '$1,$2')
+                        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+        });
+    }
+});
+
+	function mascara(o,f){  
+		v_obj=o;  
+		v_fun=f;  
+		setTimeout("execmascara()",4);  
+	}  
+	function execmascara(){   
+		v_obj.value=v_fun(v_obj.value);
+	}  
+	function cpf(v){     
+    v=new Intl.NumberFormat("de-DE").format(v);
+    return v;
+	}  
+
+		
 function quitar(){
    var valuea = "";
+   $("#job_salary1").val(valuea);
    $("#job_salary").val(valuea);
    $("#job_clp").val(valuea);
    $("#job_horas").val(valuea);
    $("#job_total").val(valuea);
 }	
 $(document).ready(function () {
+	
  	    
         $("#job_clp").keyup(function () {
             var valuea =  document.getElementById("job_horas").value*$(this).val();
+            v=new Intl.NumberFormat("de-DE").format(valuea);
+            $("#job_salary1").val(v);
             $("#job_salary").val(valuea);
         });    
         $("#job_horas").keyup(function () {
             var valuea =  document.getElementById("job_clp").value*$(this).val();
+            v=new Intl.NumberFormat("de-DE").format(valuea);
+            $("#job_salary1").val(new Intl.NumberFormat("de-DE").format(valuea));
             $("#job_salary").val(valuea);
-        })     
+
+        });     
         $("#job_total").keyup(function () {
             var valuea =  document.getElementById("job_total").value;
-            $("#job_salary").val(valuea);
-        })                      
+            $("#job_salary1").val(valuea);
+        });
+
+
 });
 	
 	/*-- multistep form --*/
@@ -109,14 +153,161 @@ $(document).ready(function () {
 	});
 
 	$(".next-step").click(function (e) {
-		var active = $(".wizard .nav-tabs li.active");
-		active.next().removeClass("disabled");
-		nextTab(active);
+
+		val_job_title = 0;
+		val_job_category = 0;	
+		val_job_description = 0;
+
+		var elemento_job_title = document.getElementById("job_title");	
+		var elemento_job_category = document.getElementById("job_category2");
+		var elemento_job_description = document.getElementById("job_description");
+
+        valor_job_title = document.getElementById("job_title").value;
+        if( valor_job_title == null || valor_job_title.length == 0  ) {
+           
+           elemento_job_title.className = "error-input";
+           val_job_title = 1;
+
+        }
+      
+        valor_job_category = document.getElementById("job_category2").value;
+        valor_job_category_otro = document.getElementById("job_category").value;
+        if( valor_job_category == null || valor_job_category_otro.length == 0 || valor_job_category.length == 0  ) {
+           
+           elemento_job_category.className = "form-control hid error-input";
+           val_job_category = 1;
+
+        }
+
+        valor_job_description = document.getElementById("job_description").value;
+        if( valor_job_description == null || valor_job_description.length == 0  ) {
+           
+           elemento_job_description.className = "form-control error-input";
+           val_job_description = 1;
+
+        }        
+
+
+        if( val_job_title != 1 && val_job_category != 1 && val_job_description != 1  ) {
+              elemento_job_title.className = " ";
+              elemento_job_category.className = "form-control hid";
+              elemento_job_description.className = "form-control";
+
+		      var active = $(".wizard .nav-tabs li.active");
+		      active.next().removeClass("disabled");
+		      nextTab(active);
+        }
+
+      
+
+
 	});
+
+	$(".next-step2").click(function (e) {
+		val_job_location = 0;
+		var elemento_job_location = document.getElementById("job_location");	
+        valor_job_location = document.getElementById("job_location").value;
+        valor_job_location1 = document.getElementById("job_location1").value;
+
+		val_job_direccion = 0;
+		var elemento_job_direccion = document.getElementById("job_direccion");	
+        valor_job_direccion = document.getElementById("job_direccion").value;  
+        
+
+        if (document.getElementById('en-persona').checked) {         	
+
+           if( valor_job_location == null || valor_job_location.length == 0 || valor_job_location1.length == 0  ) {           
+              elemento_job_location.className = "form-control hid error-input";
+              val_job_location = 1;
+           }
+           if( valor_job_direccion == null || valor_job_direccion.length == 0  ) {           
+              elemento_job_direccion.className = "error-input ";
+              val_job_direccion = 1;
+           }           
+        }   
+
+		val_job_expires = 0;
+		var elemento_job_expires = document.getElementById("job_expires");	
+        valor_job_expires = document.getElementById("job_expires").value;
+        if( valor_job_expires == null || valor_job_expires.length == 0  ) {
+           elemento_job_expires.className = "error-input";
+           val_job_expires = 1;
+
+        } 
+
+        if( val_job_location != 1 && val_job_direccion != 1 && val_job_expires != 1 ) {
+              elemento_job_location.className = "form-control hid ";
+              elemento_job_direccion.className = " ";
+              elemento_job_expires.className = " ";
+
+
+		      var active = $(".wizard .nav-tabs li.active");
+		      active.next().removeClass("disabled");
+		      nextTab(active);
+        }
+
+	});
+
+	$(".next-step3").click(function (e) {
+
+		val_job_salary1 = 0; 
+		var elemento_job_total = document.getElementById("job_total");	
+        valor_job_total = document.getElementById("job_total").value;
+
+        if (document.getElementById('radio1').checked) {         	
+
+           if( valor_job_total == null || valor_job_total.length == 0  ) {
+              elemento_job_total.className = "input-type__presupuesto error-input";
+              val_job_salary1 = 1;
+
+           }        
+        }          
+ 
+ 		
+		var elemento_job_clp = document.getElementById("job_clp");	
+        valor_job_clp = document.getElementById("job_clp").value;
+
+ 		
+		var elemento_job_horas = document.getElementById("job_horas");	
+        valor_job_horas = document.getElementById("job_horas").value;        
+
+        if (document.getElementById('radio2').checked) {         	
+
+           if( valor_job_clp == null || valor_job_clp.length == 0  ) {
+              elemento_job_clp.className = "error-input";
+              val_job_salary1 = 1;
+
+           }    
+
+          if( valor_job_horas == null || valor_job_horas.length == 0  ) {
+              elemento_job_horas.className = "error-input";
+              val_job_salary1 = 1;
+
+           } 
+
+        }
+
+        if( val_job_salary1 != 1 ) {
+              elemento_job_total.className = "input-type__presupuesto ";
+              elemento_job_clp.className = " ";
+              elemento_job_horas.className = " ";
+
+
+		      var active = $(".wizard .nav-tabs li.active");
+		      active.next().removeClass("disabled");
+		      nextTab(active);
+        }        
+
+	});	
+       
+
+
+
 	$(".prev-step").click(function (e) {
 		var active = $(".wizard .nav-tabs li.active");
 		prevTab(active);
 	});
+
 });
 
 function nextTab(elem) {
@@ -146,3 +337,18 @@ $('.panel-collapse').on('hide.bs.collapse', function () {
   $(this).siblings('.panel-heading').removeClass('active');
 });
   </script>
+
+<style type="text/css">
+   input.error-input{ 
+     border-color: #900;
+     background-color: #FDD;
+   }
+   select.error-input{ 
+     border-color: #900;
+     background-color: #FDD;
+   }  
+   textarea.error-input{ 
+     border-color: #900;
+     background-color: #FDD;
+   }     
+</style>

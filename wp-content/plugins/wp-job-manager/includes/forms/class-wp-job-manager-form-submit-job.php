@@ -341,7 +341,7 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 		/**
 		 * Force application field to skip email / URL validation.
 		 *
-		 * @since 1.x.x
+		 * @since 1.34.2
 		 *
 		 * @param bool  $is_forced Whether the application field is forced to skip email / URL validation.
 		 */
@@ -358,7 +358,11 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 	protected function validate_fields( $values ) {
 		foreach ( $this->fields as $group_key => $group_fields ) {
 			foreach ( $group_fields as $key => $field ) {
-				if ( $field['required'] && empty( $values[ $group_key ][ $key ] ) ) {
+				if (
+					$field['required']
+					&& empty( $values[ $group_key ][ $key ] )
+					&& ( ! isset( $field['empty'] ) || $field['empty'] )
+				) {
 					// translators: Placeholder %s is the label for the required field.
 					return new WP_Error( 'validation-error', sprintf( __( '%s is a required field', 'wp-job-manager' ), $field['label'] ) );
 				}
@@ -451,31 +455,32 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 		}
 
 		// Application method.
-		if ( ! $this->should_application_field_skip_email_url_validation() && isset( $values['job']['application'] ) && ! empty( $values['job']['application'] ) ) {
-			$allowed_application_method   = get_option( 'job_manager_allowed_application_method', '' );
-			$values['job']['application'] = str_replace( ' ', '+', $values['job']['application'] );
+		if ( ! $this->should_application_field_skip_email_url_validation() && isset( $values['job']['application'] ) ) {
+			$allowed_application_method = get_option( 'job_manager_allowed_application_method', '' );
+
+			$is_valid = true;
+
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce checked earlier when required.
+			$posted_value = isset( $_POST['application'] ) ? sanitize_text_field( wp_unslash( $_POST['application'] ) ) : false;
+			if ( $posted_value && empty( $values['job']['application'] ) ) {
+				$is_valid                                    = false;
+				$this->fields['job']['application']['value'] = $posted_value;
+			}
+
 			switch ( $allowed_application_method ) {
 				case 'email':
-					if ( ! is_email( $values['job']['application'] ) ) {
+					if ( ! $is_valid || ! is_email( $values['job']['application'] ) ) {
 						throw new Exception( __( 'Please enter a valid application email address', 'wp-job-manager' ) );
 					}
 					break;
 				case 'url':
-					// Prefix http if needed.
-					if ( ! strstr( $values['job']['application'], 'http:' ) && ! strstr( $values['job']['application'], 'https:' ) ) {
-						$values['job']['application'] = 'http://' . $values['job']['application'];
-					}
-					if ( ! filter_var( $values['job']['application'], FILTER_VALIDATE_URL ) ) {
+					if ( ! $is_valid || ! filter_var( $values['job']['application'], FILTER_VALIDATE_URL ) ) {
 						throw new Exception( __( 'Please enter a valid application URL', 'wp-job-manager' ) );
 					}
 					break;
 				default:
 					if ( ! is_email( $values['job']['application'] ) ) {
-						// Prefix http if needed.
-						if ( ! strstr( $values['job']['application'], 'http:' ) && ! strstr( $values['job']['application'], 'https:' ) ) {
-							$values['job']['application'] = 'http://' . $values['job']['application'];
-						}
-						if ( ! filter_var( $values['job']['application'], FILTER_VALIDATE_URL ) ) {
+						if ( ! $is_valid || ! filter_var( $values['job']['application'], FILTER_VALIDATE_URL ) ) {
 							throw new Exception( __( 'Please enter a valid application email address or URL', 'wp-job-manager' ) );
 						}
 					}
@@ -500,7 +505,9 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 	 */
 	protected function enqueue_job_form_assets() {
 		wp_enqueue_script( 'wp-job-manager-job-submission' );
-		wp_enqueue_style( 'wp-job-manager-job-submission', JOB_MANAGER_PLUGIN_URL . '/assets/css/job-submission.css', [], JOB_MANAGER_VERSION );
+
+		WP_Job_Manager::register_style( 'wp-job-manager-job-submission', 'css/job-submission.css', [] );
+		wp_enqueue_style( 'wp-job-manager-job-submission' );
 	}
 
 	/**
@@ -538,6 +545,10 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 			$job = get_post( $this->job_id );
 			foreach ( $this->fields as $group_key => $group_fields ) {
 				foreach ( $group_fields as $key => $field ) {
+					if ( isset( $this->fields[ $group_key ][ $key ]['value'] ) ) {
+						continue;
+					}
+
 					switch ( $key ) {
 						case 'job_title':
 							$this->fields[ $group_key ][ $key ]['value'] = $job->post_title;
@@ -687,7 +698,16 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 								'username' => ( job_manager_generate_username_from_email() || empty( $input_create_account_username ) ) ? '' : $input_create_account_username,
 								'password' => ( wpjm_use_standard_password_setup_email() || empty( $input_create_account_password ) ) ? '' : $input_create_account_password,
 								'email'    => sanitize_text_field( wp_unslash( $input_create_account_email ) ),
-								'role'     => get_option( 'job_manager_registration_role' ),
+								/**
+								 * Allow customization of new user creation role
+								 *
+								 * @param string                         $role     New user registration role (pulled from 'job_manager_registration_role' option)
+								 * @param array                          $values   Submitted input values.
+								 * @param WP_Job_Manager_Form_Submit_Job $this     Current class object
+								 *
+								 * @since 1.35.0
+								 */
+								'role'     => apply_filters( 'submit_job_form_create_account_role', get_option( 'job_manager_registration_role' ), $values, $this ),
 							]
 						);
 					}
@@ -712,6 +732,9 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 			// Update the job.
 			$this->save_job( $values['job']['job_title'], $values['job']['job_description'], $post_status, $values );
 			$this->update_job_data( $values );
+
+			// Mark this job as a public submission so the submission hook is fired.
+			update_post_meta( $this->job_id, '_public_submission', true );
 
 			if ( $this->job_id ) {
 				// Reset the `_filled` flag.
@@ -1071,6 +1094,15 @@ class WP_Job_Manager_Form_Submit_Job extends WP_Job_Manager_Form {
 	 * Handles the job submissions before the view is called.
 	 */
 	public function done_before() {
+		delete_post_meta( $this->job_id, '_public_submission' );
+
+		/**
+		 * Trigger job submission action.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int $job_id The job ID.
+		 */
 		do_action( 'job_manager_job_submitted', $this->job_id );
 	}
 

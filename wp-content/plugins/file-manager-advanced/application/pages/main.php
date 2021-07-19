@@ -8,6 +8,15 @@ $path = str_replace('\\','/', ABSPATH);
 <h2><?php _e('Advanced File Manager','file-manager-advanced')?>
 
  <?php if(!class_exists('file_manager_advanced_shortcode')) { ?><a href="https://advancedfilemanager.com/product/file-manager-advanced-shortcode-wordpress/" class="button button-primary" target="_blank"><?php _e('Buy Shortcode Addon','file-manager-advanced')?></a><?php } ?></h2>
+
+<?php /* Notice to upgrade to 2.2 */ ?>
+
+<?php if(class_exists('file_manager_advanced_shortcode') && !defined('fmas_ver')) { ?>
+    <div id="setting-error-settings_updated" class="error settings-error notice">
+<p style="color:red"><?php _e('<strong>Important:</strong> Please update your <strong>File Manager Advanced Shortcode</strong> Addon to version 2.2. If not received any update in <a href="'.admin_url("plugins.php").'">plugins</a> page then <a href="https://advancedfilemanager.com/contact/" target="_blank">contact</a> with us.','file-manager-advanced')?></p>
+</div>
+<?php } ?>
+
  <?php if ('done' != (get_option('fma_hide_review_section'))) { ?>
     <div class="gb-fm-row review-block" id="fma_rate_us">
             <div class="message">

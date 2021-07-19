@@ -40,7 +40,7 @@
 
     
     $a=array("0"=>"Seleccionar");
-    $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'orderby' => 'term_id', 'order' => 'asc'));  
+    $product_categories = get_categories( array( 'taxonomy' => 'job_listing_category', 'order' => 'asc', 'hide_empty'=> FALSE));  
     foreach($product_categories as $category):  
       $id_cat = $category->term_id;
       $name_cat = $category->name;

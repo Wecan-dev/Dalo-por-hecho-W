@@ -39,6 +39,7 @@ function theme_customize_register($wp_customize){
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-cta.php';
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-funciona.php';
   require_once trailingslashit( get_template_directory() ) . 'inc/home/customizer-main-container.php';
+ // require_once trailingslashit( get_template_directory() ) . 'inc/rrss/customizer-rrss.php';
   
 } 
 add_action('customize_register','theme_customize_register');
@@ -163,7 +164,177 @@ function custom_post_type_postulados() {
 }
 add_action( 'init', 'custom_post_type_postulados', 0 );
 
-// cuestionarios Entrenamientos
+/*********** Preguntas ***********/
+function custom_post_type_Preguntas() {
+
+  $labels = array(
+    'name'                  => _x( 'Preguntas', 'Post Type General Name', 'text_domain' ),
+    'singular_name'         => _x( 'Preguntas', 'Post Type Singular Name', 'text_domain' ),
+    'menu_name'             => __( 'Preguntas', 'text_domain' ),
+    'name_admin_bar'        => __( 'Preguntas', 'text_domain' ),
+    'archives'              => __( 'Archivos del artículo', 'text_domain' ),
+    'attributes'            => __( 'Atributos del artículo', 'text_domain' ),
+    'parent_item_colon'     => __( 'Artículo principal:', 'text_domain' ),
+    'all_items'             => __( 'Preguntas', 'text_domain' ),
+    'add_new_item'          => __( 'Añadir artículo nuevo', 'text_domain' ),
+    'add_new'               => __( 'Añadir nuevo', 'text_domain' ),
+    'new_item'              => __( 'Nuevo artículo', 'text_domain' ),
+    'edit_item'             => __( 'Editar artículo', 'text_domain' ),
+    'update_item'           => __( 'Actualizar artículo', 'text_domain' ),
+    'view_items'            => __( 'Ver artículos', 'text_domain' ),
+    'search_items'          => __( 'Buscar artículo', 'text_domain' ),
+    'not_found'             => __( 'Not found', 'text_domain' ),
+    'not_found_in_trash'    => __( 'No se encuentra en la basura', 'text_domain' ),
+    'featured_image'        => __( 'Imagen destacada', 'text_domain' ),
+    'set_featured_image'    => __( 'Establecer imagen destacada', 'text_domain' ),
+    'remove_featured_image' => __( 'Eliminar imagen destacada', 'text_domain' ),
+    'use_featured_image'    => __( 'Usar como imagen destacada', 'text_domain' ),
+    'insert_into_item'      => __( 'Insertar en el artículo', 'text_domain' ),
+    'uploaded_to_this_item' => __( 'Subido a este artículo', 'text_domain' ),
+    'items_list'            => __( 'Lista de artículos', 'text_domain' ),
+    'items_list_navigation' => __( 'Lista de artículos de navegación', 'text_domain' ),
+    'filter_items_list'     => __( 'Filtro lista artículos', 'text_domain' ),
+  );
+  $args = array(
+    'label'                 => __( 'Preguntas', 'text_domain' ),
+    'description'           => __( 'Preguntas image', 'text_domain' ),
+    'labels'                => $labels,
+    'supports'              => array( 'title', '', '', 'custom-fields' ),
+    'taxonomies'            => array( ''),
+    'hierarchical'          => false,
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_menu'          => 'edit.php?post_type=job_listing',
+    'menu_position'         => 2,
+    'menu_icon'             => 'dashicons-groups',
+    'show_in_admin_bar'     => true,
+    'show_in_nav_menus'     => true,
+    'can_export'            => true,
+    'has_archive'           => true,
+    'exclude_from_search'   => false,
+    'publicly_queryable'    => true,
+    'capability_type'       => 'page',
+  );
+  register_post_type( 'Preguntas', $args );
+
+}
+add_action( 'init', 'custom_post_type_Preguntas', 0 );
+
+
+/*********** Emblema ***********/
+function custom_post_type_Emblema() {
+
+  $labels = array(
+    'name'                  => _x( 'Emblema', 'Post Type General Name', 'text_domain' ),
+    'singular_name'         => _x( 'Emblema', 'Post Type Singular Name', 'text_domain' ),
+    'menu_name'             => __( 'Emblema', 'text_domain' ),
+    'name_admin_bar'        => __( 'Emblema', 'text_domain' ),
+    'archives'              => __( 'Archives', 'text_domain' ),
+    'attributes'            => __( 'Atributos', 'text_domain' ),
+    'parent_item_colon'     => __( 'Emblema', 'text_domain' ),
+    'all_items Emblema'             => __( 'All Emblema', 'text_domain' ),
+    'add_new_item'          => __( 'Añadir nuevo Emblema', 'text_domain' ),
+    'add_new'               => __( 'Añadir nuevo', 'text_domain' ),
+    'new_item'              => __( 'Nuevo Emblema', 'text_domain' ),
+    'edit_item'             => __( 'Editar Emblema', 'text_domain' ),
+    'update_item'           => __( 'Actualizar Emblema', 'text_domain' ),
+    'view_items Emblema'            => __( 'See Testimonios', 'text_domain' ),
+    'search_items Testimonios'          => __( 'Search Testimonios', 'text_domain' ),
+    'not_found'             => __( 'Not found', 'text_domain' ),
+    'not_found_in_trash'    => __( 'It is not in the trash', 'text_domain' ),
+    'featured_image'        => __( 'Featured Image', 'text_domain' ),
+    'set_featured_image'    => __( 'Set Featured Image', 'text_domain' ),
+    'remove_featured_image' => __( 'Remove Featured Image', 'text_domain' ),
+    'use_featured_image'    => __( 'Use Featured Image', 'text_domain' ),
+    'insert_into_item'      => __( 'Insert Into Item', 'text_domain' ),
+    'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+    'items Testimoios_list'            => __( 'Testimonios List', 'text_domain' ),
+    'items Testimoios_list_navigation' => __( 'Testimonios List Navigation', 'text_domain' ),
+    'filter_items Testimoios_list'     => __( 'filter Items Testimonios List', 'text_domain' ),
+  );
+  $args = array(
+    'label'                 => __( 'Emblema', 'text_domain' ),
+    'description'           => __( 'Emblema image', 'text_domain' ),
+    'labels'                => $labels,
+    'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+    'taxonomies'            => array( '' ),
+    'hierarchical'          => false,
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_menu'          => true,
+    'menu_position'         => 5,
+    'menu_icon'             => 'dashicons-groups',
+    'show_in_admin_bar'     => true,
+    'show_in_nav_menus'     => true,
+    'can_export'            => true,
+    'has_archive'           => true,
+    'exclude_from_search'   => false,
+    'publicly_queryable'    => true,
+    'capability_type'       => 'page', 
+  );
+  register_post_type( 'Emblema', $args );
+
+}
+add_action( 'init', 'custom_post_type_Emblema', 0 );
+
+
+/*********** Emblemas enviados ***********/
+function custom_post_type_Emblemas_Adjuntos() {
+
+  $labels = array(
+    'name'                  => _x( 'Emblemas Adjuntos', 'Post Type General Name', 'text_domain' ),
+    'singular_name'         => _x( 'Emblemas Adjuntos', 'Post Type Singular Name', 'text_domain' ),
+    'menu_name'             => __( 'Emblemas Adjuntos', 'text_domain' ),
+    'name_admin_bar'        => __( 'Preguntas', 'text_domain' ),
+    'archives'              => __( 'Archivos del artículo', 'text_domain' ),
+    'attributes'            => __( 'Atributos del artículo', 'text_domain' ),
+    'parent_item_colon'     => __( 'Artículo principal:', 'text_domain' ),
+    'all_items'             => __( 'Emblemas Adjuntos', 'text_domain' ),
+    'add_new_item'          => __( 'Añadir artículo nuevo', 'text_domain' ),
+    'add_new'               => __( 'Añadir nuevo', 'text_domain' ),
+    'new_item'              => __( 'Nuevo artículo', 'text_domain' ),
+    'edit_item'             => __( 'Editar artículo', 'text_domain' ),
+    'update_item'           => __( 'Actualizar artículo', 'text_domain' ),
+    'view_items'            => __( 'Ver artículos', 'text_domain' ),
+    'search_items'          => __( 'Buscar artículo', 'text_domain' ),
+    'not_found'             => __( 'Not found', 'text_domain' ),
+    'not_found_in_trash'    => __( 'No se encuentra en la basura', 'text_domain' ),
+    'featured_image'        => __( 'Imagen destacada', 'text_domain' ),
+    'set_featured_image'    => __( 'Establecer imagen destacada', 'text_domain' ),
+    'remove_featured_image' => __( 'Eliminar imagen destacada', 'text_domain' ),
+    'use_featured_image'    => __( 'Usar como imagen destacada', 'text_domain' ),
+    'insert_into_item'      => __( 'Insertar en el artículo', 'text_domain' ),
+    'uploaded_to_this_item' => __( 'Subido a este artículo', 'text_domain' ),
+    'items_list'            => __( 'Lista de artículos', 'text_domain' ),
+    'items_list_navigation' => __( 'Lista de artículos de navegación', 'text_domain' ),
+    'filter_items_list'     => __( 'Filtro lista artículos', 'text_domain' ),
+  );
+  $args = array(
+    'label'                 => __( 'Emblemas Adjuntos', 'text_domain' ),
+    'description'           => __( 'Emblemas Adjuntos image', 'text_domain' ),
+    'labels'                => $labels,
+    'supports'              => array( 'title', '', '', 'custom-fields' ),
+    'taxonomies'            => array( ''),
+    'hierarchical'          => false,
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_menu'          => 'edit.php?post_type=emblema',
+    'menu_position'         => 2,
+    'menu_icon'             => 'dashicons-groups',
+    'show_in_admin_bar'     => true,
+    'show_in_nav_menus'     => true,
+    'can_export'            => true,
+    'has_archive'           => true,
+    'exclude_from_search'   => false,
+    'publicly_queryable'    => true,
+    'capability_type'       => 'page',
+  );
+  register_post_type( 'Emblemas_Adjuntos', $args );
+
+}
+add_action( 'init', 'custom_post_type_Emblemas_Adjuntos', 0 );
+
+// cuestionarios Postulados
 function my_theme_columns_head_postulados($defaults) {
   unset($defaults['tags']);
   unset($defaults['categories']);
@@ -276,60 +447,32 @@ function custom_post_type_Asignados() {
 add_action( 'init', 'custom_post_type_Asignados', 0 );
 
 // Columnns
-function my_theme_columns_head_Asignados($defaults) {
-  unset($defaults['tags']);
-  unset($defaults['categories']);
-  $defaults['Pagado'] = 'Pagado|';
-    $defaults['Estado'] = 'Estado';
-    $defaults['Oferta'] = 'Oferta';    
-    return $defaults;
+function columnas_post_type_asignados($columnas){
+    $columnas = array(
+        'cb' => '&lt;input type="checkbox" />',
+        'title' => 'Título',
+        'estatus' => 'Estatus',
+        
+    );
+    return $columnas;
 }
-add_filter('manage_Asignados_posts_columns', 'my_theme_columns_head_Asignados');
+add_filter('manage_edit-asignados_columns', 'columnas_post_type_asignados') ;
 
- 
-function fill_Asignados_posts_columns( $column_name, $post_id ) {
+
+function filas_post_type_asignados($columna, $post_id){
+    global $post;
+    switch($columna){
+        case 'estatus':
+            $estatus = get_post_meta(get_the_ID(), 'asignar_status', true);
+            echo $estatus;
+            break;          
     
-    $publicacion_meta = get_post_meta($post_id);    
-    $plan_entrenamiento1= NULL;
-    $post_id_entrenamiento = NULL;
-    $post_id3 = NULL;
-    switch( $column_name ):  
-
-        case 'Pagado':
-            
-            $post_id1 = $publicacion_meta['ofertar_id_empleado'][0];
-            $post_id3 = meta_value( 'entrenador',  $post_id1 );
-            $queried_post_entrenador = get_post($post_id3);
-            $entrenador = $queried_post_entrenador->post_title;  
-            if (  $post_id1 != NULL) {
-              echo  $post_id1; 
-            }
-            if (  $post_id1 == NULL) {
-              echo "Ninguno"; 
-            }                     
-            break;                
-
-        case 'Estado':
-            $post_id_estado = $publicacion_meta['estado_entre'][0];
-            if($post_id_estado == NULL){ $post_id_estado = "POR REVISAR"; }
-            echo "$post_id_estado";
-           break;
-
-        case 'Oferta':
-            
-            $post_id_entrenamiento = $publicacion_meta['archivo_plan_de_entrenamiento'][0];
-            $queried_id_entrenamiento = get_post($post_id_entrenamiento);
-            $plan_entrenamiento = $queried_id_entrenamiento->guid;
-            if ($post_id_entrenamiento != NULL) {
-              $plan_entrenamiento1 = "Ver Plan";
-            }
-            echo "<a href='$plan_entrenamiento' target='_blank'>$plan_entrenamiento1</a>";            
-            break;         
-
-    endswitch;    
+        
+        default :
+            break;
+    }
 }
-add_action( 'manage_Asignados_posts_custom_column', 'fill_Asignados_posts_columns', 10, 2 );
-
+add_action('manage_asignados_posts_custom_column', 'filas_post_type_asignados', 2, 10);
 
 /***************** Form fields job *****************/
 if ( ! defined( 'ABSPATH' ) ) {

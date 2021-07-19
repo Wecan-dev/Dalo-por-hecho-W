@@ -19,10 +19,13 @@ class class_fma_admin_menus {
 	 * Loading Menus
 	 */
 	public function load_menus() {
+		
+		$fmaPer = $this->fmaPer();
+
 		 add_menu_page(
 			__( 'File Manager', 'file-manager-advanced' ),
 			__( 'File Manager', 'file-manager-advanced' ),
-			'manage_options',
+			$fmaPer,
 			'file_manager_advanced_ui',
 			array($this, 'file_manager_advanced_ui'),
 			plugins_url( 'assets/icon/fma.png', __FILE__ ),
@@ -31,11 +34,35 @@ class class_fma_admin_menus {
 	add_submenu_page( 'file_manager_advanced_ui', 'Settings', 'Settings', 'manage_options', 'file_manager_advanced_controls', array(&$this, 'file_manager_advanced_controls'));
 	add_submenu_page( 'file_manager_advanced_ui', 'Shortcodes', 'Shortcodes', 'manage_options', 'file_manager_advanced_shortcodes', array(&$this, 'file_manager_advanced_shortcodes'));
 	}
+	/** 
+	 * Fma permissions
+	 */
+	public function fmaPer() {
+		$settings = $this->get();
+		$user = wp_get_current_user();
+		$allowed_fma_user_roles = isset($settings['fma_user_roles']) ? $settings['fma_user_roles'] : array('administrator');
+
+		if(!in_array('administrator', $allowed_fma_user_roles)) {
+		$fma_user_roles = array_merge(array('administrator'), $allowed_fma_user_roles);
+		} else {
+			$fma_user_roles = $allowed_fma_user_roles;
+		}
+
+		$checkUserRoleExistance = array_intersect($fma_user_roles, $user->roles);
+
+		if(count($checkUserRoleExistance) > 0 && !in_array('administrator', $checkUserRoleExistance)) {
+            $fmaPer = 'read';
+		} else {
+			$fmaPer = 'manage_options';
+		}
+		return $fmaPer;
+	}
 	/**
 	* Diaplying AFM
     */
      public function file_manager_advanced_ui() {
-		 if(current_user_can('manage_options')) {
+		 $fmaPer = $this->fmaPer();
+		 if(current_user_can($fmaPer)) {
 		    include('pages/main.php');
 		 }
 	 }
@@ -62,6 +89,7 @@ class class_fma_admin_menus {
 	   if(isset($_POST['submit']) && wp_verify_nonce( $_POST['_fmaform'], 'fmaform' )) {
 		    _e('Saving Options, Please Wait...','file-manager-advanced');
 		   $save = array();
+		   $save['fma_user_roles'] = isset($_POST['fma_user_role']) ? ($_POST['fma_user_role']) : array('administrator');
 		   $save['fma_theme'] = isset($_POST['fma_theme']) ? sanitize_text_field($_POST['fma_theme']) : 'light';
 		   $save['fma_locale'] = isset($_POST['fma_locale']) ? sanitize_text_field($_POST['fma_locale']) : 'en';
 		   $save['public_path'] = isset($_POST['public_path']) ? sanitize_text_field($_POST['public_path']) : '';
@@ -101,5 +129,12 @@ class class_fma_admin_menus {
 		echo '<script>';
 		echo 'window.location.href="'.$u.'"';
 		echo '</script>';
+	}
+	/**
+	 * Get User Roles
+	 */
+	public function wpUserRoles() {
+		global $wp_roles;
+        return $wp_roles->roles; 
 	}
 }

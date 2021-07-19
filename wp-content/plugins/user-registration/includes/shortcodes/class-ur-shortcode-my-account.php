@@ -105,6 +105,7 @@ class UR_Shortcode_My_Account {
 					ur_get_template(
 						'form-login-registration.php',
 						array(
+							'form_id'			=> $form_id,
 							'registration_form' => $registration_form,
 							'login_form'        => $login_form,
 						)
@@ -171,6 +172,7 @@ class UR_Shortcode_My_Account {
 	public static function edit_profile() {
 		wp_enqueue_media();
 		wp_enqueue_script( 'ur-my-account' );
+		wp_enqueue_script( 'ur-form-validator' );
 
 		$user_id = get_current_user_id();
 		$form_id = ur_get_form_id_by_userid( $user_id );
@@ -204,6 +206,10 @@ class UR_Shortcode_My_Account {
 					$profile[ $key ]['value'] = apply_filters( 'user_registration_my_account_edit_profile_field_value', $user_data->display_name, $key );
 				}
 			}
+			
+			include_once UR_ABSPATH . 'includes/functions-ur-notice.php';
+			$notices = ur_get_notices();
+			ur_print_notices();
 
 			ur_get_template(
 				'myaccount/form-edit-profile.php',
@@ -226,7 +232,10 @@ class UR_Shortcode_My_Account {
 		$enable_strong_password    = ur_get_single_post_meta( $form_id, 'user_registration_form_setting_enable_strong_password' );
 		$minimum_password_strength = ur_get_single_post_meta( $form_id, 'user_registration_form_setting_minimum_password_strength' );
 
+		wp_enqueue_script( 'ur-form-validator' );
+
 		if ( 'yes' === $enable_strong_password || '1' === $enable_strong_password ) {
+			wp_dequeue_script( 'wc-password-strength-meter');
 			wp_enqueue_script( 'ur-password-strength-meter' );
 		}
 
@@ -268,7 +277,6 @@ class UR_Shortcode_My_Account {
 
 						// Enqueue script.
 						wp_enqueue_script( 'ur-password-strength-meter' );
-						wp_localize_script( 'ur-password-strength-meter', 'enable_strong_password', $enable_strong_password );
 					}
 
 					// reset key / login is correct, display reset password form with hidden key / login values.

@@ -1,40 +1,49 @@
-	<footer>
-		<ul class="footer">
-			<li><a href=""><img class="logo-f" src="<?php echo get_template_directory_uri();?>/assets/img/logo-blanco.png"></a></li>
-			<!--<li><a href="">Nosotros</a></li>-->
-			<li><a href="<?php echo get_home_url() ?>/categorias">Categorías Populares</a></li>
-		</ul>
-		
-		<div class=" d-flex justify-content-center align-items-center text-center mr-4">
-			<?php if( is_user_logged_in() != NULL):?>
-							<a class="border-b" href="<?php echo get_home_url() ?>/confi-perfil"> 
-							<?php else: ?>
-							<a class="border-b" href="#" data-toggle="modal" data-target="#exampleModal"> 
-							<?php endif; ?>
-							
+  <footer>
+    <ul class="footer">
+      <li><a href=""><img class="logo-f" src="<?php echo get_template_directory_uri();?>/assets/img/logo-blanco.png"></a></li>
+      <!--<li><a href="">Nosotros</a></li>-->
+      <li><a href="<?php echo get_home_url() ?>/categorias">Categorías Populares</a></li>
+    </ul>
+    
+    <div class=" d-flex justify-content-center align-items-center text-center mr-4">
+      <?php if( is_user_logged_in() != NULL):?>
+              <a class="border-b" href="<?php echo get_home_url() ?>/confi-perfil"> 
+              <?php else: ?>
+              <a class="border-b" href="#" data-toggle="modal" data-target="#exampleModal"> 
+              <?php endif; ?>
+              
                         <?php if (is_user_logged_in()){
-                        	echo "Mi cuenta";
+                          echo "Mi cuenta";
                         }else{ ?>
                             Ingresa
                             </a>
                         <?php } ?>
-							</a>
-			<!--<a href="" class="border-b">Ingresar</a>-->
-			<div class="d-flex">
-				<div class="rrss">
-					<a href="https://www.facebook.com/Daloporhechocl-105957037944444" target="_blank" ><i class="fa fa-facebook"></i></a>	
-				</div>
-				
-				<div class="rrss">
-					<a href="https://www.instagram.com/daloporhecho/" target="_blank"><i class="fa fa-instagram"></i></a>		
-				</div>
-			
-			</div>
-		
-		
-			<a href="<?php echo get_home_url() ?>/soporte" class="border-b">Soporte</a>
-		</div>
-	</footer>
+              </a>
+      <!--<a href="" class="border-b">Ingresar</a>-->
+      <div class="d-flex">
+        <div class="rrss">
+          <a href="https://www.facebook.com/Daloporhechocl-105957037944444" target="_blank" ><i class="fa fa-facebook"></i></a> 
+        </div>
+        
+        <div class="rrss">
+          <a href="https://www.instagram.com/daloporhecho/" target="_blank"><i class="fa fa-instagram"></i></a>   
+        </div>
+      
+      </div>
+    
+    
+      <a href="<?php echo get_home_url() ?>/soporte" class="border-b">Soporte</a>
+    </div>
+  </footer>
+
+ <footer class='footer-bottom'>
+  <div class="row">
+      <hr>
+      <div class="col-md-4">Av. Apoquindo 6410, oficina 605, Las Condes</div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">Derechos reservados / Teléfonos: (+569) 3 706 9999</div>  
+  </div>
+</footer>
 
 <!-- Modal Donation-->
 <div class="modal fade" id="modal_donation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -119,9 +128,9 @@
 </div>      
 
     <script src="<?php echo get_template_directory_uri();?>/assets/js/setting-slick.js"></script>
-	<script>
-		new WOW().init();
-	</script>	
+  <script>
+    new WOW().init();
+  </script> 
 
 
 <script>
@@ -134,7 +143,7 @@ function enviarDatos(id_cat,names_cat){
     //$('.hid').prop('id', 'hidd');
 } 
    
-function enviarDatos2(){ 
+function enviarDatos23(){ 
     this.names_cat = 'Seleccionar';
     this.id_cat = '0';
     document.getElementById('job_cat').innerHTML=this.names_cat;
@@ -208,7 +217,7 @@ $('#note_description').appendTo('.variation');
     
 }); 
 
-    function monto_salary2(name_tarea,title_tarea,id_tarea,email_empleador,name_empleado,id_empleado,salary){ 
+    function monto_salary2(name_tarea,title_tarea,id_tarea,email_empleador,name_empleado,id_empleado,salary,imagen_perfil_empleador){ 
        //$("input#field_ccdeo").val(name_tarea);
        //$("input#field_vqrer").val(tile_tarea);
        //$("input#field_a9ti0").val(id_tarea);
@@ -223,7 +232,8 @@ $('#note_description').appendTo('.variation');
        $("input#field_email_empleador").val(email_empleador);
        $("input#field_name_empleado").val(name_empleado);
        $("input#field_id_empleado").val(id_empleado);
-       $("input#field_salary_ofertado").val(salary)       
+       $("input#field_salary_ofertado").val(salary);
+       $("input#field_imagen_perfil_empleador").val(imagen_perfil_empleador) ;       
     } 
 
     function function_donation(salary_donation,array_note){
@@ -260,18 +270,23 @@ $('#note_description').appendTo('.variation');
 
     function block_2(){        
         $("#job_location").css("display", "none");
-        $("#job_direccion").css("display", "none");      
+        $("#job_direccion").css("display", "none");  
+        $("#job_location2").css("display", "none");
+        $("#job_direccion2").css("display", "none");            
       //  $("input#job_location").prop('disabled', true);  
     }  
 
     function block_5(){         
         $("#job_location").css("display", "block");
-        $("#job_direccion").css("display", "block");        
-    }     
-//
+        $("#job_direccion").css("display", "block");   
+        $("#job_location2").css("display", "block");
+        $("#job_direccion2").css("display", "block");              
+    }  
+
+   
 </script>
  
 
 </body>
 <?php wp_footer(); ?>
-</html>	
+</html> 

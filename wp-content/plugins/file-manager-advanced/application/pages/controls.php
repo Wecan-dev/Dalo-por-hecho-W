@@ -5,6 +5,7 @@ $path = str_replace('\\','/', ABSPATH);
 $url = site_url();
 $type = (isset($_GET['status']) && !empty($_GET['status']) ? $_GET['status'] : '' );
 $bool = ($type == '2') ? 'Unable to save settings.' : 'Settings updated successfully.';
+$roles = $this->wpUserRoles();
 ?>
 <div class="wrap fma" style="background:#fff; padding: 20px; border:1px solid #ccc;">
 <h2><?php _e('Settings','file-manager-advanced')?> <?php if(!class_exists('file_manager_advanced_shortcode')) { ?><a href="https://advancedfilemanager.com/product/file-manager-advanced-shortcode-wordpress/" class="button button-primary" target="_blank"><?php _e('Buy Shortcode Addon','file-manager-advanced')?></a><?php } ?></h2>
@@ -19,6 +20,28 @@ echo $this->notice($type,$bool);
 <?php  wp_nonce_field( 'fmaform', '_fmaform' ); ?>
 <table class="form-table">
 <tbody>
+<tr>
+<th>
+<?php _e('Who can access File Manager?')?>
+</th>
+<td>
+
+<?php 
+unset($roles['administrator']); ?>
+<input type="checkbox" value="administrator" name="fma_user_role[]" checked="checked" disabled="disabled" /> <?php _e('Administrator (Default)','file-manager-advanced');?> <br/>
+<?php
+foreach($roles as $key => $role) { 
+	$checked = '';
+	if(isset($settings['fma_user_roles'])):
+	if(in_array($key, $settings['fma_user_roles'])) {
+       $checked = 'checked="checked"';
+	}
+	endif;
+	?>
+<input type="checkbox" value="<?php echo $key;?>" name="fma_user_role[]" <?php echo $checked; ?> /> <?php echo $role['name'];?> <br/>
+<?php } ?>
+</td>
+</tr>
 <tr>
 <th><?php _e('Theme','file-manager-advanced')?></th>
 <td>

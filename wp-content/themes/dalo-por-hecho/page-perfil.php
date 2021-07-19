@@ -1,72 +1,49 @@
-   <header>
-        <nav class="navbar navbar-expand-md fixed-top navbar-fixed-js">
-            <div class="container">
-                <div class="main-brand">
-                    <div class="main-brand">
-                        <a class="navbar-brand" href="index.html">
-                            <img class="iso-desk" src="assets/img/logo-blanco.png">
-                        </a>
+<?php if(is_user_logged_in() == NULL)
+{ 
+  header('Location: '.get_home_url().'');
+}
 
-                    </div>
-                    <button class="navbar-toggler p-0 border-0" data-toggle="offcanvas" type="button">
-                        <span class="navbar-toggler-icon fa fa-bars"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse offcanvas-collapse">
-                    <div class="main-brand">
-                        <a class="navbar-brand" href="index.html">
-                            <img id="iso" src="assets/img/logo-blanco.png">
-                        </a>
+/* Get user info. */
+global $current_user, $wp_roles;?>  
 
-                    </div>
+<?php if ($_GET['post'] != NULL) { 
+    $email_perfil = user_value( $_GET['post'] );
+    $name_perfil = meta_user_value( 'first_name',  $_GET['post'] ); 
+    $address_perfil =  meta_user_value( 'direccion_user',  $_GET['post'] ); 
+    $date_perfil = date_new_perfil(user_value_date( $_GET['post'] ));
+    $user_perfil = $_GET['post'];
+    $description_perfil = meta_user_value( 'description', $_GET['post'] );
+}else{
+    $email_perfil = $current_user->user_email;
+    $name_perfil = meta_user_value( 'first_name',  $current_user->ID ); 
+    $address_perfil =  meta_user_value( 'direccion_user',  $current_user->ID ); 
+    $date_perfil = date_new_perfil(user_value_date( $current_user->ID ));    
+    $user_perfil = $current_user->ID;
+    $description_perfil = meta_user_value( 'description', $current_user->ID );
+}?>
 
-                    <ul class="navbar-nav  mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link btn- mr-3" href="#">Tareas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn- mr-3" href="#">Mis tareas</a>
-                        </li>
 
-                    </ul>
-
-                    <ul class="navbar-nav ">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Soporte</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Mensaje</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Notificaciones</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link btn-custom-transparent-nav" href="about.html">Publicar tarea</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link naranja-color" href="about.html"> <img class="user"
-                                    src="assets/img/user.png" alt=""></a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+   <?php get_header(); ?>
     <div class="top-gris"></div>
-    <div class="container img-p-p">
-        <img class="img-cont-perfil" src="assets/img/user2.png" alt="">
+    <div class="container">
+        <div class="img-p-p">
+        <?php if ($_GET['post'] != NULL) { ?>
+            <?php echo get_avatar( $email_perfil, 165 );?> 
+       <?php }else{ ?>
+           <?php if (is_user_logged_in()){ echo get_avatar( $email_perfil, 165 );  }?>
+       <?php } ?>
+   </div>
     </div>
     <div class="container inf-general-perfil">
         <div class="inf-general-perfil-1">
-            <p class="p-na"> Nombre y apellido</p>
+            <p class="p-na"> <?php echo $name_perfil; ?></p>
             <div class="direccion-perfil">
                 <div class="direccion-perfil_img">
-                        <img class="icons" src="assets/img/ubicacion.png" alt="">
+                        <img class="icons" src="<?php echo get_template_directory_uri();?>/assets/img/ubicacion.png" alt="">
                 </div>
-                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa reprehenderit.</p></div>
+                <div><p><?php echo $address_perfil; ?></p></div>
             </div>
-            <h6 class="p-az">Miembro desde 3 de enero de 2020</h6>
+            <h6 class="p-az">Miembro desde <?php echo $date_perfil; ?></h6>
 
         </div>
         <div class="inf-general-perfil-2">
@@ -102,7 +79,30 @@
                           
                             <div class="emblemas-perfil-cont">
                                 <h5>Emblemas</h5>
-                                <a class="emblemas-perfil-cont_a" href="#">Consigue un emblema</a>
+
+
+                                <div class="row">
+                                    <div class="col-md-12 content-inf-emblemas-cont_col-12">
+                                    <?php 
+                                    $argss = array (
+                                        'post_type' => 'emblemas_adjuntos',
+                                        'author' => $user_perfil,
+
+                                    ); 
+                                        $loops = new WP_Query( $argss ); 
+                                        while ( $loops->have_posts() ) : $loops->the_post(); $down_emblema = get_post(meta_value( 'id_emblema', get_the_ID() ))->post_title."&nbsp;-&nbsp;Usuario:&nbsp;".$user_perfil; ?>
+                                        <div class="content-inf-emblemas-cont-box">
+                                            <div class="direccion-perfil">
+                                                <a class="" href="<?php echo meta_value_img( 'adjuntar_emblema', get_the_ID() ) ?>" download="<?php echo $down_emblema; ?>">
+                                                   
+                                                    <div><p title="Descargar Archivo">* <?php echo get_post(meta_value( 'id_emblema', get_the_ID() ))->post_title; ?></p></div>
+                                                </a> 
+                                            </div>                                                            
+                                        </div>
+                                    <?php endwhile; ?>
+                                    </div>
+                                </div> 
+                                <a class="emblemas-perfil-cont_a" href="confi-perfil/?tab=emblemas">Consigue un emblema</a>
                             </div>
                         </div>
                        
@@ -112,7 +112,7 @@
                         <h4>Acerca de mi</h4>  
                       <div class="cont-cont-perfil-inf">
                         <div class="cont-cont-perfil-inf">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis reprehenderit quibusdam, quam, ipsa fuga accusamus architecto nisi vitae rerum id voluptate exercitationem perferendis quidem commodi ab et magni. Explicabo, sequi.</p>
+                            <p><?php echo $description_perfil; ?></p>
                         </div>
                         <div class="cont-cont-perfil-inf-ico"></div>
                       </div>
@@ -129,7 +129,7 @@
                        <div class="cont-cont-perfil-inf">
 
                             <div class="cont-cont-perfil-inf">
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque quibusdam officiis totam tempora, qui sit omnis animi, odio eum repellendus ullam, aperiam blanditiis quod suscipit? Aut, alias ex? Labore, odit.</p>
+                                <p></p>
                             </div>
                             <div class="cont-cont-perfil-inf-ico"></div>
 
@@ -175,4 +175,6 @@
             </div>
         </section>
 
-    </div>
+</div>
+
+<?php get_footer(); ?>    

@@ -49,6 +49,7 @@ defined( 'ABSPATH' ) || exit;
                 $email_empleador = meta_value('ofertar_email_empleador', $id_postulacion);
                 $name_empleado = descrypt_note($array_note,'name_empleado');
                 $id_empleado = descrypt_note($array_note,'id_empleado');
+                $email_empleado = user_value( $id_empleado );
                 $monto_tarea =  meta_value('ofertar_monto_tarea', $id_postulacion);
                 $monto_pagar =  $monto_tarea-($monto_tarea*0.10);
                 //Data banks
@@ -141,6 +142,7 @@ div#frm_form_12_container {
     var email_empleador = "<?= $email_empleador ?>";
     var name_empleado = "<?= $name_empleado ?>";
     var id_empleado = "<?= $id_empleado ?>";
+    var email_empleado = "<?= $email_empleado ?>";
     var monto_tarea = "<?= $monto_tarea ?>";
     var monto_pagar = "<?= $monto_pagar ?>";
 
@@ -152,6 +154,7 @@ div#frm_form_12_container {
 
     var asignar_codigo_unico = "<?= $codigo_unico ?>";
     var asignar_codigo_existente = "<?= $value ?>";
+    var asignar_status = "En curso";
    
 
     $("input#field_asignar_codigo_unico").val(asignar_codigo_unico);
@@ -162,6 +165,7 @@ div#frm_form_12_container {
     $("input#field_asignar_email_empleador").val(email_empleador);
     $("input#field_asignar_name_empleado").val(name_empleado);
     $("input#field_asignar_id_empleado").val(id_empleado);
+    $("input#field_asignar_email_empleado").val(email_empleado);
     $("input#field_asignar_monto_tarea").val(monto_tarea); 
     $("input#field_asignar_monto_a_pagar").val(monto_pagar);
 
@@ -170,6 +174,7 @@ div#frm_form_12_container {
     $("input#field_asignar_banco").val(asignar_banco2);
     $("input#field_asignar_numero_de_cuenta").val(asignar_numero_de_cuenta2);
     $("input#field_asignar_email_banco").val(asignar_email_banco2);
+    $("input#field_asignar_status").val(asignar_status);
 
 
     if (asignar_codigo_existente != 1)

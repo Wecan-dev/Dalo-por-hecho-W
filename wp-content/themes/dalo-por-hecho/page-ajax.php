@@ -3,275 +3,77 @@ global $wpdb;
 
 
 $html = '';
-$key = $_POST['key'];
-$job_location = $_POST['job_location'];
+$key = $_POST['query'];
+
 
 
 $arraycolombia = array(
-'Puente Alto, Cordillera',
-'Maipú, Santiago',
-'Santiago, Santiago',
-'La Florida, Santiago',
-'Antofagasta, Antofagasta',
-'Viña del Mar, Valparaíso',
-'Las Condes, Santiago',
-'San Bernardo, Maipo',
-'Valparaíso, Valparaíso',
-'Peñalolén, Santiago',
-'Temuco, Cautín',
-'Rancagua, Cachapoal',
-'Concepción, Concepción',
-'Quilicura, Santiago',
-'Ñuñoa, Santiago',
-'Talca, Talca',
-'Pudahuel, Santiago',
-'Coquimbo, Elqui',
-'Arica, Arica',
-'La Serena, Elqui',
-'Iquique, Iquique',
-'La Pintana, Santiago',
-'Puerto Montt, Llanquihue',
-'Chillán, Diguillín',
-'El Bosque, Santiago',
-'Calama, El Loa',
-'Recoleta, Santiago',
-'Copiapó, Copiapó',
-'Valdivia, Valdivia',
-'Quilpué, Marga Marga',
-'Talcahuano, Concepción',
-'Osorno, Osorno',
-'Renca, Santiago',
-'Los Ángeles, Biobío',
-'Providencia, Santiago',
-'Estación Central, Santiago',
-'Cerro Navia, Santiago',
-'San Pedro de la Paz, Concepción',
-'Conchalí, Santiago',
-'Curicó, Curicó',
-'Villa Alemana, Marga Marga',
-'Punta Arenas, Magallanes',
-'La Granja, Santiago',
-'Macul, Santiago',
-'Coronel, Concepción',
-'Quinta Normal, Santiago',
-'San Miguel, Santiago',
-'Alto Hospicio, Iquique',
-'Lo Barnechea, Santiago',
-'Pedro Aguirre Cerda, Santiago',
-'Independencia, Santiago',
-'Lo Espejo, Santiago',
-'Huechuraba, Santiago',
-'Lo Prado, Santiago',
-'San Joaquín, Santiago',
-'La Reina, Santiago',
-'Hualpén, Concepción',
-'La Cisterna, Santiago',
-'Colina, Chacabuco',
-'San Antonio, San Antonio',
-'Chiguayante, Concepción',
-'Vitacura, Santiago',
-'Peñaflor, Talagante',
-'San Ramón, Santiago',
-'Cerrillos, Santiago',
-'Ovalle, Limarí',
-'Linares, Linares',
-'Quillota, Quillota',
-'Melipilla, Melipilla',
-'Buin, Maipo',
-'San Felipe, San Felipe de Aconcagua',
-'Los Andes, Los Andes',
-'San Fernando, Colchagua',
-'Talagante, Talagante',
-'Padre Hurtado, Talagante',
-'Coyhaique, Coyhaique',
-'Machalí, Cachapoal',
-'Angol, Malleco',
-'La Calera, Quillota',
-'Penco, Concepción',
-'Vallenar, Huasco',
-'Lota, Concepción',
-'Tomé, Concepción',
-'Alerce, Llanquihue',
-'Padre Las Casas, Cautín',
-'Concón, Valparaíso',
-'Placilla de Peñuelas, Valparaíso',
-'Limache, Marga Marga',
-'Rengo, Cachapoal',
-'Lampa, Chacabuco',
-'Molina, Curicó',
-'Constitución, Talca',
-'Castro, Chiloé',
-'San Carlos, Punilla',
-'Cauquenes, Cauquenes',
-'Villarrica, Cautín',
-'Paine, Maipo',
-'Parral, Linares',
-'Culenar, Talca',
-'Curanilahue, Arauco',
-'El Monte, Talagante',
-'San Javier, Linares',
-'Graneros, Cachapoal',
-'Ancud, Chiloé',
-'Chillán Viejo, Diguillín',
-'La Unión, Ranco',
-'Quintero, Valparaíso',
-'Puerto Varas, Llanquihue',
-'Victoria, Malleco',
-'Tocopilla, Tocopilla',
-'Lautaro, Cautín',
-'Mulchén, Biobío',
-'Labranza, Cautín',
-'Nacimiento, Biobío',
-'Santa Cruz, Colchagua',
-'Lebu, Arauco',
-'San Vicente de Tagua Tagua, Cachapoal',
-'Cartagena, San Antonio',
-'Illapel, Choapa',
-'San Clemente, Talca',
-'Hualqui, Concepción',
-'La Cruz, Quillota',
-'Cañete, Arauco',
-'La Ligua, Petorca',
-'Puerto Natales, Última Esperanza',
-'Nueva Imperial, Cautín',
-'Curacaví, Melipilla',
-'Casablanca, Valparaíso',
-'Llaillay, San Felipe de Aconcagua',
-'Arauco, Arauco',
-'Quellón, Chiloé',
-'Pucón, Cautín',
-'Puerto Aysén, Aysén',
-'Valle Grande, Chacabuco',
-'Río Bueno, Ranco',
-'Chimbarongo, Colchagua',
-'Batuco, Chacabuco',
-'Pitrufquén, Cautín',
-'Collipulli, Malleco',
-'La Laja, Biobío',
-'Calbuco, Llanquihue',
-'Vicuña, Elqui',
-'Caldera, Copiapó',
-'Loncoche, Cautín',
-'Los Álamos, Arauco',
-'Cabrero, Biobío',
-'El Quisco, San Antonio',
-'Traiguén, Malleco',
-'Isla de Maipo, Talagante',
-'Los Vilos, Choapa',
-'Salamanca, Choapa',
-'Llanquihue, Llanquihue',
-'Frutillar, Llanquihue',
-'Mejillones, Antofagasta',
-'Pichilemu, Cardenal Caro',
-'San Francisco de Mostazal, Cachapoal',
-'Purranque, Osorno',
-'Olmué, Marga Marga',
-'Ciudad del Valle, Santiago',
-'La Islita, Talagante',
-'Carahue, Cautín',
-'Paillaco, Valdivia',
-'Panguipulli, Valdivia',
-'Chañaral, Chañaral',
-'Bulnes, Diguillín',
-'Chicureo, Chacabuco',
-'Taltal, Antofagasta',
-'Cabildo, Petorca',
-'Yungay, Diguillín',
-'Requínoa, Cachapoal',
-'Coelemu, Itata',
-'San Esteban, Los Andes',
-'Quillón, Diguillín',
-'Andacollo, Elqui',
-'Tierra Amarilla, Copiapó',
-'El Melón, Quillota',
-'San José de la Mariquina, Valdivia',
-'Yumbel, Biobío',
-'Los Lagos, Valdivia',
-'Calle Larga, Los Andes',
-'Santa Juana, Concepción',
-'Teno, Curicó',
-'Quirihue, Itata',
-'Hijuelas, Quillota',
-'Pozo Almonte, Tamarugal',
-'Coihueco, Punilla',
-'Algarrobo, San Antonio',
-'Lo Miranda, Cachapoal',
-'Nogales, Quillota',
-'El Principal, Cordillera',
-'Nancagua, Colchagua',
-'Gorbea, Cautín',
-'Peumo, Cachapoal',
-'Lanco, Valdivia',
-'Las Ventanas, Valparaíso',
-'Villa Alegre, Linares',
-'Rinconada, Los Andes',
-'Santa Bárbara, Biobío',
-'Los Muermos, Llanquihue',
-'Calera de Tango, Maipo',
-'Huépil, Biobío',
-'Catemu, San Felipe de Aconcagua',
-'Las Cabras, Cachapoal',
-'Chamisero, Chacabuco',
-'Santa María, San Felipe de Aconcagua',
-'Purén, Malleco',
-'Doñihue, Cachapoal',
-'Fresia, Llanquihue',
-'Diego de Almagro, Chañaral',
-'Quinta de Tilcoco, Cachapoal',
-'Cunco, Cautín',
-'Hanga Roa, Isla de Pascua',
-'Dalcahue, Chiloé',
-'Longaví, Linares',
-'Futrono, Ranco',
-'Huasco, Huasco',
-'Maule, Talca',
-'Alto Jahuel, Maipo',
-'La Punta, Cachapoal',
-'El Tabo, San Antonio',
-'Río Negro, Osorno',
-'Colbún, Linares',
-'Putaendo, San Felipe de Aconcagua',
-'Codegua, Cachapoal',
-'Monte Águila, Biobío',
-'Monte Patria, Limarí',
-'Renaico, Malleco',
-'Romeral, Curicó',
-'Vilcún, Cautín',
-'San José de Maipo, Cordillera',
-'El Palqui, Limarí',
-'Santo Domingo, San Antonio',
-'Chépica, Colchagua',
-'Hospital, Maipo',
-'El Salvador, Chañaral',
-'Porvenir, Tierra del Fuego',
-'Combarbalá, Limarí',
-'Hualañé, Curicó',
-'Punitaqui, Limarí',
-'Cajón, Cautín',
-'Chonchi, Chiloé',
-'Pichidegua, Cachapoal',
-'Tongoy, Elqui',
-'Tiltil, Chacabuco',
-'Rauco, Curicó',
-'Retiro, Linares',
-'Las Cruces, San Antonio',
-'Coltauco, Cachapoal',
-'Freire, Cautín',
-'Gultro, Cachapoal',
-'San Pedro de Atacama, El Loa',
-'Bollenar, Melipilla',
-'Peralillo, Colchagua',
-'Puchuncaví, Valparaíso',
-'Laraquete, Arauco',
-'Chile Chico, General Carrera',
-'Cochrane, Capitán Prat',
-'Puerto Williams, Antártica Chilena',
-'Putre, Parinacota',
-'Chaitén, Palena',
+
+'Santiago',
+'Temuco',
+'La Serena',
+'Puerto Montt',
+'Iquique',
+'Concepción',
+'Punta Arenas',
+'Viña del Mar',
+'Rancagua',
+'Talca',
+'Chillán',
+'Copiapó',
+'Antofagasta',
+'Valdivia',
+'Los Ángeles',
+'Osorno',
+'Calama',
+'Coyhaique',
+'Valparaíso',
+'Talcahuano',
+'Curicó',
+'Padre de Las Casas',
+'Castro',
+'Puerto Varas',
+'Concón',
+'San Bernardo',
+'Quilpué',
+'Coquimbo',
+'San Fernando',
+'San Antonio',
+'Villarrica',
+'Pucón',
+'Ovalle',
+'Puerto Natales',
+'San Felipe',
+'Linares',
+'Quillota',
+'Vallenar',
+'Angol',
+'Ancud',
+'Constitución',
+'Machalí',
+'Chiguayante',
+'Alto Hospicio',
+);
+asort($arraycolombia);
+
+if($key == NULL){ 
+$matches = $arraycolombia;
+if($matches) { $i = 0;
+   // echo 'Se ha encontrado el termino "'.$termToSearch.'" en los siguientes campos: <br>';
+    foreach ($matches as $match) {
+      if ($i <= 200) {
+      //  echo $match.'<br>';
+
+        $html .= " "?><a class='dropdown-item' onclick="print('<?php echo $match ?>')">
+                                        <p><?php echo $match ?></p>
+                                    </a><?php ""; 
+        $i = $i +1;
+      }  
+    }
+}
+}
 
 
-
-	);
 if($key != NULL){ 
 $termToSearch = $key;
 $matches = array_filter($arraycolombia, function($var) use ($termToSearch) { return stristr($var, $termToSearch); });
@@ -280,31 +82,28 @@ if($matches) { $i = 0;
     foreach ($matches as $match) {
       if ($i <= 4) {
       //  echo $match.'<br>';
-        $html .= '<div><a href="'.get_home_url().'/buscar-tarea/?location='.$match.'" class="suggest-element"  data="'.$match.'" id="product'.$row['id_product'].'">'.$match.'</a></div>';
+
+        $html .= " "?><a class='dropdown-item' onclick="print('<?php echo $match ?>')">
+                                        <p><?php echo $match ?></p>
+                                    </a><?php ""; 
+        $i = $i +1;
         $i = $i +1;
       }  
-    }
-} else {
-    echo 'El termino "'.$termToSearch.'" no se ha encontrado en el array.';
-}
-}//if
-if($job_location != NULL){ 
-$termToSearch = $job_location;
-$matches = array_filter($arraycolombia, function($var) use ($termToSearch) { return stristr($var, $termToSearch); });
-if($matches) { $j = 0;
-   // echo 'Se ha encontrado el termino "'.$termToSearch.'" en los siguientes campos: <br>';
-    foreach ($matches as $match) {
-      if ($j <= 4) {
-//  echo $match.'<br>';
-        $match1 = $match;
-        $html .= '<div><a class="suggest-element"  data="'.$match.'" id="product'.$row['id_product'].'">'.$match.'</a></div>';        
-        $j = $j +1;
-      }
-      
     }
 } else {
     echo 'El termino "'.$termToSearch.'" no se ha encontrado.';
 }
 }//if
+
+
 echo $html;
+
 ?>
+
+<script type="text/javascript">
+    function print(name){
+         $("input#search_text").val(name);
+         $("input#job_location").val(name);
+         $("input#job_location1").val(name);
+    } 
+</script>

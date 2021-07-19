@@ -691,8 +691,12 @@
 	.content-tetimonios .col-md-12 p{
 		text-align: center;
 	}
-	.job-manager-form{
-		padding: 4rem;
+	.job-manager-form {
+		padding-right: 1rem;
+		/* padding: 4rem; */
+		padding-top: 4rem;
+		padding-left: 1rem;
+		/* padding: 4rem 0rem 0; */
 	}
 	.main-presupuesto__desktop{
 		display: none;

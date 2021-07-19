@@ -197,7 +197,7 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 			$args['required'] = $required = '';
 		}
 
-		if ( is_null( $value ) ) {
+		if ( is_null( $value ) || empty($value)) {
 			$value = $args['default'];
 		}
 
@@ -209,12 +209,16 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 			$args['custom_attributes']['maxlength'] = absint( $args['size'] );
 		}
 
-		if ( $args['min'] ) {
-			$args['custom_attributes']['min'] = absint( $args['min'] );
+		if ( ! empty( $args['min'] ) || '0' === $args['min'] ) {
+			$args['custom_attributes']['min'] = $args['min'];
 		}
 
-		if ( $args['max'] ) {
-			$args['custom_attributes']['max'] = absint( $args['max'] );
+		if ( ! empty( $args['max'] ) || '0' === $args['max'] ) {
+			$args['custom_attributes']['max'] = $args['max'];
+		}
+
+		if ( ! empty( $args['step'] ) ) {
+			$args['custom_attributes']['step'] = $args['step'];
 		}
 
 		if ( ! empty( $args['autocomplete'] ) ) {
@@ -237,11 +241,18 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 			}
 		}
 
-		$tooltip_html    = ! empty( $args['tip'] ) ? ur_help_tip( $args['tip'] ) : '';
+		$tooltip_html = ! empty( $args['tip'] ) ? ur_help_tip( $args['tip'] ) : '';
+		$cl_html      = '';
+
+		if ( isset( $args['enable_conditional_logic'] ) && true === $args['enable_conditional_logic'] ) {
+			$cl_map  = isset( $args['cl_map'] ) ? $args['cl_map'] : '';
+			$cl_html = sprintf( 'data-conditional-logic-enabled="yes" data-conditional-logic-map="%s"', esc_attr( $cl_map ) );
+		}
+
 		$field           = '';
 		$label_id        = $args['id'];
 		$sort            = $args['priority'] ? $args['priority'] : '';
-		$field_container = '<div class="form-row %1$s" id="%2$s" data-priority="' . esc_attr( $sort ) . '">%3$s</div>';
+		$field_container = '<div class="form-row %1$s" id="%2$s" data-priority="' . esc_attr( $sort ) . '" ' . $cl_html . '>%3$s</div>';
 
 		switch ( $args['type'] ) {
 
@@ -258,6 +269,11 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 				$default_value = isset( $args['default_value'] ) ? $args['default_value'] : '';    // Backward compatibility. Modified since 1.5.7
 				$default       = ! empty( $value ) ? $value : $default_value;
 				$options       = isset( $args['options'] ) ? $args['options'] : ( $args['choices'] ? $args['choices'] : array() ); // $args['choices'] for backward compatibility. Modified since 1.5.7.
+				$choice_limit = isset( $args['choice_limit'] ) ?  $args['choice_limit'] : "";
+				$choice_limit_attr = "";
+				if( "" !== $choice_limit ){
+					$choice_limit_attr = 'data-choice-limit="' . $choice_limit . '"';
+				}
 
 				if ( isset( $options ) && array_filter( $options ) ) {
 
@@ -267,19 +283,22 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 
 					$choices = isset( $options ) ? $options : array();
 
-					$field  = '<label class="ur-label" ' . implode( ' ', $custom_attributes ) . '">';
+					$field  = '<label class="ur-label" ' . implode( ' ', $custom_attributes ) . '>';
 					$field .= $args['label'] . $required . $tooltip_html . '</label>';
 
 					$checkbox_start = 0;
 
-					$field .= '<ul>';
+					$field .= '<ul ' . $choice_limit_attr . '>';
+
 					foreach ( $choices as $choice_index => $choice ) {
 
 						$value = '';
-						if ( is_array( $default ) && in_array( trim( $choice_index ), $default ) ) {
-							$value = 'checked="checked"';
-						} elseif ( $default === $choice_index ) {
-							$value = 'checked="checked"';
+						if ( '' !== $default ) {
+							if ( is_array( $default ) && in_array( trim( $choice_index ), $default ) ) {
+								$value = 'checked="checked"';
+							} elseif ( $default === $choice_index ) {
+								$value = 'checked="checked"';
+							}
 						}
 
 						$field .= '<li class="ur-checkbox-list">';
@@ -289,7 +308,7 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 					}
 					$field .= '</ul>';
 				} else {
-					$field = '<label class="ur-label checkbox ' . implode( ' ', $custom_attributes ) . '">
+					$field = '<label class="ur-label checkbox" ' . implode( ' ', $custom_attributes ) . '>
 							<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" ' . implode( ' ', $custom_attributes ) . ' data-value="' . $value . '" type="' . esc_attr( $args['type'] ) . '" class="input-checkbox ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" value="1" ' . checked( $value, 1, false ) . ' /> '
 						. $args['label'] . $required . $tooltip_html . '</label>';
 				}
@@ -321,11 +340,21 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 			case 'timepicker':
 				$extra_params_key = str_replace( 'user_registration_', 'ur_', $key ) . '_params';
 				$extra_params     = json_decode( get_user_meta( get_current_user_id(), $extra_params_key, true ) );
+				$username_length = isset( $args['username_length'] ) ?  $args['username_length'] : "";
+				$username_character = isset( $args['username_character'] ) ?  $args['username_character'] : "";
+				$attr = "";
+				if( "" !== $username_length ) {
+					$attr .= 'data-username-length="' . $username_length . '"';
+				}
+
+				if( $username_character ) {
+					$attr .= 'data-username-character="' . $username_character . '"';
+				}
 
 				if ( empty( $extra_params ) ) {
-					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="' . esc_attr( $args['type'] ) . '" class="input-text input-' . esc_attr( $args['type'] ) . ' ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"  value="' . esc_attr( $value ) . '" ' . implode( ' ', $custom_attributes ) . ' />';
+					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="' . esc_attr( $args['type'] ) . '" class="input-text input-' . esc_attr( $args['type'] ) . ' ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"  value="' . esc_attr( $value ) . '" ' . implode( ' ', $custom_attributes ) . ' ' . $attr . '/>';
 				} else {
-					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="' . esc_attr( $args['type'] ) . '" class="input-text ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"  value="' . esc_attr( $value ) . '" ' . implode( ' ', $custom_attributes ) . ' />';
+					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="' . esc_attr( $args['type'] ) . '" class="input-text ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"  value="' . esc_attr( $value ) . '" ' . implode( ' ', $custom_attributes ) . ' ' . $attr . ' />';
 				}
 				break;
 			case 'date':
@@ -337,24 +366,24 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 					$date_format  = $args['custom_attributes']['data-date-format'];
 					$default_date = isset( $args['custom_attributes']['data-default-date'] ) ? $args['custom_attributes']['data-default-date'] : '';
 					if ( empty( $value ) && 'today' === $default_date ) {
-												$value = date( $date_format );
-						$actual_value                  = date( $date_format );
+						$value        = date_i18n( $date_format );
+						$actual_value = date_i18n( $date_format );
 					} else {
 						$value = str_replace( '/', '-', $value );
 						if ( ! strpos( $value, 'to' ) ) {
-							$value = '' !== $value ? date( $date_format, strtotime( $value ) ) : '';
+							$value = '' !== $value ? date_i18n( $date_format, strtotime( $value ) ) : '';
 						} else {
 							$date_range = explode( 'to', $value );
-							$value      = date( $date_format, strtotime( trim( $date_range[0] ) ) ) . ' to ' . date( $date_format, strtotime( trim( $date_range[1] ) ) );
+							$value      = date_i18n( $date_format, strtotime( trim( $date_range[0] ) ) ) . ' to ' . date_i18n( $date_format, strtotime( trim( $date_range[1] ) ) );
 						}
 					}
 				}
 				if ( empty( $extra_params ) ) {
-					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="text" id="load_flatpickr" value="' . esc_attr( $actual_value ) . '" class="regular-text" readonly />';
+					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="text" id="load_flatpickr" value="' . esc_attr( $actual_value ) . '" class="regular-text" readonly placeholder="' . esc_attr( $args['placeholder'] ) . '" />';
 					$field .= '<input type="hidden" id="formated_date" value="' . esc_attr( $value ) . '"/>';
 					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="text" data-field-type="' . esc_attr( $args['type'] ) . '" value="' . esc_attr( $actual_value ) . '" class="input-text input-' . esc_attr( $args['type'] ) . ' ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"  ' . implode( ' ', $custom_attributes ) . ' style="display:none"/>';
 				} else {
-					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="text" id="load_flatpickr" value="' . esc_attr( $actual_value ) . '" class="regular-text" readonly />';
+					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="text" id="load_flatpickr" value="' . esc_attr( $actual_value ) . '"  class="regular-text" readonly placeholder="' . esc_attr( $args['placeholder'] ) . '" />';
 					$field .= '<input type="hidden" id="formated_date" value="' . esc_attr( $value ) . '"/>';
 					$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="text" data-field-type="' . esc_attr( $args['type'] ) . '" value="' . esc_attr( $actual_value ) . '" class="input-text ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"  ' . implode( ' ', $custom_attributes ) . ' style="display:none" />';
 				}
@@ -434,7 +463,13 @@ if ( ! function_exists( 'user_registration_form_field' ) ) {
 					foreach ( $args['options'] as $option_index => $option_text ) {
 
 						$field .= '<li class="ur-radio-list">';
-						$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="radio" class="input-radio ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" value="' . esc_attr( trim( $option_index ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '_' . esc_attr( $option_text ) . '" ' . implode( ' ', $custom_attributes ) . ' / ' . checked( $value, trim( $option_index ), false ) . ' /> ';
+
+						$checked = '';
+						if ( ! empty( $value ) ) {
+							$checked = checked( $value, trim( $option_index ), false );
+						}
+
+						$field .= '<input data-rules="' . esc_attr( $rules ) . '" data-id="' . esc_attr( $key ) . '" type="radio" class="input-radio ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" value="' . esc_attr( trim( $option_index ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '_' . esc_attr( $option_text ) . '" ' . implode( ' ', $custom_attributes ) . ' / ' . $checked . ' /> ';
 						$field .= '<label for="' . esc_attr( $args['id'] ) . '_' . esc_attr( $option_text ) . '" class="radio">';
 
 						$field .= wp_kses(
@@ -524,6 +559,8 @@ if ( ! function_exists( 'user_registration_form_data' ) ) {
 					$field_type        = isset( $field->field_key ) ? ur_get_field_type( $field_key ) : '';
 					$required          = isset( $field->general_setting->required ) ? $field->general_setting->required : '';
 					$required          = 'yes' == $required ? true : false;
+					$enable_cl         = isset( $field->advance_setting->enable_conditional_logic ) && ( '1' === $field->advance_setting->enable_conditional_logic || 'on' === $field->advance_setting->enable_conditional_logic ) ? true : false;
+					$cl_map            = isset( $field->advance_setting->cl_map ) ? $field->advance_setting->cl_map : '';
 					$custom_attributes = isset( $field->general_setting->custom_attributes ) ? $field->general_setting->custom_attributes : array();
 
 					if ( empty( $field_label ) ) {
@@ -543,10 +580,8 @@ if ( ! function_exists( 'user_registration_form_data' ) ) {
 								$extra_params['options'] = ! empty( $options ) ? $options : $advanced_options;
 								$extra_params['options'] = array_map( 'trim', $extra_params['options'] );
 
-								foreach ( $extra_params['options'] as $key => $value ) {
-									$extra_params['options'][ $value ] = $value;
-									unset( $extra_params['options'][ $key ] );
-								}
+								$extra_params['options'] = array_combine( $extra_params['options'], $extra_params['options']);
+
 								break;
 
 							case 'checkbox':
@@ -555,10 +590,8 @@ if ( ! function_exists( 'user_registration_form_data' ) ) {
 								$extra_params['options'] = ! empty( $options ) ? $options : $advanced_options;
 								$extra_params['options'] = array_map( 'trim', $extra_params['options'] );
 
-								foreach ( $extra_params['options'] as $key => $value ) {
-									$extra_params['options'][ $value ] = $value;
-									unset( $extra_params['options'][ $key ] );
-								}
+								$extra_params['options'] =  array_combine( $extra_params['options'], $extra_params['options']);
+
 								break;
 
 							case 'date':
@@ -570,8 +603,8 @@ if ( ! function_exists( 'user_registration_form_data' ) ) {
 								$extra_params['custom_attributes']['data-date-format'] = $date_format;
 
 								if ( isset( $field->advance_setting->enable_min_max ) && 'true' === $field->advance_setting->enable_min_max ) {
-									$extra_params['custom_attributes']['data-min-date'] = '' !== $min_date ? date( $date_format, strtotime( $min_date ) ) : '';
-									$extra_params['custom_attributes']['data-max-date'] = '' !== $max_date ? date( $date_format, strtotime( $max_date ) ) : '';
+									$extra_params['custom_attributes']['data-min-date'] = '' !== $min_date ? date_i18n( $date_format, strtotime( $min_date ) ) : '';
+									$extra_params['custom_attributes']['data-max-date'] = '' !== $max_date ? date_i18n( $date_format, strtotime( $max_date ) ) : '';
 								}
 								$extra_params['custom_attributes']['data-default-date'] = $set_current_date;
 								$extra_params['custom_attributes']['data-mode']         = $enable_date_range;
@@ -606,6 +639,16 @@ if ( ! function_exists( 'user_registration_form_data' ) ) {
 								'field_key'   => $field_key,
 								'required'    => $required,
 							);
+
+							if ( true === $enable_cl ) {
+								$fields[ 'user_registration_' . $field_name ]['enable_conditional_logic'] = $enable_cl;
+								$fields[ 'user_registration_' . $field_name ]['cl_map']                   = $cl_map;
+							}
+						}
+
+						if ( true === $enable_cl ) {
+							$fields[ 'user_registration_' . $field_name ]['enable_conditional_logic'] = $enable_cl;
+							$fields[ 'user_registration_' . $field_name ]['cl_map']                   = $cl_map;
 						}
 
 						if ( count( $custom_attributes ) > 0 ) {
@@ -724,9 +767,12 @@ function ur_logout_url( $redirect = '' ) {
 	}
 	$redirect = apply_filters( 'user_registration_redirect_after_logout', $redirect );
 
-	if ( $logout_endpoint ) {
+	if ( $logout_endpoint && ! is_front_page() ) {
 		return wp_nonce_url( ur_get_endpoint_url( 'user-logout', '', $redirect ), 'user-logout' );
 	} else {
+		if ( '' === $redirect ) {
+			$redirect = home_url();
+		}
 		return wp_logout_url( $redirect );
 	}
 }

@@ -56,6 +56,7 @@ function yourtheme_setup() {
 add_theme_support( 'wc-product-gallery-slider' );
 } 
 
+
 /***************** Widget ************************/
 function dalo_por_hecho_widgets_init() {
 
@@ -131,7 +132,18 @@ function date_new($fecha){
     $anno = date("Y", strtotime($fecha));
     $mes = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
     $mes = $mes[(date('m', strtotime($fecha))*1)-1];
-    return $dia.' '.$num.', '.$mes;
+    return $dia.' '.$num.', '.$mes.' '.$anno;
+}
+
+/***************** Date perfil *****************/
+function date_new_perfil($fecha){
+    $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
+    $dia = $dias[date('w', strtotime($fecha))];
+    $num = date("j", strtotime($fecha));
+    $anno = date("Y", strtotime($fecha));
+    $mes = array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+    $mes = $mes[(date('m', strtotime($fecha))*1)-1];
+    return $num.' de '.$mes.' del '.$anno;
 }
 
 /***************** Date Order *****************/
@@ -196,6 +208,18 @@ function job_meta_value_img($post_id ){
 
 }
 
+/***************** User var *****************/
+function user_value_date( $post_id ){
+            global $wpdb; 
+            $value = NULL; 
+              $result_link = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."users WHERE ID = '$post_id' "); 
+              foreach($result_link as $r)
+              {
+                      $value = $r->user_registered;                      
+              }
+              return $value;
+
+}
 
 /***************** User *****************/
 function user_value( $post_id ){
@@ -245,6 +269,29 @@ function meta_value_img_frm($user,$form_id){
               return $value_img;
 }
 
+/********************Cont preguntas**********************/
+
+function count_preguntas( $id_tarea ){ 
+            $value = 0;                                       
+            $arg = array (
+              'post_type' => 'preguntas',
+              'post_status' =>'publish',
+              'meta_query' => array(
+                'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                  'key' => 'id_tareas_preguntas_copy',
+                  'value' =>  $id_tarea,
+                  'operator' => 'IN',
+                )),                     
+            ); 
+            $loop = new WP_Query( $arg ); 
+            while ( $loop->have_posts() ) : $loop->the_post();  
+              $value = $value + 1;
+            endwhile; 
+              
+            return $value;
+}   
+
 /******************Excerp Cut*****************/
 function cut_text($text, $le) 
 { 
@@ -261,50 +308,146 @@ function cut_text($text, $le)
 
 /********************Arg **********************/
 
-function arg($cat,$tax,$search,$location){ 
+function arg($cat,$tax,$search,$location,$tipo){ 
 
-  if ($cat == NULL && $search == NULL) {
+  if ($cat == NULL && $location == NULL && $tipo == NULL && $search == NULL) {
     $args = 
     array(
       'post_type' => 'job_listing',
-      'post_status' => array('publish','draft'),
+      'post_status' => array('publish','draft','expired'),
      // 'paged' => $paged,
-      //'posts_per_page' =>12,
+      'posts_per_page' =>-1,
     );
   }
 
-  if ($cat != NULL) {
+  if ($cat != NULL && $location != NULL && $tipo != NULL) {
     $args = 
     array(
       'post_type' => 'job_listing',
      // 'paged' => $paged,
      // 'posts_per_page' => 12,        
-      'post_status' => array('publish','draft'),
-      'tax_query' => array(
-      'relation'=>'AND', // 'AND' 'OR' ...
-        array(
-        'taxonomy'        => $tax,
-        'field'           => 'slug',
-        'terms'           => array($cat),
-        'operator'        => 'IN',
-        )),
+      'post_status' => array('publish','draft','expired'),
+          'tax_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => $tax,
+                'field'           => 'slug',
+                'terms'           => $cat,
+                'operator'        => 'IN',
+               ),
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => 'job_listing_type',
+                'field'           => 'slug',
+                'terms'           => $tipo,
+                'operator'        => 'IN',
+               )),    
+              'meta_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'key' => '_job_location',
+                'value' => $location,
+                'compare' => 'LIKE',
+                )),                  
     );
   } 
-        
-  if ($search != NULL) {
+
+  if ($cat != NULL && $location != NULL && $tipo == NULL) {
     $args = 
     array(
       'post_type' => 'job_listing',
-      'post_status' => array('publish','draft'),
-      's' => $search,
+     // 'paged' => $paged,
+     // 'posts_per_page' => 12,        
+      'post_status' => array('publish','draft','expired'),
+          'tax_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => $tax,
+                'field'           => 'slug',
+                'terms'           => $cat,
+                'operator'        => 'IN',
+               )),    
+              'meta_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'key' => '_job_location',
+                'value' => $location,
+                'compare' => 'LIKE',
+                )),                  
+    );
+  } 
+
+  if ($cat != NULL && $location == NULL && $tipo != NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+     // 'paged' => $paged,
+     // 'posts_per_page' => 12,        
+      'post_status' => array('publish','draft','expired'),
+          'tax_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => $tax,
+                'field'           => 'slug',
+                'terms'           => $cat,
+                'operator'        => 'IN',
+               ),
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => 'job_listing_type',
+                'field'           => 'slug',
+                'terms'           => $tipo,
+                'operator'        => 'IN',
+               )),                 
     );
   }
 
-  if ($location != NULL) {
+  if ($cat == NULL && $location != NULL && $tipo != NULL) {
     $args = 
     array(
       'post_type' => 'job_listing',
-      'post_status' => array('publish','draft'),
+     // 'paged' => $paged,
+     // 'posts_per_page' => 12,        
+      'post_status' => array('publish','draft','expired'),
+          'tax_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => 'job_listing_type',
+                'field'           => 'slug',
+                'terms'           => $tipo,
+                'operator'        => 'IN',
+               )),  
+              'meta_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'key' => '_job_location',
+                'value' => $location,
+                'compare' => 'LIKE',
+                )),                              
+    );
+  }  
+
+ if ($cat != NULL && $location == NULL && $tipo == NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+      'post_status' => array('publish','draft','expired'),
+          'tax_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => $tax,
+                'field'           => 'slug',
+                'terms'           => $cat,
+                'operator'        => 'IN',
+               )), 
+    );    
+  }
+
+ if ($cat == NULL && $location != NULL && $tipo == NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+      'post_status' => array('publish','draft','expired'),
       'meta_query' => array(
       'relation'=>'AND', // 'AND' 'OR' ...
         array(
@@ -314,6 +457,34 @@ function arg($cat,$tax,$search,$location){
         )),
     );    
   }
+
+ if ($cat == NULL && $location == NULL && $tipo != NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+      'post_status' => array('publish','draft','expired'),
+          'tax_query' => array(
+              'relation'=>'AND', // 'AND' 'OR' ...
+                array(
+                'taxonomy'        => 'job_listing_type',
+                'field'           => 'slug',
+                'terms'           => $tipo,
+                'operator'        => 'IN',
+               )),
+    );    
+  }
+
+
+  if ($search != NULL) {
+    $args = 
+    array(
+      'post_type' => 'job_listing',
+      'post_status' => array('publish','draft','expired'),
+      's' => $search,
+    );
+  }
+
+
 
   return $args; 
 } 
@@ -395,4 +566,32 @@ function post_asignados($author,$codigo_unico,$id_empleado){
               }           
               return $value2;
 
+}
+
+/******************Excerp*****************/
+function custom_excerpt_length( $length ) {
+  return 15;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+/****************** Num ofertas *****************/
+function num_ofertas($id){
+  $i=0;
+  $args3 = array (
+      'post_type' => 'postulados',
+      'post_status' =>'publish',
+      'meta_query' => array(
+      'relation'=>'AND', // 'AND' 'OR' ...
+      array(
+      'key' => 'ofertar_id_tarea_publicada',
+      'value' => $id,
+      'operator' => 'IN',
+      )),                     
+  ); 
+  $loop3 = new WP_Query( $args3 ); 
+  while ( $loop3->have_posts() ) : $loop3->the_post(); $comision = (get_field('ofertar_monto_tarea')*0.10); $salarys = get_field('ofertar_monto_tarea');
+                                         
+     $i = $i+1; 
+  endwhile; 
+  return $i;
 }

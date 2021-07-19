@@ -8,11 +8,11 @@
                   $args = array (
                      'post_type' => 'job_listing',
                      'posts_per_page' => 100,
-                     'post_status' => array('publish','draft'),
+                     'post_status' => array('publish','draft','expired'),
                   ); 
                 $loop = new WP_Query( $args ); 
                 while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>	
-                <a href="<?php the_permalink(); ?>">			
+                <a href="<?php echo get_home_url().'/buscar-tareas?tab_tarea='.get_the_ID() ?>">			
 					<div class="main-testimonios__item">
 						<div class="content-tetimonios">
 							<div class="row">
@@ -21,7 +21,7 @@
 								</div>
 								<div class="col-md-10 col-lg-12 col-xl-10 mb-2 text-justify">
 									<p class="name"><?php echo $product_categories = wp_get_post_terms( get_the_ID(), 'job_listing_category' )[0]->name; ?></p>
-									<span><?php the_author_meta( 'first_name', 1); ?></span>
+									<span><?php echo get_the_author(); ?></span>
 								</div>
 							</div>
 							<div class="row">
@@ -29,7 +29,7 @@
 									<p><?php echo cut_text(get_post_meta( get_the_ID(), '_job_description', true ), 10); ?></p>
 								</div>
 								<div class="col-md-4 col-lg-12 col-xl-4">
-									<p class="money">$<?php echo str_replace(',', '.' ,number_format(get_post_meta( get_the_ID(), '_job_salary', true ))); ?></p>
+									<p class="money">$<?php echo number_format(get_post_meta( get_the_ID(), '_job_salary', true ), 0, '.', '.');  ?></p>
 								</div>
 							</div>
 						</div>
